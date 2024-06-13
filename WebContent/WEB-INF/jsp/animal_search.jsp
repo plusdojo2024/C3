@@ -12,9 +12,9 @@
       <tr>
         <td>
           <label>所属団体<br>
-          <input type="checkbox" name="group" value="A">A<br>
-          <input type="checkbox" name="group" value="B">B<br>
-          <input type="checkbox" name="group" value="C">C<br>
+          <input type="checkbox" name="organization_name" value="A">A<br>
+          <input type="checkbox" name="organization_name" value="B">B<br>
+          <input type="checkbox" name="organization_name" value="C">C<br>
           </label>
         </td>
         <td>
