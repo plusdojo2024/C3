@@ -8,9 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Individuals;
+
 public class IndividualsDAO {
 	// 動物検索
-
 		public List<Individuals> select(Individuals card) {
 			Connection conn = null;
 			List<Individuals> cardList = new ArrayList<Individuals>();
@@ -23,7 +24,7 @@ public class IndividualsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM Individuals WHERE user_name LIKE ? AND animal_name LIKE ? AND kind LIKE ? AND type LIKE ? AND gender LIKE ? AND "
+					String sql = "SELECT * FROM Individuals WHERE user_name LIKE ? AND animal_id LIKE ? AND kind LIKE ? AND type LIKE ? AND gender LIKE ? AND "
 								+ " age LIKE ORDER BY number";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
@@ -40,11 +41,11 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(2, "%");
 					}
-					if (card.getKind() != null) {
-						pStmt.setString(3, "%" + card.getKind() + "%");
+					if (card.getAnimal_id() != 0) {
+						pStmt.setInt(3, card.getAnimal_id());
 					}
 					else {
-						pStmt.setString(3, "%");
+						pStmt.setInt(3, 0);
 					}
 					if (card.getType() != null) {
 						pStmt.setString(4, "%" + card.getType() + "%");
@@ -58,8 +59,8 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(5, "%");
 					}
-					if (card.getAge() != null) {
-						pStmt.setInt(6, "%" + card.getAge() + "%");
+					if (card.getAge() != 0) {
+						pStmt.setInt(6, card.getAge());
 					}
 
 					// SQL文を実行し、結果表を取得する
@@ -68,12 +69,21 @@ public class IndividualsDAO {
 					// 結果表をコレクションにコピーする
 					while (rs.next()) {
 						Individuals record = new Individuals(
-							rs.getString("user_name"),
+							rs.getInt("id"),
+							rs.getInt("animal_id"),
 							rs.getString("animal_name"),
-							rs.getString("kind"),
 							rs.getString("type"),
+							rs.getInt("age"),
 							rs.getString("gender"),
-							rs.getInt("age")
+							rs.getString("user_name"),
+							rs.getDate("period"),
+							rs.getString("remarks"),
+							rs.getBoolean("is_castration"),
+							rs.getDate("birtuday"),
+							rs.getString("img")
+							//rs.getString("kind"),
+
+
 							);
 						cardList.add(record);
 					}
@@ -120,11 +130,11 @@ public class IndividualsDAO {
 
 				// SQL文を完成させる
 					//犬かネコか
-					if (card.get() != null) {
-						pStmt.setInt(1, card.get());
+					if (card.getAnimal_id() != 0) {
+						pStmt.setInt(1, card.getAnimal_id());
 					}
 					else {
-						pStmt.setInt(1, "");
+						pStmt.setInt(1, 0);
 					}
 					if (card.getAnimal_name() != null) {
 						pStmt.setString(2, card.getAnimal_name());
@@ -138,21 +148,21 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(3, "");
 					}
-					if (card.getAge() != null) {
-						pStmt.setString(4, card.getAge());
+					if (card.getAge() != 0) {
+						pStmt.setInt(4, card.getAge());
 					}
 					else {
-						pStmt.setString(4, "");
+						pStmt.setInt(4, 0);
 					}
 					if (card.getGender() != null) {
-						pStmt.setInt(5, card.getGender());
+						pStmt.setString(5, card.getGender());
 					}
 					else {
 						pStmt.setString(5, "");
 					}
 					//sessionスコープで団体id持ってきて名前入れる
-					if (card.get() != null) {
-						pStmt.setString(6, card.get());
+					if (card.getUser_name() != null) {
+						pStmt.setString(6, card.getUser_name());
 					}
 					else {
 						pStmt.setString(6, "");
@@ -163,17 +173,17 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(7, "");
 					}
-					if (card.getIs_castration() != null) {
+					if (card.getIs_castration() != false) {
 						pStmt.setBoolean(8, card.getIs_castration());
 					}
 					else {
-						pStmt.setBoolean(8, "");
+						pStmt.setBoolean(8, false);
 					}
 					if (card.getBirthday() != null) {
 						pStmt.setDate(9, card.getBirthday());
 					}
 					else {
-						pStmt.setDate(9, "");
+						pStmt.setDate(9, null);
 					}
 					if (card.getImg() != null) {
 						pStmt.setString(10, card.getImg());
@@ -230,13 +240,13 @@ public class IndividualsDAO {
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
-					if (card.getAnimal_id() != null) {
+					if (card.getAnimal_id() != 0) {
 						pStmt.setInt(1, card.getAnimal_id());
 					}
 					else {
-						pStmt.setInt(1, null);
+						pStmt.setInt(1, 0);
 					}
-					if (card.getAnimal_name() != nul) {
+					if (card.getAnimal_name() != null) {
 						pStmt.setString(2, card.getAnimal_name());
 					}
 					else {
@@ -248,11 +258,11 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(3, null);
 					}
-					if (card.getAge() != null) {
+					if (card.getAge() != 0) {
 						pStmt.setInt(4, card.getAge());
 					}
 					else {
-						pStmt.setInt(4, null);
+						pStmt.setInt(4, 0);
 					}
 					if (card.getGender() != null) {
 						pStmt.setString(5, card.getGender());
@@ -272,11 +282,11 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(7, null);
 					}
-					if (card.getIs_castration() != null) {
+					if (card.getIs_castration() != false) {
 						pStmt.setBoolean(8, card.getIs_castration());
 					}
 					else {
-					pStmt.setBoolean(8, null);
+					pStmt.setBoolean(8, false);
 					}
 					if (card.getBirthday() != null) {
 						pStmt.setDate(9, card.getBirthday());
@@ -291,7 +301,7 @@ public class IndividualsDAO {
 						pStmt.setString(10, null);
 					}
 					//更新ボタンを押した動物のidを格納
-					pStmt.setInt(11, null);
+					pStmt.setInt(11, card.getId());
 
 
 					// SQL文を実行する
@@ -321,7 +331,7 @@ public class IndividualsDAO {
 			return result;
 		}
 
-	//削除
+	//動物削除
 		//session
 		public boolean delete(int id) {
 			Connection conn = null;
@@ -335,7 +345,7 @@ public class IndividualsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する
-				String sql = "DELETE FROM Bc WHERE id=?";
+				String sql = "DELETE FROM Individuals WHERE id=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる

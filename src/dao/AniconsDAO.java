@@ -22,8 +22,8 @@ public class AniconsDAO {
 				// SELECT文を準備する
 				String sql = "SELECT COUNT(*) FROM Anicons WHERE anicons_id = ? AND anicons_password = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, anicons.getId());
-				pStmt.setString(2,anicons.getPw());
+				pStmt.setString(1, anicons.getAnicon_id());
+				pStmt.setString(2,anicons.getAnicon_password());
 
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
@@ -59,4 +59,4 @@ public class AniconsDAO {
 			return loginResult;
 		}
 	}
-}
+
