@@ -6,8 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UsersDAO {
+<<<<<<< HEAD
 			
 			public boolean insert(String name, String id, String password ) {
+=======
+
+			public boolean insert(String name,String id,String pw) {
+>>>>>>> af0ce1be1311f22fc011d8e7889b65cf65c76fcb
 				Connection conn = null;
 				boolean result = false;
 
@@ -17,16 +22,22 @@ public class UsersDAO {
 
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3", "sa", "");
-					
+
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
-					
-					
+
+
 					// SQL文を完成させる
+<<<<<<< HEAD
 						
 						if (name != null ) {
 							pStmt.setString(1, name);
+=======
+
+						if (card.getUser_id() != null ) {
+							pStmt.setString(1, card.getUser_id());
+>>>>>>> af0ce1be1311f22fc011d8e7889b65cf65c76fcb
 						}
 						else {
 							pStmt.setString(1, "");
