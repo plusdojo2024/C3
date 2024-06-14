@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.IndividualsDAO;
+import model.Individuals;
 import model.Result;
 
 /**
