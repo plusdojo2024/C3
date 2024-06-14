@@ -2,17 +2,12 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-
-import model.Users;
+import java.sql.SQLException;
 
 public class UsersDAO {
 			
-			public boolean insert(Users card) {
+			public boolean insert(String name, String id, String password ) {
 				Connection conn = null;
 				boolean result = false;
 
@@ -30,44 +25,46 @@ public class UsersDAO {
 					
 					// SQL文を完成させる
 						
-						if (card.getUser_id() != null ) {
-							pStmt.setString(1, card.getUser_id());
+						if (name != null ) {
+							pStmt.setString(1, name);
 						}
 						else {
 							pStmt.setString(1, "");
 						}
-						if (card.getUser_name() != null ) {
-							pStmt.setString(2, card.getUser_name());
+						if (id != null ) {
+							pStmt.setString(2, id);
 						}
 						else {
 							pStmt.setString(2, "");
 						}
-						if (card.getUser_password() != null ) {
-							pStmt.setString(3, card.getUser_password());
+						if (password != null ) {
+						pStmt.setString(3, password);
 						}
 						else {
 							pStmt.setString(3, "");
 						}
+						
+						/* 団体用
 						if (card.getIs_organization() != null ) {
 							pStmt.setString(4, card.getIs_organization());
 						}
 						else {
 							pStmt.setString(4, "");
 						}
-						if (card.getAdress() != null ) {
-							pStmt.setString(5, card.getAdress());
+						if (card.getAddress() != null ) {
+							pStmt.setString(5, card.getAddress());
 						}
 						else {
 							pStmt.setString(5, "");
 						}
-						if (card.getPhonenumber() != null ) {
-							pStmt.setString(6, card.getPhonenumber());
+						if (card.getPhone_number() != null ) {
+							pStmt.setString(6, card.getPhone_number());
 						}
 						else {
 							pStmt.setString(6, "");
 						}
-						if (card.getEmail() != null ) {
-							pStmt.setString(7, card.getEmail());
+						if (card.getEmails() != null ) {
+							pStmt.setString(7, card.getEmails());
 						}
 						else {
 							pStmt.setString(7, "");
@@ -78,6 +75,7 @@ public class UsersDAO {
 						else {
 							pStmt.setString(8, "");
 						}
+						*/
 
 						// SQL文を実行する
 						if (pStmt.executeUpdate() == 1) {
@@ -104,4 +102,5 @@ public class UsersDAO {
 				// 結果を返す
 				return result;
 
+}
 }

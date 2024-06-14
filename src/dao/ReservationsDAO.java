@@ -9,12 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Reservations;
-import model.Users;
-import model.Individuals;
 
 public class ReservationsDAO {
 
-			public boolean insert(Users card) {
+			public boolean insert(Reservations card) {
 				Connection conn = null;
 				boolean result = false;
 
@@ -30,40 +28,50 @@ public class ReservationsDAO {
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 					// SQL文を完成させる
-						pStmt.setString(1, card.getUser_name());
+					if (card.getIndividual_id() != 0 ) {
+						pStmt.setInt(1, card.getIndividual_id());
+					}	
+					else {
+						pStmt.setInt(1, 0);
+					}
+					if (card.getRsv_day() != null ) {
+						pStmt.setTimestamp(2, card.getRsv_day());
 					}
 					else {
-						pStmt.setString(1, "");
+						pStmt.setTimestamp(2, null);
 					}
-					if (card.getAnimal_name() != null ) {//個体名
-						pStmt.setString(2, card.getAnimal_name());
-					}
-					else {
-						pStmt.setString(2, "");
-					}
-					if (card.getRsv_day() != null ) {//日時
-						pStmt.setString(3, card.getRsv_day());
+					if (card.getSend_id() != 0 ) {
+						pStmt.setInt(3, card.getSend_id());
 					}
 					else {
-						pStmt.setString(3, "");
+						pStmt.setInt(3, 0);
 					}
-					if (card.getPhonenumber() != null ) {//電話番号
-						pStmt.setString(4, card.getPhonenumber());
+					if (card.getReceive_id() != 0 ) {
+						pStmt.setInt(4, card.getReceive_id());
 					}
 					else {
-						pStmt.setString(4, "");
+						pStmt.setInt(4, 0);
 					}
-					if (card.getReservation_remarks() != null ) {//備考
+					if (card.getReservation_remarks() != null ) {
 						pStmt.setString(5, card.getReservation_remarks());
 					}
 					else {
 						pStmt.setString(5, "");
 					}
+					if (card.getAccept() != false ) {
+						pStmt.setBoolean(6, card.getAccept());
+					}
+					else {
+						pStmt.setString(6, "");
+					}
+					
+					
 					
 					// SQL文を実行する
 					if (pStmt.executeUpdate() == 1) {
 						result = true;						
-					}}
+					}
+				}
 				catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -78,14 +86,15 @@ public class ReservationsDAO {
 						}
 						catch (SQLException e) {
 							e.printStackTrace();
+						}
+					}
 				}
-			}
-		}
 
 		// 結果を返す
 		return result;
+			}
 
-}
+
 			// リストに登録する
 			public List<Reservations> select(Reservations card) {
 				Connection conn = null;
@@ -98,31 +107,31 @@ public class ReservationsDAO {
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3","sa", "");
 
-					// SQL文を準備する
-						String sql = "SELECT * FROM Reservations WHERE User_name LIKE ? AND Animal_name LIKE ? AND Date ? AND Phonenumber ? AND Remarks LIKE ? AND ";
+					// 検索する
+						String sql = "SELECT * FROM Reservations WHERE Individual_id LIKE ? AND Animal_name LIKE ? AND Date ? AND Phonenumber ? AND Remarks LIKE ? AND ";
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 						
 						// SQL文を完成させる
-						if (card.getUser_name() != null) {
-							pStmt.setString(1, "%" + card.getUser_name() + "%");
+						if (card.getIndividual_id() != 0) {
+							pStmt.setInt(1, card.getIndividual_id());
 						}
 						else {
-							pStmt.setString(1, "%");
-						}
-						if (card.getAnimal_name() != null) {
-							pStmt.setString(2, "%" + card.getAnimal_name() + "%");
-						}
-						else {
-							pStmt.setString(2, "%");
+							pStmt.setInt(1,0);
 						}
 						if (card.getRsv_day() != null) {
-							pStmt.setString(3, "%" + card.getRsv_day() + "%");
+							pStmt.setTimestamp(2, card.getRsv_day());
 						}
 						else {
-							pStmt.setString(3, "%");
+							pStmt.setString(2, null);
 						}
-						if (card.getPhonenumber() != null) {
-							pStmt.setString(4, "%" + card.getPhonenumber() + "%");
+						if (card.getSend_id() != 0) {
+							pStmt.setInt(3, card.getSend_id());
+						}
+						else {
+							pStmt.setInt(3, 0);
+						}
+						if (card.getReceive_id() != null) {
+							pStmt.setString(4, "%" + card.getReceive_id() + "%");
 						}
 						else {
 							pStmt.setString(4, "%");
@@ -132,6 +141,14 @@ public class ReservationsDAO {
 						}
 						else {
 							pStmt.setString(5, "%");
+						}
+						if (card.getAccept() != false ) {
+							pStmt.setBoolean(6, card.getAccept());
+						}
+						else {
+							pStmt.setString(6, "");
+						}
+							
 						
 						// SQL文を実行し、結果表を取得する
 						ResultSet rs = pStmt.executeQuery();
@@ -139,11 +156,12 @@ public class ReservationsDAO {
 						// 結果表をコレクションにコピーする
 						while (rs.next()) {
 							Reservations record = new Reservations(
-								rs.getString("user_name"),
-								rs.getString("animal_name"),
-								rs.getTimestamp("Rsv_day"),
-								rs.getString("Phonenumber"),
-								rs.getString("Reservation_remarks")
+								rs.getInt("individual_id"),
+								rs.getString("rsv_day"),
+								rs.getTimestamp("send_id"),
+								rs.getInt("receive_id"),
+								rs.getString("Reservation_remarks"),
+								rs.getBoolean("accept")
 								);
 							cardList.add(record);
 						}
@@ -171,3 +189,4 @@ public class ReservationsDAO {
 					// 結果を返す
 					return cardList;
 				}
+				
