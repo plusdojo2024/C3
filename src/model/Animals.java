@@ -2,30 +2,30 @@ package model;
 import java.io.Serializable;
 
 public class Animals implements Serializable {
-  private String anicon_id;		/*ID*/
-  private String anc_password;	/*パスワード*/
+  private int id;		/*ID*/
+  private String kind;	/*種類*/
 
 //引数がないコンストラクタ
   public Animals() {
 
   }
   //引数があるコンストラクタ
-  public Animals(String anicon_id, String anc_password){
+  public Animals(int id, String kind){
     super();
-       this.anicon_id = anicon_id;
-       this.anc_password = anc_password;
+       this.id = id;
+       this.kind =kind;
   }
-public String getAnicon_id() {
-	return anicon_id;
+public int getId() {
+	return id;
 }
-public void setAnicon_id(String anicon_id) {
-	this.anicon_id = anicon_id;
+public void setId(int id) {
+	this.id = id;
 }
-public String getAnc_password() {
-	return anc_password;
+public String getKind() {
+	return kind;
 }
-public void setAnc_password(String anc_password) {
-	this.anc_password = anc_password;
+public void setKind(String kind) {
+	this.kind = kind;
 }
 
 }
