@@ -64,7 +64,17 @@ main h2 {
     text-align: center;
 }
 
+/* 個別のスタイル */
+/* index.html */
+/* モバイル対応 */
+@media(max-width: 767px) {
+}
 /* エラーメッセージ */
 #error_message {
   color: red;
+}
+/* 新規登録*/
+
+.user {
+    align-items: center;
 }
