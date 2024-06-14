@@ -12,13 +12,13 @@
   <!-- ヘッダー -->
   <header>
     <div class="home">
-      <a href="home html"><img src="./img/images/logo.png" alt="アニコン" width="350" height="100"></a>
+      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="350" height="100"></a>
     </div>
     <table>
       <tr>
         <td>
     <div class="login">
-      <a href="login html"><img src="./img/images/login1.png" alt="ログイン" width="140" height="40"></a>
+      <a href="LoginServlet"><img src="./img/images/login1.png" alt="ログイン" width="140" height="40"></a>
   </div>
         </td>
       </tr>
@@ -28,11 +28,15 @@
         <li><a href="C3/GroupServlet">各団体</a></li>
         <li><a href="C3/AnimalSearchServlet">動物検索</a></li>
         <li><a href="C3/CalendarServlet">カレンダー</a></li>
-        <li><a href="C3/QASevlet">QandA</a></li>
+        <li><a href="C3/QASevlet">Q&ampA</a></li>
     </ul>
   </nav>
   <!-- ヘッダーここまで -->
    </header>
+<!-- メイン -->
+  <main>
+  <h1>新規登録</h1>
+  </main>
 
  <form method="post" action="C3/UserServlet">
     <table>
@@ -68,7 +72,6 @@
       <a href="#top"><img src="./img/images/nikukyu.png" alt="トップページへ戻る" width="60" height="60"></a>
     </div>
     <p class="copyright">&copy; dacho_group</p>
-  </footer>
   <!-- フッターここまで -->
   </footer>
 </body>
