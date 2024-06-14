@@ -2,9 +2,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,17 +40,17 @@ public class ReservationsDAO {
 					else {
 						pStmt.setTimestamp(2, null);
 					}
-					if (card.getSend_id() != 0 ) {
-						pStmt.setInt(3, card.getSend_id());
+					if (card.getSend_id() != null) {
+						pStmt.setString(3, card.getSend_id());
 					}
 					else {
-						pStmt.setInt(3, 0);
+						pStmt.setString(3, null);
 					}
-					if (card.getReceive_id() != 0 ) {
-						pStmt.setInt(4, card.getReceive_id());
+					if (card.getReceive_id() != null ) {
+						pStmt.setString(4, card.getReceive_id());
 					}
 					else {
-						pStmt.setInt(4, 0);
+						pStmt.setString(4, null);
 					}
 					if (card.getReservation_remarks() != null ) {
 						pStmt.setString(5, card.getReservation_remarks());
@@ -64,7 +64,6 @@ public class ReservationsDAO {
 					else {
 						pStmt.setString(6, "");
 					}
-					
 					
 					
 					// SQL文を実行する
@@ -122,19 +121,19 @@ public class ReservationsDAO {
 							pStmt.setTimestamp(2, card.getRsv_day());
 						}
 						else {
-							pStmt.setString(2, null);
+							pStmt.setTimestamp(2, null);
 						}
-						if (card.getSend_id() != 0) {
-							pStmt.setInt(3, card.getSend_id());
+						if (card.getSend_id() != null) {
+							pStmt.setString(3, card.getSend_id());
 						}
 						else {
-							pStmt.setInt(3, 0);
+							pStmt.setString(3, null);
 						}
 						if (card.getReceive_id() != null) {
-							pStmt.setString(4, "%" + card.getReceive_id() + "%");
+							pStmt.setString(4, card.getReceive_id());
 						}
 						else {
-							pStmt.setString(4, "%");
+							pStmt.setString(4, null);
 						}
 						if (card.getReservation_remarks() != null) {
 							pStmt.setString(5, "%" + card.getReservation_remarks() + "%");
@@ -156,15 +155,17 @@ public class ReservationsDAO {
 						// 結果表をコレクションにコピーする
 						while (rs.next()) {
 							Reservations record = new Reservations(
+								rs.getInt("id"),
 								rs.getInt("individual_id"),
-								rs.getString("rsv_day"),
-								rs.getTimestamp("send_id"),
-								rs.getInt("receive_id"),
+								rs.getTimestamp("rsv_day"),
+								rs.getString("send_id"),
+								rs.getString("receive_id"),
 								rs.getString("Reservation_remarks"),
 								rs.getBoolean("accept")
 								);
 							cardList.add(record);
 						}
+				}
 
 				    catch (SQLException e) {
 						e.printStackTrace();
@@ -189,4 +190,4 @@ public class ReservationsDAO {
 					// 結果を返す
 					return cardList;
 				}
-				
+			}				
