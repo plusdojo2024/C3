@@ -2,30 +2,30 @@ package model;
 import java.io.Serializable;
 
 public class Anicons implements Serializable {
-  private int id;		/*ID*/
-  private String kind;	/*種類*/
+  private String anicon_id;		/*ID*/
+  private String anc_password;	/*パスワード*/
 
 //引数がないコンストラクタ
   public Anicons() {
 
   }
   //引数があるコンストラクタ
-  public Anicons(int id, String kind){
+  public Anicons(String anicon_id, String anc_password){
     super();
-       this.id = id;
-       this.kind =kind;
+       this.anicon_id = anicon_id;
+       this.anc_password = anc_password;
   }
-public int getId() {
-	return id;
+public String getAnicon_id() {
+	return anicon_id;
 }
-public void setId(int id) {
-	this.id = id;
+public void setAnicon_id(String anicon_id) {
+	this.anicon_id = anicon_id;
 }
-public String getKind() {
-	return kind;
+public String getAnc_password() {
+	return anc_password;
 }
-public void setKind(String kind) {
-	this.kind = kind;
+public void setAnc_password(String anc_password) {
+	this.anc_password = anc_password;
 }
 
 }

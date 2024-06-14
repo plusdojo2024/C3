@@ -91,7 +91,7 @@ public String getRemarks() {
 public void setRemarks(String remarks) {
 	this.remarks = remarks;
 }
-public boolean isIs_castration() {
+public boolean getIs_castration() {
 	return is_castration;
 }
 public void setIs_castration(boolean is_castration) {
