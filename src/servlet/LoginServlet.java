@@ -39,12 +39,12 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 
-		// ログイン処理を行う
+		// 個人ログイン処理を行う
 		UsersDAO iDao = new UsersDAO();
-		if (iDao.isLoginOK(new Users(id, pw))) {	// ログイン成功
+		if (iDao.isLoginOK(id, pw)) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
+			session.setAttribute("id", new Users(id, pw));
 
 			// サーブレットにリダイレクトする
 			response.sendRedirect("/C3/PersonalServlet");
@@ -58,5 +58,29 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 			dispatcher.forward(request, response);
 		}
+
+		// 団体ログイン処理を行う
+				// リクエストパラメータを取得する
+						request.setCharacterEncoding("UTF-8");
+						String user_id = request.getParameter("id");
+						String password = request.getParameter("pw");
+
+				if (iDao.isLoginOK1(id, pw)) {	// ログイン成功
+					// セッションスコープにIDを格納する
+					HttpSession session = request.getSession();
+					session.setAttribute("id", new Users(user_id, password));
+
+					// サーブレットにリダイレクトする
+					response.sendRedirect("/C3/PersonalServlet");
+				}
+				else {									// ログイン失敗
+					// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+					request.setAttribute("result",
+					new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/C3/LoginServlet"));
+
+					// 結果ページにフォワードする
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+					dispatcher.forward(request, response);
+				}
 	}
 }
