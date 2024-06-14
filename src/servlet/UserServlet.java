@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.IdpwDAO;
+import dao.UsersDAO;
+import model.Result;
 
 /**
  * Servlet implementation class UserServlet
@@ -18,13 +19,6 @@ import dao.IdpwDAO;
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +28,7 @@ public class UserServlet extends HttpServlet {
 
 
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/idpw.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -48,15 +42,16 @@ public class UserServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		// 改造（ここから）
-		String id= request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String name=request.getParameter("user_name");
+		String id= request.getParameter("user_id");
+		String pw = request.getParameter("user_password");
 
 		// 改造（ここまで）
 
 		// 登録処理を行う
-		IdpwDAO bDao = new IdpwDAO();
+		UsersDAO bDao = new UsersDAO();
 		// 改造（ここから）
-		if (bDao.insert(id,pw)) {	// 登録成功
+		if (bDao.insert(name,id,pw)) {	// 登録成功
 			// 改造（ここまで）
 			request.setAttribute("result",new Result("", "登録しました。", ""));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
@@ -64,7 +59,7 @@ public class UserServlet extends HttpServlet {
 		}
 		else {												// 登録失敗
 			request.setAttribute("result",new Result("", "登録できませんでした。", ""));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/idpw.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 			dispatcher.forward(request, response);
 		}
 

@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Reservations;
 import model.Users;
+import model.Individuals;
 
 public class ReservationsDAO {
 
@@ -25,11 +26,10 @@ public class ReservationsDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3", "sa", "");
 					
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-					String sql = "INSERT INTO Reservations VALUES (?, ?, ?, ?, ?)";
+					String sql = "INSERT INTO Reservations VALUES (null, ?, ?, ?, ?, ?, ?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 					// SQL文を完成させる
-					if (card.getUser_name() != null ) {//団体名
 						pStmt.setString(1, card.getUser_name());
 					}
 					else {
@@ -86,6 +86,7 @@ public class ReservationsDAO {
 		return result;
 
 }
+			// リストに登録する
 			public List<Reservations> select(Reservations card) {
 				Connection conn = null;
 				List<Reservations> cardList = new ArrayList<Reservations>();
