@@ -18,7 +18,6 @@ public class Users implements Serializable {
 
   }
   //引数があるコンストラクタ
-  //団体情報表示
   public Users(int id,String user_id, String user_name,String user_password,
   String is_organization, String address, String phone_number,String emails, String remarks){
     super();
@@ -32,22 +31,6 @@ public class Users implements Serializable {
       	 this.emails = emails;
       	 this.remarks = remarks;
   }
-
-  //ログイン（個人）
-  public Users(String id, String pw) {
-	  super();
-	  this.user_id = id;
-	  this.user_password = pw;
-  }
-
-  //ログイン（団体）
-  /*
-  public Users1(String user_id, String password) {
-	  super();
-	  this.user_id = user_id;
-	  this.user_password = password;
-  }
-*/
 
 public int getId() {
 	return id;
@@ -103,6 +86,5 @@ public String getRemarks() {
 public void setRemarks(String remarks) {
 	this.remarks = remarks;
 }
-
 
 }
