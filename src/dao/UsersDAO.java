@@ -175,11 +175,10 @@ public class UsersDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 					// SELECT文を準備する
-					String sql = "SELECT COUNT(*) FROM Users WHERE name = ? AND id = ? AND pw =?";
+					String sql = "SELECT COUNT(*) FROM Users WHERE id = ? AND pw =?";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
-					pStmt.setString(1,name);
-					pStmt.setString(2,id);
-					pStmt.setString(3,pw);
+					pStmt.setString(1,id);
+					pStmt.setString(2,pw);
 
 					// SELECT文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
@@ -216,7 +215,7 @@ public class UsersDAO {
 			}
 			
 				// 団体ログイン用メソッド
-				public boolean isLoginOK1(String id,String pw,String name,String ad,String phone,String email,String remarks) {
+				public boolean isLoginOK1(String id,String pw/*,String name,String ad,String phone,String email,String remarks*/) {
 					Connection conn = null;
 					boolean loginResult = false;
 
@@ -228,14 +227,11 @@ public class UsersDAO {
 						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 						// SELECT文を準備する
-						String sql = "SELECT COUNT(*) FROM Users WHERE id = ? AND pw = ? AND name =? AND ad =? AND phone =? AND email =? AND remarks =?" ;
+						String sql = "SELECT COUNT(*) FROM Users WHERE id = ? AND pw = ? " ;
 						PreparedStatement pStmt = conn.prepareStatement(sql);
-						pStmt.setString(2,pw);
-						pStmt.setString(3,name);
-						pStmt.setString(1,ad);
-						pStmt.setString(1,phone);
-						pStmt.setString(1,email);
-						pStmt.setString(1,remarks);
+						pStmt.setString(1, id);
+						pStmt.setString(2, pw);
+		
 
 						// SELECT文を実行し、結果表を取得する
 						ResultSet rs = pStmt.executeQuery();

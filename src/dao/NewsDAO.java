@@ -12,7 +12,7 @@ import model.Individuals;
 import model.News;
 
 public class NewsDAO {
-	// お知らせ検索
+	// 団体お知らせ検索
 		public List<News> select(News card) {
 			Connection conn = null;
 			List<News> cardList = new ArrayList<News>();
@@ -25,65 +25,39 @@ public class NewsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM News WHERE News_title LIKE ? AND news_day LIKE ? AND news_day LIKE ? AND news_detail LIKE ? AND user_id  LIKE ORDER BY number";
+					String sql = "SELECT * FROM News WHERE news_title LIKE ? AND news_day LIKE ? AND news_detail LIKE ? AND user_id LIKE ? ORDER BY number";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-// ここまで完了
-					if (card.getUser_name() != null) {
-						pStmt.setString(1, "%" + card.getUser_name() + "%");
+					if (card.getNews_title() != null) {
+						pStmt.setString(1, "%" + card.getNews_title() + "%");
 					}
 					else {
 						pStmt.setString(1, "%");
 					}
-					if (card.getAnimal_name() != null) {
-						pStmt.setString(2, "%" + card.getAnimal_name() + "%");
+					if (card.getNews_day() != null) {
+						pStmt.setTimestamp(2, null);
 					}
 					else {
-						pStmt.setString(2, "%");
+						pStmt.setTimestamp(2, null);
 					}
-					if (card.getAnimal_id() != 0) {
-						pStmt.setInt(3, card.getAnimal_id());
-					}
-					else {
-						pStmt.setInt(3, 0);
-					}
-					if (card.getType() != null) {
-						pStmt.setString(4, "%" + card.getType() + "%");
+					if (card.getNews_detail() != null) {
+						pStmt.setString(3, "%" + card.getNews_detail() + "%");
 					}
 					else {
-						pStmt.setString(4, "%");
+						pStmt.setString(3, "%");
 					}
-					if (card.getGender() != null) {
-						pStmt.setString(5, "%" + card.getGender() + "%");
-					}
-					else {
-						pStmt.setString(5, "%");
-					}
-					if (card.getAge() != 0) {
-						pStmt.setInt(6, card.getAge());
-					}
-
+				
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 
 					// 結果表をコレクションにコピーする
 					while (rs.next()) {
-						Individuals record = new Individuals(
+						News record = new News(
 							rs.getInt("id"),
-							rs.getInt("animal_id"),
-							rs.getString("animal_name"),
-							rs.getString("type"),
-							rs.getInt("age"),
-							rs.getString("gender"),
-							rs.getString("user_name"),
-							rs.getDate("period"),
-							rs.getString("remarks"),
-							rs.getBoolean("is_castration"),
-							rs.getDate("birtuday"),
-							rs.getString("img")
-							//rs.getString("kind"),
-
-
+							rs.getString("news_title"),
+							rs.getTimestamp("news_day"),
+							rs.getString("news_detail"),
+							rs.getString("user_id")						
 							);
 						cardList.add(record);
 					}
@@ -112,7 +86,7 @@ public class NewsDAO {
 				// 結果を返す
 				return cardList;
 			}
-	//動物登録
+	//個人お知らせ登録
 		public boolean insert(Individuals card) {
 			Connection conn = null;
 			boolean result = false;

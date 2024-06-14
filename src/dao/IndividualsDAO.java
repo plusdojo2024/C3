@@ -79,7 +79,7 @@ public class IndividualsDAO {
 							rs.getDate("period"),
 							rs.getString("remarks"),
 							rs.getBoolean("is_castration"),
-							rs.getDate("birtuday"),
+							rs.getDate("birthday"),
 							rs.getString("img")
 							//rs.getString("kind"),
 
