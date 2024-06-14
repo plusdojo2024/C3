@@ -23,7 +23,7 @@ public class AniconsDAO {
 				String sql = "SELECT COUNT(*) FROM Anicons WHERE anicons_id = ? AND anicons_password = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				pStmt.setString(1, anicons.getAnicon_id());
-				pStmt.setString(2,anicons.getAnicon_password());
+				pStmt.setString(2,anicons.getAnc_password());
 
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();

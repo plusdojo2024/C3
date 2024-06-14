@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>アニコン</title>
-  <link rel="stylesheet" href="/C3/css/style.css">
-
+<meta charset="UTF-8">
+<title>相性診断</title>
+<link rel="stylesheet" href="/C3/css/style.css">
 </head>
 <body id="top">
   <!-- ヘッダー -->
@@ -39,22 +38,6 @@
   </nav>
   <!-- ヘッダーここまで -->
   </header>
-<!-- メイン -->
-  <main>
-  <h1>お知らせ</h1>
-  <h2>日記</h2>
-   <div class="mach">
-      <a href="MachServlet"><img src="./img/images/mach1.png" alt="" width="250" height="250"></a>
-   </div>
-  </main>
-  <!-- メインここまで -->
-  <!-- フッター -->
-  <footer>
-    <div class="gotop">
-      <a href="#top"><img src="./img/images/nikukyu.png" alt="トップページへ戻る" width="60" height="60"></a>
-    </div>
-    <p class="copyright">&copy; dacho_group</p>
-  </footer>
-  <!-- フッターここまで -->
+
 </body>
 </html>

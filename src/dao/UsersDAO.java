@@ -11,7 +11,7 @@ import java.util.List;
 import model.Users;
 
 public class UsersDAO {
-			
+
 			public boolean insert(Users card) {
 				Connection conn = null;
 				boolean result = false;
@@ -22,14 +22,14 @@ public class UsersDAO {
 
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3", "sa", "");
-					
+
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
-					
-					
+
+
 					// SQL文を完成させる
-						
+
 						if (card.getUser_id() != null ) {
 							pStmt.setString(1, card.getUser_id());
 						}

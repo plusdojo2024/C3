@@ -2,6 +2,7 @@ package model;
 import java.io.Serializable;
 
 public class QAs implements Serializable{
+  private int id;				/*質問番号*/
   private String question;		/*質問*/
   private String answer;		/*回答*/
 
@@ -28,7 +29,12 @@ public String getAnswer() {
 public void setAnswer(String answer) {
 	this.answer = answer;
 }
-
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
 
 }
 

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>アニコン</title>
   <link rel="stylesheet" href="/C3/css/style.css">
-
 </head>
 <body id="top">
   <!-- ヘッダー -->
@@ -39,16 +38,41 @@
   </nav>
   <!-- ヘッダーここまで -->
   </header>
-<!-- メイン -->
-  <main>
-  <h1>お知らせ</h1>
-  <h2>日記</h2>
-   <div class="mach">
-      <a href="MachServlet"><img src="./img/images/mach1.png" alt="" width="250" height="250"></a>
-   </div>
+  <!-- メイン -->
+
+  <main class="login m ">
+  <h2>ログイン</h2>
+  <form method="post" action="/C3/LoginServlet">
+    <table class="login m">
+      <tr>
+        <td>
+          <label>ユーザーID<br>
+          <input type="text" name="id">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>パスワード<br>
+          <input type="password" name="pw">
+          </label>
+        </td>
+      <tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" name="submit" value="ログイン">
+          <input type="reset" name="reset" value="リセット">
+          <span id="error_message"></span>
+        <td>
+      </tr>
+    </table>
+  </form>
+
+
   </main>
   <!-- メインここまで -->
-  <!-- フッター -->
+
+   <!-- フッター -->
   <footer>
     <div class="gotop">
       <a href="#top"><img src="./img/images/nikukyu.png" alt="トップページへ戻る" width="60" height="60"></a>
@@ -56,5 +80,27 @@
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
+  <!-- JavaScript（ここから） -->
+<script>
+/* HTML要素をオブジェクトとして取得する */
+let formObj = document.getElementById('login_form');
+let errorMessageObj = document.getElementById('error_message');
+
+/* [ログイン]ボタンをクリックしたときの処理 */
+formObj.onsubmit = function() {
+  if (!formObj.id.value || !formObj.pw.value) {
+    errorMessageObj.textContent = '※IDとパスワードを入力してください！';
+    return false;
+  }
+  errorMessageObj.textContent = null;
+};
+
+/* [リセット]ボタンをクリックしたときの処理 */
+formObj.onreset = function() {
+  errorMessageObj.textContent = null;
+};
+</script>
+<!-- JavaScript（ここまで） -->
+
 </body>
 </html>
