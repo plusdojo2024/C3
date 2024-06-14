@@ -61,7 +61,7 @@ public String getReservation_remarks() {
 public void setReservation_remarks(String reservation_remarks) {
 	this.reservation_remarks = reservation_remarks;
 }
-public boolean isAccept() {
+public boolean getAccept() {
 	return accept;
 }
 public void setAccept(boolean accept) {
