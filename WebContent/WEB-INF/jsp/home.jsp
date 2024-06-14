@@ -6,24 +6,29 @@
   <meta charset="UTF-8">
   <title>アニコン</title>
   <link rel="stylesheet" href="/C3/css/style.css">
+  <style>
+    body {
+      background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
+    }
+    </style>
 
 </head>
 <body id="top">
   <!-- ヘッダー -->
   <header>
     <div class="home">
-      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="350" height="100"></a>
+      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
     <table>
       <tr>
         <td>
     <div class="login">
-      <a href="LoginServlet"><img src="./img/images/login1.png" alt="ログイン" width="140" height="40"></a>
+      <a href="LoginServlet"><img src="./img/images/login.png" alt="ログイン" width="130" height="50"></a>
   </div>
         </td>
         <td>
   <div class="Add">
-      <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="33"></a>
+      <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="40"></a>
   </div>
         </td>
       </tr>
@@ -44,7 +49,7 @@
   <h1>お知らせ</h1>
   <h2>日記</h2>
    <div class="mach">
-      <a href="MachServlet"><img src="./img/images/mach1.png" alt="" width="250" height="250"></a>
+      <a href="MachServlet"><img src="./img/images/mach.png" alt="" width="250" height="250"></a>
    </div>
   </main>
   <!-- メインここまで -->

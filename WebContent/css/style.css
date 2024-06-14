@@ -1,57 +1,168 @@
 @charset "UTF-8";
+
 /* すべてのページに適用 - ヘッダー */
-.login1{
-    text-align:right;
-}
 
 .nav ul {
-  margin: 30px 0 0 0;
+  margin-bottom:100px;
   padding: 0;
   list-style-type: none;
   display: flex;
   justify-content: center;
-  gap: 80px;
+  gap: 90px;
+  font-size: 1.2rem;
 }
 .nav a:link {
-  color:#000033;
+  color:#663300;
 }
 .nav a:visited {
-  color: #003366;
+  color: #663300;
 }
 .nav a:hover {
-  color: #003366;
+  color: #663300;
   text-decoration: none;
 }
 .nav a:active {
-  color: #003366;
+  color: #663300;
   text-decoration: none;
 }
 /* すべてのページに適用 - メイン */
-.m {
-    margin: 0 auto 0 auto;
-
+.m { /*ログインフォームの位置*/
+   display: grid;
+   place-items: center; /* 水平方向と垂直方向に中央配置 */
+   margin-bottom:100px; /*フォーム下のマージン調整*/
 }
+.n { /*新規登録フォームの位置*/
+   display: grid;
+   place-items: center; /* 水平方向と垂直方向に中央配置 */
+   margin-bottom:100px; /*フォーム下のマージン調整*/
+}
+
 main h1 {
-    margin: 60px 0 50px 0;
+    margin-bottom:100px;
     text-align:center;
-    border-bottom: 2px solid #000033;
-    padding: 0 0 5px 0;
-    color: #000033;
-    font-size: 1.7rem;
+    border-bottom: 2px solid #663300;
+    padding:0 0 5px 0;
+    color:#663300;
+    font-size:1.7rem;
 }
 
 main h2 {
-    margin: 60px 0 20px 0;
+    margin-bottom:100px;
     text-align:center;
-    border-bottom: 2px solid #000033;
+    border-bottom: 2px solid #663300;
     padding: 0 0 5px 0;
-    color: #000033;
-    font-size: 1.7rem;
+    color: #663300;
+    font-size: 1.9rem;
 }
 
+.login {
+  text-align:right;
+}
+.Add {
+  text-align:right;
+}
 .mach {
+	margin-bottom:0px;
 	text-align:right;
 }
+
+/*form*/
+form {
+  padding: 0px;
+  color:#663300;
+}
+/*
+input[name=name] {
+  width: 16em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+*/
+input[name=user_password] {
+  width: 13em;
+  height: 30px;
+  border-top-left-radius:20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}
+input[name=user_id] {
+  width:13em;
+  height: 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}
+input[type=submit], input[type=reset] {
+  width: 6em;
+  height: 40px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+/*
+input[name=number]{
+  width: 8em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+*/
+input[name=user_name]{
+  width: 13em;
+  height: 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}
+/*
+input[name=adress]{
+  width: 20em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+
+input[name=phonenumber]{
+  width: 12em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+input[name=email]{
+  width: 16em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+input[name=remarks]{
+  width: 50em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}*/
+
 /* すべてのページに適用 - フッター */
 .gotop {
     text-align: center;
@@ -59,7 +170,7 @@ main h2 {
 .copyright {
     padding-top:40px;
     padding-bottom: 40px;
-    background-color: #003366;
+    background-color: #D2B48C;
     color: #FFFFFF;
     text-align: center;
 }

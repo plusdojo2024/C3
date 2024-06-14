@@ -1,33 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <title>アニコン</title>
   <link rel="stylesheet" href="/C3/css/style.css">
+  <style>
+    body {
+      background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
+    }
+    </style>
+
 </head>
 <body id="top">
   <!-- ヘッダー -->
   <header>
     <div class="home">
-      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="350" height="100"></a>
+      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
-    <table>
-      <tr>
-        <td>
-    <div class="login">
-      <a href="LoginServlet"><img src="./img/images/login1.png" alt="ログイン" width="140" height="40"></a>
-  </div>
-        </td>
-        <td>
   <div class="Add">
-      <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="33"></a>
+      <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="40"></a>
   </div>
-        </td>
-      </tr>
-  </table>
-
     <nav class="nav">
       <ul>
         <li><a href="C3/GroupServlet">各団体</a></li>
@@ -41,20 +35,20 @@
   <!-- メイン -->
 
   <main class="login m ">
-  <h2>ログイン</h2>
+  <h1>ログイン</h1>
   <form method="post" action="/C3/LoginServlet">
     <table class="login m">
       <tr>
         <td>
           <label>ユーザーID<br>
-          <input type="text" name="id">
+          <input type="text" name="user_id">
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label>パスワード<br>
-          <input type="password" name="pw">
+          <input type="password" name="user_password">
           </label>
         </td>
       <tr>

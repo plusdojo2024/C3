@@ -7,23 +7,35 @@
 <title>団体詳細登録</title>
 <link rel="stylesheet" href="/C3/css/style.css">
 </head>
-
 <body id="top">
   <!-- ヘッダー -->
   <header>
-
     <div class="home">
-      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="350" height="100"></a>
+      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
     <table>
       <tr>
         <td>
-    <div class="logout">
-      <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="160"height="40"></a>
+    <div class="login">
+      <a href="LoginServlet"><img src="./img/images/login.png" alt="ログイン" width="130" height="50"></a>
   </div>
         </td>
-       </tr>
+        <td>
+  <div class="Add">
+      <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="40"></a>
+  </div>
+        </td>
+      </tr>
   </table>
+
+    <nav class="nav">
+      <ul>
+        <li><a href="C3/GroupServlet">各団体</a></li>
+        <li><a href="C3/AnimalSearchServlet">動物検索</a></li>
+        <li><a href="C3/CalendarServlet">カレンダー</a></li>
+        <li><a href="C3/QASevlet">Q&ampA</a></li>
+    </ul>
+  </nav>
   <!-- ヘッダーここまで -->
   </header>
 <main>
@@ -42,7 +54,10 @@
 <input type="submit" name="regist" value="登録">
 <input type="reset" name="reset" value="リセット">
 </form>
-
+<div class="mach">
+      <a href="MachServlet"><img src="./img/images/mach.png" alt="" width="250" height="250"></a>
+   </div>
+  <!-- メインここまで -->
   <!-- フッター -->
   <footer>
     <div class="gotop">
