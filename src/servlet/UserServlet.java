@@ -59,7 +59,7 @@ public class UserServlet extends HttpServlet {
 		}
 		else {												// 登録失敗
 			request.setAttribute("result",new Result("", "登録できませんでした。", ""));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
 			dispatcher.forward(request, response);
 		}
 
