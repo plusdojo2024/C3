@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,11 +54,12 @@ public class AnimalSerachServlet extends HttpServlet {
 		String kind = request.getParameter("kind");
 		String type = request.getParameter("type");
 		String gender = request.getParameter("gender");
-		String age = request.getParameter("age");
+		String tmpage = request.getParameter("age");
+		int age = Integer.parseInt("tempage");
 
 		// 検索処理を行う
 		IndividualsDAO iDao = new IndividualsDAO();
-		List<Individuals> cardList = iDao.select(new Individuals(organization_name, name, kind, type, gender, age));
+		List<Individuals> cardList = iDao.select(new Individuals(0, 0, name, type, age, gender, organization_name, null, null, false, null, null));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
