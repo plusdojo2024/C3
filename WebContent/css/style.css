@@ -5,14 +5,82 @@
 .nav ul {
   margin-bottom:100px;
   padding: 0;
+  text-decoration: none; /* 下線を消す */
   list-style-type: none;
   display: flex;
   justify-content: center;
-  gap: 90px;
+  gap: 150px;
   font-size: 1.2rem;
 }
+.list1 {
+  font-size: 20px; /* フォントサイズ */
+  color: #663300; /* 文字色 */
+  margin-bottom: 10px; /* 下のマージン */
+ /* width: 5em;/*フォームの横の長さ*/
+ /* text-align:center;/*文字を真ん中にする*/
+ /* padding: 10px 20px; /* 内側の余白 */
+  /*background-color: #FFFAF0; /* 背景色 */
+  /*border: 2px solid #663300; /* 枠線 */
+ /* border-radius: 35px; /* 角の丸み（丸くするために大きめに設定） */
+ /* display: inline-block; /* 幅を内容に合わせるためにインラインブロックに設定 */
+  /*transition: background-color 0.3s ease; /* 背景色の変化にトランジションを適用 */
+}
+/*.list1 img {
+  display: grid; グリッドレイアウトを使用
+  grid-template-columns: auto 1fr; /画像とテキストの列を定義
+  align-items: right; /右側揃え
+  /*margin-bottom: 0px; リストアイテム間のスペースを追加
+  <img src="./img/images/cathead.png" width="70" height="45"> htmlに入れる画像コード
+}*/
+.list2 {
+  font-size: 20px; /* フォントサイズ */
+  color: #663300; /* 文字色 */
+  margin-bottom: 10px; /* 下のマージン */
+ /* width: 5em;/*フォームの横の長さ*/
+ /* text-align:center;/*文字を真ん中にする*/
+ /* padding: 10px 20px; /* 内側の余白 */
+ /* background-color: #FFFAF0; /* 背景色 */
+ /* border: 2px solid #663300; /* 枠線 */
+ /* border-radius: 35px; /* 角の丸み（丸くするために大きめに設定） */
+ /* display: inline-block; /* 幅を内容に合わせるためにインラインブロックに設定 */
+  /*transition: background-color 0.3s ease; /* 背景色の変化にトランジションを適用 */
+}
+.list3 {
+  font-size: 20px; /* フォントサイズ */
+  color: #663300; /* 文字色 */
+  margin-bottom: 10px; /* 下のマージン */
+  /*width: 5em;/*フォームの横の長さ*/
+ /* text-align:center;/*文字を真ん中にする*/
+ /* padding: 10px 20px; /* 内側の余白 */
+ /* background-color: #FFFAF0; /* 背景色 */
+ /* border: 2px solid #663300; /* 枠線 */
+ /* border-radius: 35px; /* 角の丸み（丸くするために大きめに設定） */
+ /* display: inline-block; /* 幅を内容に合わせるためにインラインブロックに設定 */
+ /* transition: background-color 0.3s ease; /* 背景色の変化にトランジションを適用 */
+}
+.list4 {
+  font-size: 20px; /* フォントサイズ */
+  color: #663300; /* 文字色 */
+  margin-bottom: 10px; /* 下のマージン */
+ /* width: 5em;/*フォームの横の長さ*/
+ /* text-align:center;/*文字を真ん中にする*/
+ /* padding: 10px 20px; /* 内側の余白 */
+  /*background-color: #FFFAF0; /* 背景色 */
+ /* border: 2px solid #663300; 枠線 */
+ /* border-radius: 35px;  角の丸み（丸くするために大きめに設定） */
+ /* display: inline-block; /* 幅を内容に合わせるためにインラインブロックに設定 */
+ /* transition: background-color 0.3s ease*; / 背景色の変化にトランジションを適用 */
+}
+/*.list4 img {
+  display: grid; グリッドレイアウトを使用
+  grid-template-columns: auto 1fr;  画像とテキストの列を定義
+  align-items: right; 中央揃え
+  margin-bottom: 0px; リストアイテム間のスペースを追加
+  <img src="./img/images/catshipo1.png" width="60" height="50"> htmlに入れる画像コード
+}*/
 .nav a:link {
   color:#663300;
+  text-decoration: none; /* 下線を消す */
 }
 .nav a:visited {
   color: #663300;
