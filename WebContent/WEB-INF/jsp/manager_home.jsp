@@ -17,18 +17,21 @@
   <div class="home">
     <a href="ManagerServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
   </div>
+  <div class="logout">
+    <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
+  </div>
 </header>
 
 <main class="group_manager_home">
   <table>
     <tr>
-      <td><a href="C3/AddGroupServlet"></a></td>
-      <td><a href="C3/UpdateDeleteGroupServlet"></a></td>
-      <td><a href="C3/ModMachServlet"></a></td>
+      <td><a href="C3/AddGroupServlet">団体ユーザー・詳細登録</a></td>
+      <td><a href="C3/UpdateDeleteGroupServlet">団体更新・削除</a></td>
+      <td><a href="C3/ModMachServlet">相性診断編集</a></td>
     </tr>
     <tr>
-      <td><a href="C3/ModNewsServlet"></a></td>
-      <td><a href="C3/ModQAServlet"></a></td>
+      <td><a href="C3/ModNewsServlet">お知らせ編集</a></td>
+      <td><a href="C3/ModQAServlet">Q&amp;A編集</a></td>
     </tr>
   </table>
 </main>
