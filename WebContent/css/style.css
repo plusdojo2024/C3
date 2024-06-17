@@ -13,7 +13,7 @@
   font-size: 1.2rem;
 }
 .list1 {
-  font-size: 20px; /* フォントサイズ */
+  font-size: 22px; /* フォントサイズ */
   color: #663300; /* 文字色 */
   margin-bottom: 10px; /* 下のマージン */
  /* width: 5em;/*フォームの横の長さ*/
@@ -33,7 +33,7 @@
   <img src="./img/images/cathead.png" width="70" height="45"> htmlに入れる画像コード
 }*/
 .list2 {
-  font-size: 20px; /* フォントサイズ */
+  font-size: 22px; /* フォントサイズ */
   color: #663300; /* 文字色 */
   margin-bottom: 10px; /* 下のマージン */
  /* width: 5em;/*フォームの横の長さ*/
@@ -46,7 +46,7 @@
   /*transition: background-color 0.3s ease; /* 背景色の変化にトランジションを適用 */
 }
 .list3 {
-  font-size: 20px; /* フォントサイズ */
+  font-size: 22px; /* フォントサイズ */
   color: #663300; /* 文字色 */
   margin-bottom: 10px; /* 下のマージン */
   /*width: 5em;/*フォームの横の長さ*/
@@ -59,7 +59,7 @@
  /* transition: background-color 0.3s ease; /* 背景色の変化にトランジションを適用 */
 }
 .list4 {
-  font-size: 20px; /* フォントサイズ */
+  font-size: 22px; /* フォントサイズ */
   color: #663300; /* 文字色 */
   margin-bottom: 10px; /* 下のマージン */
  /* width: 5em;/*フォームの横の長さ*/
@@ -87,7 +87,7 @@
 }
 .nav a:hover {
   color: #663300;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .nav a:active {
   color: #663300;
@@ -138,6 +138,7 @@ main h2 {
 form {
   padding: 0px;
   color:#663300;
+  text-align:center;
 }
 /*
 input[name=name] {
@@ -151,6 +152,7 @@ input[name=name] {
 input[name=user_password] {
   width: 13em;
   height: 30px;
+  text-align:center;
   border-top-left-radius:20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -160,6 +162,7 @@ input[name=user_password] {
 input[name=user_id] {
   width:13em;
   height: 30px;
+  text-align:center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -169,6 +172,7 @@ input[name=user_id] {
 input[type=submit], input[type=reset] {
   width: 6em;
   height: 40px;
+  text-align:center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -187,6 +191,7 @@ input[name=number]{
 input[name=user_name]{
   width: 13em;
   height: 30px;
+  text-align:center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;

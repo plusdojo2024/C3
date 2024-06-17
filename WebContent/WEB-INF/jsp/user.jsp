@@ -9,6 +9,7 @@
   <style>
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
+      font-weight: bold; /* または数値 (100 - 900) */
     }
     </style>
 
