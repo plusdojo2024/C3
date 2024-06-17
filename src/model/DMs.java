@@ -11,6 +11,7 @@ public class DMs implements Serializable{
   private Timestamp dm_day;		/*日付*/
   private String dm_detail;		/*内容*/
   private boolean read;		/*既読*/
+  private String user_name;
 
 //引数がないコンストラクタ
   public DMs() {
@@ -64,5 +65,11 @@ public boolean getRead() {
 }
 public void setRead(boolean read) {
 	this.read = read;
+}
+public String getUser_name() {
+	return user_name;
+}
+public void setUser_name(String user_name){
+	this.user_name = user_name;
 }
 }

@@ -22,15 +22,15 @@ public class ReservationsDAO {
 
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3", "sa", "");
-					
+
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 					String sql = "INSERT INTO Reservations VALUES (null, ?, ?, ?, ?, ?, ?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
-			
+
 					// SQL文を完成させる
 					if (card.getIndividual_id() != 0 ) {
 						pStmt.setInt(1, card.getIndividual_id());
-					}	
+					}
 					else {
 						pStmt.setInt(1, 0);
 					}
@@ -64,11 +64,11 @@ public class ReservationsDAO {
 					else {
 						pStmt.setString(6, "");
 					}
-					
-					
+
+
 					// SQL文を実行する
 					if (pStmt.executeUpdate() == 1) {
-						result = true;						
+						result = true;
 					}
 				}
 				catch (SQLException e) {
@@ -107,48 +107,12 @@ public class ReservationsDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3","sa", "");
 
 					// 検索する
-						String sql = "SELECT * FROM Reservations WHERE Individual_id LIKE ? AND Animal_name LIKE ? AND Date ? AND Phonenumber ? AND Remarks LIKE ? AND ";
+						String sql = "SELECT * FROM Reservations";
 						PreparedStatement pStmt = conn.prepareStatement(sql);
-						
+
 						// SQL文を完成させる
-						if (card.getIndividual_id() != 0) {
-							pStmt.setInt(1, card.getIndividual_id());
-						}
-						else {
-							pStmt.setInt(1,0);
-						}
-						if (card.getRsv_day() != null) {
-							pStmt.setTimestamp(2, card.getRsv_day());
-						}
-						else {
-							pStmt.setTimestamp(2, null);
-						}
-						if (card.getSend_id() != null) {
-							pStmt.setString(3, card.getSend_id());
-						}
-						else {
-							pStmt.setString(3, null);
-						}
-						if (card.getReceive_id() != null) {
-							pStmt.setString(4, card.getReceive_id());
-						}
-						else {
-							pStmt.setString(4, null);
-						}
-						if (card.getReservation_remarks() != null) {
-							pStmt.setString(5, "%" + card.getReservation_remarks() + "%");
-						}
-						else {
-							pStmt.setString(5, "%");
-						}
-						if (card.getAccept() != false ) {
-							pStmt.setBoolean(6, card.getAccept());
-						}
-						else {
-							pStmt.setString(6, "");
-						}
-							
-						
+
+
 						// SQL文を実行し、結果表を取得する
 						ResultSet rs = pStmt.executeQuery();
 
@@ -190,4 +154,4 @@ public class ReservationsDAO {
 					// 結果を返す
 					return cardList;
 				}
-			}				
+			}

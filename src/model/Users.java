@@ -7,7 +7,7 @@ public class Users implements Serializable {
   private String user_id;	/*ユーザーID*/
   private String user_name;		/*ユーザー名*/
   private String user_password;	/*パスワード*/
-  private String is_organization;	/*ユーザー識別*/
+  private Boolean is_organization;	/*ユーザー識別*/
   private String address;		/*住所*/
   private String phone_number;		/*電話番号*/
   private String emails;		/*メールアドレス*/
@@ -19,7 +19,7 @@ public class Users implements Serializable {
   }
   //引数があるコンストラクタ
   public Users(int id,String user_id, String user_name,String user_password,
-  String is_organization, String address, String phone_number,String emails, String remarks){
+  Boolean is_organization, String address, String phone_number,String emails, String remarks){
     super();
       	 this.id = id;
       	 this.user_id = user_id;
@@ -56,10 +56,10 @@ public String getUser_password() {
 public void setUser_password(String user_password) {
 	this.user_password = user_password;
 }
-public String getIs_organization() {
+public Boolean getIs_organization() {
 	return is_organization;
 }
-public void setIs_organization(String is_organization) {
+public void setIs_organization(Boolean is_organization) {
 	this.is_organization = is_organization;
 }
 public String getAddress() {
