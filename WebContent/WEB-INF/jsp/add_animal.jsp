@@ -26,7 +26,21 @@
   </div>
 </header>
  <form method="post" action="/C3/AddAnimalServlet">
+
     <table>
+      <tr>
+        <td>
+          <label>写真<br>
+          <input type="text" name="img">
+          </label>
+        </td>
+        <td>
+          <label>ID<br>
+          <input type="text" name="ID" value="(自動採番)" readonly="readonly" style="background-color: lightgray">
+          </label>
+        </td>
+
+      </tr>
       <tr>
         <td>
           <label>動物名<br>
@@ -59,14 +73,14 @@
         </td>
         <td>
           <label>誕生日<br>
-          <input type="text" name="birthday">
+          <input type="date" name="birthday">
           </label>
         </td>
       </tr>
       <tr>
         <td>
-          <label>保護期間<br>
-          <input type="text" name="period">
+          <label>保護日<br>
+          <input type="date" name="period">
           </label>
         </td>
         <td>
