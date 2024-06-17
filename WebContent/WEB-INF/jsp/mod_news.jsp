@@ -25,24 +25,19 @@
 </header>
 
 <form method="post" action="/C3/ModNewsServlet">
-  <ul>
-    <li><input type="text" name="news_title" placeholder="題名"></li>
-    <li><textarea cols="60" rows="10" placeholder="内容"></textarea></li>
-    <li><input type="submit" id="register" name="submit" value="登録"></li>
-  </ul>
+  <input type="text" name="news_title" placeholder="題名"><br>
+  <textarea cols="60" rows="10" placeholder="内容"></textarea><br>
+  <input type="submit" id="register" name="submit" value="登録"><br>
 </form>
 
 <form method="post" action="/C3/ModNewsServlet">
-  <ul>
-    <li><select>
-      <option value="1">題名</option>
-
-    </select></li>
-    <li><input type="text" name="news_title" placeholder="題名"></li>
-    <li><textarea cols="60" rows="10" placeholder="内容"></textarea></li>
-    <li><input type="submit" name="submit" value="更新">
-     <input type="submit" name="submit" value="削除"></li>
-  </ul>
+  <select>
+    <option value="1">題名</option>
+  </select><br>
+  <input type="text" name="news_title" placeholder="題名"><br>
+  <textarea cols="60" rows="10" placeholder="内容"></textarea><br>
+  <input type="submit" name="submit" value="更新">
+  <input type="submit" name="submit" value="削除">
 </form>
   <!-- フッター -->
   <footer>
