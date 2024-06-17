@@ -4,11 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<title>動物登録</title>
+<link rel="stylesheet" href="/C3/css/style.css">
+<style>
+    body {
+      background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
+      font-weight: bold; /* または数値 (100 - 900) */
+    }
+  </style>
 
- <form method="post" action="/simpleBC/RegistServlet">
+</head>
+<body id="top">
+
+<!-- ヘッダー -->
+<header>
+  <div class="home">
+    <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
+  </div>
+  <div class="logout">
+    <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
+  </div>
+</header>
+ <form method="post" action="/C3/AddAnimalServlet">
     <table>
       <tr>
         <td>
