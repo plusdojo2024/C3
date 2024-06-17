@@ -18,7 +18,7 @@ public class UsersDAO {
 					Class.forName("org.h2.Driver");
 
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -161,7 +161,7 @@ public class UsersDAO {
 				return result;
 
 }
-			
+
 				// 個人ログイン用メソッド
 			public boolean isLoginOK(String name,String id,String pw) {
 				Connection conn = null;
@@ -213,7 +213,7 @@ public class UsersDAO {
 				// 結果を返す
 				return loginResult;
 			}
-			
+
 				// 団体ログイン用メソッド
 				public boolean isLoginOK1(String id,String pw/*,String name,String ad,String phone,String email,String remarks*/) {
 					Connection conn = null;
@@ -231,7 +231,7 @@ public class UsersDAO {
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 						pStmt.setString(1, id);
 						pStmt.setString(2, pw);
-		
+
 
 						// SELECT文を実行し、結果表を取得する
 						ResultSet rs = pStmt.executeQuery();
@@ -266,6 +266,5 @@ public class UsersDAO {
 					// 結果を返す
 					return loginResult;
 				}
-}			
+}
 
-		
