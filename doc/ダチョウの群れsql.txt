@@ -1,3 +1,5 @@
+---------------usersテーブルの作成------------------
+
 CREATE TABLE USERS
 (id			INTEGER		AUTO_INCREMENT	NOT NULL,
  user_id		VARCHAR(100)	NOT NULL,
@@ -10,12 +12,20 @@ CREATE TABLE USERS
  remarks		VARCHAR(500),
  PRIMARY KEY (id)
 );
+---------------usersテーブルの作成------------------
+
+
+---------------animalsテーブルの作成------------------
 
 CREATE TABLE ANIMALS
 (id		INTEGER		NOT NULL,
  kind		VARCHAR(32)	NOT NULL,
  PRIMARY KEY (id)
 );
+---------------animalsテーブルの作成------------------
+
+
+---------------individualsテーブルの作成------------------
 
 CREATE TABLE INDIVIDUALS
 (id		INTEGER		AUTO_INCREMENT,
@@ -32,6 +42,10 @@ CREATE TABLE INDIVIDUALS
  img		VARCHAR(200),
  PRIMARY KEY (id)
 );
+---------------individualsテーブルの作成------------------
+
+
+---------------dmsテーブルの作成------------------
 
 CREATE TABLE dms
 (id		INTEGER AUTO_INCREMENT	,
@@ -42,6 +56,10 @@ CREATE TABLE dms
  read		BOOLEAN		NOT NULL,
  PRIMARY KEY (id)
 );
+---------------dmsテーブルの作成------------------
+
+
+---------------reservationsテーブルの作成------------------
 
 CREATE TABLE reservations
 (id int AUTO_INCREMENT ,
@@ -53,8 +71,101 @@ reservation_remarks VARCHAR(400),
 accept BOOLEAN NOT NULL,
 PRIMARY KEY (id)
 );
+---------------reservationsテーブルの作成------------------
 
-INSERT INTO USERS VALUES (null, 'ootani','大谷', 'rinrintaro22', false,null,null,null,null);
+
+--------------mach_answersテーブルの作成------------------
+
+CREATE TABLE mach_answers
+(answer_number	INTEGER		,
+ animal_type	VARCHAR(32)	NOT NULL,
+ img		VARCHAR(100)	NOT NULL,
+ a1		BOOLEAN		NOT NULL,
+ a2		BOOLEAN		NOT NULL,
+ a3		BOOLEAN		NOT NULL,
+ a4		BOOLEAN		NOT NULL,
+ a5		BOOLEAN		NOT NULL,
+ PRIMARY KEY (answer_number)
+);
+--------------mach_answersテーブルの作成------------------
+
+
+---------------newsテーブルの作成------------------
+
+CREATE TABLE news
+(id		int AUTO_INCREMENT	,
+ news_title	VARCHAR(50)		NOT NULL,
+ news_day	Date			NOT NULL,
+ news_detail	VARCHAR(200)		NOT NULL,
+ user_id	VARCHAR(100)		NOT NULL,
+ PRIMARY KEY	(id)
+);
+---------------newsテーブルの作成------------------
+
+
+---------------aniconsテーブルの作成------------------
+
+CREATE TABLE anicons
+(anicon_id		VARCHAR(100)	NOT NULL,
+ anicon_password	VARCHAR(32)	NOT NULL,
+ PRIMARY KEY	(anicon_id)
+);
+---------------aniconsテーブルの作成------------------
+
+
+---------------qasテーブルの作成------------------
+
+CREATE TABLE qas
+(id		VARCHAR(100) AUTO_INCREMENT		,
+ question	VARCHAR(255)			NOT NULL,
+ answer		VARCHAR(255)			NOT NULL,
+ PRIMARY KEY	(id)
+);
+---------------qasテーブルの作成------------------
+
+
+---------------diarysテーブルの作成------------------
+
+CREATE TABLE diarys
+(id			int AUTO_INCREMENT	,
+ diary_day		TIMESTAMP		NOT NULL,
+ user_id		VARCHAR(200)		NOT NULL,
+ diary			VARCHAR(600)		NOT NULL,
+ diary_title		VARCHAR(100)		NOT NULL,
+ PRIMARY KEY	(id)
+);
+---------------diarysテーブルの作成------------------
+
+
+---------------mach_questionsテーブルの作成------------------
+
+CREATE TABLE mach_questions
+(q1	VARCHAR(100)	NOT NULL,
+ q2	VARCHAR(100)	NOT NULL,
+ q3	VARCHAR(100)	NOT NULL,
+ q4	VARCHAR(100)	NOT NULL,
+ q5	VARCHAR(100)	NOT NULL,
+);
+---------------mach_questionsテーブルの作成------------------
+
+
+---------------eventsテーブルの作成------------------
+
+CREATE TABLE events
+(id		INTEGER AUTO_INCREMENT	,
+ event_name	VARCHAR(100)	NOT NULL,
+ event_day	DateTime 	NOT NULL,
+ event_place	VARCHAR(100)	NOT NULL,
+ event_remarks	VARCHAR(500)	,
+ user_name	VARCHAR(100)	NOT NULL,
+ PRIMARY KEY (id)
+);
+---------------eventsテーブルの作成------------------
+
+
+---------------お試しInsert文------------------
+
+INSERT INTO USERS VALUES (null, 'ootani','大谷', 'ootani', false,null,null,null,null);
 INSERT INTO USERS VALUES (null, 'orgA','保護団体A', 'orgA', true,'東京都','080-2222-2222','orgA@gmail.com','テスト用データ');
 INSERT INTO USERS VALUES (null, 'orgB','保護団体B', 'orgB', true,'東京都','080-3333-3333','orgB@gmail.com','テスト用データ');
 INSERT INTO USERS VALUES (null, 'orgC','保護団体C', 'orgC', true,'東京都','080-4444-4444','orgC@gmail.com','テスト用データ');
@@ -66,11 +177,6 @@ INSERT INTO ANIMALS VALUES (1,'犬');
 INSERT INTO ANIMALS VALUES (2,'猫');
 INSERT INTO INDIVIDUALS VALUES (null, 1,'ポチ','ダックスフンド',3,'オス',2,'2024-06-14','テストデータです',true,'2021-10-25','poti.png');
 INSERT INTO RESERVATIONS VALUES (null, '1','2024-07-10', '1','2','テスト用データです',false);
-
-//INDIVIDUALSテーブルのuser_id（USERSテーブルのidと紐づけ(user_nameを取得)）とanimal_id（ANIMALSテーブルのid(1 or 2)と紐づけ（kind）を取得）を正規化
-SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img  
-FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id;
-
 INSERT INTO DMS VALUES(null, '1', '2', CURRENT_TIMESTAMP, 'おはようございます', true);
 INSERT INTO DMS VALUES(null, '1', '2', CURRENT_TIMESTAMP, '元気？', true);
 INSERT INTO DMS VALUES(null, '1', '3', CURRENT_TIMESTAMP, 'お疲れ様です', true);
@@ -82,6 +188,59 @@ INSERT INTO DMS VALUES(null, '5', '1', CURRENT_TIMESTAMP, '今日くるの？', true);
 INSERT INTO DMS VALUES(null, '6', '1', CURRENT_TIMESTAMP, '今日俺休むわ', true);
 INSERT INTO DMS VALUES(null, '7', '8', CURRENT_TIMESTAMP, 'ういー', true);
 
+---------------お試しInsert文------------------
+
+
+---------------診断テスト用のInsert文------------------
+
+INSERT INTO MACH_ANSWERS VALUES(1, 'チワワ', '/C3/img/images/Chihuahua.png', true, true, true, true, true);
+INSERT INTO MACH_ANSWERS VALUES(2, 'チワワ', '/C3/img/images/Chihuahua.png', true, true, true, true, false);
+INSERT INTO MACH_ANSWERS VALUES(3, 'チワワ', '/C3/img/images/Chihuahua.png', true, true, true, false, true);
+INSERT INTO MACH_ANSWERS VALUES(4, 'チワワ', '/C3/img/images/Chihuahua.png', true, true, true, false, false);
+INSERT INTO MACH_ANSWERS VALUES(5, 'シャム', '/C3/img/images/Siamese.png', true, true, false, true, true);
+INSERT INTO MACH_ANSWERS VALUES(6, 'シャム', '/C3/img/images/Siamese.png', true, true, false, true, false);
+INSERT INTO MACH_ANSWERS VALUES(7, 'シャム', '/C3/img/images/Siamese.png', true, true, false, false, true);
+INSERT INTO MACH_ANSWERS VALUES(8, 'シャム', '/C3/img/images/Siamese.png', true, true, false, false, false);
+INSERT INTO MACH_ANSWERS VALUES(9, 'ラグドール', '/C3/images/img/Ragdoll.png', false, true, true, true, true);
+INSERT INTO MACH_ANSWERS VALUES(10, 'ラグドール', '/C3/images/img/Ragdoll.png', false, true, true, true, false);
+INSERT INTO MACH_ANSWERS VALUES(11, 'ラグドール', '/C3/images/img/Ragdoll.png', false, true, true, false, true);
+INSERT INTO MACH_ANSWERS VALUES(12, 'ラグドール', '/C3/images/img/Ragdoll.png', false, true, true, false, false);
+INSERT INTO MACH_ANSWERS VALUES(13, '柴犬', '/C3/img/images/Shiba.png', false, true, false, false, true);
+INSERT INTO MACH_ANSWERS VALUES(14, '柴犬', '/C3/img/images/Shiba.png', false, true, false, false, false);
+INSERT INTO MACH_ANSWERS VALUES(15, 'ダックスフント', '/C3/img/images/dachshund.png', false, true, false, true, true);
+INSERT INTO MACH_ANSWERS VALUES(16, 'ダックスフント', '/C3/img/images/dachshund.png', false, true, false, true, false);
+INSERT INTO MACH_ANSWERS VALUES(17, 'ポメラニアン', '/C3/img/images/Pomeranian.png', true, false, true, true, true);
+INSERT INTO MACH_ANSWERS VALUES(18, 'ポメラニアン', /C3/img/images/Pomeranian.png'', true, false, true, true, false);
+INSERT INTO MACH_ANSWERS VALUES(19, 'ポメラニアン', '/C3/img/images/Pomeranian.png', true, false, true, false, true);
+INSERT INTO MACH_ANSWERS VALUES(20, 'ベンガル', '/C3/img/images/Bengal.png', true, false, true, false, false);
+INSERT INTO MACH_ANSWERS VALUES(21, 'トイプードル', '/C3/img/images/toypoodle.png', true, false, false, true, false);
+INSERT INTO MACH_ANSWERS VALUES(22, 'マンチカン', '/C3/img/images/Munchkin.png', true, false, false, true, true);
+INSERT INTO MACH_ANSWERS VALUES(23, 'シベリアンハスキー', '/C3/img/images/SiberianHusky.png', true, false, false, false, false);
+INSERT INTO MACH_ANSWERS VALUES(24, 'ジャックラッセルテリア', '/C3/img/images/JackRussellTerrier.png', true, false, false, false, true);
+INSERT INTO MACH_ANSWERS VALUES(25, 'アメリカンショートヘアー', '/C3/img/images/AmericanShorthair.png', false, false, true, false, true);
+INSERT INTO MACH_ANSWERS VALUES(26, 'アメリカンショートヘアー', '/C3/img/images/AmericanShorthair.png', false, false, true, false, false);
+INSERT INTO MACH_ANSWERS VALUES(27, 'スコティッシュフォールド', '/C3/img/images/Scottish.png', false, false, true, true, true);
+INSERT INTO MACH_ANSWERS VALUES(28, 'ペルシャ', '/C3/img/images/Persian.png', false, false, true, true, false);
+INSERT INTO MACH_ANSWERS VALUES(29, 'ロシアンブルー', '/C3/img/images/RussianBlue.png', false, false, false, true, true);
+INSERT INTO MACH_ANSWERS VALUES(30, 'ロシアンブルー', '/C3/img/images/RussianBlue.png', false, false, false, true, false);
+INSERT INTO MACH_ANSWERS VALUES(31, 'ゴールデンレトリバー', '/C3/img/images/GoldenRetriever.png', false, false, false, false, true);
+INSERT INTO MACH_ANSWERS VALUES(32, 'ゴールデンレトリバー', '/C3/img/images/GoldenRetriever.png', false, false, false, false, false);
+
+---------------診断テスト用のInsert文------------------
+
+
+---------------individualsテーブルとusersテーブル、animalsテーブルの正規化のためのSQL文------------------
+
+//INDIVIDUALSテーブルのuser_id（USERSテーブルのidと紐づけ(user_nameを取得)）とanimal_id（ANIMALSテーブルのid(1 or 2)と紐づけ（kind）を取得）を正規化
+
+SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img  
+FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id;
+
+---------------individualsテーブルとusersテーブル、animalsテーブルの正規化のためのSQL文------------------
+
+
+---------------DM機能用のSQL文------------------
+
 //トーク履歴順にソート
 SELECT CASE WHEN userid = '大谷' THEN _id
 	    WHEN _id = '大谷' THEN userid
@@ -89,7 +248,6 @@ SELECT CASE WHEN userid = '大谷' THEN _id
 	FROM DMS WHERE userid='大谷' OR _id='大谷'
 	ORDER BY dm_day DESC;
 	
-
 //トーク相手の名前をグループ化
 SELECT CASE WHEN userid = '大谷' THEN _id
 	    WHEN _id = '大谷' THEN userid
@@ -104,21 +262,7 @@ SELECT who_id FROM(SELECT who_id,MAX(dm_day) as recent_dm_day FROM(SELECT dm_day
 	FROM DMS WHERE userid='大谷' OR _id='大谷')GROUP BY who_Id)
        ORDER BY recent_dm_day DESC;
 
-
 //トーク相手の(idとuser_nameとis=organization)をトーク履歴順に表示
-SELECT who_id, user_name, is_organization
-	FROM (SELECT who_id
-		FROM(SELECT who_id,MAX(dm_day) as recent_dm_day 
-		FROM(SELECT dm_day,
-			CASE 
-			WHEN send_id = '1' THEN receive_id
-			WHEN receive_id = 1 THEN send_id
-			END AS who_id
-			FROM DMS WHERE send_id=1 OR receive_id=1)
-		GROUP BY who_Id)
-		ORDER BY recent_dm_day DESC)
-	JOIN USERS ON who_id = USERS.id ;
-
 
 SELECT *
 	FROM (SELECT who_id
@@ -133,27 +277,15 @@ SELECT *
 		ORDER BY recent_dm_day DESC)
 	JOIN USERS ON who_id = USERS.id ;
 
-SELECT WHO_ID, USER_NAME, IS_ORGANIZATION 
-	FROM (SELECT WHO_ID, 
-		FROM(SELECT WHO_ID,MAX(DM_DAY) AS RECENT_DM_DAY 
-		FROM(SELECT DM_DAY, 
-			CASE 
-			WHEN SEND_ID = '1' THEN RECEIVE_ID 
-			WHEN RECEIVE_ID = '1' THEN SEND_ID 
-			END AS WHO_ID 
-			FROM DMS WHERE SEND_ID=1 OR RECEIVE_ID=1) 
-		GROUP BY WHO_ID )
-		ORDER BY RECENT_DM_DAY DESC) 
-	JOIN USERS ON WHO_ID = USERS.ID
-
- expected "(, ., [, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
-
-
 //トーク相手とのトーク履歴表示
 SELECT dm_detail FROM DMs
 	WHERE (send_id=1 AND receive_id=2)
 	OR (receive_id=1 AND send_id=2)	
 		ORDER BY dm_day ASC;
+
+---------------DM機能用のSQL文------------------
+
+
 
 SELECT RESERVATIONS.id, INDIVIDUAL_id, INDIVIDUALS.ANIMAL_NAME, RSV_DAY,  SEND_ID, USERS.USER_NAME, RECEIVE_ID, RESERVATION_REMARKS, ACCEPT
 FROM RESERVATIONS JOIN INDIVIDUALS ON reservations.individual_id = individuals.id JOIN users ON reservations.send_id = users.id;
