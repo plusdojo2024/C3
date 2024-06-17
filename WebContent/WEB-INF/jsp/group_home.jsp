@@ -27,14 +27,14 @@
 <main class="group_manager_home">
   <table>
     <tr>
-      <td><a href="C3/AddAnimalServlet"></a></td>
-      <td><a href="C3/AnimalServlet"></a></td>
-      <td><a href="C3/ModCalendarServlet"></a></td>
+      <td><a href="C3/AddAnimalServlet">動物登録</a></td>
+      <td><a href="C3/AnimalServlet">動物一覧(更新・削除)</a></td>
+      <td><a href="C3/ModCalendarServlet">カレンダー編集</a></td>
     </tr>
     <tr>
-      <td><a href="C3/ModGroupNewsServlet"></a></td>
-      <td><a href="C3/DmServlet"></a></td>
-      <td><a href="C3/ReserveServlet"></a></td>
+      <td><a href="C3/ModGroupNewsServlet">団体お知らせ編集</a></td>
+      <td><a href="C3/DmServlet">DM</a></td>
+      <td><a href="C3/ReserveServlet">訪問予約確認</a></td>
     </tr>
   </table>
 </main>
