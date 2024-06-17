@@ -51,13 +51,53 @@
   <main>
   <div class="h1">
   <h1>お知らせ</h1><br>
+  <p>新しい保護施設が追加されました！</p>
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/05/12
+
+  <p>動物感染症が流行しています。</p>
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/04/25
+  <div class="1"><!-- ＋ボタンを押したら表示されるid -->
+  <p>新しい保護施設が追加されました。</p>
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/03/12
   </div>
+  <div class="function">
+    <img src="./img/images/function.png" alt="" width="60" height="60">
+   </div>
+   </div>
   <div class="h2">
   <h2>日記</h2><br>
+
+
+  <p style="font-size:2rem;">題名：初のチュール
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿者：チャマめっち
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/06/17
+
+  <p style="font-size:2rem;">題名：毎日の散歩
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿者：まめっち
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/06/15
+  <div class="1"><!-- ＋ボタンを押したら表示されるid -->
+  <p style="font-size:2rem;">題名：我が家の日課
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿者：くちぱっち
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/05/14
   </div>
+  <div class="function">
+    <img src="./img/images/function.png" alt="" width="60" height="60">
+   </div>
+  </div>
+
+
    <div class="mach">
       <a href="MachServlet"><img src="./img/images/mach.png" alt="" width="250" height="250"></a>
    </div>
+
+   <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script>
+  $(function() {
+    $(".function").click(function() {
+      $(".1").slideToggle("");
+  });
+    });
+  </script>
   </main>
   <!-- メインここまで -->
 
@@ -69,5 +109,7 @@
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
+
+
 </body>
 </html>
