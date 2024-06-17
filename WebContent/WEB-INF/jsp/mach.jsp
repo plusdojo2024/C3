@@ -40,6 +40,17 @@
   </header>
   <main>
   <h1>相性診断</h1>
+  
+  <!-- １問目 -->
+  <p>「スポーツは観るより、やる方だ」</p>
+  <input type="radio" name="yes" value="yes">
+  <input type="radio" name="no" value="no">
+  
+  <!-- 2問目 -->
+  <p>友達は多い方が良いと考えるほうだ</p>
+  
+  <!-- 3問目 -->
+  <p>人を従えるより、従う方が好きだ</p>
   </main>
 <!-- フッター -->
   <footer>
