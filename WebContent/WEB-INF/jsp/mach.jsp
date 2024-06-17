@@ -43,14 +43,18 @@
   
   <!-- １問目 -->
   <p>「スポーツは観るより、やる方だ」</p>
-  <input type="radio" name="yes" value="yes">
-  <input type="radio" name="no" value="no">
+  <input type="radio" name="answer" value="yes">
+  <input type="radio" name="answer" value="no">
   
   <!-- 2問目 -->
   <p>友達は多い方が良いと考えるほうだ</p>
+  <p>YES</p><input type="radio" name="answer" value="yes">
+  <p>NO</p><input type="radio" name="answer" value="no">
   
   <!-- 3問目 -->
   <p>人を従えるより、従う方が好きだ</p>
+  <input type="radio" name="answer" value="yes">
+  <input type="radio" name="answer" value="no">
   </main>
 <!-- フッター -->
   <footer>

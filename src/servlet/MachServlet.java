@@ -42,7 +42,7 @@ public class MachServlet extends HttpServlet {
 		// POSTリクエストに対する処理
 		doGet(request, response);
 
-		// リクエストパラメータを取得する
+		/*// リクエストパラメータを取得する
 		Boolean A1 = false;
 		Boolean A2 = false;
 		Boolean A3 = false;
@@ -61,3 +61,4 @@ public class MachServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 
 }
+*/
