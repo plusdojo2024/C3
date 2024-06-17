@@ -87,5 +87,5 @@ public class MachServlet extends HttpServlet {
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mach_result.jsp");
 		dispatcher.forward(request, response);
-
+	}
 }

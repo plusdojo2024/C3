@@ -186,10 +186,10 @@ import model.News;
 						pStmt.setString(1, null);
 					}
 					if (card.getNews_day() != null) {
-						pStmt.Timestamp(2, null);
+						pStmt.setTimestamp(2, null);
 					}
 					else {
-						pStmt.Timestamp(2, null);
+						pStmt.setTimestamp(2, null);
 					}
 					if (card.getNews_detail() != null) {
 						pStmt.setString(3, card.getNews_detail());
@@ -197,11 +197,11 @@ import model.News;
 					else {
 						pStmt.setString(3, null);
 					}
-					if (card.getUser_id() != 0) {
-						pStmt.setInt(4, card.getUser_id());
+					if (card.getUser_id() != null) {
+						pStmt.setString(4, card.getUser_id());
 					}
 					else {
-						pStmt.setInt(4, 0);
+						pStmt.setString(4, null);
 					}
 					
 				//管理者登録
@@ -228,10 +228,10 @@ import model.News;
 								pStmt.setString(1, null);
 							}
 							if (card.getNews_day() != null) {
-								pStmt.Timestamp(2, null);
+								pStmt.setTimestamp(2, null);
 							}
 							else {
-								pStmt.Timestamp(2, null);
+								pStmt.setTimestamp(2, null);
 							}
 							if (card.getNews_detail() != null) {
 								pStmt.setString(3, card.getNews_detail());
@@ -239,11 +239,11 @@ import model.News;
 							else {
 								pStmt.setString(3, null);
 							}
-							if (card.getUser_id() != 0) {
-								pStmt.setInt(4, card.getUser_id());
+							if (card.getUser_id() != null) {
+								pStmt.setString(4, card.getUser_id());
 							}
 							else {
-								pStmt.setInt(4, 0);
+								pStmt.setString(4, null);
 							}
 
  
@@ -295,7 +295,7 @@ import model.News;
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
-					if (card.getNews_title() != 0) {
+					if (card.getNews_title() != null) {
 						pStmt.setString(1, card.getNews_title());
 					}
 					else {
@@ -313,11 +313,11 @@ import model.News;
 					else {
 						pStmt.setString(3, null);
 					}
-					if (card.getUser_id() != 0) {
-						pStmt.setInt(4, card.getUser_id());
+					if (card.getUser_id() != null) {
+						pStmt.setString(4, card.getUser_id());
 					}
 					else {
-						pStmt.setInt(4, 0);
+						pStmt.setString(4, null);
 					}
 
 					//更新ボタンを押した動物のidを格納
@@ -374,7 +374,7 @@ import model.News;
 						pStmt.setString(1, card.getNews_title());
 					}
 					else {
-						pStmt.setInt(1, null);
+						pStmt.setString(1, null);
 					}
 					if (card.getNews_day() != null) {
 						pStmt.setTimestamp(2, card.getNews_day());
@@ -388,8 +388,8 @@ import model.News;
 					else {
 						pStmt.setString(3, null);
 					}
-					if (card.getUser_id() != 0) {
-						pStmt.setInt(4, card.getUser_id());
+					if (card.getUser_id() != null) {
+						pStmt.setString(4, card.getUser_id());
 					}
 					else {
 						pStmt.setInt(4, 0);
@@ -468,7 +468,7 @@ import model.News;
 						e.printStackTrace();
 					}
 				}
-
+				
 			//管理者お知らせ削除
 			//session
 			public boolean delete1(int id) {
