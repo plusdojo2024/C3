@@ -39,26 +39,53 @@ public class MachServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// POSTリクエストに対する処理
-		doGet(request, response);
 
-		/*// リクエストパラメータを取得する
-		Boolean A1 = false;
-		Boolean A2 = false;
-		Boolean A3 = false;
-		Boolean A4 = false;
-		Boolean A5 = false;
-		}
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String tmpa1 = request.getParameter("answer1");
+		String tmpa2 = request.getParameter("answer2");
+		String tmpa3 = request.getParameter("answer3");
+		String tmpa4 = request.getParameter("answer4");
+		String tmpa5 = request.getParameter("answer5");
+
 	
 		// 検索処理を行う
-
+		if(tmpa1 == "yes") {
+			boolean a1 = true;			
+		} else {
+			boolean a1 =false;
+		}
+		if(tmpa2  == "yes") {
+			boolean a2 = true;
+		} else {
+			boolean a2 =false;
+		}
+		if(tmpa3 == "yes") {
+			boolean a3 = true;			
+		} else {
+			boolean a3 =false;
+		}
+		if(tmpa4 == "yes") {
+			boolean a4 = true;			
+		} else {
+			boolean a4 =false;
+		}
+		if(tmpa5 == "yes") {
+			boolean a5 = true;			
+		} else {
+			boolean a5 =false;
+		}
 		
-		// 検索結果をリクエストスコープに格納する
-
+		// インスタンスを作成
+		MachAnswersDAO maDao = new MachAnswersDAO();
+		
+		List<String> machlist = maDao.select(a1, a2, a3, a4, a5);
+		request.setAttribute("machList", machlist);
+		
+		
 		
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mach_result.jsp");
 		dispatcher.forward(request, response);
 
 }
-*/

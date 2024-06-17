@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<c:forEach var="m" items= ${machList}>
+<div value="${m.img}"> <p value="${m.type}"></p>
+</div>
+</c:forEach>
 </body>
 </html>
