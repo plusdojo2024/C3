@@ -9,6 +9,7 @@
   <style>
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
+      font-weight: bold; /* または数値 (100 - 900) */
     }
     </style>
 
@@ -24,10 +25,10 @@
   </div>
     <nav class="nav">
       <ul>
-        <li><a href="C3/GroupServlet">各団体</a></li>
-        <li><a href="C3/AnimalSearchServlet">動物検索</a></li>
-        <li><a href="C3/CalendarServlet">カレンダー</a></li>
-        <li><a href="C3/QASevlet">Q&ampA</a></li>
+        <li class="list1"><a href="C3/GroupServlet">各団体</a></li>
+        <li class="list2"><a href="C3/AnimalSearchServlet">動物検索</a></li>
+        <li class="list3"><a href="C3/CalendarServlet">カレンダー</a></li>
+        <li class="list4"><a href="C3/QASevlet">Q&ampA</a></li>
     </ul>
   </nav>
   <!-- ヘッダーここまで -->
