@@ -108,19 +108,62 @@
 main h1 {
     margin-bottom:100px;
     text-align:center;
-    border-bottom: 2px solid #663300;
+    border-bottom: 4px dashed #996633;
     padding:0 0 5px 0;
     color:#663300;
     font-size:1.7rem;
+
 }
 
 main h2 {
     margin-bottom:100px;
     text-align:center;
-    border-bottom: 2px solid #663300;
+    border-bottom: 4px dashed #996633;
     padding: 0 0 5px 0;
     color: #663300;
-    font-size: 1.9rem;
+    font-size: 1.7rem;
+}
+.h1 {/*h1の枠線デザイン*/
+    margin-bottom:50px;
+    text-align:center;
+    border-bottom: 4px dashed #996633;
+    padding:0 0 5px 0;
+    color:#663300;
+    font-size:1.7rem;
+	border-style: ridge ;
+	padding: 20px ;
+	border-width: 6px ;
+	border-color: #D2B48C;
+    border-top-left-radius :50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+	/*h1枠線デザイン丸ver*/
+	/*border-style: dotted ;
+	padding: 10px ;
+	border-width: 5px ;
+	border-color: #663300*/
+.h2 {/*h1の枠線デザイン*/
+    margin-bottom:50px;
+    text-align:center;
+    border-bottom: 4px dashed #996633;
+    padding:0 0 5px 0;
+    color:#663300;
+    font-size:1.7rem;
+	border-style: ridge ;
+	padding: 20px ;
+	border-width: 6px ;
+	border-color: #D2B48C;
+	border-top-left-radius :50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+	/*h1枠線デザイン丸ver*/
+	/*border-style: dotted ;
+	padding: 10px ;
+	border-width: 5px ;
+	border-color: #663300*/
 }
 /*画像の配置やマージン*/
 .login {
