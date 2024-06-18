@@ -1,6 +1,6 @@
 package servlet;
-
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,14 +13,12 @@ import javax.servlet.http.HttpSession;
 import dao.UsersDAO;
 import model.Result;
 import model.Users;
-
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -29,7 +27,6 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -38,22 +35,32 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-
+		id = "orgA";
+		pw = "orgA";
+		//isLoginOKは使わない
+		//loginIDがあれば個人か団体か判断、なければnullをかえす
 		// ログイン処理を行う
 		UsersDAO iDao = new UsersDAO();
-		if (iDao.isLoginOK(new Users(id, pw))) {	// ログイン成功
+		if (iDao.isLoginOK(id, pw)) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
-
-			// サーブレットにリダイレクトする
-			response.sendRedirect("/C3/PersonalServlet");
+			session.setAttribute("id", id);
+			List<Users> loginList = iDao.is_organization(id, pw);
+			for(Users loginlist: loginList) {
+			if(loginlist.getIs_organization()== true){
+//団体用のホームページ
+				response.sendRedirect("/C3/GroupHomeServlet");
+			}
+			else {
+//個人用
+				response.sendRedirect("/C3/PersonalServlet");
+			}
+			}
 		}
 		else {									// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			request.setAttribute("result",
 			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/C3/LoginServlet"));
-
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 			dispatcher.forward(request, response);
