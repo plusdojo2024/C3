@@ -93,11 +93,11 @@ public class AddAnimalServlet extends HttpServlet {
 				IndividualsDAO iDao = new IndividualsDAO();
 				if (iDao.insert(new Individuals(0,animal_id,animal_name, type, age,gender, user_name, period, remarks,  is_castration, birthday, img))) {	// 登録成功
 					request.setAttribute("result",
-					new Result("登録成功！", "レコードを登録しました。", "/simpleBC/MenuServlet"));
+					new Result("登録成功！", "レコードを登録しました。", "/C3/AddAnimaiServlet"));
 				}
 				else {												// 登録失敗
 					request.setAttribute("result",
-					new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/MenuServlet"));
+					new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/AddAnimaiServlet"));
 				}
 
 				// 結果ページにフォワードする

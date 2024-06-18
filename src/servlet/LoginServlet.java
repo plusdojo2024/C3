@@ -35,7 +35,8 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-
+        id = "";
+        pw = "";
 		//isLoginOKは使わない
 		//loginIDがあれば個人か団体か判断、なければnullをかえす
 		// ログイン処理を行う
