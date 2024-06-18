@@ -182,6 +182,9 @@ main h2 {
 .Add {
   text-align:right;
 }
+.logout {
+	text-align:right;
+}
 .mach {
 	margin-bottom:20px;
 	text-align:right;

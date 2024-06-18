@@ -81,7 +81,7 @@
 let formObj = document.getElementById('login_form');
 let errorMessageObj = document.getElementById('error_message');
 
-/* [ログイン]ボタンをクリックしたときの処理 */
+/* [ログイン]ボタンをクリックしたときの処理*/
 formObj.onsubmit = function() {
   if (!formObj.id.value || !formObj.pw.value) {
     errorMessageObj.textContent = '※IDとパスワードを入力してください！';
