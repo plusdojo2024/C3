@@ -112,6 +112,76 @@ public class IndividualsDAO {
 				// 結果を返す
 				return cardList;
 			}
+
+		public List<Individuals> select1(int id) {
+			Connection conn = null;
+			List<Individuals> cardList = new ArrayList<Individuals>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+
+				// SQL文を準備する
+					String sql = "SELECT * FROM Individuals WHERE user_name=? ORDER BY id";
+					PreparedStatement pStmt = conn.prepareStatement(sql);
+					// SQL文を完成させる
+
+					pStmt.setInt(1, id);
+
+
+
+					// SQL文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+
+					// 結果表をコレクションにコピーする
+					while (rs.next()) {
+						Individuals record = new Individuals(
+							rs.getInt("id"),
+							rs.getInt("animal_id"),
+							rs.getString("animal_name"),
+							rs.getString("type"),
+							rs.getInt("age"),
+							rs.getString("gender"),
+							rs.getString("user_name"),
+							rs.getDate("period"),
+							rs.getString("remarks"),
+							rs.getBoolean("is_castration"),
+							rs.getDate("birthday"),
+							rs.getString("img")
+							//rs.getString("kind"),
+
+
+							);
+						cardList.add(record);
+					}
+
+			    }catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							cardList = null;
+						}
+					}
+				}
+
+				// 結果を返す
+				return cardList;
+			}
 	//動物登録
 		public boolean insert(Individuals card) {
 			Connection conn = null;

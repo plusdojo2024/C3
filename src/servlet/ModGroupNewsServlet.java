@@ -71,33 +71,42 @@ public class ModGroupNewsServlet extends HttpServlet {
 		request.setAttribute("nList", noList);
 
 
-		if (nDao.insert(new News(0, newsTitle, null, newsDetail, myId))) {	// 登録成功
-			request.setAttribute("result",
-			new Result("登録成功！", "レコードを登録しました。", "/C3/ModNewsServlet"));
+		if(request.getParameter("submit").equals("登録")) {
+			if (nDao.insert(new News(0, newsTitle, null, newsDetail, myId))) {	// 登録成功
+				request.setAttribute("result",
+				new Result("登録成功！", "レコードを登録しました。", "/C3/ModGroupNewsServlet"));
+			}
+			else {												// 登録失敗
+				request.setAttribute("result",
+				new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/ModGroupNewsServlet"));
+			}
 		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/ModNewsServlet"));
+		else if (request.getParameter("submit").equals("更新")) {
+			// ここを改造する
+			if (nDao.update(new News(newsId, newsTitle, null, newsDetail, myId))) {	// 登録成功
+				request.setAttribute("result",
+				new Result("更新成功！", "レコードを更新しました。", "/C3/ModGroupNewsServlet"));
+			}
+			else {												// 登録失敗
+				request.setAttribute("result",
+				new Result("更新失敗！", "レコードを更新できませんでした。", "/C3/ModGroupNewsServlet"));
+			}
+		}
+		else {
+
+			if (nDao.delete(newsId)) {	// 登録成功
+				request.setAttribute("result",
+				new Result("削除成功！", "レコードを削除しました。", "/C3/ModGroupNewsServlet"));
+			}
+			else {												// 登録失敗
+				request.setAttribute("result",
+				new Result("削除失敗！", "レコードを削除できませんでした。", "/C3/ModGroupNewsServlet"));
+			}
 		}
 
-
-		if (nDao.update(new News(newsId, newsTitle, null, newsDetail, myId))) {	// 登録成功
-			request.setAttribute("result",
-			new Result("更新成功！", "レコードを更新しました。", "/C3/ModNewsServlet"));
-		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("更新失敗！", "レコードを更新できませんでした。", "/C3/ModNewsServlet"));
-		}
-
-		if (nDao.delete(newsId)) {	// 登録成功
-			request.setAttribute("result",
-			new Result("削除成功！", "レコードを削除しました。", "/C3/ModNewsServlet"));
-		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("削除失敗！", "レコードを削除できませんでした。", "/C3/ModNewsServlet"));
-		}
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		dispatcher.forward(request, response);
 }
 
 	}

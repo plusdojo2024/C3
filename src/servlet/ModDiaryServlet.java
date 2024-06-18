@@ -72,33 +72,42 @@ public class ModDiaryServlet extends HttpServlet {
 				List<Diarys> myDiaryList = dDao.selectPd(myId);
 				request.setAttribute("diaryList", myDiaryList);
 
-				if (dDao.insert(new Diarys(0, null, myId, diaryTitle, diaryDetail))) {	// 登録成功
-					request.setAttribute("result",
-					new Result("登録成功！", "レコードを登録しました。", "/C3/ModDiaryServlet"));
+
+				if(request.getParameter("submit").equals("登録")) {
+					if (dDao.insert(new Diarys(0, null, myId, diaryTitle, diaryDetail))) {	// 登録成功
+						request.setAttribute("result",
+						new Result("登録成功！", "レコードを登録しました。", "/C3/ModDiaryServlet"));
+					}
+					else {												// 登録失敗
+						request.setAttribute("result",
+						new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/ModDiaryServlet"));
+					}
 				}
-				else {												// 登録失敗
-					request.setAttribute("result",
-					new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/ModDiaryServlet"));
+				else if (request.getParameter("submit").equals("更新")) {
+					// ここを改造する
+					if (dDao.update(new Diarys(diaryId, null, myId, diaryTitle, diaryDetail))) {	// 登録成功
+						request.setAttribute("result",
+						new Result("更新成功！", "レコードを更新しました。", "/C3/ModDiaryServlet"));
+					}
+					else {												// 登録失敗
+						request.setAttribute("result",
+						new Result("更新失敗！", "レコードを更新できませんでした。", "/C3/ModDiaryServlet"));
+					}
+				}
+				else {
+					if (dDao.delete(diaryId)) {	// 登録成功
+						request.setAttribute("result",
+						new Result("削除成功！", "レコードを削除しました。", "/C3ModDiaryServlet"));
+					}
+					else {												// 登録失敗
+						request.setAttribute("result",
+						new Result("削除失敗！", "レコードを削除できませんでした。", "/C3/ModDiaryServlet"));
+					}
 				}
 
-
-				if (dDao.update(new Diarys(diaryId, null, myId, diaryTitle, diaryDetail))) {	// 登録成功
-					request.setAttribute("result",
-					new Result("更新成功！", "レコードを更新しました。", "/C3/ModNewsServlet"));
-				}
-				else {												// 登録失敗
-					request.setAttribute("result",
-					new Result("更新失敗！", "レコードを更新できませんでした。", "/C3/ModNewsServlet"));
-				}
-
-				if (dDao.delete(diaryId)) {	// 登録成功
-					request.setAttribute("result",
-					new Result("削除成功！", "レコードを削除しました。", "/C3/ModNewsServlet"));
-				}
-				else {												// 登録失敗
-					request.setAttribute("result",
-					new Result("削除失敗！", "レコードを削除できませんでした。", "/C3/ModNewsServlet"));
-				}
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+				dispatcher.forward(request, response);
 	}
 
 }
