@@ -331,3 +331,9 @@ input[name=remarks]{
 .user {
     align-items: center;
 }
+
+.group_manager_home {
+  text-align:center;
+  font-size: 3rem;
+  padding:30px;
+}
