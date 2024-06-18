@@ -22,6 +22,14 @@
   <div class="logout">
     <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
   </div>
+   <nav class="nav">
+      <ul>
+        <li class="list1"><a href="C3/GroupServlet">各団体</a></li>
+        <li class="list2"><a href="C3/AnimalSearchServlet">動物検索</a></li>
+        <li class="list3"><a href="C3/CalendarServlet">カレンダー</a></li>
+        <li class="list4"><a href="C3/QASevlet">Q&amp;A</a></li>
+    </ul>
+  </nav>
 </header>
 
   <main class="home p">
