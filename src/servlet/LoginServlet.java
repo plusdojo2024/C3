@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 //団体用のホームページ
 				response.sendRedirect("/C3/GroupHomeServlet");
 			}
-			else {
+			else if(loginlist.getIs_organization()== false) {
 //個人用
 				response.sendRedirect("/C3/PersonalServlet");
 			}
