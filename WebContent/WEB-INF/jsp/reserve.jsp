@@ -25,6 +25,7 @@
   </div>
 </header>
 
+<!--
 <c:forEach var="e" items="${cardList}" >
 
     <form method="post" action="/C3/ReserveServlet">
@@ -44,6 +45,7 @@
     </form>
     <hr>
   </c:forEach>
+-->
 
 </body>
 </html>

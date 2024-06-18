@@ -95,7 +95,7 @@ public class ReservationsDAO {
 
 
 			// リストに登録する
-			public List<Reservations> select(Reservations card) {
+			public List<Reservations> select() {
 				Connection conn = null;
 				List<Reservations> cardList = new ArrayList<Reservations>();
 
