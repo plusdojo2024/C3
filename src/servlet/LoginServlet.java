@@ -56,6 +56,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("/C3/PersonalServlet");
 			}
 			}
+
 		}
 		else {									// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する

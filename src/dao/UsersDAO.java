@@ -144,6 +144,8 @@ public class UsersDAO {
 				return result;
 }
 
+
+
 				// 個人ログイン用メソッド
 			public boolean isLoginOK(String id,String pw) {
 				Connection conn = null;
