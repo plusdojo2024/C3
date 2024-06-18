@@ -12,22 +12,22 @@ import model.News;
 
 	public class NewsDAO {
 			// 団体お知らせ検索
-			public List<News> select(News card) {
+			public List<News> select() {
 				Connection conn = null;
 				List<News> cardList = new ArrayList<News>();
 
 				try {
 					// JDBCドライバを読み込む
 					Class.forName("org.h2.Driver");
-				
+
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM News WHERE news_title LIKE ? AND news_day LIKE ? AND news_detail LIKE ? AND user_id LIKE ? ORDER BY number";
+					String sql = "SELECT * FROM News ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-					if (card.getNews_title() != null) {
+					/*if (card.getNews_title() != null) {
 						pStmt.setString(1, "%" + card.getNews_title() + "%");
 					}
 					else {
@@ -44,8 +44,8 @@ import model.News;
 					}
 					else {
 						pStmt.setString(3, "%");
-					}
-				
+					}*/
+
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 
@@ -85,24 +85,24 @@ import model.News;
 					// 結果を返す
 					return cardList;
 			}
-		
+
 			// 管理者お知らせ検索
-			public List<News> select1(News card) {
+			public List<News> select1() {
 				Connection conn = null;
 				List<News> cardList = new ArrayList<News>();
 
 				try {
 					// JDBCドライバを読み込む
 					Class.forName("org.h2.Driver");
-				
+
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM News WHERE news_title LIKE ? AND news_day LIKE ? AND news_detail LIKE ? AND user_id LIKE ? ORDER BY number";
+					String sql = "SELECT * FROM News WHERE  ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-					if (card.getNews_title() != null) {
+					/*if (card.getNews_title() != null) {
 						pStmt.setString(1, "%" + card.getNews_title() + "%");
 					}
 					else {
@@ -119,8 +119,8 @@ import model.News;
 					}
 					else {
 						pStmt.setString(3, "%");
-					}
-				
+					}*/
+
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 
@@ -160,7 +160,7 @@ import model.News;
 					// 結果を返す
 					return cardList;
 			}
-		
+
 			//団体お知らせ登録
 			public boolean insert(News card) {
 				Connection conn = null;
@@ -174,7 +174,7 @@ import model.News;
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO News VALUES (Null, ?, ?, ?, ?)";
+				String sql = "INSERT INTO News VALUES (Null, ?, Current_timestamp, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -229,7 +229,7 @@ import model.News;
 			// 結果を返す
 			return result;
 		}
-			
+
 				//管理者お知らせ登録
 				public boolean insert1(News card) {
 					Connection conn = null;
@@ -272,7 +272,7 @@ import model.News;
 								pStmt.setString(4, null);
 							}
 
- 
+
 					// SQL文を実行する
 					if (pStmt.executeUpdate() == 1) {
 						result = true;
@@ -300,8 +300,8 @@ import model.News;
 			// 結果を返す
 			return result;
 		}
-			
-			
+
+
 	//団体お知らせ更新
 		public boolean update(News card) {
 			Connection conn = null;
@@ -317,7 +317,7 @@ import model.News;
 				// SQL文を準備する
 				//お気に入り登録時
 
-					String sql = "UPDATE News SET news_title=?, news_day=?, news_detail=? WHERE id=?";
+					String sql = "UPDATE News SET news_title=?, news_detail=? WHERE id=?";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
@@ -327,27 +327,16 @@ import model.News;
 					else {
 						pStmt.setInt(1, 0);
 					}
-					if (card.getNews_day() != null) {
-						pStmt.setTimestamp(2, card.getNews_day());
-					}
-					else {
-						pStmt.setTimestamp(2, null);
-					}
+
 					if (card.getNews_detail() != null) {
-						pStmt.setString(3, card.getNews_detail());
+						pStmt.setString(2, card.getNews_detail());
 					}
 					else {
-						pStmt.setString(3, null);
-					}
-					if (card.getUser_id() != null) {
-						pStmt.setString(4, card.getUser_id());
-					}
-					else {
-						pStmt.setString(4, null);
+						pStmt.setString(2, null);
 					}
 
-					//更新ボタンを押した動物のidを格納
-					pStmt.setInt(11, card.getId());
+					//更新ボタンを押したお知らせのidを格納
+					pStmt.setInt(3, card.getId());
 
 
 					// SQL文を実行する
@@ -451,8 +440,8 @@ import model.News;
 			// 結果を返す
 			return result;
 		}
-		
-		
+
+
 	//団体お知らせ削除
 		//session
 		public boolean delete(int id) {
@@ -499,7 +488,7 @@ import model.News;
 			// 結果を返す
 			return result;
 		}
-		
+
 			//管理者お知らせ削除
 			//session
 			public boolean delete1(int id) {
@@ -547,4 +536,3 @@ import model.News;
 				return result;
 			}
 }
-				

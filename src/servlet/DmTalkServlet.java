@@ -86,7 +86,7 @@ public class DmTalkServlet extends HttpServlet {
 
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_talk.jsp");
 				dispatcher.forward(request, response);
 			}
 	}

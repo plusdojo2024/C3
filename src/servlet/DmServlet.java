@@ -70,6 +70,9 @@ public class DmServlet extends HttpServlet {
 				List<Users> userList = dmsDao.selectUser();
 				request.setAttribute("userList", userList);
 
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm.jsp");
+				dispatcher.forward(request, response);
+
 			}
 
 }

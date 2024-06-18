@@ -12,11 +12,14 @@ public class QAs implements Serializable{
 
   }
   //引数があるコンストラクタ
-  public QAs(String question, String answer){
+  public QAs(int id, String question, String answer){
     super();
+       this.id=id;
        this.question = question;
        this.answer = answer;
   }
+
+
 public String getQuestion() {
 	return question;
 }

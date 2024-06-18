@@ -51,18 +51,19 @@ public class AnimalSerachServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String organization_name = request.getParameter("organization_name");
 		String name = request.getParameter("name");
-		String kind = request.getParameter("kind");
+		String tempAnimalId = request.getParameter("kind");
+		int kind = Integer.parseInt(tempAnimalId);
 		String type = request.getParameter("type");
 		String gender = request.getParameter("gender");
 		String tmpage = request.getParameter("age");
-		int age = Integer.parseInt("tempage");
+		int age = Integer.parseInt(tmpage);
 
 		// 検索処理を行う
 		IndividualsDAO iDao = new IndividualsDAO();
-		List<Individuals> cardList = iDao.select(new Individuals(0, 0, name, type, age, gender, organization_name, null, null, false, null, null));
+		List<Individuals> individualList = iDao.select(new Individuals(0, kind, name, type, age, gender, organization_name, null, null, false, null, null));
 
 		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
+		request.setAttribute("individualList", individualList);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/animal_search_result.jsp");

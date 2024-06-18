@@ -12,7 +12,7 @@ import model.QAs;
 
 public class QasDAO {
 	// 質問検索
-		public List<QAs> select(QAs card) {
+		public List<QAs> select() {
 			Connection conn = null;
 			List<QAs> cardList = new ArrayList<QAs>();
 
@@ -24,22 +24,9 @@ public class QasDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM QAs WHERE Question LIKE ? AND Answer LIKE ? AND ORDER BY number";
+					String sql = "SELECT * FROM QAs ORDER BY number";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-
-					if (card.getQuestion() != null) {
-						pStmt.setString(1, "%" + card.getQuestion() + "%");
-					}
-					else {
-						pStmt.setString(1, null);
-					}
-					if (card.getAnswer() != null) {
-						pStmt.setString(2, "%" + card.getAnswer() + "%");
-					}
-					else {
-						pStmt.setString(2, null);
-					}
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
@@ -47,6 +34,7 @@ public class QasDAO {
 					// 結果表をコレクションにコピーする
 					while (rs.next()) {
 						QAs record = new QAs(
+							rs.getInt("id"),
 							rs.getString("question"),
 							rs.getString("answer")
 							);
@@ -157,13 +145,13 @@ public class QasDAO {
 						pStmt.setString(1, card.getQuestion());
 					}
 					else {
-						pStmt.setInt(1, 0);
+						pStmt.setString(1, null);
 					}
 					if (card.getAnswer() != null) {
 						pStmt.setString(2, card.getAnswer());
 					}
 					else {
-						pStmt.setString(2, card.getAnswer());
+						pStmt.setString(2, null);
 					}
 					//更新ボタンを押した質問のidを格納
 					pStmt.setInt(3, card.getId());

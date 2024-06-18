@@ -11,7 +11,7 @@ import model.Diarys;
 
 public class DiarysDAO {
 	//日記一覧
-		public List<Diarys> select(Diarys card) {
+		public List<Diarys> select() {
 			Connection conn = null;
 			List<Diarys> cardList = new ArrayList<Diarys>();
 
@@ -23,7 +23,7 @@ public class DiarysDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT user_name, diary_day, diary_title, diary FROM Diarys  ORDER BY id";
+					String sql = "SELECT * FROM Diarys  ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 
@@ -66,8 +66,64 @@ public class DiarysDAO {
 				// 結果を返す
 				return cardList;
 			}
+
+		public List<Diarys> mySelect(int id) {
+			Connection conn = null;
+			List<Diarys> cardList = new ArrayList<Diarys>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+
+				// SQL文を準備する
+					String sql = "SELECT * FROM Diarys  WHERE id=?";
+					PreparedStatement pStmt = conn.prepareStatement(sql);
+					// SQL文を完成させる
+						pStmt.setInt(1, id);
+					// SQL文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+
+					// 結果表をコレクションにコピーする
+					while (rs.next()) {
+						Diarys record = new Diarys(
+							rs.getInt("id"),
+							rs.getTimestamp("diary_day"),
+							rs.getString("user_name"),
+							rs.getString("diary_title"),
+							rs.getString("diary")
+							);
+						cardList.add(record);
+					}
+
+			    }catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							cardList = null;
+						}
+					}
+				}
+
+				// 結果を返す
+				return cardList;
+			}
 	//自分の投稿した日記一覧をプルダウン形式で表示
-		public List<Diarys> selectPd(Diarys card) {
+		public List<Diarys> selectPd(String id) {
 			Connection conn = null;
 			List<Diarys> cardList = new ArrayList<Diarys>();
 
@@ -83,7 +139,7 @@ public class DiarysDAO {
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					//session
-					pStmt.setString(1, card.getUser_id());
+					pStmt.setString(1, id);
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();

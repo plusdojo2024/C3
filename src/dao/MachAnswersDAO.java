@@ -12,7 +12,7 @@ import model.MachAnswers;
 
 public class MachAnswersDAO {
 		//診断結果を表示
-		public List<MachAnswers> select(MachAnswers card) {
+		public List<MachAnswers> select(boolean a1, boolean a2,boolean a3,boolean a4,boolean a5) {
 			Connection conn = null;
 			List<MachAnswers> cardList = new ArrayList<MachAnswers>();
 
@@ -27,11 +27,11 @@ public class MachAnswersDAO {
 					String sql = "SELECT animal_type, img FROM MachAnswers WHERE(a1=? AND a2=? AND a3=? AND a4=? AND a5=?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-					pStmt.setBoolean(1, card.getA1());
-					pStmt.setBoolean(2, card.getA2());
-					pStmt.setBoolean(3, card.getA3());
-					pStmt.setBoolean(4, card.getA4());
-					pStmt.setBoolean(5, card.getA5());
+					pStmt.setBoolean(1, a1);
+					pStmt.setBoolean(2, a2);
+					pStmt.setBoolean(3, a3);
+					pStmt.setBoolean(4, a4);
+					pStmt.setBoolean(5, a5);
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 

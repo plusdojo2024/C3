@@ -69,7 +69,7 @@ public class VisitServlet extends HttpServlet {
 		Date date = sdf.parse(tempRsv_day);
 		Timestamp rsv_day = new Timestamp(date.getTime());
 
-		String myId = session.getId();
+		String myId = (String)session.getAttribute("id");
 		String yourId = request.getParameter("yourId");
 		String remarks = request.getParameter("remarks");
 

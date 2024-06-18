@@ -71,6 +71,9 @@ public class DmPersonalServlet extends HttpServlet {
 		// 表示結果をリクエストスコープに格納する
 		request.setAttribute("organizationsList", organizationsList);
 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_personal.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }
