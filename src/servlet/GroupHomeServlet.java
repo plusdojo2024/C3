@@ -28,7 +28,7 @@ public class GroupHomeServlet extends HttpServlet {
 					return;
 				}
 
-				// メニューページにフォワードする
+				// グループホームページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/group_home.jsp");
 				dispatcher.forward(request, response);
 			}

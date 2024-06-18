@@ -20,12 +20,12 @@
     <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
   </div>
   <div class="logout">
-    <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
+    <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
   </div>
 </header>
 
 <main class="group_manager_home">
-  <table>
+  <table border="1">
     <tr>
       <td><a href="C3/AddAnimalServlet">動物登録</a></td>
       <td><a href="C3/AnimalServlet">動物一覧(更新・削除)</a></td>

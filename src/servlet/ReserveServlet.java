@@ -1,11 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.ReservationsDAO;
+import model.Reservations;
 
 /**
  * Servlet implementation class ReserveServlet
@@ -34,8 +40,13 @@ public class ReserveServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		ReservationsDAO rsvDao = new ReservationsDAO();
+		List<Reservations> rsvList = rsvDao.select();
+		request.setAttribute("rsvList", rsvList);
+	
+	// 結果ページにフォワードする
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.reserve.jsp");
+	dispatcher.forward(request, response);
 
+	}
 }

@@ -246,7 +246,65 @@ public class UsersDAO {
 				return cardList;
 			}
 
-				public static void main(String[] args) {
+
+			public  List<Users> is_organization(String user_id,String address,String phonenumber, String email,String remarks){
+				Connection conn = null;
+				/*boolean organization = false;*/
+				List<Users> cardList = new ArrayList<Users>();
+				try {
+					// JDBCドライバを読み込む
+					Class.forName("org.h2.Driver");
+					// データベースに接続する
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/c3", "sa", "");
+					// SELECT文を準備する
+					String sql = "SELECT * FROM Users WHERE user_id = ? AND address = ? AND phonenumber = ? AND email = ? AND remarks = ?";
+					PreparedStatement pStmt = conn.prepareStatement(sql);
+					pStmt.setString(1,user_id);
+					pStmt.setString(2,address);
+					pStmt.setString(3,phonenumber);
+					pStmt.setString(4,email);
+					pStmt.setString(5,remarks);
+					// SELECT文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+					// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
+					while(rs.next()) {
+						Users record = new Users(
+						rs.getInt("id"),
+						 rs.getString("user_id"),
+						 rs.getString("user_name"),
+						 rs.getString("user_password"),
+						 rs.getBoolean("is_organization"),
+						 rs.getString("address"),
+						 rs.getString("phonenumber"),
+						 rs.getString("email"),
+						 rs.getString("remarks")
+					     );
+						cardList.add(record);
+				}
+				}catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							cardList = null;
+						}
+					}
+				}
+				return cardList;
+			}
+
+	/*			public static void main(String[] args) {
 					// select()のテスト
 					System.out.println("---------- select()のテスト ----------");
 					UsersDAO iDao = new UsersDAO();
@@ -262,5 +320,5 @@ public class UsersDAO {
 						}
 						}
 					}
-				}
+				}*/
 			}
