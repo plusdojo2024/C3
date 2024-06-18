@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Individuals;
 import model.News;
 
 	public class NewsDAO {
@@ -203,8 +202,35 @@ import model.News;
 					else {
 						pStmt.setString(4, null);
 					}
-					
-				//管理者登録
+					// SQL文を実行する
+					if (pStmt.executeUpdate() == 1) {
+						result = true;
+					}
+
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			// 結果を返す
+			return result;
+		}
+			
+				//管理者お知らせ登録
 				public boolean insert1(News card) {
 					Connection conn = null;
 					boolean result = false;
@@ -468,7 +494,12 @@ import model.News;
 						e.printStackTrace();
 					}
 				}
-				
+			}
+
+			// 結果を返す
+			return result;
+		}
+		
 			//管理者お知らせ削除
 			//session
 			public boolean delete1(int id) {

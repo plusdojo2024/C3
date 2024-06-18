@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.IndividualsDAO;
+import model.Individuals;
 import model.Result;
-
 /**
  * Servlet implementation class AddAnimaiServlet
  */
@@ -57,20 +59,26 @@ public class AddAnimalServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String animal_name = request.getParameter("animal_name");
-				String kind = request.getParameter("kind");
+		/*		String kind = request.getParameter("kind");*/
 				String type = request.getParameter("type");
 				String gender = request.getParameter("gender");
-				String age = request.getParameter("age");
-				String birthday = request.getParameter("birthday");
-				String period = request.getParameter("period");
-				String is_castration = request.getParameter("is_castration");
+				   int age = Integer.parseInt(request.getParameter("age"));
+				String tmpbirthday = request.getParameter("birthday");
+				  	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					Date birthday = sdf.parse(tmpbirthday);
+				String tmpperiod = request.getParameter("period");
+			  	  SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+				  Date period = sdf1.parse(tmpperiod);
+				boolean is_castration = Boolean.parseBoolean(request.getParameter("is_castration"));
 				String remarks = request.getParameter("remarks");
+				String img = request.getParameter("img");
+				String user_name = request.getParameter("user_name");
 
 
 
 				// 登録処理を行う
 				IndividualsDAO iDao = new IndividualsDAO();
-				if (iDao.insert(new Individuals(0, animal_name, kind, type, gender, age, birthday, period, is_castration, remarks))) {	// 登録成功
+				if (iDao.insert(new Individuals(0,0,animal_name, type, age, gender,user_name, birthday, remarks, is_castration, birthday, img))) {	// 登録成功
 					request.setAttribute("result",
 					new Result("登録成功！", "レコードを登録しました。", "/simpleBC/MenuServlet"));
 				}
