@@ -33,8 +33,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String id = request.getParameter("user_id");
+		String pw = request.getParameter("user_password");
         id = "orgA";
         pw = "orgA";
 		//isLoginOKは使わない
@@ -49,6 +49,7 @@ public class LoginServlet extends HttpServlet {
 			for(Users loginlist: loginList) {
 			if(loginlist.getIs_organization()== true){
 //団体用のホームページ
+				System.out.println(loginlist.getIs_organization());
 				response.sendRedirect("/C3/GroupHomeServlet");
 			}
 			else if(loginlist.getIs_organization()== false) {
