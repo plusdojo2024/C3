@@ -246,7 +246,7 @@ public class UsersDAO {
 				return cardList;
 			}
 
-				public static void main(String[] args) {
+	/*			public static void main(String[] args) {
 					// select()のテスト
 					System.out.println("---------- select()のテスト ----------");
 					UsersDAO iDao = new UsersDAO();
@@ -262,5 +262,5 @@ public class UsersDAO {
 						}
 						}
 					}
-				}
+				}*/
 			}

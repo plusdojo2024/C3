@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -59,16 +58,30 @@ public class AddAnimalServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String animal_name = request.getParameter("animal_name");
-		/*		String kind = request.getParameter("kind");*/
+				String tempAnimalId = request.getParameter("kind");
+				int animal_id = Integer.parseInt(tempAnimalId);
 				String type = request.getParameter("type");
 				String gender = request.getParameter("gender");
 				   int age = Integer.parseInt(request.getParameter("age"));
 				String tmpbirthday = request.getParameter("birthday");
 				  	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					Date birthday = sdf.parse(tmpbirthday);
+				  	String formattedDate = sdf.format(tmpbirthday);
+				  	java.sql.Date birthday = java.sql.Date.valueOf(formattedDate);
+/*					try {
+						birthday = sdf.parse(tmpbirthday);
+					} catch (ParseException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}*/
 				String tmpperiod = request.getParameter("period");
-			  	  SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-				  Date period = sdf1.parse(tmpperiod);
+				  String formattedDate1 = sdf.format(tmpperiod);
+			  	java.sql.Date period = java.sql.Date.valueOf(formattedDate1);
+/*				try {
+					period = sdf1.parse(tmpperiod);
+				} catch (ParseException e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+				}*/
 				boolean is_castration = Boolean.parseBoolean(request.getParameter("is_castration"));
 				String remarks = request.getParameter("remarks");
 				String img = request.getParameter("img");
@@ -78,13 +91,13 @@ public class AddAnimalServlet extends HttpServlet {
 
 				// 登録処理を行う
 				IndividualsDAO iDao = new IndividualsDAO();
-				if (iDao.insert(new Individuals(0,0,animal_name, type, age, gender,user_name, birthday, remarks, is_castration, birthday, img))) {	// 登録成功
+				if (iDao.insert(new Individuals(0,animal_id,animal_name, type, age,gender, user_name, period, remarks,  is_castration, birthday, img))) {	// 登録成功
 					request.setAttribute("result",
-					new Result("登録成功！", "レコードを登録しました。", "/simpleBC/MenuServlet"));
+					new Result("登録成功！", "レコードを登録しました。", "/C3/AddAnimaiServlet"));
 				}
 				else {												// 登録失敗
 					request.setAttribute("result",
-					new Result("登録失敗！", "レコードを登録できませんでした。", "/simpleBC/MenuServlet"));
+					new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/AddAnimaiServlet"));
 				}
 
 				// 結果ページにフォワードする

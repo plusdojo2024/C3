@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ユーザーホームページ</title>
+  <title>DM</title>
   <link rel="stylesheet" href="/C3/css/style.css">
   <style>
     body {
@@ -20,8 +20,8 @@
     <div class="home">
       <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
-  <div class="Add">
-      <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="40"></a>
+  <div class="logout">
+      <a href="ManegerServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
   </div>
     <nav class="nav">
       <ul>
@@ -34,20 +34,13 @@
   </nav>
   <!-- ヘッダーここまで -->
   </header>
-  <main class="home p">
-  <div class="diary">
-      <a href="DiaryServlet"><img src="./img/images/diary.png" alt="" width="250" height="250"></a>
-   </div>
+<body>
+<main>
+  <h1>団体DM</h1>
+</main>
+</body>
 
-   <div class="visit">
-      <a href="VisitServlet"><img src="./img/images/visit.png" alt="" width="250" height="250"></a>
-   </div>
-
-  <div class="mach">
-      <a href="MachServlet"><img src="./img/images/mach.png" alt="" width="250" height="250"></a>
-   </div>
-  </main>
-  <!-- フッター -->
+<!-- フッター -->
   <footer>
     <div class="gotop">
       <a href="#top"><img src="./img/images/nikukyu.png" alt="トップページへ戻る" width="60" height="60"></a>
@@ -55,8 +48,4 @@
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
-  </body>
-
-
-
 </html>

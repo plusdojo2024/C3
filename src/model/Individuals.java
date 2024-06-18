@@ -37,6 +37,7 @@ public class Individuals implements Serializable {
     this.birthday = birthday;
     this.img = img;
   }
+
 public int getId() {
 	return id;
 }

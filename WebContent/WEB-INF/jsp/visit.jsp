@@ -48,13 +48,13 @@
     <input type="text" name="animal_name" >
   </label><br>
   <label>日時<br>
-    <input type="date" name="date" >
+    <input type="date" name="rsv_day" >
   </label><br>
   <label>電話番号<br>
     <input type="tel" name="tel" >
   </label><br>
   <label>備考<br>
-    <textarea cols="60" rows="10"></textarea>
+    <textarea cols="60" rows="10" name="Reservation_remarks"></textarea>
   </label><br>
   <input type="submit" name="submit" value="申請">
   <input type="reset" name="reset" value="リセット">
