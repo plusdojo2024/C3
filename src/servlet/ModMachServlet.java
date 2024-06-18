@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.MachAnswersDAO;
 import dao.MachQuestionsDAO;
 import model.MachQuestions;
 import model.Result;
@@ -58,23 +59,20 @@ public class ModMachServlet extends HttpServlet {
 				
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String tempa1 = request.getParameter("answer1");
-				String tempa2 = request.getParameter("answer2");
-				String tempa3 = request.getParameter("answer3");
-				String tempa4 = request.getParameter("answer4");
-				String tempa5 = request.getParameter("answer5");
-
-				// 検索処理を行う
-				
+				String tempq1 = request.getParameter("question1");
+				String tempq2 = request.getParameter("question2");
+				String tempq3 = request.getParameter("question3");
+				String tempq4 = request.getParameter("question4");
+				String tempq5 = request.getParameter("question5");
 				
 				// インスタンスを生成
-				MachQuestionsDao mqDao = new MachQuestionsDAO();
-				
-				List<String> mod_machList = mqDao.select(new select(a1, a2, a3, a4, a5));
-				request.setAttribute("cardList", cardList);
+				MachQuestionsDAO mqDao = new MachQuestionsDAO();				
+				List<String> machqlist = mqDao.select(q1, q2, q3, q4, q5);
+				request.setAttribute("machqList", machqlist);
+
 
 				// 登録する
-				if (mqDao.insert(new Mq(a1, a2, a3, a4, a5))) {
+				if (mqDao.insert(new mq(q1, q2, q3, q4, q5))) {
 					request.setAttribute("result",
 					new Result("登録成功", "レコードを1件登録しました。", "/C3/ModMachServlet"));
 				}
@@ -86,7 +84,7 @@ public class ModMachServlet extends HttpServlet {
 				
 				// 更新・削除する
 				if (request.getParameter("submit").equals("更新")) { //submitでOK？
-					if (mqDao.update(new Mq(a1, a2, a3, a4, a5))) {
+					if (mqDao.update(new Mq(q1, q2, q3, q4, q5))) {
 						request.setAttribute("result",
 						new Result("更新成功", "レコードを1件更新しました。", "/C3/ModMachServlet"));
 					}
