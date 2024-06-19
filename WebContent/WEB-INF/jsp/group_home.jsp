@@ -28,7 +28,7 @@
   <table border="1">
     <tr>
       <td><a href="C3/AddAnimalServlet">動物登録</a></td>
-      <td><a href="C3/AnimalServlet">動物一覧(更新・削除)</a></td>
+      <td><a href="C3/AnimalServlet">動物一覧<br>(更新・削除)</a></td>
       <td><a href="C3/ModCalendarServlet">カレンダー編集</a></td>
     </tr>
     <tr>
