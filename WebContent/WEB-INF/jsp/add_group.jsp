@@ -30,10 +30,10 @@
 
     <nav class="nav">
       <ul>
-        <li><a href="C3/GroupServlet">各団体</a></li>
-        <li><a href="C3/AnimalSearchServlet">動物検索</a></li>
-        <li><a href="C3/CalendarServlet">カレンダー</a></li>
-        <li><a href="C3/QASevlet">Q&amp;A</a></li>
+        <li><a href="/C3/GroupServlet">各団体</a></li>
+        <li><a href="/C3/AnimalSearchServlet">動物検索</a></li>
+        <li><a href="/C3/CalendarServlet">カレンダー</a></li>
+        <li><a href="/C3/QASevlet">Q&amp;A</a></li>
     </ul>
   </nav>
   <!-- ヘッダーここまで -->

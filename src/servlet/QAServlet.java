@@ -34,7 +34,7 @@ public class QAServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 				// 登録ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/qa.jsp");
 				dispatcher.forward(request, response);
 	}
 
@@ -47,7 +47,7 @@ public class QAServlet extends HttpServlet {
 			List<QAs> qaList = qasDao.select();
 			request.setAttribute("qaList", qaList);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/qa.jsp.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/qa.jsp");
 			dispatcher.forward(request, response);
 	}
 

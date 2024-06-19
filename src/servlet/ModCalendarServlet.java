@@ -37,8 +37,8 @@ public class ModCalendarServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -77,39 +77,39 @@ public class ModCalendarServlet extends HttpServlet {
 					if (EvDao.insert(new Events(0, event_name, eventDay, event_place, event_remarks, user_name))) {	// 登録成功
 					// 改造（ここまで）
 						request.setAttribute("result",
-								new Result("登録成功", "レコードを1件登録しました。", "/C3/CalendarServlet"));
+								new Result("登録成功", "レコードを1件登録しました。", "/C3/ModCalendarServlet"));
 					}
 					else {
 						request.setAttribute("result",
-								new Result("登録失敗", "レコードを登録できませんでした。", "/C3/CalendarServlet"));
+								new Result("登録失敗", "レコードを登録できませんでした。", "/C3/ModCalendarServlet"));
 					}
 				// 更新
 				}else if (request.getParameter("submit").equals("更新")) { // submitでOK?
 					if (EvDao.update(new Events(0, event_name, eventDay, event_place, event_remarks, user_name))) {	// 更新成功
 						request.setAttribute("result",
-						new Result("更新成功", "レコードを1件更新しました。", "/C3/CalendarServlet"));
+						new Result("更新成功", "レコードを1件更新しました。", "/C3/ModCalendarServlet"));
 					}
 					else {												// 更新失敗
 						request.setAttribute("result",
-						new Result("更新失敗しちゃいました…", "レコードを更新できませんでした。", "/C3/CalendarServlet"));
+						new Result("更新失敗しちゃいました…", "レコードを更新できませんでした。", "/C3/ModCalendarServlet"));
 					}
 				}
 				//削除
 				else {
 					if (EvDao.delete(Id)) {
 						request.setAttribute("result",
-						new Result("削除成功", "レコードを1件削除しました。", "/C3/CalendarServlet"));
+						new Result("削除成功", "レコードを1件削除しました。", "/C3/ModCalendarServlet"));
 					}
 					else {
 						request.setAttribute("result",
-						new Result("削除失敗", "レコードを削除できませんでした。", "/C3/CalendarServlet"));
+						new Result("削除失敗", "レコードを削除できませんでした。", "/C3/ModCalendarServlet"));
 					}
 				}
 
 
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
 				dispatcher.forward(request, response);
 				} catch (ParseException e) {
 				    e.printStackTrace();

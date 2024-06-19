@@ -30,8 +30,23 @@ public class GroupServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		/*RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/group.jsp");
+		dispatcher.forward(request, response);*/
+		request.setCharacterEncoding("UTF-8");
+		String user_id = request.getParameter("user_id");
+		String address = request.getParameter("address");
+		String phonenumber = request.getParameter("phonenumber");
+		String email = request.getParameter("email");
+		String remarks = request.getParameter("remarks");
+		UsersDAO uDao = new UsersDAO();
+		List<Users> organizationsList = uDao.is_organization( user_id, address, phonenumber,  email, remarks);
+
+		// 表示結果をリクエストスコープに格納する
+		request.setAttribute("organizationsList", organizationsList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/group.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -41,7 +56,7 @@ public class GroupServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 
-		doGet(request, response);
+		//doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
 		String user_id = request.getParameter("user_id");
 		String address = request.getParameter("address");
@@ -50,8 +65,12 @@ public class GroupServlet extends HttpServlet {
 		String remarks = request.getParameter("remarks");
 		UsersDAO uDao = new UsersDAO();
 		List<Users> organizationsList = uDao.is_organization( user_id, address, phonenumber,  email, remarks);
+
 		// 表示結果をリクエストスコープに格納する
 		request.setAttribute("organizationsList", organizationsList);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/group.jsp");
+		dispatcher.forward(request, response);
 
 	}
 

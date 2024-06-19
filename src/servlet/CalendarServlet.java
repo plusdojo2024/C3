@@ -37,7 +37,7 @@ public class CalendarServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/simpleBC/LoginServlet");
+			response.sendRedirect("/C3/CalenderServlet");
 			return;
 		}
 		// 登録ページにフォワードする
