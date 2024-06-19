@@ -21,7 +21,7 @@ public class IndividualsDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 					String sql = "SELECT * FROM Individuals WHERE user_name LIKE ? AND animal_id LIKE ? AND kind LIKE ? AND type LIKE ? AND gender LIKE ? AND "
@@ -122,7 +122,7 @@ public class IndividualsDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 					String sql = "SELECT * FROM Individuals WHERE user_name=? ORDER BY id";
@@ -300,7 +300,7 @@ public class IndividualsDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 				//お気に入り登録時
@@ -412,7 +412,7 @@ public class IndividualsDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 				String sql = "DELETE FROM Individuals WHERE id=?";

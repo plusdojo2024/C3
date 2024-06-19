@@ -9,11 +9,11 @@
 </head>
 <body>
 
- <c:if test="${empty cardList}">
+ <c:if test="${empty individualList}">
     <p>一致するデータはありません。</p>
   </c:if>
 
-  <c:forEach var="e" items="${cardList}" >
+  <c:forEach var="e" items="${individualList}" >
 
       写真
       所属団体<input type="checkbox" name="organization_name" value="${e.organization_name}"><br>

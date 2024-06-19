@@ -21,7 +21,7 @@ public class MachAnswersDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 					String sql = "SELECT animal_type, img FROM MachAnswers WHERE(a1=? AND a2=? AND a3=? AND a4=? AND a5=?)";

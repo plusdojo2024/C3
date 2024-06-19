@@ -25,7 +25,7 @@
   </div>
 </header>
 
- <c:forEach var="e" items="${cardList}" >
+ <c:forEach var="e" items="${individualList}" >
 
     <form method="post" action="/C/UpdateDeleteServlet">
       ※IDは、変更できません。<br>

@@ -21,7 +21,7 @@ import model.News;
 					Class.forName("org.h2.Driver");
 
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
 					String sql = "SELECT * FROM News ORDER BY id";
@@ -96,10 +96,10 @@ import model.News;
 					Class.forName("org.h2.Driver");
 
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM News WHERE  ORDER BY id";
+					String sql = "SELECT * FROM News ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					/*if (card.getNews_title() != null) {
@@ -171,7 +171,7 @@ import model.News;
 					Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 				String sql = "INSERT INTO News VALUES (Null, ?, Current_timestamp, ?, ?)";
@@ -240,7 +240,7 @@ import model.News;
 						Class.forName("org.h2.Driver");
 
 						// データベースに接続する
-						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 						// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 						String sql = "INSERT INTO News VALUES (Null, ?, ?, ?, ?)";
@@ -453,7 +453,7 @@ import model.News;
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 				String sql = "DELETE FROM News WHERE id=?";

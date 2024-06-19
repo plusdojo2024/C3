@@ -25,13 +25,13 @@
 <main class="group_manager_home">
   <table border="1">
     <tr>
-      <td><a href="C3/AddGroupServlet">団体登録</a></td>
-      <td><a href="C3/UpdateDeleteGroupServlet">団体更新・削除</a></td>
-      <td><a href="C3/ModMachServlet">相性診断編集</a></td>
+      <td><a href="/C3/AddGroupServlet">団体登録</a></td>
+      <td><a href="/C3/UpdateDeleteServlet">団体更新・削除</a></td>
+      <td><a href="/C3/ModMachServlet">相性診断編集</a></td>
     </tr>
     <tr>
-      <td><a href="C3/ModNewsServlet">お知らせ編集</a></td>
-      <td><a href="C3/ModQAServlet">Q&amp;A編集</a></td>
+      <td><a href="/C3/ModNewsServlet">お知らせ編集</a></td>
+      <td><a href="/C3/ModQAServlet">Q&amp;A編集</a></td>
     </tr>
   </table>
 </main>
