@@ -47,8 +47,8 @@
     const prevMonthBtn = document.getElementById('prevMonth');
     const nextMonthBtn = document.getElementById('nextMonth');
     let currentDisplayedMonth = currentMonth;
-    /* 
-    // 前の月に移動するメソッド
+ 
+    //ボタンをクリックしたら前の月に移動する処理
     prevMonthBtn.addEventListener('click', () => {
       currentDisplayedMonth--;
       if (currentDisplayedMonth < 0) {
@@ -58,7 +58,7 @@
       generateCalendar(currentYear, currentDisplayedMonth);
     });
 
-    // 次の月に移動するメソッド
+    // ボタンをクリックしたら次の月に移動するメソッド
     nextMonthBtn.addEventListener('click', () => {
       currentDisplayedMonth++;
       if (currentDisplayedMonth > 11) {
@@ -67,8 +67,9 @@
       }
       generateCalendar(currentYear, currentDisplayedMonth);
     });
-
-    // イベント情報をカレンダーに追加するメソッド
+	
+	/*
+    // イベント情報をカレンダーに追加する処理
     events.forEach(event => {
     	if (event.date.getFullYear() === year && event.date.getMonth() === month) {
       		const dayCell = calendarEl.querySelector(`td[data-date="${event.date.getDate()}"]`);
