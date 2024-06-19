@@ -18,10 +18,10 @@
   <!-- ヘッダー -->
   <header>
     <div class="home">
-      <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
+      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
   <div class="logout">
-      <a href="ManegerServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
+      <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
   </div>
     <nav class="nav">
       <ul>
@@ -36,16 +36,16 @@
   </header>
 <body>
 <main>
-  <h1>団体DM</h1>
+  <h1>ユーザーDM</h1>
    <form action="/C3/DmTalkServlet" method="get">
    <table class="dm">
       <tr>
         <td>
-  <input type="search" name="user_name" list="ユーザー名">
-  <datalist id="ユーザー名">
-    <option value="ひらちゃん">
-    <option value="いりちゃん">
-    <option value="水ちゃん">
+  <input type="search" name="user_name" list="団体名">
+  <datalist id="団体名">
+    <option value="保護団体A">
+    <option value="保護団体B">
+    <option value="保護団体C">
   </datalist>
   <input type="submit" value="DM">
       </td>

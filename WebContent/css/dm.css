@@ -98,53 +98,6 @@
   color: #663300;
   text-decoration: none;
 }
-/* すべてのページに適用 - メイン */
-.m { /*ログインフォームの位置*/
-   display: grid;
-   place-items: center; /* 水平方向と垂直方向に中央配置 */
-   margin-bottom:100px; /*フォーム下のマージン調整*/
-}
-.n { /*新規登録フォームの位置*/
-   display: grid;
-   place-items: center; /* 水平方向と垂直方向に中央配置 */
-   margin-bottom:100px; /*フォーム下のマージン調整*/
-
-}
-/*.home p-table {
-   /*display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-   margin: 0 auto;
-}*/
-
-.group_manager_home {
-   display: grid;
-   place-items: center; /* 水平方向と垂直方向に中央配置 */
-   margin-bottom:100px; /*フォーム下のマージン調整*/
-   text-align:center;
-   font-size: 3rem;
-   padding:30px;
-}
-
-.group_manager_home a:link {
-  color:#663300;
-  text-decoration: none; /* 下線を消す */
-}
-.group_manager_home a:hover {
-  color: #663300;
-    text-decoration: underline;
-}
-.group_manager_home a:visited {
-  color: #663300;
-}
-
-.group_manager_home table {
-	width: 90%;
-	height: 450px;
-	border-color:#996633;
-}
-
 main h1 {
     margin-bottom:10px;
     text-align:center;
@@ -163,113 +116,8 @@ main h2 {
     color: #663300;
     font-size:2rem;
 }
-
-.h1 {/*h1の枠線デザイン*/
-    margin-bottom:50px;
-    text-align:center;
-    border-bottom: 4px dashed #996633;
-    padding: 20px ;
-	padding-bottom:80px;
-	padding-right:100px;
-	padding-left:100px;
-    color:#663300;
-    font-size:1.7rem;
-	border-style: ridge ;/*ここから枠線のcss*/
-	border-width: 6px ;
-	border-color: #D2B48C;
-    border-top-left-radius :50px;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-}
-	/*h1枠線デザイン丸ver*/
-	/*border-style: dotted ;
-	padding: 10px ;
-	border-width: 5px ;
-	border-color: #663300*/
-.h2 {/*h1の枠線デザイン*/
-    margin-bottom:70px;
-    text-align:center;
-    border-bottom: 4px dashed #996633;
-    color:#663300;
-    font-size:1.7rem;
-	border-style: ridge ;/*ここから枠線のcss*/
-	padding: 20px ;
-	padding-bottom:80px;
-	padding-right:100px;
-	padding-left:100px;
-	border-width: 6px ;
-	border-color: #D2B48C;
-	border-top-left-radius :50px;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-	/*h1枠線デザイン丸ver*/
-	/*border-style: dotted ;
-	padding: 10px ;
-	border-width: 5px ;
-	border-color: #663300*/
-}
-/*画像の配置やマージン*/
-.login {
-  text-align:right;
-}
-.Add {
-  text-align:right;
-}
 .logout {
 	text-align:right;
-}
-.img {/*個人ホームの画像の配置*/
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-bottom:200px;
-   margin-top:200px;/*画像と背景の隙間調整*/
-   gap:200px;/*画像同士の隙間調整*/
-}
-.function {
-   float: right;
-
-}
-.mach {
-	text-align:right;
-}
-
-/*form*/
-form {
-  padding: 0px;
-  color:#663300;
-  text-align:center;
-}
-/*
-input[name=name] {
-  width: 16em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-*/
-input[name=user_password] {
-  width: 13em;
-  height: 30px;
-  text-align:center;
-  border-top-left-radius:20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-
-}
-input[name=user_id] {
-  width:13em;
-  height: 30px;
-  text-align:center;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-
 }
 input[type=submit], input[type=reset] {
   width: 6em;
@@ -280,64 +128,6 @@ input[type=submit], input[type=reset] {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
-/*
-input[name=number]{
-  width: 8em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-
-}
-*/
-input[name=user_name]{
-  width: 13em;
-  height: 30px;
-  text-align:center;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-
-}
-/*
-input[name=adress]{
-  width: 20em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-
-}
-
-
-input[name=phonenumber]{
-  width: 12em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-
-}
-
-input[name=email]{
-  width: 16em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-
-}
-
-input[name=remarks]{
-  width: 50em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-
-}*/
-
 /* すべてのページに適用 - フッター */
 .gotop {
     text-align: center;
@@ -349,24 +139,26 @@ input[name=remarks]{
     color: #FFFFFF;
     text-align: center;
 }
-
-/* 個別のスタイル */
-/* index.html */
-/* モバイル対応 */
-@media(max-width: 767px) {
-}
-/* エラーメッセージ */
-#error_message {
-  color: red;
-}
-/* 新規登録*/
-
-.user {
-    align-items: center;
-}
-
-.group_manager_home {
+form {
+  padding: 0px;
+  color:#663300;
   text-align:center;
-  font-size: 3rem;
-  padding:30px;
+  margin-bottom:100px;
+  margin-top:100px;
+}.dm { /*ログインフォームの位置*/
+   display: grid;
+   place-items: center; /* 水平方向と垂直方向に中央配置 */
+   margin-bottom:100px; /*フォーム下のマージン調整*/
+
+}
+input[name=user_name] {
+  margin-bottom:25px;
+  width:13em;
+  height: 30px;
+  text-align:center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
 }
