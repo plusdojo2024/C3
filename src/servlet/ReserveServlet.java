@@ -33,8 +33,8 @@ public class ReserveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -61,11 +61,11 @@ public class ReserveServlet extends HttpServlet {
 		request.setAttribute("rsvList", rsvList);
 
 		if(request.getParameter("submit").equals("承認")) {
-			
+
 		}
 
 	// 結果ページにフォワードする
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.reserve.jsp");
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
 	dispatcher.forward(request, response);
 
 	}

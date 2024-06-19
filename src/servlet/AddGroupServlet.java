@@ -57,17 +57,18 @@ public class AddGroupServlet extends HttpServlet {
 		// 改造（ここから）
 		if (bDao.insert1(id,pw,name,ad,phone,email,remarks)) {	// 登録成功
 			// 改造（ここまで）
-			request.setAttribute("result",new Result("", "登録しました。", ""));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/add_group.jsp");
-			dispatcher.forward(request, response);
+			request.setAttribute("result",
+					new Result("登録成功！", "レコードを登録しました。", "/C3/AddGroupServlet"));
 		}
 		else {												// 登録失敗
-			request.setAttribute("result",new Result("", "登録できませんでした。", ""));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/add_group.jsp");
-			dispatcher.forward(request, response);
+			request.setAttribute("result",
+					new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/AddAnimaiServlet"));
 		}
 
 		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		dispatcher.forward(request, response);
+
 
 	}
 }

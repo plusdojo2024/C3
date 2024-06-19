@@ -41,7 +41,7 @@ public class ModNewsServlet extends HttpServlet {
 					return;
 				}*/
 				// 登録ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_news.jsp");
 				dispatcher.forward(request, response);
 	}
 

@@ -41,7 +41,7 @@ public class GroupServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 
-		doGet(request, response);
+		//doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
 		String user_id = request.getParameter("user_id");
 		String address = request.getParameter("address");
@@ -52,6 +52,9 @@ public class GroupServlet extends HttpServlet {
 		List<Users> organizationsList = uDao.is_organization( user_id, address, phonenumber,  email, remarks);
 		// 表示結果をリクエストスコープに格納する
 		request.setAttribute("organizationsList", organizationsList);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/group.jsp");
+		dispatcher.forward(request, response);
 
 	}
 

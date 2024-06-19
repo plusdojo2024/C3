@@ -22,7 +22,7 @@ import model.Result;
 @WebServlet("/ModMachServlet")
 public class ModMachServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -45,18 +45,18 @@ public class ModMachServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_mach.jsp");
 		dispatcher.forward(request, response);
 		}
-	
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/C3/ManegerServlet");
 					return;
-				
+
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String tempq1 = request.getParameter("question1");
@@ -64,15 +64,15 @@ public class ModMachServlet extends HttpServlet {
 				String tempq3 = request.getParameter("question3");
 				String tempq4 = request.getParameter("question4");
 				String tempq5 = request.getParameter("question5");
-				
+
 				// インスタンスを生成
-				MachQuestionsDAO mqDao = new MachQuestionsDAO();				
+				MachQuestionsDAO mqDao = new MachQuestionsDAO();
 				List<String> machqlist = mqDao.select(q1, q2, q3, q4, q5);
 				request.setAttribute("machqList", machqlist);
 
 
 				// 登録する
-				if (mqDao.insert(new mq(q1, q2, q3, q4, q5))) {
+				if (mqDao.insert(new MachQuestions(q1, q2, q3, q4, q5))) {
 					request.setAttribute("result",
 					new Result("登録成功", "レコードを1件登録しました。", "/C3/ModMachServlet"));
 				}
@@ -80,8 +80,8 @@ public class ModMachServlet extends HttpServlet {
 					request.setAttribute("result",
 					new Result("登録失敗", "レコードを登録できませんでした。", "/C3/ModMuchServlet"));
 				}
-				
-				
+
+
 				// 更新・削除する
 				if (request.getParameter("submit").equals("更新")) { //submitでOK？
 					if (mqDao.update(new Mq(q1, q2, q3, q4, q5))) {
@@ -102,10 +102,10 @@ public class ModMachServlet extends HttpServlet {
 						request.setAttribute("result",
 						new Result("削除失敗", "レコードを削除できませんでした。", "/C3/ModMachServlet"));
 					}
-				
-				
+
+
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_mach.jsp");
 				dispatcher.forward(request, response);
-	
+
 }

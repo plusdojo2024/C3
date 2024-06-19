@@ -17,13 +17,13 @@ import model.Individuals;
  * Servlet implementation class AnimalSerachServlet
  */
 @WebServlet("/AnimalSerachServlet")
-public class AnimalSerachServlet extends HttpServlet {
+public class AnimalSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnimalSerachServlet() {
+    public AnimalSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

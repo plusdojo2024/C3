@@ -25,7 +25,10 @@ public class UpDateDeleteAnimalServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+		dispatcher.forward(request, response);
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
