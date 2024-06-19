@@ -25,7 +25,7 @@
 <main class="group_manager_home">
   <table border="1">
     <tr>
-      <td><a href="C3/AddGroupServlet">団体ユーザー・詳細登録</a></td>
+      <td><a href="C3/AddGroupServlet">団体登録</a></td>
       <td><a href="C3/UpdateDeleteGroupServlet">団体更新・削除</a></td>
       <td><a href="C3/ModMachServlet">相性診断編集</a></td>
     </tr>
