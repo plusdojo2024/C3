@@ -47,5 +47,13 @@
   </c:forEach>
 -->
 
+
+ <footer>
+    <div class="gotop">
+      <a href="#top"><img src="./img/images/nikukyu.png" alt="トップページへ戻る" width="60" height="60"></a>
+    </div>
+    <p class="copyright">&copy; dacho_group</p>
+  </footer>
+  <!-- フッターここまで -->
 </body>
 </html>

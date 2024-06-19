@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>動物検索</title>
-<link rel="stylesheet" href="/C3/css/style.css">
+  <meta charset="UTF-8">
+  <title>動物検索</title>
+  <link rel="stylesheet" href="/C3/css/style.css">
   <style>
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
@@ -23,30 +23,31 @@
     <table>
       <tr>
         <td>
-    <div class="login">
-      <a href="LoginServlet"><img src="./img/images/login.png" alt="ログイン" width="130" height="50"></a>
-  </div>
+          <div class="login">
+            <a href="LoginServlet"><img src="./img/images/login.png" alt="ログイン" width="130" height="50"></a>
+          </div>
         </td>
         <td>
-  <div class="Add">
-      <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="40"></a>
-  </div>
+          <div class="Add">
+            <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="40"></a>
+          </div>
         </td>
       </tr>
-  </table>
+    </table>
 
     <nav class="nav">
       <ul>
-        <li class="list1"><a href="C3/GroupServlet">各団体</a></li>
-        <li class="list2"><a href="C3/AnimalSearchServlet">動物検索</a></li>
-        <li class="list3"><a href="C3/CalendarServlet">カレンダー</a></li>
-        <li class="list4"><a href="C3/QASevlet">Q&amp;A</a></li>
-    </ul>
-  </nav>
+        <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
+        <li class="list2"><a href="/C3/AnimalSearchServlet">動物検索</a></li>
+        <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
+        <li class="list4"><a href="/C3/QASevlet">Q&amp;A</a></li>
+      </ul>
+    </nav>
   <!-- ヘッダーここまで -->
   </header>
 
   <form method="post" action="/C3/AnimalSearchServlet">
+    <main class="search">
     <table>
       <tr>
         <td>
@@ -67,7 +68,7 @@
       <tr>
         <td>
           <label>犬か猫か<br>
-          <input type="checkbox" name="animal" value="dog">犬<br>
+          <input type="checkbox" name="animal" value="dog">dog<br>
           <input type="checkbox" name="animal" value="cat">猫<br>
           </label>
         </td>
@@ -92,12 +93,12 @@
       </tr>
 
       <tr>
-        <td colspan="2">
+        <td>
           <input type="submit" id="search" name="submit" value="検索">
-          <span id="error_message"></span>
         </td>
       </tr>
     </table>
+    </main>
   </form>
 
    <!-- フッター -->
