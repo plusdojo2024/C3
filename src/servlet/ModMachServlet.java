@@ -59,20 +59,20 @@ public class ModMachServlet extends HttpServlet {
 				
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String tempq1 = request.getParameter("question1");
-				String tempq2 = request.getParameter("question2");
-				String tempq3 = request.getParameter("question3");
-				String tempq4 = request.getParameter("question4");
-				String tempq5 = request.getParameter("question5");
+				String q1 = request.getParameter("question1");
+				String q2 = request.getParameter("question2");
+				String q3 = request.getParameter("question3");
+				String q4 = request.getParameter("question4");
+				String q5 = request.getParameter("question5");
 				
 				// インスタンスを生成
 				MachQuestionsDAO mqDao = new MachQuestionsDAO();				
-				List<String> machqlist = mqDao.select(q1, q2, q3, q4, q5);
+				List<String> machqlist = mqDao.select(new MachQuestions(q1, q2, q3, q4, q5));
 				request.setAttribute("machqList", machqlist);
 
 
 				// 登録する
-				if (mqDao.insert(new mq(q1, q2, q3, q4, q5))) {
+				if (mqDao.insert(new MachQuestions(q1, q2, q3, q4, q5))) {
 					request.setAttribute("result",
 					new Result("登録成功", "レコードを1件登録しました。", "/C3/ModMachServlet"));
 				}
@@ -84,7 +84,7 @@ public class ModMachServlet extends HttpServlet {
 				
 				// 更新・削除する
 				if (request.getParameter("submit").equals("更新")) { //submitでOK？
-					if (mqDao.update(new Mq(q1, q2, q3, q4, q5))) {
+					if (mqDao.update(new MachQuestions(q1, q2, q3, q4, q5))) {
 						request.setAttribute("result",
 						new Result("更新成功", "レコードを1件更新しました。", "/C3/ModMachServlet"));
 					}
@@ -94,8 +94,8 @@ public class ModMachServlet extends HttpServlet {
 					}
 				}
 				else {
-					if (mqDao.delete(id)) {
-						request.setAttribute("result",
+					if (mqDao.delete()) {
+						request.setAttributte("result",
 						new Result("削除成功", "レコードを1件削除しました。", "/C3/ModMachServlet"));
 					}
 					else {
