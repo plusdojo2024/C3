@@ -82,7 +82,7 @@ public class CalendarServlet extends HttpServlet {
 		EventsDAO EvDao = new EventsDAO();
 		
 		// 登録
-		if (EvDao.insert(new Ev(0, event_name, event_day, event_place, event_remarks, user_name))) {	// 登録成功
+		if (EvDao.insert(new Ev(0, event_name, event_day, event_place, event_remarks, user_name))) {
 			// 改造（ここまで）
 			request.setAttribute("result",
 			new Result("登録成功", "レコードを1件登録しました。", "/C3/CalendarServlet"));
@@ -95,7 +95,7 @@ public class CalendarServlet extends HttpServlet {
 		
 		// 更新と削除
 		if (request.getParameter("submit").equals("更新")) { // submitでOK?
-			if (EvDao.update(new Ev(0, event_name, event_day, event_place, event_remarks, user_name))) {	// 更新成功
+			if (EvDao.update(new Ev(0, event_name, event_day, event_place, event_remarks, user_name))) {
 				request.setAttribute("result",
 				new Result("更新成功", "レコードを1件更新しました。", "/C3/CalendarServlet"));
 			}
