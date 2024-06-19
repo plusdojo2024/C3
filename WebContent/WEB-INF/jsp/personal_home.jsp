@@ -26,35 +26,23 @@
   </div>
    <nav class="nav">
       <ul>
-        <li class="list1"><a href="C3/GroupServlet">各団体</a></li>
-        <li class="list2"><a href="C3/AnimalSearchServlet">動物検索</a></li>
-        <li class="list3"><a href="C3/CalendarServlet">カレンダー</a></li>
-        <li class="list4"><a href="C3/QASevlet">Q&amp;A</a></li>
-        <li class="list5"><a href="C3/QASevlet">DM</a></li>
+        <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
+        <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
+        <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
+        <li class="list4"><a href="/C3/QASevlet">Q&amp;A</a></li>
+        <li class="list5"><a href="/C3/DMServlet">DM</a></li>
     </ul>
   </nav>
 </header>
 
   <main class="home p">
-  <table>
-    <tr>
-      <td>
-  <div class="diary">
-      <a href="DiaryServlet"><img src="./img/images/diary.png" alt="" width="250" height="250"></a>
-   </div>
-      </td>
-      <td>
-   <div class="visit">
-      <a href="VisitServlet"><img src="./img/images/visit.png" alt="" width="220" height="240"></a>
-   </div>
-      </td>
-      <td>
-  <div class="mach">
-      <a href="MachServlet"><img src="./img/images/mach.png" alt="" width="250" height="250"></a>
-   </div>
-      </td>
-      </tr>
-   </table>
+  <h1>ユーザーホーム</h1>
+
+  <div class="img">
+      <a href="DiaryServlet"><img src="./img/images/diary.png" alt="" width="300" height="300"></a>
+      <a href="VisitServlet"><img src="./img/images/visit.png" alt="" width="270" height="290"></a>
+      <a href="MachServlet"><img src="./img/images/mach.png" alt="" width="300" height="300"></a>
+  </div>
   </main>
   <!-- フッター -->
   <footer>
