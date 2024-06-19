@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ユーザーホームページ</title>
+  <title>日記詳細</title>
   <link rel="stylesheet" href="/C3/css/style.css">
   <style>
     body {
@@ -25,10 +25,10 @@
   </div>
     <nav class="nav">
       <ul>
-        <li class="list1"><a href="C3/GroupServlet">各団体</a></li>
-        <li class="list2"><a href="C3/AnimalSearchServlet">動物検索</a></li>
-        <li class="list3"><a href="C3/CalendarServlet">カレンダー</a></li>
-        <li class="list4"><a href="C3/QASevlet">Q&amp;A</a></li>
+        <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
+        <li class="list2"><a href="/C3/AnimalSearchServlet">動物検索</a></li>
+        <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
+        <li class="list4"><a href="/C3/QASevlet">Q&amp;A</a></li>
     </ul>
   </nav>
   <!-- ヘッダーここまで -->

@@ -135,6 +135,9 @@
   color: #663300;
     text-decoration: underline;
 }
+.group_manager_home a:visited {
+  color: #663300;
+}
 
 .group_manager_home table {
 	width: 90%;
