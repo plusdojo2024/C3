@@ -69,7 +69,7 @@ public class EventsDAO {
 			return cardList;
 		}
 	//譲渡会名をプルダウン形式で表示
-	public List<Events> selectPd(Events card) {
+	public List<Events> selectPd() {
 		Connection conn = null;
 		List<Events> cardList = new ArrayList<Events>();
 
