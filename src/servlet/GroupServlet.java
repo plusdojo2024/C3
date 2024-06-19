@@ -23,19 +23,15 @@ public class GroupServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GroupServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/group.jsp");
 		dispatcher.forward(request, response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
