@@ -129,9 +129,12 @@ public class MachQuestionsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
-			// SQL文を準備する
 
-			if (qnum==1) {
+				// SQL文を実行する
+				if (pStmt.executeUpdate() == 1) {
+					result = true;
+				}
+			else if (qnum==1) {
 				String sql = "UPDATE MachQuestions SET q1=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 

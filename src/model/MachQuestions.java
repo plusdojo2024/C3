@@ -2,7 +2,6 @@ package model;
 import java.io.Serializable;
 
 public class MachQuestions implements Serializable {
-  private int id;
   private String q1;
   private String q2;
   private String q3;
@@ -13,21 +12,14 @@ public class MachQuestions implements Serializable {
 
   }
   //引数があるコンストラクタ
-  public MachQuestions(int id, String q1, String q2, String q3, String q4, String q5){
+  public MachQuestions( String q1, String q2, String q3, String q4, String q5){
     super();
-       this.id = id;
        this.q1 = q1;
        this.q2 = q2;
        this.q3 = q3;
        this.q4 = q4;
        this.q5 = q5;
   }
-public int setId(int id) {
-	this.id = id;
-}
-public int getid() {
-	return id;
-}
 public void setQ1(String q1) {
 	this.q1 = q1;
 }

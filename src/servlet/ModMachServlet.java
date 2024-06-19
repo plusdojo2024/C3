@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import dao.MachAnswersDAO;
 import dao.MachQuestionsDAO;
+import dao.QasDAO;
 import model.MachQuestions;
+import model.QAs;
 import model.Result;
 
 /**
@@ -57,55 +59,53 @@ public class ModMachServlet extends HttpServlet {
 					response.sendRedirect("/C3/ManegerServlet");
 					return;
 				
-				// リクエストパラメータを取得する
-				request.setCharacterEncoding("UTF-8");
-				String q1 = request.getParameter("question1");
-				String q2 = request.getParameter("question2");
-				String q3 = request.getParameter("question3");
-				String q4 = request.getParameter("question4");
-				String q5 = request.getParameter("question5");
-				
-				// インスタンスを生成
-				MachQuestionsDAO mqDao = new MachQuestionsDAO();				
-				List<String> machqlist = mqDao.select(new MachQuestions(q1, q2, q3, q4, q5));
-				request.setAttribute("machqList", machqlist);
+					// リクエストパラメータを取得する
+					request.setCharacterEncoding("UTF-8");
+					String  tempqasId = request.getParameter("id");
+					int qasId = Integer.parseInt(tempqasId);
+					String question = request.getParameter("question");
+					String answer = request.getParameter("answer");
+
+					MachQuestionsDAO mqDao = new MachQuestionsDAO();
 
 
-				// 登録する
-				if (mqDao.insert(new MachQuestions(q1, q2, q3, q4, q5))) {
-					request.setAttribute("result",
-					new Result("登録成功", "レコードを1件登録しました。", "/C3/ModMachServlet"));
-				}
-				else {
-					request.setAttribute("result",
-					new Result("登録失敗", "レコードを登録できませんでした。", "/C3/ModMuchServlet"));
-				}
-				
-				
-				// 更新・削除する
-				if (request.getParameter("submit").equals("更新")) { //submitでOK？
-					if (mqDao.update(new MachQuestions(q1, q2, q3, q4, q5))) {
-						request.setAttribute("result",
-						new Result("更新成功", "レコードを1件更新しました。", "/C3/ModMachServlet"));
+					if(request.getParameter("submit").equals("登録")) {
+						if (mqDao.insert(new MachQuestions(0, question, answer))) {	// 登録成功
+							request.setAttribute("result",
+							new Result("登録成功！", "レコードを登録しました。", "/C3/ModQAServlet"));
+						}
+						else {												// 登録失敗
+							request.setAttribute("result",
+							new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/ModQAServlet"));
+						}
+					}
+					else if (request.getParameter("submit").equals("更新")) {
+						// ここを改造する
+						if (mqDao.update(new QAs(qasId, question, answer))) {	// 登録成功
+							request.setAttribute("result",
+							new Result("更新成功！", "レコードを更新しました。", "/C3/ModQAServlet"));
+						}
+						else {												// 登録失敗
+							request.setAttribute("result",
+							new Result("更新失敗！", "レコードを更新できませんでした。", "/C3/ModQAServlet"));
+						}
 					}
 					else {
-						request.setAttribute("result",
-						new Result("更新失敗", "レコードを更新できませんでした。", "/C3/ModMachServlet"));
+
+						if(mqDao.delete(qasId)) {
+							request.setAttribute("result",
+									new Result("削除成功！", "レコードを削除しました。", "/C3/ModQAServlet"));
+						}
+						else {												// 登録失敗
+							request.setAttribute("result",
+							new Result("削除失敗！", "レコードを削除できませんでした。", "/C3/ModQAServlet"));
+						}
 					}
-				}
-				else {
-					if (mqDao.delete()) {
-						request.setAttributte("result",
-						new Result("削除成功", "レコードを1件削除しました。", "/C3/ModMachServlet"));
-					}
-					else {
-						request.setAttribute("result",
-						new Result("削除失敗", "レコードを削除できませんでした。", "/C3/ModMachServlet"));
-					}
-				
-				
-				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_mach.jsp");
-				dispatcher.forward(request, response);
-	
-}
+
+					// 結果ページにフォワードする
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+					dispatcher.forward(request, response);
+
+		}
+
+	}
