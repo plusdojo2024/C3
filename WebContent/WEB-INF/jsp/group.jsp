@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -47,12 +48,16 @@
   <!-- ヘッダーここまで -->
   </header>
 <body>
-    <form action="/C3/GroupServlet" method="post">
-        <input type="hidden" name="user_id" value="user_id" ><br>
-        <input type="hidden" name="address" value="address" ><br>
-        <input type="hidden" name="phonenumber" value="phonenumber" ><br>
-        <input type="hidden" name="email" value="email" ><br>
-        <input type="hidden" name="remarks" value="remarks" ><br>
-    </form>
+
+<c:forEach var="e" items="${organizationsList}" >
+  <form action="/C3/GroupServlet" method="post" name="a">
+    <a href="/C3/Servlet" onclick="document.a.submit();">user_id<br>
+     address<br>phonenumber<br>email<br>remarks<input type="hidden" value="user_id"></a>
+  </form>
+</c:forEach>
+
+
+
+
 </body>
 </html>
