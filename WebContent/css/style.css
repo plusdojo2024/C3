@@ -118,6 +118,33 @@
    margin: 0 auto;
 }*/
 
+.group_manager_home {
+   display: grid;
+   place-items: center; /* 水平方向と垂直方向に中央配置 */
+   margin-bottom:100px; /*フォーム下のマージン調整*/
+   text-align:center;
+   font-size: 3rem;
+   padding:30px;
+}
+
+.group_manager_home a:link {
+  color:#663300;
+  text-decoration: none; /* 下線を消す */
+}
+.group_manager_home a:hover {
+  color: #663300;
+    text-decoration: underline;
+}
+.group_manager_home a:visited {
+  color: #663300;
+}
+
+.group_manager_home table {
+	width: 90%;
+	height: 450px;
+	border-color:#996633;
+}
+
 main h1 {
     margin-bottom:10px;
     text-align:center;
