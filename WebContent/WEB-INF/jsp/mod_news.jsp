@@ -32,7 +32,8 @@
 
 <form method="post" action="/C3/ModNewsServlet">
   <select>
-    <option value="1">題名</option>
+    <option value="題名1">題名</option>
+    <option value="題名２">題名２</option>
   </select><br>
   <input type="text" name="news_title" placeholder="題名"><br>
   <textarea cols="60" rows="10" placeholder="内容"></textarea><br>
