@@ -68,7 +68,7 @@
       <tr>
         <td>
           <label>犬か猫か<br>
-          <input type="checkbox" name="animal" value="dog">dog<br>
+          <input type="checkbox" name="animal" value="dog">犬<br>
           <input type="checkbox" name="animal" value="cat">猫<br>
           </label>
         </td>
