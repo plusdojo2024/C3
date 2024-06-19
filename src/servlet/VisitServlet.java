@@ -44,7 +44,7 @@ public class VisitServlet extends HttpServlet {
 			return;
 		}
 		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/visit.jsp");
 		dispatcher.forward(request, response);
 }
 

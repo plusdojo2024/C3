@@ -108,26 +108,16 @@
    display: grid;
    place-items: center; /* 水平方向と垂直方向に中央配置 */
    margin-bottom:100px; /*フォーム下のマージン調整*/
-}
-.group_manager_home {
-   display: grid;
-   place-items: center; /* 水平方向と垂直方向に中央配置 */
-   margin-bottom:100px; /*フォーム下のマージン調整*/
-   text-align:center;
-   font-size: 3rem;
-   padding:30px;
-}
 
-.group_manager_home a:link {
-  color:#663300;
-  text-decoration: none; /* 下線を消す */
 }
+/*.home p-table {
+   /*display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0 auto;
+}*/
 
-.group_manager_home table {
-	width: 90%;
-	height: 450px;
-	border-color:#996633;
-}
 main h1 {
     margin-bottom:10px;
     text-align:center;
@@ -203,17 +193,13 @@ main h2 {
 .logout {
 	text-align:right;
 }
-.mach {
-	margin-bottom:20px;
-	text-align:right;
-}
-.visit {
-	margin-bottom:0px;
-	text-align:center;
-}
-.diary {
-	margin-bottom:0px;
-	text-align:left;
+.img {/*個人ホームの画像の配置*/
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom:200px;
+   margin-top:200px;/*画像と背景の隙間調整*/
+   gap:200px;/*画像同士の隙間調整*/
 }
 .function {
    float: right;
@@ -350,3 +336,8 @@ input[name=remarks]{
     align-items: center;
 }
 
+.group_manager_home {
+  text-align:center;
+  font-size: 3rem;
+  padding:30px;
+}
