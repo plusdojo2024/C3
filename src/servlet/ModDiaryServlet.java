@@ -37,11 +37,11 @@ public class ModDiaryServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/simpleBC/LoginServlet");
+					response.sendRedirect("/C3/LoginServlet");
 					return;
 				}
 				// 登録ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_diary.jsp");
 				dispatcher.forward(request, response);
 	}
 
@@ -52,7 +52,7 @@ public class ModDiaryServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/simpleBC/LoginServlet");
+					response.sendRedirect("/C3/LoginServlet");
 					return;
 				}
 
