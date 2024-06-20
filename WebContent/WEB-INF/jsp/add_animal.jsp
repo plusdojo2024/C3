@@ -48,9 +48,10 @@
           </label>
         </td>
         <td>
-          <label>犬か猫か<br>
-          <input type="radio" name="kind">
-          </label>
+         <label>犬か猫か<br>
+           <input type="checkbox" name="animal" value="dog">犬<br>
+           <input type="checkbox" name="animal" value="cat">猫<br>
+         </label>
         </td>
       </tr>
       <tr>
@@ -61,7 +62,8 @@
         </td>
         <td>
           <label>性別<br>
-          <input type="radio" name="gender">
+            <input type="radio" name="gender" value="male">オス<br>
+            <input type="radio" name="gender" value="female">メス<br>
           </label>
         </td>
        </tr>
@@ -85,7 +87,8 @@
         </td>
         <td>
           <label>去勢手術の有無<br>
-          <input type="radio" name="is_castration">
+          <input type="radio" name="is_castration" value="do">有<br>
+          <input type="radio" name="is_castration" value="not">無<br>
           </label>
         </td>
       </tr>
