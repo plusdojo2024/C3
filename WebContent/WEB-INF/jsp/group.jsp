@@ -51,8 +51,8 @@
 
 <c:forEach var="e" items="${organizationsList}" >
   <form action="/C3/GroupServlet" method="post" name="a">
-    <a href="/C3/Servlet" onclick="document.a.submit();">user_id<br>
-     address<br>phonenumber<br>email<br>remarks<input type="hidden" value="user_id"></a>
+    <a href="/C3/Servlet" onclick="document.a.submit();">${e.user_id}<br>
+     ${e.address}<br>${e.phone_number}<br>${e.emails}<br>${e.remarks}<input type="hidden" value="${user_id}"></a>
   </form>
 </c:forEach>
 
