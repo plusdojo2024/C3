@@ -29,7 +29,7 @@
         <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
         <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
         <li class="list4"><a href="/C3/QASersvlet">Q&amp;A</a></li>
-        <li class="list5"><a href="/C3/DmServlet">DM</a></li>
+        <li class="list5"><a href="/C3/DmPersonalServlet">DM</a></li>
     </ul>
   </nav>
   <!-- ヘッダーここまで -->
