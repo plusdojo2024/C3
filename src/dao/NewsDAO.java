@@ -88,7 +88,7 @@ import model.News;
 			}
 
 			// 管理者お知らせ検索
-		/*	public List<News> select1() {
+			public List<News> select1() {
 				Connection conn = null;
 				List<News> cardList = new ArrayList<News>();
 
@@ -120,7 +120,7 @@ import model.News;
 					}
 					else {
 						pStmt.setString(3, "%");
-					}
+					}*/
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
@@ -160,7 +160,7 @@ import model.News;
 
 					// 結果を返す
 					return cardList;
-			}*/
+			}
 
 			//団体お知らせ登録
 			public boolean insert(News card) {
