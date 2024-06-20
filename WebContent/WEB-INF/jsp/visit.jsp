@@ -38,7 +38,7 @@
 
 <form method="post" action="/C3/VisitServlet">
   <label>所属団体<br>
-    <select>
+    <select name="org" id="org">
       <option value="A">A</option>
       <option value="B">B</option>
       <option value="C">C</option>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -52,11 +53,10 @@
       <tr>
         <td>
           <label>所属団体<br>
-          <select>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-          </select>
+            <select>
+              <c:forEach var="e" items="${organizationsList}" >
+              <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+            </select>
           </label>
         </td>
         <td>
