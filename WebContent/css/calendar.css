@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/* すべてのページに適用 - ヘッダー */
+main h1 {
+    margin-bottom:10px;
+    text-align:center;
+    border-bottom: 4px dashed #996633;
+    padding:0 0 5px 0;
+    color:#663300;
+    font-size:1.8rem;
+
+}
+.nav ul {
+  margin-bottom:100px;
+  padding: 0;
+  text-decoration: none; /* 下線を消す */
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  font-size: 1.2rem;
+}
+.nav a:link {
+  color:#663300;
+  text-decoration: none; /* 下線を消す */
+}
+.nav a:visited {
+  color: #663300;
+}
+.nav a:hover {
+  color: #663300;
+  text-decoration: underline;
+}
+.nav a:active {
+  color: #663300;
+  text-decoration: none;
+}
+main h1 {
+    margin-bottom:10px;
+    text-align:center;
+    border-bottom: 4px dashed #996633;
+    padding:0 0 5px 0;
+    color:#663300;
+    font-size:1.8rem;
+}
+main h2 {
+    margin-bottom:10px;
+    text-align:center;
+    border-bottom: 4px dashed #996633;
+    padding: 0 0 5px 0;
+    color: #663300;
+    font-size:2rem;
+}
+.logout {
+	text-align:right;
+}
+/* すべてのページに適用 - フッター */
+.gotop {
+    text-align: center;
+}
+.copyright {
+    padding-top:40px;
+    padding-bottom: 40px;
+    background-color: #D2B48C;
+    color: #FFFFFF;
+    text-align: center;
+}
+form {
+  padding: 0px;
+  color:#663300;
+  text-align:center;
+  margin-bottom:100px;
+  margin-top:100px;
+}
+td, th {
+padding: 50px 50px; /* 余白 */
+border:1px black solid; /* 罫線 */
+}
+.button_center{
+	text-align:center;
+}
