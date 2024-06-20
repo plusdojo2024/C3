@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>カレンダー</title>
- <link rel="stylesheet" href="/C3/css/style.css">
+ <link rel="stylesheet" href="/C3/css/calendar.css">
 <style >
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
@@ -50,10 +50,11 @@
   <h1>カレンダー</h1>
   </main>
   <body>
-
+    <div class="button_center">
+  	  <input type="button" id = "prevMonth" value="前の月" >
+  	  <input type="button" id = "nextMonth" value="次の月" >
+  	</div>
 	<div id="calendar"></div>
-	<input type="button" id = "prevMonth" value="前の月" >
-  	<input type="button" id = "nextMonth" value="次の月" >
 	<!-- <input type="button" value="カレンダーを表示する" onClick=""> -->
 	<script>
 	
@@ -82,6 +83,12 @@
 			  },
 			];
 	    </c:forEach>
+	    
+	    $(function() {
+	        $(".function").click(function() {
+	          $(".1").slideToggle("");
+	      });
+	        });
 	</script>
     <script src="/C3/js/calendar.js"></script>
   </body>
