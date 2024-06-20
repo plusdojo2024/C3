@@ -20,7 +20,7 @@
 
     // カレンダー生成処理
     function generateCalendar(year, month) {
-    	let calendarHtml = '<table><thead><tr>';
+    	let calendarHtml = '<table class="day_of_week"><thead class="day_of_week_thead"><tr>';
     	for (let i = 0; i < 7; i++) {
     	  calendarHtml += `<th>${['日', '月', '火', '水', '木', '金', '土'][i]}</th>`;
     	}

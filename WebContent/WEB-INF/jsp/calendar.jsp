@@ -42,8 +42,6 @@
       </tr>
   </table>
 
-
-
     <nav class="nav">
       <ul>
         <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
@@ -81,8 +79,6 @@
 			    event_remarks:'備考：${e.event_remarks}',
 			    user_name:'団体名：${e.user_name}'
 			  },
-			  <div class="function">
-			    <img src="./img/images/function.png" alt="" width="60" height="60">
 			  {
 				date: new Date(2024, 5, 15),
 				event_name: '${e.event_name}',
@@ -98,12 +94,7 @@
 			  },
 			];
 	    </c:forEach>
-// 1の場所まで戻る
-	    $(function() {
-	        $(".function").click(function() {
-	          $(".1").slideToggle("");
-	      });
-	        });
+
 	</script>
     <script src="/C3/js/calendar.js"></script>
   </body>
@@ -121,4 +112,3 @@
 
   </body>
 </html>
-

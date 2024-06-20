@@ -72,10 +72,14 @@ form {
   margin-bottom:100px;
   margin-top:100px;
 }
-td, th {
-padding: 50px 50px; /* 余白 */
-border:1px black solid; /* 罫線 */
+.day_of_week { /* カレンダー大枠 */
+  padding: 200px 200px; /* 余白 */
+  border:1px brown solid; /* 罫線 */
 }
 .button_center{
-	text-align:center;
+  text-align:center;
+}
+.day_of_week_thead { /* 曜日の行 */
+  padding: 10px 10px;
+  border:1px brown solid;
 }
