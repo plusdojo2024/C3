@@ -12,7 +12,7 @@ import model.MachQuestions;
 
 public class MachQuestionsDAO {
 	//診断テストのQuestionsを５つ表示
-	public List<MachQuestions> select(MachQuestions card) {
+	public List<MachQuestions> select() {
 		Connection conn = null;
 		List<MachQuestions> cardList = new ArrayList<MachQuestions>();
 

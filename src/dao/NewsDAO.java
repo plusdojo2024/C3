@@ -12,7 +12,7 @@ import model.News;
 
 	public class NewsDAO {
 			// 団体お知らせ検索
-			public List<News> select() {
+			public List<News> select(int id) {
 				Connection conn = null;
 				List<News> cardList = new ArrayList<News>();
 
@@ -24,7 +24,7 @@ import model.News;
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM News ORDER BY id";
+					String sql = "SELECT * FROM News WHERE user_id=? ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					/*if (card.getNews_title() != null) {
