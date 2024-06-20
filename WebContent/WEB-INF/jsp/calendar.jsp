@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>カレンダー</title>
+ <link rel="stylesheet" href="/C3/css/style.css">
 <style>
-  <link rel="stylesheet" href="/C3/css/style.css">
+    body {
+      background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
+      font-weight: bold; /* または数値 (100 - 900) */
+    }
 </style>
 </head>
 <body id ="top">
