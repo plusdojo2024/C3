@@ -26,8 +26,9 @@
   <form action="DmTalkServlet" method="post">
   <label for="message">メッセージ:</label><br>
         <textarea id="dm_detail" name="dm_detail" rows="4" cols="50" required></textarea><br>
+        <input type="hidden" value="${yourId}" name="yourId2">
 
-        <input type="submit" value="送信">
+        <input type="submit" value="送信" name="DM1">
     </form>
   </main>
 </body>
