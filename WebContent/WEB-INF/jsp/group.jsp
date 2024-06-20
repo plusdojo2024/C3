@@ -43,12 +43,11 @@
         <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
         <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
         <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
-<<<<<<< HEAD
+
     <c:if test="${not empty id}">
         <li class="list5"><a href="/C3/DmPersonalServlet">DM</a></li>
     </c:if>
-=======
->>>>>>> 3b9d292fe12eda215a1f4074ab2d6e359c59a9a9
+
     </ul>
   </nav>
   <!-- ヘッダーここまで -->

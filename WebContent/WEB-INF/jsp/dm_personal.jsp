@@ -17,7 +17,7 @@
 <body id="top">
   <!-- ヘッダー -->
   <header>
-<<<<<<< HEAD
+
     <c:if test="${empty id}"><div class="home">
       <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
     </div></c:if>
@@ -28,14 +28,7 @@
     <c:if test="${not empty id}">  <div class="logout">
     <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
     </div></c:if>
-=======
-    <div class="home">
-      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
-    </div>
-  <div class="logout">
-      <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
-  </div>
->>>>>>> 3b9d292fe12eda215a1f4074ab2d6e359c59a9a9
+
     <nav class="nav">
       <ul>
         <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>

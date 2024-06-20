@@ -41,7 +41,7 @@ public class DetailGroupServlet extends HttpServlet {
 				int organizationId = Integer.parseInt(tempId);
 
 				NewsDAO nDao = new NewsDAO();
-				List<News> newsList = nDao.select(id);
+				List<News> newsList = nDao.select(organizationId);
 				request.setAttribute("newsList", newsList);
 
 				IndividualsDAO iDao = new IndividualsDAO();
