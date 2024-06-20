@@ -49,10 +49,37 @@
 	<div id="calendar"></div>
 	<input type="button" id = "prevMonth" value="前の月" >
   	<input type="button" id = "nextMonth" value="次の月" >
-	<input type="button" value="カレンダーを表示する" onClick="">
-    <script src="/C3/js/calendar.js">
-    
-    </script>
+	<!-- <input type="button" value="カレンダーを表示する" onClick=""> -->
+	<input type="button" id ="addEvents" value="イベントを表示">
+	<script>
+	    const events = [
+			  {
+			    date: new Date(2024, 5, 5),
+			    event_name: '第1回「ローズガーデン：譲渡会」',
+			    event_day:
+			    event_place:''
+			    event_remarks:''
+			    user_name:'ローズガーデン'
+			  },
+			  {
+			    date: new Date(2024, 5, 15),
+			    title: 'イベント2',
+			  },
+			  {
+			    date: new Date(2024, 4, 15),
+			    title: 'イベント3',
+			  },
+			];
+	    
+	    <% List<String>  evlist =
+	    		(List<String>)request.getAttribute("evlist"); %>
+	    		
+	    		<p>テーブルに登録されている譲渡会一覧</p>
+	    		<% for(String event_name: evlist) { %>
+	    		<%= event_name %><br>
+	    		<% } %>
+	</script>
+    <script src="/C3/js/calendar.js"></script>
   </body>
   <!-- メインここまで -->
   
