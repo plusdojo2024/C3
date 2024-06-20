@@ -34,6 +34,20 @@ public class DetailGroupServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// リクエストパラメータを取得する
+				request.setCharacterEncoding("UTF-8");
+				String tempId = request.getParameter("id");
+				int organizationId = Integer.parseInt(tempId);
+
+				NewsDAO nDao = new NewsDAO();
+				List<News> newsList = nDao.select1();
+				request.setAttribute("newsList", newsList);
+
+				IndividualsDAO iDao = new IndividualsDAO();
+				List<Individuals> individualList = iDao.select1(organizationId);
+				request.setAttribute("individualList", individualList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/add_animal.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -43,18 +57,7 @@ public class DetailGroupServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String tempId = request.getParameter("id");
-		int organizationId = Integer.parseInt(tempId);
 
-		NewsDAO nDao = new NewsDAO();
-		List<News> newsList = nDao.select1();
-		request.setAttribute("newsList", newsList);
-
-		IndividualsDAO iDao = new IndividualsDAO();
-		List<Individuals> individualList = iDao.select1(organizationId);
-		request.setAttribute("individualList", individualList);
 	}
 
 }

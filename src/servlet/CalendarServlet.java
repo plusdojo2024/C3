@@ -40,6 +40,15 @@ public class CalendarServlet extends HttpServlet {
 			response.sendRedirect("/C3/CalenderServlet");
 			return;
 		}
+		// リクエストパラメータを取得する
+				request.setCharacterEncoding("UTF-8");
+
+				EventsDAO evDao = new EventsDAO();
+				ReservationsDAO rsvDao = new ReservationsDAO();
+				List<Reservations> rsvList = rsvDao.select1();
+				request.setAttribute("rsvList", rsvList);
+				List<Events> evList = evDao.selectPd();
+				request.setAttribute("evList", evList);
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 		dispatcher.forward(request, response);
@@ -57,15 +66,7 @@ public class CalendarServlet extends HttpServlet {
 			return;
 		}
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
 
-		EventsDAO evDao = new EventsDAO();
-		ReservationsDAO rsvDao = new ReservationsDAO();
-		List<Reservations> rsvList = rsvDao.select1();
-		request.setAttribute("rsvList", rsvList);
-		List<Events> evList = evDao.selectPd();
-		request.setAttribute("evList", evList);
 
 
 	}
