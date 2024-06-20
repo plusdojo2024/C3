@@ -41,7 +41,9 @@ public class ModNewsServlet extends HttpServlet {
 					return;
 				}*/
 		NewsDAO nDao = new NewsDAO();
-		List<News> newsList = nDao.select1();
+		HttpSession session = request.getSession();
+		String myId = (String)session.getAttribute("id");
+		List<News> newsList = nDao.select(myId);
 		request.setAttribute("newsList", newsList);
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_news.jsp");
@@ -69,7 +71,7 @@ public class ModNewsServlet extends HttpServlet {
 
 				NewsDAO nDao = new NewsDAO();
 
-				List<News> nList = nDao.select1();
+				List<News> nList = nDao.select(myId);
 				request.setAttribute("nList", nList);
 
 

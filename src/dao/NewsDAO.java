@@ -12,7 +12,7 @@ import model.News;
 
 	public class NewsDAO {
 			// 団体お知らせ検索
-			public List<News> select(int id) {
+			public List<News> select(String id) {
 				Connection conn = null;
 				List<News> cardList = new ArrayList<News>();
 
@@ -27,6 +27,7 @@ import model.News;
 					String sql = "SELECT * FROM News WHERE user_id=? ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
+					pStmt.setString(1, id);
 					/*if (card.getNews_title() != null) {
 						pStmt.setString(1, "%" + card.getNews_title() + "%");
 					}
@@ -87,7 +88,7 @@ import model.News;
 			}
 
 			// 管理者お知らせ検索
-			public List<News> select1() {
+		/*	public List<News> select1() {
 				Connection conn = null;
 				List<News> cardList = new ArrayList<News>();
 
@@ -119,7 +120,7 @@ import model.News;
 					}
 					else {
 						pStmt.setString(3, "%");
-					}*/
+					}
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
@@ -159,7 +160,7 @@ import model.News;
 
 					// 結果を返す
 					return cardList;
-			}
+			}*/
 
 			//団体お知らせ登録
 			public boolean insert(News card) {
