@@ -40,6 +40,9 @@ public class ModNewsServlet extends HttpServlet {
 					response.sendRedirect("/simpleBC/LoginServlet");
 					return;
 				}*/
+		NewsDAO nDao = new NewsDAO();
+		List<News> newsList = nDao.select1();
+		request.setAttribute("newsList", newsList);
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_news.jsp");
 				dispatcher.forward(request, response);

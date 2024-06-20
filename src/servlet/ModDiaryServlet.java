@@ -40,6 +40,11 @@ public class ModDiaryServlet extends HttpServlet {
 					response.sendRedirect("/simpleBC/LoginServlet");
 					return;
 				}
+
+				DiarysDAO dDao = new DiarysDAO();
+				List<Diarys> diaryList = dDao.select();
+				request.setAttribute("diaryList", diaryList);
+
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
 				dispatcher.forward(request, response);
