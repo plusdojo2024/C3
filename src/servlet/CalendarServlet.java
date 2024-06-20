@@ -61,7 +61,7 @@ public class CalendarServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/C3/UserServlet");
+			response.sendRedirect("/C3/CalendarServlet");
 			return;
 		}
 

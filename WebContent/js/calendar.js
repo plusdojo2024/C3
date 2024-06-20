@@ -21,7 +21,7 @@
     function generateCalendar(year, month) {
     	let calendarHtml = '<table><thead><tr>';
     	for (let i = 0; i < 7; i++) {
-    	  calendarHtml += `<th>${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][i]}</th>`;
+    	  calendarHtml += `<th class="calendar_dayofweek">${['日', '月', '火', '水', '木', '金', '土'][i]}</th>`;
     	}
     	calendarHtml += '</tr></thead><tbody><tr>';
 
@@ -33,7 +33,7 @@
     	      calendarHtml += '<td></td>';
     	    }
     	  }
-    	  calendarHtml += `<td data-date=${i}>${i}</td>`;
+    	  calendarHtml += `<td class="" data-date=${i}>${i}</td>`;
     	  if (dayOfWeek === 6) {
     	    calendarHtml += '</tr>';
     	    if (i < daysInMonth) {
@@ -137,9 +137,9 @@
 	/*
 	    // イベント表示処理
     function generateEvent() {
-    	let calendarHtml = '<table><thead><tr>';
+    	let calendarHtml = '<table class="bb"><thead><tr>';
     	for (let i = 0; i < 7; i++) {
-    	  calendarHtml += `<th>${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][i]}</th>`;
+    	  calendarHtml += `<th class="aa">${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][i]}</th>`;
     	}
     	calendarHtml += '</tr></thead><tbody><tr>';
 

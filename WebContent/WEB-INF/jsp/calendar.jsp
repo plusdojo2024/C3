@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>カレンダー</title>
  <link rel="stylesheet" href="/C3/css/style.css">
-<style>
+<style >
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
       font-weight: bold; /* または数値 (100 - 900) */
@@ -59,21 +59,22 @@
 	
 	
 	<c:forEach var="e" items="${evList}" >
-	   
-	
-	
 	    const events = [
 			  {
 			    date: new Date(2024, 5, 5),
 			    event_name: '${e.event_name}',
-			    event_day:'5/5',
-			    event_place:'${e.event_place}',
-			    event_remarks:'${e.event_remarks}',
-			    user_name:'${e.user_name}'
+			    event_day:'',
+			    event_place:'場所：${e.event_place}',
+			    event_remarks:'備考：${e.event_remarks}',
+			    user_name:'団体名：${e.user_name}'
 			  },
 			  {
-			    date: new Date(2024, 5, 15),
-			    title: 'イベント2',
+				date: new Date(2024, 5, 15),
+				event_name: '${e.event_name}',
+				event_day:'',
+				event_place:'場所：${e.event_place}',
+				event_remarks:'備考：${e.event_remarks}',
+				user_name:'団体名：${e.user_name}'
 			  },
 			  {
 			    date: new Date(2024, 4, 15),

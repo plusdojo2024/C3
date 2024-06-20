@@ -81,7 +81,7 @@ public class EventsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する
-				String sql = "SELECT event_name FROM Events  ORDER BY id";
+				String sql = "SELECT id, event_name, event_day, event_place, event_remarks, user_name FROM Events  ORDER BY id";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 
