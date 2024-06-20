@@ -90,15 +90,24 @@
     });
 	
 	
+	 const events = [
+	  	  {
+	  	    date: new Date(currentYear, currentMonth, 5),
+	  	    title: 'イベント1',
+	  	  },
+	  	  {
+	  	    date: new Date(currentYear, currentMonth, 15),
+	  	    title: 'イベント2',
+	  	  },
+	  ];
 	
-	
-	/*
     // イベント情報をカレンダーに追加する処理
     events.forEach(event => {
+    
     	if (event.date.getFullYear() === year && event.date.getMonth() === month) {
       		const dayCell = calendarEl.querySelector(`td[data-date="${event.date.getDate()}"]`);
       		dayCell.innerHTML += `<div>${event.title}</div>`;
  	  	}
   	});   
-    */
+    
     

@@ -45,26 +45,12 @@
   <h1>カレンダー</h1>
   </main>
   <body>
-  <!--  
-  <button id="prevMonth">前の月</button>
-  <button id="nextMonth">次の月</button>
-  -->
  
 	<div id="calendar"></div>
 	<input type="button" id = "prevMonth" value="前の月" >
   	<input type="button" id = "nextMonth" value="次の月" >
 	<input type="button" value="カレンダーを表示する" onClick="">
     <script src="/C3/js/calendar.js">
-	    const events = [
-	  	  {
-	  	    date: new Date(currentYear, currentMonth, 5),
-	  	    title: 'イベント1',
-	  	  },
-	  	  {
-	  	    date: new Date(currentYear, currentMonth, 15),
-	  	    title: 'イベント2',
-	  	  },
-	  	];
     
     </script>
   </body>
