@@ -59,7 +59,7 @@
   <!-- ヘッダーここまで -->
   </header>
 
-  <form method="post" action="/C3/AnimalSearchServlet">
+  <form method="post" action="/C3/AnimalSerachServlet">
     <main class="search">
     <table>
       <tr>
