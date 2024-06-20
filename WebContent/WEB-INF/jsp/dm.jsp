@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -21,7 +21,7 @@
       <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
   <div class="logout">
-      <a href="ManegerServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
+      <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
   </div>
     <nav class="nav">
       <ul>
@@ -38,6 +38,9 @@
 <main>
   <h1>団体DM</h1>
    <form action="/C3/DmTalkServlet" method="get">
+    <c:forEach var="e" items="${organizationsList}" >
+    <option value="">${e.user_name}</option></c:forEach>
+
    <table class="dm">
       <tr>
         <td>

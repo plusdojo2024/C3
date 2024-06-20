@@ -42,6 +42,7 @@
         <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
         <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
         <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
+        
       </ul>
     </nav>
   <!-- ヘッダーここまで -->
