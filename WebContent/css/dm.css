@@ -1,7 +1,15 @@
 @charset "UTF-8";
 
 /* すべてのページに適用 - ヘッダー */
+main h1 {
+    margin-bottom:10px;
+    text-align:center;
+    border-bottom: 4px dashed #996633;
+    padding:0 0 5px 0;
+    color:#663300;
+    font-size:1.8rem;
 
+}
 .nav ul {
   margin-bottom:100px;
   padding: 0;
@@ -161,4 +169,13 @@ input[name=user_name] {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 
+}
+input[type=submit], input[type=reset] {
+  width: 6em;
+  height: 40px;
+  text-align:center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }

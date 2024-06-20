@@ -11,6 +11,9 @@
   justify-content: center;
   gap: 150px;
   font-size: 1.2rem;
+  font-size: 22px; /* フォントサイズ */
+  color: #663300; /* 文字色 */
+  margin-bottom: 10px; /* 下のマージン */
 }
 .list1 {
   font-size: 22px; /* フォントサイズ */

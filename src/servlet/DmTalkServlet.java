@@ -47,7 +47,7 @@ public class DmTalkServlet extends HttpServlet {
 				DmsDAO dmsDao = new DmsDAO();
 
 				//セッションスコープからidを取得
-				String myId = session.getId();
+				String myId = (String)session.getAttribute("id");
 				List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
 				request.setAttribute("talkList", talkList);
 				// 登録ページにフォワードする
@@ -69,11 +69,16 @@ public class DmTalkServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String yourId = request.getParameter("yourId");
-				String dmDetail = request.getParameter("dmDetail");
+
 				DmsDAO dmsDao = new DmsDAO();
 
+				System.out.println(yourId);
+
+
 				//セッションスコープからidを取得
-				String myId = session.getId();
+
+				String myId = (String)session.getAttribute("id");
+
 
 				/*
 				List<DMs> talkUserList = dmsDao.select(myId);
@@ -85,9 +90,16 @@ public class DmTalkServlet extends HttpServlet {
 				*/
 				//
 
-
+				if(request.getParameter("DM1").equals("DM")) {
+					request.setAttribute("yourId", yourId);
+				}
+				else if (request.getParameter("DM1").equals("送信")) {
+					String yourId2 = request.getParameter("yourId2");
+					String dmDetail = request.getParameter("dm_detail");
+					dmsDao.insert(myId, yourId2, dmDetail,true);
+				}
 				//
-				dmsDao.insert(myId, yourId, dmDetail,true);
+
 
 
 
