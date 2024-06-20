@@ -81,6 +81,8 @@
 			    event_remarks:'備考：${e.event_remarks}',
 			    user_name:'団体名：${e.user_name}'
 			  },
+			  <div class="function">
+			    <img src="./img/images/function.png" alt="" width="60" height="60">
 			  {
 				date: new Date(2024, 5, 15),
 				event_name: '${e.event_name}',
@@ -89,17 +91,14 @@
 				event_remarks:'備考：${e.event_remarks}',
 				user_name:'団体名：${e.user_name}'
 			  },
+			  </div>
 			  {
 			    date: new Date(2024, 4, 15),
 			    title: 'イベント3',
 			  },
 			];
 	    </c:forEach>
-<<<<<<< HEAD
-	    
-=======
-
->>>>>>> 4a937b1b22cd547ec4d92a52b693c51c268eb69a
+// 1の場所まで戻る
 	    $(function() {
 	        $(".function").click(function() {
 	          $(".1").slideToggle("");
@@ -122,30 +121,4 @@
 
   </body>
 </html>
-
-
-
-
-NEW
-
-
-
-
-
-
-
-
-
-
-
-
-c3_webアプリ へのメッセージ
-
-
-
-
-
-
-
-
 
