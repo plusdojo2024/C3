@@ -150,6 +150,7 @@
 
 main h1 {
     margin-bottom:10px;
+     margin-top:100px;
     text-align:center;
     border-bottom: 4px dashed #996633;
     padding:0 0 5px 0;
@@ -231,6 +232,31 @@ main h2 {
    margin-top:200px;/*画像と背景の隙間調整*/
    gap:200px;/*画像同士の隙間調整*/
 }
+.groupform {
+  display: inline-block;
+  width: 500px;
+  padding-bottom:10px;
+  padding-top:10px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 22px; /* フォントサイズ */
+  color: #663300; /* 文字色 */
+  margin-bottom: 10px; /* 下のマージン */
+  width: 15em;/*フォームの横の長さ*/
+  /*height:15em;*/
+  text-align:center;/*文字を真ん中にする*/
+  /*padding: 50px 20px; /* 内側の余白 */
+  background-color: #FFFAF0; /* 背景色 */
+  border: 4px ridge #996633; /* 枠線 */
+  border-radius: 45px; /* 角の丸み（丸くするために大きめに設定） */
+  /*display: inline-block; /* 幅を内容に合わせるためにインラインブロックに設定 */
+}
+.search {
+  display: grid;
+  place-items: center; /* 水平方向と垂直方向に中央配置 */
+  margin-top:100px;
+  margin-bottom:100px;
+}
 .function {
    float: right;
 
@@ -245,6 +271,7 @@ form {
   color:#663300;
   text-align:center;
 }
+
 /*
 input[name=name] {
   width: 16em;
@@ -283,6 +310,7 @@ input[type=submit], input[type=reset] {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+
 /*
 input[name=number]{
   width: 8em;

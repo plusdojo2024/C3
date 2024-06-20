@@ -82,6 +82,7 @@
   <p>5.「初対面の人とも上手く打ち解けられる方だ」</p>
   <p>YES</p><input type="radio" name="answer5" value="yes">
   <p>NO</p><input type="radio" name="answer5" value="no">
+  <input type="submit" value="送信">
   </main>
 <!-- フッター -->
   <footer>

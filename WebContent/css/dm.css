@@ -179,3 +179,35 @@ input[type=submit], input[type=reset] {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+
+/*dmtalkのフォームの作成*/
+#chat {
+  width: 98%;
+  height: 500px;
+  border: 4px ridge #996633;
+  padding: 10px;
+  overflow-y: scroll;
+}
+#inputArea {
+            display: flex;
+            margin-top: 10px;
+}
+#inputArea input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 4px ridge #D2B48C;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+#inputArea button {
+  padding: 10px;
+  font-size: 16px;
+  border: 4px ridge #D2B48C;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}

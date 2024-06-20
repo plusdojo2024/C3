@@ -23,12 +23,15 @@
   <body>
   <main>
   <h1>Chat</h1>
-  <form action="DmTalkServlet" method="post">
-  <label for="message">メッセージ:</label><br>
-        <textarea id="dm_detail" name="dm_detail" rows="4" cols="50" required></textarea><br>
-        <input type="hidden" value="${yourId}" name="yourId2">
+   <div id="chat"></div>
+   <form action="DmTalkServlet">
+    <div id="inputArea">
+        <input type="text" id="message" placeholder="メッセージを入力...">
+        <!-- <button onclick="sendMessage()">送信</button>-->
+         <input type="hidden" value="${yourId}" name="yourId2">
 
         <input type="submit" value="送信" name="DM1">
+    </div>
     </form>
   </main>
 </body>
