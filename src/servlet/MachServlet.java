@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MachAnswersDAO;
+import dao.MachQuestionsDAO;
 import model.MachAnswers;
+import model.MachQuestions;
 
 /**
  * Servlet implementation class MachServlet
@@ -32,6 +34,11 @@ public class MachServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		MachQuestionsDAO mqDao = new MachQuestionsDAO();
+		List<MachQuestions> machqlist = mqDao.select();
+		request.setAttribute("machqList", machqlist);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mach.jsp");
 		dispatcher.forward(request, response);
 	}

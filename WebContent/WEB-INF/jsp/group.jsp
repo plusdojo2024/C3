@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -19,27 +19,20 @@
 
   <!-- ヘッダー -->
   <header>
-    <c:if test="${empty id}"><div class="home">
+    <div class="home">
       <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
-    </div></c:if>
-    <c:if test="${not empty id}"><div class="home">
-      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
-    </div></c:if>
-
-    <c:if test="${not empty id}">  <div class="logout">
-    <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
-    </div></c:if>
+    </div>
     <table>
       <tr>
         <td>
-    <c:if test="${empty id}"><div class="login">
+    <div class="login">
       <a href="LoginServlet"><img src="./img/images/login.png" alt="ログイン" width="130" height="50"></a>
-  </div></c:if>
+  </div>
         </td>
         <td>
-  <c:if test="${empty id}"><div class="Add">
+  <div class="Add">
       <a href="UserServlet"><img src="./img/images/Add.png" alt="新規登録" width="130" height="40"></a>
-  </div></c:if>
+  </div>
         </td>
       </tr>
   </table>
@@ -50,9 +43,11 @@
         <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
         <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
         <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
+
     <c:if test="${not empty id}">
-        <li class="list5"><a href="/C3/DmServlet">DM</a></li>
+        <li class="list5"><a href="/C3/DmPersonalServlet">DM</a></li>
     </c:if>
+
     </ul>
   </nav>
   <!-- ヘッダーここまで -->

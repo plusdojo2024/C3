@@ -40,6 +40,10 @@ public class ModGroupNewsServlet extends HttpServlet {
 			response.sendRedirect("/simpleBC/LoginServlet");
 			return;
 		}
+		request.setCharacterEncoding("UTF-8");
+		NewsDAO nDao = new NewsDAO();
+		List<News> newsList = nDao.select1();
+		request.setAttribute("newsList", newsList);
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_group_news.jsp");
 		dispatcher.forward(request, response);

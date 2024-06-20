@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,12 +17,20 @@
 <body id="top">
   <!-- ヘッダー -->
   <header>
-    <div class="home">
-      <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
-    </div>
-  <div class="logout">
-      <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
-  </div>
+
+    <c:if test="${empty id}"><div class="home">
+      <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
+    </div></c:if>
+    <c:if test="${not empty id}"><div class="home">
+      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
+    </div></c:if>
+
+    <c:if test="${not empty id}">  <div class="logout">
+    <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
+    </div></c:if>
+
+
+
     <nav class="nav">
       <ul>
         <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
@@ -32,26 +40,31 @@
         <li class="list5"><a href="/C3/DmServlet">DM</a></li>
     </ul>
   </nav>
+
   <!-- ヘッダーここまで -->
   </header>
 <body>
 <main>
   <h1>団体DM</h1>
-   <form action="/C3/DmTalkServlet" method="get">
+
+
+    <form action="/C3/DmTalkServlet" method="post">
+  <input type="search" name="user_name" list="ユーザー名">
+  <datalist id="ユーザー名">
+    <c:forEach var="e" items="${userList}"><option value="${e.user_name}"></option>
+    <input type="hidden" value="${e.user_id}" name="yourId">
+    </c:forEach>
+  </datalist>
+  <input type="submit" value="DM" name="DM1"></form>
+
+
    <table class="dm">
       <tr>
         <td>
-  <input type="search" name="user_name" list="ユーザー名">
-  <datalist id="ユーザー名">
-    <option value="ひらちゃん">
-    <option value="いりちゃん">
-    <option value="水ちゃん">
-  </datalist>
-  <input type="submit" value="DM">
+
       </td>
     </tr>
   </table>
-</form>
 </main>
 </body>
 

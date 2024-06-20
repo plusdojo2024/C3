@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -18,31 +17,15 @@
 <body id="top">
 
   <!-- ヘッダー -->
-  <header><div class="home">
-    <c:choose>
-  <c:when test="${empty id}">
-    <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
-  </c:when>
-  <c:otherwise>
-   <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
-  </c:otherwise>
-
-</c:choose></div> <!--<div class="home">
+  <header>
+    <div class="home">
       <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
     </div>
-    <c:if test="${not empty id}"><div class="home">
-      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
-    </div></c:if>-->
     <table>
       <tr>
         <td>
     <div class="login">
-    <c:choose>
-    <c:when test="${empty id}">
       <a href="LoginServlet"><img src="./img/images/login.png" alt="ログイン" width="130" height="50"></a>
-    </c:when>
-   </c:choose>
-
   </div>
         </td>
         <td>
