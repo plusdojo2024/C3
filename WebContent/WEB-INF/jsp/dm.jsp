@@ -37,24 +37,22 @@
 <body>
 <main>
   <h1>団体DM</h1>
-   <form action="/C3/DmTalkServlet" method="get">
-    <c:forEach var="e" items="${organizationsList}" >
-    <option value="">${e.user_name}</option></c:forEach>
+    <form action="/C3/DmTalkServlet" method="post">
+  <input type="search" name="user_name" list="ユーザー名">
+  <datalist id="ユーザー名">
+    <c:forEach var="e" items="${userList}"><option value="${e.user_name}"></option>
+    <input type="hidden" value="${e.user_id}" name="yourId">
+    </c:forEach>
+  </datalist>
+  <input type="submit" value="DM" name="DM1"></form>
 
    <table class="dm">
       <tr>
         <td>
-  <input type="search" name="user_name" list="ユーザー名">
-  <datalist id="ユーザー名">
-    <option value="ひらちゃん">
-    <option value="いりちゃん">
-    <option value="水ちゃん">
-  </datalist>
-  <input type="submit" value="DM">
+
       </td>
     </tr>
   </table>
-</form>
 </main>
 </body>
 

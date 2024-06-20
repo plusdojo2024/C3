@@ -38,11 +38,11 @@
 <main>
   <h1>ユーザーDM</h1>
    <form action="/C3/DmTalkServlet" method="post">
-   <select>
+   <select name="yourId">
     <c:forEach var="e" items="${organizationsList}" >
-    <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+    <option value="${e.user_id}" >${e.user_name}</option></c:forEach>
    </select>
-    <input type="submit" value="DM">
+    <input type="submit" value="DM" name="DM1">
 
   </form>
 </main>
