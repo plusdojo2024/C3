@@ -34,12 +34,10 @@ public class CalendarServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/C3/CalenderServlet");
-			return;
-		}
+
+	HttpSession session = request.getSession();
+
+
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 
@@ -61,7 +59,7 @@ public class CalendarServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/C3/UserServlet");
+			response.sendRedirect("/C3/CalendrServlet");
 			return;
 		}
 
