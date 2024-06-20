@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang = "ja">
 <head>
@@ -53,18 +54,22 @@
 	<div id="calendar"></div>
 	<input type="button" id = "prevMonth" value="前の月" >
   	<input type="button" id = "nextMonth" value="次の月" >
-<<<<<<< HEAD
 	<!-- <input type="button" value="カレンダーを表示する" onClick=""> -->
-	<input type="button" id ="addEvents" value="イベントを表示">
 	<script>
+	
+	
+	<c:forEach var="e" items="${evList}" >
+	   
+	
+	
 	    const events = [
 			  {
 			    date: new Date(2024, 5, 5),
-			    event_name: '第1回「ローズガーデン：譲渡会」',
-			    event_day:
-			    event_place:''
-			    event_remarks:''
-			    user_name:'ローズガーデン'
+			    event_name: '${e.event_name}',
+			    event_day:'5/5',
+			    event_place:'${e.event_place}',
+			    event_remarks:'${e.event_remarks}',
+			    user_name:'${e.user_name}'
 			  },
 			  {
 			    date: new Date(2024, 5, 15),
@@ -75,22 +80,9 @@
 			    title: 'イベント3',
 			  },
 			];
-	    
-	    <% List<String>  evlist =
-	    		(List<String>)request.getAttribute("evlist"); %>
-	    		
-	    		<p>テーブルに登録されている譲渡会一覧</p>
-	    		<% for(String event_name: evlist) { %>
-	    		<%= event_name %><br>
-	    		<% } %>
+	    </c:forEach>
 	</script>
     <script src="/C3/js/calendar.js"></script>
-=======
-	<input type="button" value="カレンダーを表示する" onClick="">
-    <script src="/C3/js/calendar.js">
-
-    </script>
->>>>>>> a45883cd406ffd9cbb3db8d93c6b0e48e93e94e3
   </body>
   <!-- メインここまで -->
 
@@ -102,5 +94,7 @@
       <p class="copyright">&copy; dacho_group</p>
     </footer>
   <!-- フッターここまで -->
+  
+  
   </body>
 </html>
