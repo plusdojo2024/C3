@@ -51,7 +51,7 @@
         <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
         <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
     <c:if test="${not empty id}">
-        <li class="list5"><a href="/C3/DmServlet">DM</a></li>
+        <li class="list5"><a href="/C3/DmPersonalServlet">DM</a></li>
     </c:if>
     </ul>
   </nav>

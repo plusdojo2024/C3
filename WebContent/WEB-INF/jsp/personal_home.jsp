@@ -19,7 +19,7 @@
 <!-- ヘッダー -->
 <header>
   <div class="home">
-    <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
+      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
   </div>
   <div class="logout">
     <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
@@ -39,7 +39,7 @@
   <h1>ユーザーホーム</h1>
 
   <div class="img">
-      <a href="/C3/ModDiaryServlet"><img src="./img/images/diary.png" alt="" width="300" height="300"></a>
+      <a href="/C3/DiaryServlet"><img src="./img/images/diary.png" alt="" width="300" height="300"></a>
       <a href="/C3/VisitServlet"><img src="./img/images/visit.png" alt="" width="270" height="290"></a>
       <a href="/C3/MachServlet"><img src="./img/images/mach.png" alt="" width="300" height="300"></a>
   </div>
