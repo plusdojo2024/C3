@@ -68,12 +68,12 @@ public class DmTalkServlet extends HttpServlet {
 
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String yourId = request.getParameter("yourId");
+				String yourId = request.getParameter("user_Id");
 				String dmDetail = request.getParameter("dmDetail");
 				DmsDAO dmsDao = new DmsDAO();
 
 				//セッションスコープからidを取得
-				String myId = session.getId();
+				String myId = (String)session.getAttribute("id");
 
 				/*
 				List<DMs> talkUserList = dmsDao.select(myId);
