@@ -39,6 +39,12 @@ public class AnimalServlet extends HttpServlet {
 			response.sendRedirect("/C3/LoginServlet");
 			return;
 		}
+		//セッションスコープからidを取得
+				String tempId = (String)session.getAttribute("id");
+				int organizationId = Integer.parseInt(tempId);
+				IndividualsDAO iDao = new IndividualsDAO();
+				List<Individuals> individualList = iDao.select1(organizationId);
+				request.setAttribute("individualList", individualList);
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/animal.jsp");
 		dispatcher.forward(request, response);
@@ -57,12 +63,7 @@ public class AnimalServlet extends HttpServlet {
 		}
 
 
-		//セッションスコープからidを取得
-		String tempId = (String)session.getAttribute("id");
-		int organizationId = Integer.parseInt(tempId);
-		IndividualsDAO iDao = new IndividualsDAO();
-		List<Individuals> individualList = iDao.select1(organizationId);
-		request.setAttribute("individualList", individualList);
+
 	}
 
 }

@@ -11,24 +11,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.IndividualsDAO;
+import dao.UsersDAO;
 import model.Individuals;
+import model.Users;
 
 /**
- * Servlet implementation class AnimalSerachServlet
+ * Servlet implementation class AnimalSearchServlet
  */
 @WebServlet("/AnimalSerachServlet")
-public class AnimalSearchServlet extends HttpServlet {
+public class AnimalSerachServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
+		UsersDAO uDao = new UsersDAO();
+		List<Users> organizationsList = uDao.select();
+		request.setAttribute("organizationsList", organizationsList);
 
 		// 検索ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/animal_search.jsp");
 				dispatcher.forward(request, response);
+
 	}
 
 	/**

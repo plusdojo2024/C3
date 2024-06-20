@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -38,9 +39,9 @@
     <nav class="nav">
       <ul>
         <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
-        <li class="list2"><a href="/C3/AnimalSearchServlet">動物検索</a></li>
+        <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
         <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
-        <li class="list4"><a href="/C3/QASevlet">Q&amp;A</a></li>
+        <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
       </ul>
     </nav>
   <!-- ヘッダーここまで -->
@@ -52,11 +53,10 @@
       <tr>
         <td>
           <label>所属団体<br>
-          <select>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-          </select>
+            <select>
+              <c:forEach var="e" items="${organizationsList}" >
+              <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+            </select>
           </label>
         </td>
         <td>

@@ -40,9 +40,9 @@
     <nav class="nav">
       <ul>
         <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
-        <li class="list2"><a href="/C3/AnimalSearchServlet">動物検索</a></li>
+        <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
         <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
-        <li class="list4"><a href="/C3/QASevlet">Q&amp;A</a></li>
+        <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
     </ul>
   </nav>
   <!-- ヘッダーここまで -->
@@ -51,8 +51,8 @@
 
 <c:forEach var="e" items="${organizationsList}" >
   <form action="/C3/GroupServlet" method="post" name="a">
-    <a href="/C3/Servlet" onclick="document.a.submit();">user_id<br>
-     address<br>phonenumber<br>email<br>remarks<input type="hidden" value="user_id"></a>
+    <a href="/C3/Servlet" onclick="document.a.submit();">${e.user_id}<br>
+     ${e.address}<br>${e.phone_number}<br>${e.emails}<br>${e.remarks}<input type="hidden" value="${user_id}"></a>
   </form>
 </c:forEach>
 
