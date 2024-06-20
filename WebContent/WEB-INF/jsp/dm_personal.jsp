@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -38,20 +38,13 @@
 <main>
   <h1>ユーザーDM</h1>
    <form action="/C3/DmTalkServlet" method="get">
-   <table class="dm">
-      <tr>
-        <td>
-  <input type="search" name="user_name" list="団体名">
-  <datalist id="団体名">
-    <option value="保護団体A">
-    <option value="保護団体B">
-    <option value="保護団体C">
-  </datalist>
-  <input type="submit" value="DM">
-      </td>
-    </tr>
-  </table>
-</form>
+   <select>
+    <c:forEach var="e" items="${organizationsList}" >
+    <option value="">${e.user_name}</option></c:forEach>
+   </select>
+    <input type="submit" value="DM">
+
+  </form>
 </main>
 </body>
 
