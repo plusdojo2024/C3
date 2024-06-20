@@ -95,7 +95,11 @@
 			  },
 			];
 	    </c:forEach>
+<<<<<<< HEAD
+	    
+=======
 
+>>>>>>> 4a937b1b22cd547ec4d92a52b693c51c268eb69a
 	    $(function() {
 	        $(".function").click(function() {
 	          $(".1").slideToggle("");

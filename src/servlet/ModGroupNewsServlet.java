@@ -42,7 +42,8 @@ public class ModGroupNewsServlet extends HttpServlet {
 		}
 		request.setCharacterEncoding("UTF-8");
 		NewsDAO nDao = new NewsDAO();
-		List<News> newsList = nDao.select1();
+		String myId = (String)session.getAttribute("id");
+		List<News> newsList = nDao.select(myId);
 		request.setAttribute("newsList", newsList);
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_group_news.jsp");
@@ -71,7 +72,7 @@ public class ModGroupNewsServlet extends HttpServlet {
 		NewsDAO nDao = new NewsDAO();
 
 
-		List<News> noList = nDao.select();
+		List<News> noList = nDao.select(myId);
 		request.setAttribute("nList", noList);
 
 
