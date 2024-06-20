@@ -31,23 +31,22 @@ public class DiaryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// リクエストパラメータを取得する
+				request.setCharacterEncoding("UTF-8");
+				String tempdiaryId = request.getParameter("id");
+				int diaryId = Integer.parseInt(tempdiaryId);
+
+				DiarysDAO dDao = new DiarysDAO();
+
+				List<Diarys> diaryList = dDao.mySelect(diaryId);
+				request.setAttribute("diaryList", diaryList);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String tempdiaryId = request.getParameter("id");
-		int diaryId = Integer.parseInt(tempdiaryId);
 
-		DiarysDAO dDao = new DiarysDAO();
-
-		List<Diarys> diaryList = dDao.mySelect(diaryId);
-		request.setAttribute("diaryList", diaryList);
 	}
 
 }

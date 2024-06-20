@@ -40,6 +40,16 @@ public class DmTalkServlet extends HttpServlet {
 					response.sendRedirect("/C3/LoginServlet");
 					return;
 				}
+				// リクエストパラメータを取得する
+				request.setCharacterEncoding("UTF-8");
+				String yourId = request.getParameter("yourId");
+				//String dmDetail = request.getParameter("dmDetail");
+				DmsDAO dmsDao = new DmsDAO();
+
+				//セッションスコープからidを取得
+				String myId = session.getId();
+				List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
+				request.setAttribute("talkList", talkList);
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_talk.jsp");
 				dispatcher.forward(request, response);
@@ -74,8 +84,7 @@ public class DmTalkServlet extends HttpServlet {
 				request.setAttribute("organizationsList", organizationsList);
 				*/
 				//
-				List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
-				request.setAttribute("talkList", talkList);
+
 
 				//
 				dmsDao.insert(myId, yourId, dmDetail,true);

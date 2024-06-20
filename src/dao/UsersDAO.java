@@ -303,6 +303,60 @@ public class UsersDAO {
 				}
 				return cardList;
 			}
+
+			public  List<Users> select(){
+				Connection conn = null;
+				/*boolean organization = false;*/
+				List<Users> organizationsList = new ArrayList<Users>();
+				try {
+					// JDBCドライバを読み込む
+					Class.forName("org.h2.Driver");
+					// データベースに接続する
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/c3", "sa", "");
+					// SELECT文を準備する
+					String sql = "SELECT * FROM Users WHERE is_organization=true";
+					PreparedStatement pStmt = conn.prepareStatement(sql);
+
+					// SELECT文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+					// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
+					while(rs.next()) {
+						Users record = new Users(
+						rs.getInt("id"),
+						 rs.getString("user_id"),
+						 rs.getString("user_name"),
+						 rs.getString("user_password"),
+						 rs.getBoolean("is_organization"),
+						 rs.getString("address"),
+						 rs.getString("phonenumber"),
+						 rs.getString("email"),
+						 rs.getString("remarks")
+					     );
+						organizationsList.add(record);
+				}
+				}catch (SQLException e) {
+					e.printStackTrace();
+					organizationsList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					organizationsList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							organizationsList = null;
+						}
+					}
+				}
+				return organizationsList;
+			}
+
 			public boolean update(Users card) {
 				Connection conn = null;
 				boolean result = false;

@@ -40,6 +40,20 @@ public class DmPersonalServlet extends HttpServlet {
 			response.sendRedirect("/C3/LoginServlet");
 			return;
 		}
+		request.setCharacterEncoding("UTF-8");
+		DmsDAO dmsDao = new DmsDAO();
+
+		//セッションスコープからidを取得
+		String myId = session.getId();
+
+		//
+		List<DMs> talkUserList = dmsDao.select(myId);
+		request.setAttribute("talkUserList", talkUserList);
+
+		//
+		List<Users> organizationsList = dmsDao.selectOrganization();
+		// 表示結果をリクエストスコープに格納する
+		request.setAttribute("organizationsList", organizationsList);
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_personal.jsp");
 		dispatcher.forward(request, response);
@@ -56,20 +70,7 @@ public class DmPersonalServlet extends HttpServlet {
 			return;
 		}
 
-		request.setCharacterEncoding("UTF-8");
-		DmsDAO dmsDao = new DmsDAO();
 
-		//セッションスコープからidを取得
-		String myId = session.getId();
-
-		//
-		List<DMs> talkUserList = dmsDao.select(myId);
-		request.setAttribute("talkUserList", talkUserList);
-
-		//
-		List<Users> organizationsList = dmsDao.selectOrganization();
-		// 表示結果をリクエストスコープに格納する
-		request.setAttribute("organizationsList", organizationsList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_personal.jsp");
 		dispatcher.forward(request, response);
