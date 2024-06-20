@@ -14,10 +14,10 @@ import dao.IndividualsDAO;
 import model.Individuals;
 
 /**
- * Servlet implementation class AnimalSerachServlet
+ * Servlet implementation class AnimalSearchServlet
  */
 @WebServlet("/AnimalSerachServlet")
-public class AnimalSearchServlet extends HttpServlet {
+public class AnimalSerachServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
