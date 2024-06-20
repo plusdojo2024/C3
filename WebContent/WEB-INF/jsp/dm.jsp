@@ -57,6 +57,10 @@
   </datalist>
   <input type="submit" value="DM" name="DM1"></form>
 
+<c:forEach var="e" items="${talkUserList}">
+${e.user_name}
+<input type="hidden" value="${e.user_id}" name="yourId">
+    </c:forEach>
 
    <table class="dm">
       <tr>

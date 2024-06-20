@@ -95,7 +95,7 @@ public class ReservationsDAO {
 
 
 			// リストに登録する
-			public List<Reservations> select(int id) {
+			public List<Reservations> select(String id) {
 				Connection conn = null;
 				List<Reservations> cardList = new ArrayList<Reservations>();
 
@@ -111,7 +111,7 @@ public class ReservationsDAO {
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 
 						// SQL文を完成させる
-						pStmt.setInt(1, id);
+						pStmt.setString(1, id);
 
 						// SQL文を実行し、結果表を取得する
 						ResultSet rs = pStmt.executeQuery();

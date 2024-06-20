@@ -24,7 +24,7 @@ public class MachQuestionsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する
-				String sql = "SELECT q1, q2, q3, q4, q5 FROM MachQuestions";
+				String sql = "SELECT * FROM MachQuestions";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 
@@ -68,10 +68,9 @@ public class MachQuestionsDAO {
 			return cardList;
 		}
 	//Questions登録（未完成）
-	public boolean insert(MachQuestions card) {
+	public boolean insert(String q1, String q2, String q3, String q4, String q5) {
 		Connection conn = null;
 		boolean result = false;
-	//	int qnum=0;
 
 		try {
 			// JDBCドライバを読み込む
@@ -85,8 +84,11 @@ public class MachQuestionsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-
-
+				pStmt.setString(1, q1);
+				pStmt.setString(2, q2);
+				pStmt.setString(3, q3);
+				pStmt.setString(4, q4);
+				pStmt.setString(5, q5);
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
@@ -117,10 +119,9 @@ public class MachQuestionsDAO {
 	}
 
 	//Questions更新
-	public boolean update(MachQuestions card) {
+	public boolean update(int number, String question) {
 		Connection conn = null;
 		boolean result = false;
-		int qnum=0;
 
 		try {
 			// JDBCドライバを読み込む
@@ -129,92 +130,19 @@ public class MachQuestionsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
+			String sql = "UPDATE Machquestions SET q?=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
-				}
-			else if (qnum==1) {
-				String sql = "UPDATE MachQuestions SET q1=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
+			// SQL文を完成させる
 
-				// SQL文を完成させる
-				if (card.getQ1() != null) {
-					pStmt.setString(1, card.getQ1());
-				}
-				else {
-					pStmt.setString(1, null);
-				}
+				pStmt.setInt(1, number);
+				pStmt.setString(2, question);
 
-				// SQL文を実行する
+			/*	// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
 				result = true;
-				}
-			}else if(qnum==2) {
-				String sql = "UPDATE MachQuestions SET q2=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
+				}*/
 
-				// SQL文を完成させる
-				if (card.getQ2() != null) {
-					pStmt.setString(1, card.getQ2());
-				}
-				else {
-					pStmt.setString(1, null);
-				}
-
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
-			}else if(qnum==3) {
-				String sql = "UPDATE MachQuestions SET q3=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-
-				// SQL文を完成させる
-				if (card.getQ3() != null) {
-					pStmt.setString(1, card.getQ3());
-				}
-				else {
-					pStmt.setString(1, null);
-				}
-
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
-			}else if(qnum==4) {
-				String sql = "UPDATE MachQuestions SET q4=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-
-				// SQL文を完成させる
-				if (card.getQ4() != null) {
-					pStmt.setString(1, card.getQ4());
-				}
-				else {
-					pStmt.setString(1, null);
-				}
-
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
-			}else if(qnum==5) {
-				String sql = "UPDATE MachQuestions SET q5=?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-
-				// SQL文を完成させる
-				if (card.getQ5() != null) {
-					pStmt.setString(1, card.getQ5());
-				}
-				else {
-					pStmt.setString(1, null);
-				}
-
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
-			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -237,11 +165,11 @@ public class MachQuestionsDAO {
 		// 結果を返す
 		return result;
 	}
+
 	//Questions削除
-	public boolean delete(MachQuestions card) {
+	public boolean delete() {
 		Connection conn = null;
 		boolean result = false;
-		int qnum=0;
 
 		try {
 			// JDBCドライバを読み込む
@@ -250,41 +178,13 @@ public class MachQuestionsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
-			if (qnum==1) {
-				String sql = "UPDATE MachQuestions SET q1=null";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
+			// SQL文を準備する
+			String sql = "DELETE FROM Machquestions";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
 				result = true;
-				}
-			}else if(qnum==2) {
-				String sql = "UPDATE MachQuestions SET q2=null";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
-			}else if(qnum==3) {
-				String sql = "UPDATE MachQuestions SET q3=null";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
-			}else if(qnum==4) {
-				String sql = "UPDATE MachQuestions SET q4=null";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
-			}else if(qnum==5) {
-				String sql = "UPDATE MachQuestions SET q5=null";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-				result = true;
-				}
 			}
 		}
 		catch (SQLException e) {

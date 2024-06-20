@@ -51,6 +51,12 @@
     <input type="submit" value="DM" name="DM1">
 
   </form>
+
+  <c:forEach var="t" items="${talkUserList}">
+<div>${t.user_name}</div>
+<input type="hidden" value="${t.user_id}" name="yourId">
+    </c:forEach>
+
 </main>
 </body>
 

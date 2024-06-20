@@ -34,6 +34,13 @@ public class ReserveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String organizationId = (String)session.getAttribute("id");
+		request.setCharacterEncoding("UTF-8");
+		ReservationsDAO rsvDao = new ReservationsDAO();
+		List<Reservations> rsvList = rsvDao.select(organizationId);
+		request.setAttribute("rsvList", rsvList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -49,17 +56,13 @@ public class ReserveServlet extends HttpServlet {
 					return;
 				}
 
-
-		String tempId = (String)session.getAttribute("id");
-		int organizationId = Integer.parseInt(tempId);
+		ReservationsDAO rsvDao = new ReservationsDAO();
 		request.setCharacterEncoding("UTF-8");
 		//String accept = request.getParameter("accept");
 		String temprsvId = request.getParameter("rsvid");
 		int rsvId = Integer.parseInt(temprsvId);
 
-		ReservationsDAO rsvDao = new ReservationsDAO();
-		List<Reservations> rsvList = rsvDao.select(organizationId);
-		request.setAttribute("rsvList", rsvList);
+
 
 		if(request.getParameter("submit").equals("承認")) {
 			if (rsvDao.update( rsvId)) {

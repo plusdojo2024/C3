@@ -26,27 +26,14 @@
   </div>
 </header>
 
-<!--
-<c:forEach var="e" items="${cardList}" >
 
+<c:forEach var="e" items="${rsvList}" >
     <form method="post" action="/C3/ReserveServlet">
-      ※番号は、変更できません。<br>
-      ID<name="ID" value="${e.number}"><br>
-      会社名<input type="text" name="company" value="${e.company}"><br>
-      部署名<input type="text" name="department" value="${e.department}"><br>
-      役職名<input type="text" name="position" value="${e.position}"><br>
-      氏名<input type="text" name="name" value="${e.name}"><br>
-      ふりがな<input type="text" name="ruby" value="${e.ruby}"><br>
-      郵便番号<input type="text" name="zipcode" value="${e.zipcode}"><br>
-      住所<input type="text" name="address" value="${e.address}"><br>
-      電話番号<input type="text" name="phone" value="${e.phone}"><br>
-      登録日<input type="date" name="date" value="${e.date}"><br>
-      備考<input type="text" name="remarks" value="${e.remarks}"><br>
+ ${e.individual_id}<br>${e.rsv_day}<br>${send_id}<br>${reservation_remarks}<br>
       <input type="submit" name="accept" value="承認"><br>
     </form>
     <hr>
   </c:forEach>
--->
 
 
  <footer>

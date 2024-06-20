@@ -40,10 +40,11 @@ public class AnimalServlet extends HttpServlet {
 			return;
 		}
 		//セッションスコープからidを取得
-				String tempId = (String)session.getAttribute("id");
-				int organizationId = Integer.parseInt(tempId);
+				//String tempId = (String)session.getAttribute("id");
+				String organizationName = (String)session.getAttribute("name");
+				//int organizationId = Integer.parseInt(tempId);
 				IndividualsDAO iDao = new IndividualsDAO();
-				List<Individuals> individualList = iDao.select1(organizationId);
+				List<Individuals> individualList = iDao.select1(organizationName);
 				request.setAttribute("individualList", individualList);
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/animal.jsp");

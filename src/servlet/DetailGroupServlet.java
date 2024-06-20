@@ -38,6 +38,7 @@ public class DetailGroupServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String organizationId = request.getParameter("id");
+				String organizationName = request.getParameter("name");
 				//int organizationId = Integer.parseInt(tempId);
 
 				NewsDAO nDao = new NewsDAO();
@@ -45,7 +46,7 @@ public class DetailGroupServlet extends HttpServlet {
 				request.setAttribute("newsList", newsList);
 
 				IndividualsDAO iDao = new IndividualsDAO();
-				List<Individuals> individualList = iDao.select1(organizationId);
+				List<Individuals> individualList = iDao.select1(organizationName);
 				request.setAttribute("individualList", individualList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/add_animal.jsp");

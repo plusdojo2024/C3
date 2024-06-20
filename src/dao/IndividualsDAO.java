@@ -113,7 +113,7 @@ public class IndividualsDAO {
 				return cardList;
 			}
 
-		public List<Individuals> select1(int id) {
+		public List<Individuals> select1(String name) {
 			Connection conn = null;
 			List<Individuals> cardList = new ArrayList<Individuals>();
 
@@ -129,7 +129,7 @@ public class IndividualsDAO {
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 
-					pStmt.setInt(1, id);
+					pStmt.setString(1, name);
 
 
 

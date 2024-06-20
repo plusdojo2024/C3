@@ -61,6 +61,10 @@
 <body>
 <main>
   <h1>Q&amp;A</h1>
+  <c:forEach var="e" items="${qaList}" >
+ <p>Q${e.question}</p>
+ <p>Q${e.answer}</p>
+</c:forEach>
  </main>
 
 </body>
