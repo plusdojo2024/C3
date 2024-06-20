@@ -54,7 +54,6 @@ public class CalendarServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 		}
 
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

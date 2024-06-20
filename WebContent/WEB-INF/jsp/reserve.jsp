@@ -6,6 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <title>訪問予約確認</title>
+  <link rel="stylesheet" href="/C3/css/dm.css">
   <style>
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */

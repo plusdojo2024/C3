@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +33,8 @@
 
 <form method="post" action="/C3/ModNewsServlet">
   <select>
-    <option value="題名1">題名</option>
-    <option value="題名２">題名２</option>
+    <c:forEach var="e" items="${newsList}" >
+    <option value="${e.news_id}">${e.news_title}</option></c:forEach>
   </select><br>
   <input type="text" name="news_title" placeholder="題名"><br>
   <textarea cols="60" rows="10" placeholder="内容"></textarea><br>
