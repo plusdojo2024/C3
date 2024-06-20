@@ -17,7 +17,6 @@
 <body id="top">
   <!-- ヘッダー -->
   <header>
-<<<<<<< HEAD
     <c:if test="${empty id}"><div class="home">
       <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
     </div></c:if>
@@ -29,7 +28,7 @@
     <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
     </div></c:if>
 
-=======
+
     <div class="home">
       <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
@@ -45,17 +44,12 @@
         <li class="list5"><a href="/C3/DmServlet">DM</a></li>
     </ul>
   </nav>
->>>>>>> 3b9d292fe12eda215a1f4074ab2d6e359c59a9a9
+
   <!-- ヘッダーここまで -->
   </header>
 <body>
 <main>
   <h1>団体DM</h1>
-<<<<<<< HEAD
-   <form action="/C3/DmTalkServlet" method="get">
-    <c:forEach var="e" items="${organizationsList}" >
-    <option value="">${e.user_name}</option></c:forEach>
-=======
     <form action="/C3/DmTalkServlet" method="post">
   <input type="search" name="user_name" list="ユーザー名">
   <datalist id="ユーザー名">
@@ -64,7 +58,6 @@
     </c:forEach>
   </datalist>
   <input type="submit" value="DM" name="DM1"></form>
->>>>>>> 3b9d292fe12eda215a1f4074ab2d6e359c59a9a9
 
    <table class="dm">
       <tr>
