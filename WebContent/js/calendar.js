@@ -9,7 +9,6 @@
 	window.onload = function (){
 		//カレンダーを表示
 		generateCalendar(currentYear, currentMonth);
-		//generateEvent();
 	}
 
 
@@ -56,8 +55,8 @@
 				const dayCell = calendarEl.querySelector(`td[data-date="${event.date.getDate()}"]`);
 				dayCell.innerHTML += `<div>${event.event_name}</div>`;
 				dayCell.innerHTML += `<div>${event.event_day}</div>`;
-				dayCell.innerHTML += `<div>${event.place}</div>`;
-				dayCell.innerHTML += `<div>${event.remarks}</div>`;
+				dayCell.innerHTML += `<div>${event.event_place}</div>`;
+				dayCell.innerHTML += `<div>${event.event_remarks}</div>`;
 				dayCell.innerHTML += `<div>${event.user_name}</div>`;
     		}
  		});
