@@ -5,8 +5,8 @@
 <html lang = "ja">
 <head>
 <meta charset="UTF-8">
-<title>カレンダー</title>
- <link rel="stylesheet" href="/C3/css/calendar.css">
+<title>カレンダー編集</title>
+ <link rel="stylesheet" href="/C3/css/mod_calendar.css">
 <style >
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
@@ -56,47 +56,87 @@
   <!-- ヘッダーここまで -->
   </header>
 
- 　<main class="calendar">
-  <h1>カレンダー</h1>
-  <body>
-    <div class="button_center">
-  	  <input type="button" id = "prevMonth" value="前の月" >
-  	  <input type="button" id = "nextMonth" value="次の月" >
-  	</div>
-	<div id="calendar"></div>
-	<!-- <input type="button" value="カレンダーを表示する" onClick=""> -->
-	<script>
-
-
-	<c:forEach var="e" items="${evList}" >
-	    const events = [
-			  {
-			    date: new Date(2024, 5, 5),
-			    event_name: '${e.event_name}',
-			    event_day:'',
-			    event_place:'場所：${e.event_place}',
-			    event_remarks:'備考：${e.event_remarks}',
-			    user_name:'団体名：${e.user_name}'
-			  },
-			  {
-				date: new Date(2024, 5, 15),
-				event_name: '${e.event_name}',
-				event_day:'',
-				event_place:'場所：${e.event_place}',
-				event_remarks:'備考：${e.event_remarks}',
-				user_name:'団体名：${e.user_name}'
-			  },
-			  </div>
-			  {
-			    date: new Date(2024, 4, 15),
-			    title: 'イベント3',
-			  },
-			];
-	    </c:forEach>
-
-	</script>
-    <script src="/C3/js/calendar.js"></script>
-  </body>
+ 　<main class="mod_calendar">
+  <h1>カレンダー編集</h1>
+  // 登録テーブル
+  <table>
+      <tr>
+        <td>
+          <label>譲渡会名<br>
+          <input type="text" name="event_name">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>日時<br>
+          <input type="text" name="event_day">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>場所<br>
+          <input type="text" name="event_place">
+          </label>
+        </td>
+       </tr>
+       <tr>
+        <td>
+          <label>備考<br>
+          <input type="text" name="event_remarks">
+          </label>
+        </td>
+       </tr>
+   </table>
+  <div class="regist">
+    <input type="submit" id="regist" name="submit" value="登録">
+  </div>
+  // 更新・削除テーブル
+   <table>
+      <tr>
+        <td>  
+          <label>譲渡会名<br>
+            <select>
+              <c:forEach var="e" items="${organizationsList}" >
+              <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+            </select>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>日時<br>
+          <input type="text" name="event_day">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>場所<br>
+          <input type="text" name="event_place">
+          </label>
+        </td>
+       </tr>
+       <tr>
+        <td>
+          <label>備考<br>
+          <input type="text" name="event_remarks">
+          </label>
+        </td>
+       </tr>
+       <tr>
+        <td>
+          <label>団体名<br>
+          <input type="text" name="user_name">
+          </label>
+        </td>
+       </tr>
+   </table>
+  <div class="update_delete">
+    <input type="submit" id="update" name="submit" value="更新">
+    <input type="submit" id="delete" name="submit" value="削除">
+  </div>
   </main>
   <!-- メインここまで -->
 
