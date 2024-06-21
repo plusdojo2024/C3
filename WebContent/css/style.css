@@ -234,22 +234,24 @@ main h2 {
 }
 .groupform {
   display: inline-block;
-  width: 500px;
-  padding-bottom:10px;
-  padding-top:10px;
-  text-decoration: none;
-  text-align: center;
-  font-size: 22px; /* フォントサイズ */
+  width:600px;/*フォーム全体の幅を広げる*/
+  padding-bottom:30px;/*要素下の幅調整*/
+  padding-top:30px;/*要素上の幅調整*/
+  font-size: 25px; /* フォントサイズ */
   color: #663300; /* 文字色 */
-  margin-bottom: 10px; /* 下のマージン */
+  margin-bottom: 50px; /* 下のマージン */
+  margin-top:30px;/*フォーム外のtopの調整*/
+  margin-right:30px;
+  margin-left:30px;
   width: 15em;/*フォームの横の長さ*/
-  /*height:15em;*/
   text-align:center;/*文字を真ん中にする*/
-  /*padding: 50px 20px; /* 内側の余白 */
   background-color: #FFFAF0; /* 背景色 */
-  border: 4px ridge #996633; /* 枠線 */
+  border: 6px double #996633; /* 枠線 */
   border-radius: 45px; /* 角の丸み（丸くするために大きめに設定） */
-  /*display: inline-block; /* 幅を内容に合わせるためにインラインブロックに設定 */
+}
+#groupfont {
+	color: #663300; /* 文字色 */
+    text-decoration:none;
 }
 .search {
   display: grid;
