@@ -24,7 +24,7 @@ public class MachAnswersDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT animal_type, img FROM MachAnswers WHERE(a1=? AND a2=? AND a3=? AND a4=? AND a5=?)";
+					String sql = "SELECT * FROM Mach_Answers WHERE(a1=? AND a2=? AND a3=? AND a4=? AND a5=?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					pStmt.setBoolean(1, a1);
@@ -41,11 +41,11 @@ public class MachAnswersDAO {
 							rs.getInt("answer_number"),
 							rs.getString("animal_type"),
 							rs.getString("img"),
-							rs.getBoolean("q1"),
-							rs.getBoolean("q2"),
-							rs.getBoolean("q3"),
-							rs.getBoolean("q4"),
-							rs.getBoolean("q5")
+							rs.getBoolean("a1"),
+							rs.getBoolean("a2"),
+							rs.getBoolean("a3"),
+							rs.getBoolean("a4"),
+							rs.getBoolean("a5")
 							);
 						cardList.add(record);
 					}
