@@ -56,9 +56,8 @@
   <!-- ヘッダーここまで -->
   </header>
 
- 　<main>
+ 　<main class="calendar">
   <h1>カレンダー</h1>
-  </main>
   <body>
     <div class="button_center">
   	  <input type="button" id = "prevMonth" value="前の月" >
@@ -98,6 +97,7 @@
 	</script>
     <script src="/C3/js/calendar.js"></script>
   </body>
+  </main>
   <!-- メインここまで -->
 
   <!-- フッター -->

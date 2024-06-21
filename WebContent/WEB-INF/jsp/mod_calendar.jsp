@@ -56,48 +56,38 @@
   <!-- ヘッダーここまで -->
   </header>
 
- 　<main>
+ 　<main class="mod_calendar">
   <h1>カレンダー編集</h1>
+  <table>
+      <tr>
+        <td>
+          <label>譲渡会名<br>
+          <input type="text" name="event_name">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>日時<br>
+          <input type="checkbox" name="event_day">
+          </label>
+        </td>
+        <td>
+          <label>場所<br>
+          <input type="text" name="event_place">
+          </label>
+        </td>
+       </tr>
+       <tr>
+        <td>
+          <label>年齢<br>
+          <input type="text" name="age">
+          </label>
+        </td>
+       </tr>
+   </table>
+  <input type="submit" id="regist" name="submit" value="登録">
   </main>
-  <body>
-    <div class="button_center">
-  	  <input type="button" id = "prevMonth" value="前の月" >
-  	  <input type="button" id = "nextMonth" value="次の月" >
-  	</div>
-	<div id="calendar"></div>
-	<!-- <input type="button" value="カレンダーを表示する" onClick=""> -->
-	<script>
-
-
-	<c:forEach var="e" items="${evList}" >
-	    const events = [
-			  {
-			    date: new Date(2024, 5, 5),
-			    event_name: '${e.event_name}',
-			    event_day:'',
-			    event_place:'場所：${e.event_place}',
-			    event_remarks:'備考：${e.event_remarks}',
-			    user_name:'団体名：${e.user_name}'
-			  },
-			  {
-				date: new Date(2024, 5, 15),
-				event_name: '${e.event_name}',
-				event_day:'',
-				event_place:'場所：${e.event_place}',
-				event_remarks:'備考：${e.event_remarks}',
-				user_name:'団体名：${e.user_name}'
-			  },
-			  </div>
-			  {
-			    date: new Date(2024, 4, 15),
-			    title: 'イベント3',
-			  },
-			];
-	    </c:forEach>
-
-	</script>
-    <script src="/C3/js/calendar.js"></script>
-  </body>
   <!-- メインここまで -->
 
   <!-- フッター -->
