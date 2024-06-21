@@ -74,7 +74,7 @@ public class UsersDAO {
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
+					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, true, ?, ?, ?, ?)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					if (id != null ) {
@@ -371,8 +371,8 @@ public class UsersDAO {
 					// SQL文を準備する
 					//お気に入り登録時
 
-						String sql = "UPDATE Users SET user_id=?, user_name=?, user_password=?, address=?, phone_number=?, "
-							+ "emails=?, remarks=? WHERE id=? AND is_organization=true";
+						String sql = "UPDATE Users SET user_id=?, user_name=?, user_password=?, address=?, phonenumber=?, "
+							+ "email=?, remarks=? WHERE id=? AND is_organization=true";
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 
 						// SQL文を完成させる
