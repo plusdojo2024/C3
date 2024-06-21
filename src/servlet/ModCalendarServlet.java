@@ -63,9 +63,6 @@ public class ModCalendarServlet extends HttpServlet {
 				String event_name = request.getParameter("event_name");
 				String tempEvent_day = request.getParameter("event_day");
 				try {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				Date date = sdf.parse(tempEvent_day);
-				Timestamp eventDay = new Timestamp(date.getTime());
 				String event_place = request.getParameter("event_place");
 				String event_remarks = request.getParameter("event_remarks");
 				String user_name = request.getParameter("user_name");
@@ -75,6 +72,9 @@ public class ModCalendarServlet extends HttpServlet {
 
 				// 登録
 				if (request.getParameter("submit").equals("登録")) {
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = sdf.parse(tempEvent_day);
+					Timestamp eventDay = new Timestamp(date.getTime());
 					if (EvDao.insert(new Events(0, event_name, eventDay, event_place, event_remarks, user_name))) {	// 登録成功
 					// 改造（ここまで）
 						request.setAttribute("result",
@@ -87,8 +87,11 @@ public class ModCalendarServlet extends HttpServlet {
 				// 更新
 				}else if (request.getParameter("submit").equals("更新")) { 
 					String tempId = request.getParameter("Id");
-					int Id = Integer.parseInt(tempId);
-					if (EvDao.update(new Events(0, event_name, eventDay, event_place, event_remarks, user_name))) {	// 更新成功
+					int id = Integer.parseInt(tempId);
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = sdf.parse(tempEvent_day);
+					Timestamp eventDay = new Timestamp(date.getTime());
+					if (EvDao.update(new Events(id, event_name, eventDay, event_place, event_remarks, user_name))) {	// 更新成功
 						request.setAttribute("result",
 						new Result("更新成功", "レコードを1件更新しました。", "/C3/ModCalendarServlet"));
 					}
@@ -98,10 +101,10 @@ public class ModCalendarServlet extends HttpServlet {
 					}
 				}
 				//削除
-				else {
+				else if (request.getParameter("submit").equals("削除")){ 
 					String tempId = request.getParameter("Id");
-					int Id = Integer.parseInt(tempId);
-					if (EvDao.delete(Id)) {
+					int id = Integer.parseInt(tempId);
+					if (EvDao.delete(id)) {
 						request.setAttribute("result",
 						new Result("削除成功", "レコードを1件削除しました。", "/C3/ModCalendarServlet"));
 					}

@@ -40,12 +40,20 @@ public String getEvent_name() {
 public void setEvent_name(String event_name) {
 	this.event_name = event_name;
 }
-public Timestamp getEvent_day() {
+/*public Timestamp getEvent_day() {
 	return event_day;
 }
 public void setEvent_day(Timestamp event_day) {
 	this.event_day = event_day;
+}*/
+public String getyear() {
+	return year;
 }
+public void setYear(Timestamp year) {
+	this.year = year;
+}/* 6/21 水谷週末いじります */
+
+
 public String getEvent_place() {
 	return event_place;
 }

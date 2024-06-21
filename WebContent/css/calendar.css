@@ -79,13 +79,22 @@ form {
 .button_center{
   text-align:center;
 }
-.day_of_week_thead { /* 曜日の行 */
-  padding: 10px 10px;
-  border:1px brown solid;
-}
 .calendar { /*中央揃え*/
 	  display: grid;
   place-items: center; /* 水平方向と垂直方向に中央配置 */
   margin-top:100px;
   margin-bottom:100px;	
 }
+td {
+  font-size : 50px;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:30px;
+  padding-right:30px
+}
+/*
+table {
+	 border:1; 
+	 style:border-collapse collapse;
+}
+*/

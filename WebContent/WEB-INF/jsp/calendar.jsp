@@ -64,37 +64,41 @@
   	  <input type="button" id = "nextMonth" value="次の月" >
   	</div>
 	<div id="calendar"></div>
-	<!-- <input type="button" value="カレンダーを表示する" onClick=""> -->
 	<script>
 
-
-	<c:forEach var="e" items="${evList}" >
-	    const events = [
+		const events = [
+		<c:forEach var="e" items="${evList}" >
 			  {
-			    date: new Date(2024, 5, 5),
+			    id:'${e.id}',
 			    event_name: '${e.event_name}',
-			    event_day:'',
+			    //date: new Date(2024, 5, 15),
+			    date:new Date(${e.year}, ${e.month}, ${e.day})
+			    //event_day:'${e.event_day}',
 			    event_place:'場所：${e.event_place}',
 			    event_remarks:'備考：${e.event_remarks}',
 			    user_name:'団体名：${e.user_name}'
 			  },
-			  {
-				date: new Date(2024, 5, 15),
-				event_name: '${e.event_name}',
-				event_day:'',
-				event_place:'場所：${e.event_place}',
-				event_remarks:'備考：${e.event_remarks}',
-				user_name:'団体名：${e.user_name}'
-			  },
-			  </div>
-			  {
-			    date: new Date(2024, 4, 15),
-			    title: 'イベント3',
-			  },
-			];
 	    </c:forEach>
+		];
 
-	</script>
+	    
+	    //date: new Date(2024, 5, 15),
+	
+		//const events = [ {event}, {event}, {event} ];
+		//const events = [ {event}, {event}, {event} ];
+		//const events = [ {event}, {event}, {event} ];
+		//const events = [ {event}, {event}, {event} ];
+		
+		//const events = [ 
+		//foreach evList
+		//	{event}, 
+		///foreach
+		//	];
+	
+		//例：evListの中身が10個
+		//const events = [ {event}, {event}, {event}, {event}, {event}, {event}, {event}, {event}, {event}, {event}, ];
+
+	    </script>
     <script src="/C3/js/calendar.js"></script>
   </body>
   </main>
