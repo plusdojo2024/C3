@@ -97,7 +97,10 @@
       <tr>
         <td>  
           <label>譲渡会名<br>
-          <input type="text" name="event_name">
+            <select>
+              <c:forEach var="e" items="${organizationsList}" >
+              <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+            </select>
           </label>
         </td>
       </tr>
@@ -131,7 +134,8 @@
        </tr>
    </table>
   <div class="update_delete">
-    <input type="submit" id="regist" name="submit" value="更新">
+    <input type="submit" id="update" name="submit" value="更新">
+    <input type="submit" id="delete" name="submit" value="削除">
   </div>
   </main>
   <!-- メインここまで -->
