@@ -18,7 +18,7 @@
 <!-- ヘッダー -->
 <header>
   <div class="home">
-    <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
+    <a href="ManagerServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
   </div>
   <div class="logout">
     <a href="HomeServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>

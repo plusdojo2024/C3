@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>団体登録</title>
+<title>団体更新・削除</title>
 <link rel="stylesheet" href="/C3/css/style.css">
 <style>
   body {
@@ -25,20 +26,24 @@
   <!-- ヘッダーここまで -->
   </header>
 <main>
-  <h1>団体登録</h1>
+  <h1>団体更新・削除</h1>
 </main>
-<form method="post" action="/C3/AddGroupServlet">
-  <!-- ID<input type="text" name="id" value="（自動採番）" readonly="readonly" style="background-color: lightgray"><br> -->
-  新規団体ユーザーID<input type="text" name="user_id"><br>
-  パスワード<input type="text" name="user_password"><br>
-  団体名<input type="text" name="user_name"><br>
-  住所<input type="text" name="adress"><br>
-  電話番号<input type="text" name="phone_number"><br>
-  メールアドレス<input type="text" name="emails"><br>
-  備考<input type="text" name="remarks"><br>
-  <input type="submit" name="regist" value="登録">
-  <input type="reset" name="reset" value="リセット">
-</form>
+
+
+<c:forEach var="e" items="${organizationsList}" >
+  <form class= "groupform" method="post" action="/C3/UpdateDeleteServlet">
+    <input type="hidden" name="id" value="${e.id}"><br>
+    団体ユーザーID<br><input type="text" name="user_id" value="${e.user_id}"><br>
+    パスワード<br><input type="text" name="user_password" value="${e.user_password}"><br>
+    団体名<br><input type="text" name="user_name" value="${e.user_name}"><br>
+    住所<br><input type="text" name="adress" value="${e.address}"><br>
+    電話番号<br><input type="text" name="phonen_number" value="${e.phone_number}"><br>
+    メールアドレス<br><input type="text" name="emails" value="${e.emails}"><br>
+    備考<br><input type="text" name="remarks" value="${e.remarks}"><br>
+    <input type="submit" name="submit" value="更新">
+    <input type="submit" name="submit" value="削除"><br>
+  </form>
+</c:forEach>
   <!-- メインここまで -->
   <!-- フッター -->
   <footer>

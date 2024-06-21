@@ -224,7 +224,7 @@ main h2 {
 .logout {
 	text-align:right;
 }
-.img {/*個人ホームの画像の配置*/
+.img{/*個人ホームの画像の配置*/
    display: flex;
    justify-content: center;
    align-items: center;
@@ -246,12 +246,18 @@ main h2 {
   width: 15em;/*フォームの横の長さ*/
   text-align:center;/*文字を真ん中にする*/
   background-color: #FFFAF0; /* 背景色 */
-  border: 6px double #996633; /* 枠線 */
+  border: 8px double #996633; /* 枠線 */
   border-radius: 45px; /* 角の丸み（丸くするために大きめに設定） */
 }
 #groupfont {
 	color: #663300; /* 文字色 */
     text-decoration:none;
+}
+.mach result {
+  display: grid;
+  place-items: center; /* 水平方向と垂直方向に中央配置 */
+  margin-top:100px;
+  margin-bottom:100px;
 }
 .search {
   display: grid;
@@ -333,43 +339,50 @@ input[name=user_name]{
   border-bottom-right-radius: 20px;
 
 }
-/*
+
 input[name=adress]{
-  width: 20em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  width: 13em;
+  height: 30px;
+  text-align:center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
 }
 
 
-input[name=phonenumber]{
-  width: 12em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+input[name=phone_number]{
+  width: 13em;
+  height: 30px;
+  text-align:center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
 }
 
-input[name=email]{
-  width: 16em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+input[name=emails]{
+  width: 13em;
+  height: 30px;
+  text-align:center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
 }
 
 input[name=remarks]{
-  width: 50em;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-
-}*/
+  width: 26em;
+  height: 30px;
+  text-align:center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
 
 /* すべてのページに適用 - フッター */
 .gotop {

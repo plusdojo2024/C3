@@ -11,6 +11,7 @@
 <style>
   body {
     background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
+    font-weight: bold; /* または数値 (100 - 900) */
   }
 </style>
 </head>
@@ -56,7 +57,7 @@
 </header>
 <body>
 <c:forEach var="m" items= "${machList}">
-<div ><img src="${m.img}">${m.animal_type}</div>
+<div class="mach result"><img src="${m.img}"><br>${m.animal_type}</div>
 </c:forEach>
 </body>
 <footer>

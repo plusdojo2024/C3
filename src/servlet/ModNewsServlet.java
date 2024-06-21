@@ -37,7 +37,7 @@ public class ModNewsServlet extends HttpServlet {
 		/*// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/simpleBC/LoginServlet");
+					response.sendRedirect("/C3/LoginServlet");
 					return;
 				}*/
 		NewsDAO nDao = new NewsDAO();
@@ -57,7 +57,7 @@ public class ModNewsServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/simpleBC/LoginServlet");
+					response.sendRedirect("/C3/LoginServlet");
 					return;
 				}
 
