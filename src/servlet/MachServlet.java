@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MachAnswersDAO;
-import dao.MachQuestionsDAO;
 import model.MachAnswers;
-import model.MachQuestions;
 
 /**
  * Servlet implementation class MachServlet
@@ -35,9 +33,9 @@ public class MachServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		MachQuestionsDAO mqDao = new MachQuestionsDAO();
+		/*MachQuestionsDAO mqDao = new MachQuestionsDAO();
 		List<MachQuestions> machqlist = mqDao.select();
-		request.setAttribute("machqList", machqlist);
+		request.setAttribute("machqList", machqlist);*/
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mach.jsp");
 		dispatcher.forward(request, response);
@@ -56,40 +54,52 @@ public class MachServlet extends HttpServlet {
 		String tmpa4 = request.getParameter("answer4");
 		String tmpa5 = request.getParameter("answer5");
 		boolean a1,a2,a3,a4,a5;
+		System.out.println(tmpa1);
+		System.out.println(tmpa2);
+		System.out.println(tmpa3);
+		System.out.println(tmpa4);
+		System.out.println(tmpa5);
 
 
 		// 検索処理を行う
-		if(tmpa1 == "yes") {
+		if(tmpa1.equals("yes")) {
 			a1 = true;
 		} else {
 			a1 =false;
 		}
-		if(tmpa2  == "yes") {
+		if(tmpa2 .equals("yes")) {
 			a2 = true;
 		} else {
 			a2 =false;
 		}
-		if(tmpa3 == "yes") {
+		if(tmpa3.equals("yes")) {
 			a3 = true;
 		} else {
 			a3 =false;
 		}
-		if(tmpa4 == "yes") {
+		if(tmpa4 .equals("yes")) {
 			a4 = true;
 		} else {
 			a4 =false;
 		}
-		if(tmpa5 == "yes") {
+		if(tmpa5.equals("yes")) {
 			a5 = true;
 		} else {
 			a5 =false;
 		}
+		/*System.out.println(a1);
+		System.out.println(a2);
+		System.out.println(a3);
+		System.out.println(a4);
+		System.out.println(a5);*/
 
 		// インスタンスを作成
 		MachAnswersDAO maDao = new MachAnswersDAO();
+		if(request.getParameter("mach").equals("診断")) {
+			List<MachAnswers> machlist = maDao.select(a1, a2, a3, a4, a5);
+			request.setAttribute("machList", machlist);
+		}
 
-		List<MachAnswers> machlist = maDao.select(a1, a2, a3, a4, a5);
-		request.setAttribute("machList", machlist);
 
 
 

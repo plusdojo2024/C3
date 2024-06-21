@@ -24,7 +24,7 @@ public class MachQuestionsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する
-				String sql = "SELECT * FROM MachQuestions";
+				String sql = "SELECT * FROM Mach_Questions";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 
@@ -80,7 +80,7 @@ public class MachQuestionsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO MachQuestions VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Mach_Questions VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -130,7 +130,7 @@ public class MachQuestionsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
-			String sql = "UPDATE Machquestions SET q?=?";
+			String sql = "UPDATE Mach_questions SET q?=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -179,7 +179,7 @@ public class MachQuestionsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM Machquestions";
+			String sql = "DELETE FROM Mach_questions";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を実行する
