@@ -60,17 +60,12 @@ public class ModCalendarServlet extends HttpServlet {
 
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String tempId = request.getParameter("Id");
-				int Id = Integer.parseInt(tempId);
-
 				String event_name = request.getParameter("event_name");
-
 				String tempEvent_day = request.getParameter("event_day");
 				try {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date date = sdf.parse(tempEvent_day);
 				Timestamp eventDay = new Timestamp(date.getTime());
-
 				String event_place = request.getParameter("event_place");
 				String event_remarks = request.getParameter("event_remarks");
 				String user_name = request.getParameter("user_name");
@@ -90,7 +85,9 @@ public class ModCalendarServlet extends HttpServlet {
 								new Result("登録失敗", "レコードを登録できませんでした。", "/C3/ModCalendarServlet"));
 					}
 				// 更新
-				}else if (request.getParameter("submit").equals("更新")) { // submitでOK?
+				}else if (request.getParameter("submit").equals("更新")) { 
+					String tempId = request.getParameter("Id");
+					int Id = Integer.parseInt(tempId);
 					if (EvDao.update(new Events(0, event_name, eventDay, event_place, event_remarks, user_name))) {	// 更新成功
 						request.setAttribute("result",
 						new Result("更新成功", "レコードを1件更新しました。", "/C3/ModCalendarServlet"));
@@ -102,6 +99,8 @@ public class ModCalendarServlet extends HttpServlet {
 				}
 				//削除
 				else {
+					String tempId = request.getParameter("Id");
+					int Id = Integer.parseInt(tempId);
 					if (EvDao.delete(Id)) {
 						request.setAttribute("result",
 						new Result("削除成功", "レコードを1件削除しました。", "/C3/ModCalendarServlet"));
@@ -110,17 +109,13 @@ public class ModCalendarServlet extends HttpServlet {
 						request.setAttribute("result",
 						new Result("削除失敗", "レコードを削除できませんでした。", "/C3/ModCalendarServlet"));
 					}
-				}
-
-
-
+				}	
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_calendar.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 				dispatcher.forward(request, response);
 				} catch (ParseException e) {
 				    e.printStackTrace();
 					}
 			}
-
 
 }

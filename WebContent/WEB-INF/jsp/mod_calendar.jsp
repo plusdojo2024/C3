@@ -58,8 +58,16 @@
 
  　<main class="mod_calendar">
   <h1>カレンダー編集</h1>
-  // 登録テーブル
+  <!--登録フォーム-->
+  <form action="/C3/ModCalendarServlet" method="post">
   <table>
+    <!--<tr>
+        <td>
+          <label>id<br>
+          <input type="text" name="id">
+          </label>
+        </td>
+      </tr>-->
       <tr>
         <td>
           <label>譲渡会名<br>
@@ -88,18 +96,29 @@
           </label>
         </td>
        </tr>
+      <tr>
+        <td>
+          <label>団体名<br>
+          <input type="text" name="user_name">
+          </label>
+        </td>
+      </tr>
    </table>
   <div class="regist">
     <input type="submit" id="regist" name="submit" value="登録">
   </div>
-  // 更新・削除テーブル
+  </form>
+  
+  
+  <!-- 更新・削除フォーム -->
+   <form action="/C3/ModCalendarServlet" method="post">
    <table>
       <tr>
         <td>  
-          <label>譲渡会名<br>
+          <label>譲渡会名<br> 
             <select>
-              <c:forEach var="e" items="${organizationsList}" >
-              <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+              <c:forEach var="e" items="${evList}" >
+              <option value="${e.id}">${e.event_name}</option></c:forEach>
             </select>
           </label>
         </td>
@@ -137,6 +156,7 @@
     <input type="submit" id="update" name="submit" value="更新">
     <input type="submit" id="delete" name="submit" value="削除">
   </div>
+  </form>
   </main>
   <!-- メインここまで -->
 
