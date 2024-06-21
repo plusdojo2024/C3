@@ -224,7 +224,7 @@ main h2 {
 .logout {
 	text-align:right;
 }
-.img p{/*個人ホームの画像の配置*/
+.img{/*個人ホームの画像の配置*/
    display: flex;
    justify-content: center;
    align-items: center;
