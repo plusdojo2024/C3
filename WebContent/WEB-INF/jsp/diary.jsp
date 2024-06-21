@@ -37,10 +37,12 @@
 
 
 <c:forEach var="e" items= "${diaryList}">
-  ${e.diary_title}
- ${e.user_id}
-${e.diary_day
-${e.diary}
+<div class="h2">
+<p style="font-size:1.5rem;">題名：${e.diary_title}
+<p style="font-size:1.5rem;color:#D2B48C;">投稿者：${e.user_name}
+<p style="font-size:1.5rem;color:#D2B48C;">投稿日：${e.diary_day}
+<p style="font-size:2rem;">本文：${e.diary}
+</div>
 </c:forEach>
 
 <!-- フッター -->

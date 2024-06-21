@@ -187,6 +187,8 @@ INSERT INTO DMS VALUES(null, '3', '1', CURRENT_TIMESTAMP, '‚¨”æ‚ê—l‚Å‚·B‚Ç‚¤‚µ‚
 INSERT INTO DMS VALUES(null, '5', '1', CURRENT_TIMESTAMP, '¡“ú‚­‚é‚ÌH', true);
 INSERT INTO DMS VALUES(null, '6', '1', CURRENT_TIMESTAMP, '¡“ú‰´‹x‚Ş‚í', true);
 INSERT INTO DMS VALUES(null, '7', '8', CURRENT_TIMESTAMP, '‚¤‚¢[', true);
+INSERT INTO DIARYS VALUES(null, CURRENT_TIMESTAMP, 1, '¡“ú‚Í‰‚ß‚Ä‹ƒ‚«‚Ü‚µ‚½BÅ‚‚Ì‹C•ª‚Å‚·B‚±‚ê‚©‚ç‚à‚Á‚Æ’‡—Ç‚­‚È‚è‚½‚¢‚Å‚·B',  '‰‚Ì–Â‚«º');
+INSERT INTO DIARYS VALUES(null,to_char(current_timestamp, 'YYYY-MM-DD HH24:MI'), 1, '‚ ',  '‚¢');
 
 ---------------‚¨‚µInsert•¶------------------
 
@@ -237,6 +239,13 @@ INSERT INTO MACH_ANSWERS VALUES(32, 'ƒS[ƒ‹ƒfƒ“ƒŒƒgƒŠƒo[', '/C3/img/images/Gold
 SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img  
 FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id;
 
+
+SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img
+							FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id
+							WHERE INDIVIDUALS.user_id=? AND kind=? AND animal_name Like ? AND age=? AND type LIKE ? AND gender LIKE ? ORDER BY id;
+
+SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img 
+							FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id  WHERE Individuals.user_id=2 ORDER BY id
 ---------------individualsƒe[ƒuƒ‹‚Æusersƒe[ƒuƒ‹Aanimalsƒe[ƒuƒ‹‚Ì³‹K‰»‚Ì‚½‚ß‚ÌSQL•¶------------------
 
 

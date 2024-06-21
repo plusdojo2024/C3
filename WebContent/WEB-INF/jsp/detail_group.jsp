@@ -60,17 +60,17 @@
 <div >${n.news_title}"><br>${n.news_day}<br>${n.news_detail}<br></div>
 </c:forEach>
 <c:forEach var="i" items= "${individualList}">
-<div >
+<div class="groupform" >
 
-      写真：
-      所属団体：${i.organization_name}"><br>
-      名前：${i.name}<br>
+      写真：<br>
+      所属団体：${i.user_name}<br>
+      名前：${i.animal_name}<br>
       種類：${i.kind}<br>
       年齢：${i.age}<br>
       性別：${i.gender}<br>
       保護日：${i.period}<br>
       備考：${i.remarks}<br>
-      去勢識別：${i.castration}<br>
+      去勢識別：${i.is_castration}<br>
       誕生日：${i.birthday}<br>
       </div>
 </c:forEach>

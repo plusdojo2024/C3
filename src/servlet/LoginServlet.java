@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 			List<Users> loginList = iDao.is_organization(id, pw);
 			for(Users loginlist: loginList) {
 				session.setAttribute("userName",loginlist.getUser_name());
+				session.setAttribute("number",loginlist.getId());
 			if(loginlist.getIs_organization()== true){
 //団体用のホームページ
 				System.out.println(loginList);
@@ -56,6 +57,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			else if(loginlist.getIs_organization()== false) {
 //個人用
+				System.out.println(loginlist.getId());
 				response.sendRedirect("/C3/PersonalServlet");
 			}
 			}

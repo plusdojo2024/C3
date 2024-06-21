@@ -41,9 +41,14 @@ public class ModDiaryServlet extends HttpServlet {
 					return;
 				}
 
+				//String myId = (String)session.getAttribute("id");
+				String myNumber = String.valueOf(session.getAttribute("number"));
 				DiarysDAO dDao = new DiarysDAO();
 				List<Diarys> diaryList = dDao.select();
 				request.setAttribute("diaryList", diaryList);
+
+				List<Diarys> myDiaryList = dDao.selectPd(myNumber);
+				request.setAttribute("diarysList", myDiaryList);
 
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_diary.jsp");
@@ -65,20 +70,19 @@ public class ModDiaryServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 
 				String myId = (String)session.getAttribute("id");
+				String myNumber = String.valueOf(session.getAttribute("number"));
+				System.out.println(myNumber);
+				String myName = (String)session.getAttribute("userName");
 				String diaryTitle = request.getParameter("diary_title");
 				String diaryDetail = request.getParameter("diary");
 
 				DiarysDAO dDao = new DiarysDAO();
 
-				List<Diarys> diaryList = dDao.select();
-				request.setAttribute("diaryList", diaryList);
 
-				List<Diarys> myDiaryList = dDao.selectPd(myId);
-				request.setAttribute("diaryList", myDiaryList);
 
 
 				if(request.getParameter("submit").equals("登録")) {
-					if (dDao.insert(new Diarys(0, null, myId, diaryTitle, diaryDetail))) {	// 登録成功
+					if (dDao.insert(new Diarys(0, null, myNumber, diaryTitle, diaryDetail, myName))) {	// 登録成功
 						request.setAttribute("result",
 						new Result("登録成功！", "レコードを登録しました。", "/C3/ModDiaryServlet"));
 					}
@@ -90,7 +94,7 @@ public class ModDiaryServlet extends HttpServlet {
 				else if (request.getParameter("submit").equals("更新")) {
 					String tempdiaryId = request.getParameter("id");
 					int diaryId = Integer.parseInt(tempdiaryId);
-					if (dDao.update(new Diarys(diaryId, null, myId, diaryTitle, diaryDetail))) {	// 登録成功
+					if (dDao.update(new Diarys(diaryId, null, myId, diaryTitle, diaryDetail,myName))) {	// 登録成功
 						request.setAttribute("result",
 						new Result("更新成功！", "レコードを更新しました。", "/C3/ModDiaryServlet"));
 					}
@@ -105,7 +109,7 @@ public class ModDiaryServlet extends HttpServlet {
 					if (dDao.delete(diaryId)) {	// 登録成功
 
 						request.setAttribute("result",
-						new Result("削除成功！", "レコードを削除しました。", "/C3ModDiaryServlet"));
+						new Result("削除成功！", "レコードを削除しました。", "/C3/ModDiaryServlet"));
 					}
 					else {												// 登録失敗
 						request.setAttribute("result",

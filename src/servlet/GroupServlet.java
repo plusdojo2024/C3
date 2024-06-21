@@ -35,9 +35,10 @@ public class GroupServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		UsersDAO uDao = new UsersDAO();
 		List<Users> organizationsList = uDao.select();
-
 		// 表示結果をリクエストスコープに格納する
 		request.setAttribute("organizationsList", organizationsList);
+
+
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/group.jsp");
 		dispatcher.forward(request, response);

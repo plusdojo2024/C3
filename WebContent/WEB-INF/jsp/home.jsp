@@ -70,18 +70,40 @@
   <div class="h2">
   <h2>日記</h2><br>
 
- <c:forEach var="e" items= "${diaryList}">
-  <p style="font-size:2rem;">題名：初のチュール${e.diary_title}
-  <p style="font-size:1.5rem;color:#D2B48C;">投稿者：チャマめっち${e.user_id}
-  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/06/17${e.diary_day}
+ <c:forEach var="e" items= "${diaryList}" begin="0" end="2">
+
+  <div class="h2">
+  <form class="" action="/C3/DiaryServlet" method="get" name="form">
+  <input type="hidden" value="${e.id}" name= "diaryId">
+    <a id="groupfont" href="/C3/DiaryServlet" onclick="document.form.submit();">
+
+ <!-- <p style="font-size:2rem;"> --> 題名：${e.diary_title}<br>
+  <!-- <p style="font-size:1.5rem;color:#D2B48C;"> -->投稿者：${e.user_name}<br>
+  <!-- <p style="font-size:1.5rem;color:#D2B48C;"> -->投稿日：${e.diary_day}<br>
+  </a><input type="submit">
+ </form></div>
+
+
 </c:forEach>
-  <p style="font-size:2rem;">題名：毎日の散歩
+ <!--   <p style="font-size:2rem;">題名：毎日の散歩
   <p style="font-size:1.5rem;color:#D2B48C;">投稿者：まめっち
-  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/06/15
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/06/15-->
   <div class="1"><!-- ＋ボタンを押したら表示されるid -->
-  <p style="font-size:2rem;">題名：我が家の日課
+  <div class="h2">
+  <c:forEach var="e" items= "${diaryList}" begin="3" >
+  <form class="" action="/C3/DiaryServlet" method="post" name="a">
+  <a id="groupfont" href="" onclick="document.a.submit();">
+  題名：${e.diary_title}<br>
+  投稿者：${e.user_name}<br>
+  投稿日：${e.diary_day}<br></a>
+<input type="hidden" value="${e.id}"name="diaryId">
+<input type="submit" value="詳細">
+  </form>
+</c:forEach>
+</div>
+  <!--  <p style="font-size:2rem;">題名：我が家の日課
   <p style="font-size:1.5rem;color:#D2B48C;">投稿者：くちぱっち
-  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/05/14
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/05/14-->
   </div>
   <div class="function">
     <img src="./img/images/function.png" alt="" width="60" height="60">

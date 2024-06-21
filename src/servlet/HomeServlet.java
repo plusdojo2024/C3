@@ -39,4 +39,10 @@ public class HomeServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		dispatcher.forward(request, response);
 	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String diaryId = request.getParameter("diaryId");
+		System.out.println(diaryId);
+	}
 }

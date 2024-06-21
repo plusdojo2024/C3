@@ -35,7 +35,7 @@
 
 <form method="post" action="/C3/ModDiaryServlet">
   <select name="id">
-    <c:forEach var="e" items="${diaryList}" >
+    <c:forEach var="e" items="${diarysList}" >
     <option value="${e.id}">${e.diary_title}</option></c:forEach>
   </select><br>
   <input type="text" name="diary_title" placeholder="題名"><br>

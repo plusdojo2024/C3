@@ -115,7 +115,7 @@ public class IndividualsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img \"\r\n"
+					String sql = "SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img "
 							+ " FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id  WHERE Individuals.user_id=? ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる

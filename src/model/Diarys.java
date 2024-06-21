@@ -7,19 +7,21 @@ public class Diarys implements Serializable{
   private Timestamp diary_day;		/*投稿日*/
   private String user_id;		/*投稿者ユーザーID*/
   private String diary;			/*本文*/
-  private String diary_title;		/*タイトル*/
+  private String diary_title;
+  private String user_name;/*タイトル*/
 //引数がないコンストラクタ
   public Diarys() {
 
   }
   //引数があるコンストラクタ
-  public Diarys(int id, Timestamp diary_day, String user_id, String diary, String diary_title){
+  public Diarys(int id, Timestamp diary_day, String user_id, String diary, String diary_title, String user_name){
     super();
        this.id = id;
        this.diary_day = diary_day;
        this.user_id = user_id;
        this.diary = diary;
        this.diary_title = diary_title;
+       this.user_name = user_name;
   }
 public int getId() {
 	return id;
@@ -51,5 +53,10 @@ public String getDiary_title() {
 public void setDiary_title(String diary_title) {
 	this.diary_title = diary_title;
 }
-
+public String getUser_name() {
+	return user_name;
+}
+public void setUser_name(String user_name) {
+	this.user_name = user_name;
+}
 }

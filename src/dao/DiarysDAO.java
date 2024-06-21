@@ -23,7 +23,9 @@ public class DiarysDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM Diarys  ORDER BY id";
+					String sql = "SELECT Diarys.id, diary_day, DIARYS.user_id, USERS.user_name, diary, diary_title "
+							+ "FROM DIARYS JOIN USERS ON DIARYS.user_id = USERS.id"
+							+ " ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 
@@ -37,7 +39,8 @@ public class DiarysDAO {
 							rs.getTimestamp("diary_day"),
 							rs.getString("user_id"),
 							rs.getString("diary_title"),
-							rs.getString("diary")
+							rs.getString("diary"),
+							rs.getString("user_name")
 							);
 						cardList.add(record);
 					}
@@ -67,7 +70,7 @@ public class DiarysDAO {
 				return cardList;
 			}
 
-		public List<Diarys> mySelect(int id) {
+		public List<Diarys> mySelect(String id) {
 			Connection conn = null;
 			List<Diarys> cardList = new ArrayList<Diarys>();
 
@@ -79,10 +82,12 @@ public class DiarysDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM Diarys  WHERE id=?";
+					String sql = "SELECT Diarys.id, diary_day, DIARYS.user_id, USERS.user_name, diary, diary_title "
+							+ "FROM DIARYS JOIN USERS ON DIARYS.user_id = USERS.id"
+							+ "  WHERE DIARYS.id=?";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-						pStmt.setInt(1, id);
+						pStmt.setString(1, id);
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 
@@ -93,7 +98,8 @@ public class DiarysDAO {
 							rs.getTimestamp("diary_day"),
 							rs.getString("user_name"),
 							rs.getString("diary_title"),
-							rs.getString("diary")
+							rs.getString("diary"),
+							rs.getString("user_name")
 							);
 						cardList.add(record);
 					}
@@ -135,7 +141,9 @@ public class DiarysDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM Diarys WHERE user_id=? ORDER BY id";
+					String sql = "SELECT Diarys.id, diary_day, DIARYS.user_id, USERS.user_name, diary, diary_title \r\n"
+							+ "FROM DIARYS JOIN USERS ON DIARYS.user_id = USERS.id "
+							+ " WHERE DIARYS.user_id=? ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					//session
@@ -151,7 +159,8 @@ public class DiarysDAO {
 							rs.getTimestamp("diary_day"),
 							rs.getString("user_id"),
 							rs.getString("diary_title"),
-							rs.getString("diary")
+							rs.getString("diary"),
+							rs.getString("user_name")
 							);
 						cardList.add(record);
 					}
@@ -193,7 +202,7 @@ public class DiarysDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO Diarys VALUES (Null, CURRENT_TIMESTAMP, ?, ?, ?)";
+				String sql = "INSERT INTO Diarys VALUES (Null, to_char(current_timestamp, 'YYYY-MM-DD HH24:MI'), ?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
