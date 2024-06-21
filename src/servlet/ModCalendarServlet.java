@@ -115,7 +115,7 @@ public class ModCalendarServlet extends HttpServlet {
 
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_calendar.jsp");
 				dispatcher.forward(request, response);
 				} catch (ParseException e) {
 				    e.printStackTrace();
