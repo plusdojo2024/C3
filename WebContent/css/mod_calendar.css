@@ -89,3 +89,9 @@ form {
   margin-top:100px;
   margin-bottom:100px;
 }
+.regist{
+	border-radius: 45px; /* 角の丸み（丸くするために大きめに設定） なってない*/
+}
+.update_delete {
+	
+}

@@ -58,6 +58,7 @@
 
  　<main class="mod_calendar">
   <h1>カレンダー編集</h1>
+  // 登録テーブル
   <table>
       <tr>
         <td>
@@ -69,9 +70,11 @@
       <tr>
         <td>
           <label>日時<br>
-          <input type="checkbox" name="event_day">
+          <input type="text" name="event_day">
           </label>
         </td>
+      </tr>
+      <tr>
         <td>
           <label>場所<br>
           <input type="text" name="event_place">
@@ -80,13 +83,56 @@
        </tr>
        <tr>
         <td>
-          <label>年齢<br>
-          <input type="text" name="age">
+          <label>備考<br>
+          <input type="text" name="event_remarks">
           </label>
         </td>
        </tr>
    </table>
-  <input type="submit" id="regist" name="submit" value="登録">
+  <div class="regist">
+    <input type="submit" id="regist" name="submit" value="登録">
+  </div>
+  // 更新・削除テーブル
+   <table>
+      <tr>
+        <td>  
+          <label>譲渡会名<br>
+          <input type="text" name="event_name">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>日時<br>
+          <input type="text" name="event_day">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>場所<br>
+          <input type="text" name="event_place">
+          </label>
+        </td>
+       </tr>
+       <tr>
+        <td>
+          <label>備考<br>
+          <input type="text" name="event_remarks">
+          </label>
+        </td>
+       </tr>
+       <tr>
+        <td>
+          <label>団体名<br>
+          <input type="text" name="user_name">
+          </label>
+        </td>
+       </tr>
+   </table>
+  <div class="update_delete">
+    <input type="submit" id="regist" name="submit" value="更新">
+  </div>
   </main>
   <!-- メインここまで -->
 
