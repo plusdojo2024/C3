@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>カレンダー編集</title>
- <link rel="stylesheet" href="/C3/css/calendar.css">
+ <link rel="stylesheet" href="/C3/css/mod_calendar.css">
 <style >
     body {
       background-color: #FFFAF0; /* 背景色を薄茶色に設定 */
@@ -57,7 +57,7 @@
   </header>
 
  　<main>
-  <h1>カレンダー</h1>
+  <h1>カレンダー編集</h1>
   </main>
   <body>
     <div class="button_center">

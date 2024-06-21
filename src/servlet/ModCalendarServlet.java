@@ -43,7 +43,7 @@ public class ModCalendarServlet extends HttpServlet {
 		List<Events> evList = evDao.selectPd();
 		request.setAttribute("evList", evList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_calendar.jsp");
 		dispatcher.forward(request, response);
 	}
 
