@@ -47,7 +47,7 @@ public class AddGroupServlet extends HttpServlet {
 		String name=request.getParameter("name");
 		String ad=request.getParameter("address");
 		String phone=request.getParameter("phonenumber");
-		String email=request.getParameter("email");
+		String emails=request.getParameter("emails");
 		String remarks=request.getParameter("organization_remarks");
 
 		// 改造（ここまで）
@@ -55,7 +55,7 @@ public class AddGroupServlet extends HttpServlet {
 		// 登録処理を行う
 		UsersDAO bDao = new UsersDAO();
 		// 改造（ここから）
-		if (bDao.insert1(id,pw,name,ad,phone,email,remarks)) {	// 登録成功
+		if (bDao.insert1(id,pw,name,ad,phone,emails,remarks)) {	// 登録成功
 			// 改造（ここまで）
 			request.setAttribute("result",
 					new Result("登録成功！", "レコードを登録しました。", "/C3/AddGroupServlet"));

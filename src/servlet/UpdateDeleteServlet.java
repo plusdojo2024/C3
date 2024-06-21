@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
 import model.Result;
@@ -23,17 +23,23 @@ public class UpdateDeleteServlet extends HttpServlet {
 
     /**
      * @see HttpServlet#HttpServlet()
-     */
+
     public UpdateDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
-    }
+    } */
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+		UsersDAO uDao = new UsersDAO();
+		List<Users> organizationsList = uDao.select();
+
+		// 表示結果をリクエストスコープに格納する
+		request.setAttribute("organizationsList", organizationsList);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/update_delete_group.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -41,21 +47,21 @@ public class UpdateDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+	/*	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("user_id") == null) {
 					response.sendRedirect("/C3/LoginServlet");
 					return;
-				}
+				}*/
 
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				int organizationId = Integer.parseInt(request.getParameter("id"));
-				String userId = request.getParameter("userId");
-				String userPass = request.getParameter("userPass");
-				String userName = request.getParameter("userName");
+				String user_id = request.getParameter("userId");
+				String user_password = request.getParameter("user_password");
+				String user_name = request.getParameter("user_name");
 				String address = request.getParameter("address");
-				String phoneNumber = request.getParameter("phoneNumber");
+				String phone_number = request.getParameter("phone_number");
 				String emails = request.getParameter("emails");
 				String remarks = request.getParameter("remarks");
 
@@ -64,7 +70,7 @@ public class UpdateDeleteServlet extends HttpServlet {
 				UsersDAO uDao = new UsersDAO();
 				if (request.getParameter("submit").equals("更新")) {
 					// ここを改造する
-					if (uDao.update(new Users(organizationId,userId, userName,userPass,true, address,phoneNumber, emails, remarks))) {	// 更新成功
+					if (uDao.update(new Users(organizationId,user_id, user_name, user_password,true, address,phone_number, emails, remarks))) {	// 更新成功
 					// ここまで
 						request.setAttribute("result",
 						new Result("更新成功！", "レコードを更新しました。", "/C3/UpdateDeleteServlet"));
