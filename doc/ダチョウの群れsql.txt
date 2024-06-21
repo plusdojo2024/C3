@@ -240,21 +240,67 @@ FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON IN
 ---------------individualsテーブルとusersテーブル、animalsテーブルの正規化のためのSQL文------------------
 
 
+---------------diarysテーブルとusersテーブルの正規化のためのSQL文------------------
+
+SELECT Diarys.id, diary_day, DIARYS.user_id, USERS.user_name, diary, diary_title 
+FROM DIARYS JOIN USERS ON DIARYS.user_id = USERS.id
+
+---------------diarysテーブルとusersテーブルの正規化のためのSQL文------------------
+
+---------------dmsテーブルとusersテーブルの正規化のためのSQL文------------------
+
+SELECT Dms.id, send_id, receive_id,user_name, dm_day, dm_detail, read 
+FROM DmS JOIN USERS ON DmS.receive_id = USERS.id
+
+---------------dmsテーブルとusersテーブルの正規化のためのSQL文------------------
+
+---------------newsテーブルとusersテーブルの正規化のためのSQL文------------------
+
+SELECT news.id, news_title, news_day, news_detail, news.user_id, user_name 
+FROM news JOIN USERS ON news.user_id = USERS.id
+
+---------------newsテーブルとusersテーブルの正規化のためのSQL文------------------
+
+
+---------------reservationsテーブルとusersテーブルの正規化のためのSQL文------------------
+
+SELECT reservations.id, rsv_day, send_id, user_name, receive_id, reservation_remarks, accept 
+FROM reservations JOIN USERS ON reservationS.send_id = USERS.id
+
+---------------reservationsテーブルとusersテーブルの正規化のためのSQL文------------------
+
+
 ---------------DM機能用のSQL文------------------
 
 //トーク履歴順にソート
-SELECT CASE WHEN userid = '大谷' THEN _id
-	    WHEN _id = '大谷' THEN userid
+SELECT  send_id, receive_id, dm_day, dm_detail, read, who_id, user_name
+FROM
+(SELECT id, send_id, receive_id, dm_day, dm_detail, read, CASE WHEN send_id = 1 THEN receive_id
+	    WHEN receive_id = 1 THEN send_id
 	    END AS who_id
-	FROM DMS WHERE userid='大谷' OR _id='大谷'
+	FROM DMS WHERE send_id=1 OR receive_id=1
+	ORDER BY dm_day DESC)
+JOIN USERS ON who_id = USERS.id;
+
+
+
+SELECT CASE WHEN send_id = '1' THEN receive_id
+	    WHEN receive_id = '1 THEN send_id
+	    END AS who_id
+	FROM DMS WHERE send_id='1' OR receive_id='1' 
 	ORDER BY dm_day DESC;
+
 	
 //トーク相手の名前をグループ化
-SELECT CASE WHEN userid = '大谷' THEN _id
-	    WHEN _id = '大谷' THEN userid
-	    END AS who_id 
-	FROM DMS WHERE userid='大谷' OR _id='大谷'
-	GROUP BY who_id;
+SELECT    who_id, user_name
+FROM
+(SELECT CASE WHEN send_id = 1 THEN receive_id
+	    WHEN receive_id = 1 THEN send_id
+	    END AS who_id
+	FROM DMS WHERE send_id=1 OR receive_id=1
+	GROUP BY who_id)
+JOIN USERS ON who_id = USERS.id;
+
 
 //トーク相手の名前をトーク履歴順に表示
 SELECT who_id FROM(SELECT who_id,MAX(dm_day) as recent_dm_day FROM(SELECT dm_day, CASE WHEN userid = '大谷' THEN _id
@@ -284,10 +330,35 @@ SELECT dm_detail FROM DMs
 	OR (receive_id=1 AND send_id=2)	
 		ORDER BY dm_day ASC;
 
+
+
+SELECT  send_id, receive_id, dm_day, dm_detail, read, who_id, user_name
+FROM
+(SELECT id, send_id, receive_id, dm_day, dm_detail, read, CASE WHEN send_id = 1 THEN receive_id
+	    WHEN receive_id = 1 THEN send_id
+	    END AS who_id
+	FROM DMS WHERE send_id=1 OR receive_id=1
+	ORDER BY dm_day DESC)
+JOIN USERS ON who_id = USERS.id;
+
+//最終形
+SELECT who_id,user_name,recent_dm_day 
+FROM (SELECT    who_id, user_name,recent_dm_day 
+FROM(SELECT MAX(dm_day) as recent_dm_day , CASE WHEN send_id = 1 THEN receive_id
+	    WHEN receive_id = 1 THEN send_id
+	    END AS who_id
+	FROM DMS WHERE send_id=1 OR receive_id=1
+	GROUP BY who_id)
+JOIN USERS ON who_id = USERS.id)
+ORDER BY recent_dm_day DESC;
+
+
 ---------------DM機能用のSQL文------------------
 
 
 
 SELECT RESERVATIONS.id, INDIVIDUAL_id, INDIVIDUALS.ANIMAL_NAME, RSV_DAY,  SEND_ID, USERS.USER_NAME, RECEIVE_ID, RESERVATION_REMARKS, ACCEPT
 FROM RESERVATIONS JOIN INDIVIDUALS ON reservations.individual_id = individuals.id JOIN users ON reservations.send_id = users.id;
+
+
 

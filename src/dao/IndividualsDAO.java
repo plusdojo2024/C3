@@ -24,13 +24,14 @@ public class IndividualsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM Individuals WHERE user_name LIKE ? AND animal_id LIKE ? AND kind LIKE ? AND type LIKE ? AND gender LIKE ? AND "
-								+ " age LIKE ORDER BY number";
+					String sql = "SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img "
+							+ " FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id "
+							+ " WHERE kind LIKE ? AND animal_name Like ? AND  type LIKE ? AND gender LIKE ? ORDER BY id;";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 
-					if (card.getUser_name() != null) {
-						pStmt.setString(1, "%" + card.getUser_name() + "%");
+					if (card.getKind() != null) {
+						pStmt.setString(1, "%" + card.getKind() + "%");
 					}
 					else {
 						pStmt.setString(1, "%");
@@ -41,26 +42,17 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(2, "%");
 					}
-					if (card.getAnimal_id() != 0) {
-						pStmt.setInt(3, card.getAnimal_id());
+					if (card.getType() != null) {
+						pStmt.setString(3, "%" + card.getType() + "%");
 					}
 					else {
-						pStmt.setInt(3, 0);
+						pStmt.setString(3, "%");
 					}
-					if (card.getType() != null) {
-						pStmt.setString(4, "%" + card.getType() + "%");
+					if (card.getGender() != null) {
+						pStmt.setString(4, "%" + card.getGender() + "%");
 					}
 					else {
 						pStmt.setString(4, "%");
-					}
-					if (card.getGender() != null) {
-						pStmt.setString(5, "%" + card.getGender() + "%");
-					}
-					else {
-						pStmt.setString(5, "%");
-					}
-					if (card.getAge() != 0) {
-						pStmt.setInt(6, card.getAge());
 					}
 
 					// SQL文を実行し、結果表を取得する
@@ -80,10 +72,8 @@ public class IndividualsDAO {
 							rs.getString("remarks"),
 							rs.getBoolean("is_castration"),
 							rs.getDate("birthday"),
-							rs.getString("img")
-							//rs.getString("kind"),
-
-
+							rs.getString("img"),
+							rs.getString("kind")
 							);
 						cardList.add(record);
 					}
@@ -113,7 +103,7 @@ public class IndividualsDAO {
 				return cardList;
 			}
 
-		public List<Individuals> select1(String name) {
+		public List<Individuals> select1(String id) {
 			Connection conn = null;
 			List<Individuals> cardList = new ArrayList<Individuals>();
 
@@ -125,11 +115,12 @@ public class IndividualsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT * FROM Individuals WHERE user_name=? ORDER BY id";
+					String sql = "SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img \"\r\n"
+							+ " FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id  WHERE Individuals.user_id=? ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 
-					pStmt.setString(1, name);
+					pStmt.setString(1, id);
 
 
 
@@ -150,8 +141,8 @@ public class IndividualsDAO {
 							rs.getString("remarks"),
 							rs.getBoolean("is_castration"),
 							rs.getDate("birthday"),
-							rs.getString("img")
-							//rs.getString("kind"),
+							rs.getString("img"),
+							rs.getString("kind")
 
 
 							);

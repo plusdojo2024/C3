@@ -67,7 +67,7 @@ public class UpDateDeleteAnimalServlet extends HttpServlet {
 		IndividualsDAO bDao = new IndividualsDAO();
 		if (request.getParameter("submit").equals("更新")) {
 			// ここを改造する
-			if (bDao.update(new Individuals(0,animal_id,animal_name, type, age,gender, user_name, period, remarks,  is_castration, birthday, img))) {	// 更新成功
+			if (bDao.update(new Individuals(0,animal_id,animal_name, type, age,gender, user_name, period, remarks,  is_castration, birthday, img, null))) {	// 更新成功
 			// ここまで
 				request.setAttribute("result",
 				new Result("更新成功！", "レコードを更新しました。", "/C3/UpDateDeleteAnimalServlet"));

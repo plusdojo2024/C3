@@ -41,23 +41,49 @@ public class AnimalSerachServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String organization_name = request.getParameter("organization_name");
+		String orgId = request.getParameter("orgId");
 		String name = request.getParameter("name");
-		String tempAnimalId = request.getParameter("kind");
-		int kind = Integer.parseInt(tempAnimalId);
-		String type = request.getParameter("type");
-		String gender = request.getParameter("gender");
-		String tmpage = request.getParameter("age");
-		int age = Integer.parseInt(tmpage);
+		String kind=null;
+		String gender= null;
+		try {
+		String tempAnimalId = request.getParameter("animal");
+		if(request.getParameter("animal") == null) {
+			kind=null;
+		}else {
+			if(tempAnimalId.equals("dog")) {
+				kind="犬";
+			}else if(tempAnimalId.equals("cat")) {
+				kind="猫";
+			}
+		}
+		}
+		catch (NumberFormatException e) {
+			//e.printStackTrace();
+
+		}
+		String type = request.getParameter("kind");
+		if(request.getParameter("gender") == null) {
+			gender=null;
+		}else {
+			if(request.getParameter("gender").equals("male")) {
+				gender="オス";
+			}else if(request.getParameter("gender").equals("female")) {
+				gender="メス";
+				}
+		}
+		System.out.println(gender);
+
+
+		//String tmpage = request.getParameter("age");
+		//int age = Integer.parseInt(tmpage);
 
 		// 検索処理を行う
 		IndividualsDAO iDao = new IndividualsDAO();
-		List<Individuals> individualList = iDao.select(new Individuals(0, kind, name, type, age, gender, organization_name, null, null, false, null, null));
+		List<Individuals> individualList = iDao.select(new Individuals(0, 0, name, type, 0, gender, orgId, null, null, false, null, null,kind));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("individualList", individualList);

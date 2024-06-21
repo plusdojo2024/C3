@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", id);
 			List<Users> loginList = iDao.is_organization(id, pw);
 			for(Users loginlist: loginList) {
+				session.setAttribute("userName",loginlist.getUser_name());
 			if(loginlist.getIs_organization()== true){
 //団体用のホームページ
 				System.out.println(loginList);

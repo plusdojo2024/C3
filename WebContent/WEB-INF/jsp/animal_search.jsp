@@ -65,9 +65,9 @@
       <tr>
         <td>
           <label>所属団体<br>
-            <select>
+            <select name="orgId">
               <c:forEach var="e" items="${organizationsList}" >
-              <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+              <option value="${e.id}" >${e.user_name}</option></c:forEach>
             </select>
           </label>
         </td>
@@ -97,11 +97,11 @@
           <input type="radio" name="gender" value="female">メス<br>
           </label>
         </td>
-        <td>
+       <!--  <td>
           <label>年齢<br>
           <input type="text" name="age">
           </label>
-        </td>
+        </td>-->
       </tr>
 
       <tr>

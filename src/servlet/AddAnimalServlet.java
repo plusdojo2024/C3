@@ -91,7 +91,7 @@ public class AddAnimalServlet extends HttpServlet {
 
 				// 登録処理を行う
 				IndividualsDAO iDao = new IndividualsDAO();
-				if (iDao.insert(new Individuals(0,animal_id,animal_name, type, age,gender, user_name, period, remarks,  is_castration, birthday, img))) {	// 登録成功
+				if (iDao.insert(new Individuals(0,animal_id,animal_name, type, age,gender, user_name, period, remarks,  is_castration, birthday, img, null))) {	// 登録成功
 					request.setAttribute("result",
 					new Result("登録成功！", "レコードを登録しました。", "/C3/AddAnimaiServlet"));
 				}
