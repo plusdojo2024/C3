@@ -36,10 +36,7 @@ public class ModGroupNewsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/simpleBC/LoginServlet");
-			return;
-		}
+
 		request.setCharacterEncoding("UTF-8");
 		NewsDAO nDao = new NewsDAO();
 		String myId = (String)session.getAttribute("id");
