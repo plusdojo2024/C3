@@ -49,7 +49,7 @@ public class DetailGroupServlet extends HttpServlet {
 				List<Individuals> individualList = iDao.select1(organizationName);
 				request.setAttribute("individualList", individualList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/add_animal.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/detail_group.jsp");
 		dispatcher.forward(request, response);
 	}
 
