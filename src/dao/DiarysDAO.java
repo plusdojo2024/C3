@@ -35,7 +35,7 @@ public class DiarysDAO {
 						Diarys record = new Diarys(
 							rs.getInt("id"),
 							rs.getTimestamp("diary_day"),
-							rs.getString("user_name"),
+							rs.getString("user_id"),
 							rs.getString("diary_title"),
 							rs.getString("diary")
 							);
@@ -135,7 +135,7 @@ public class DiarysDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
-					String sql = "SELECT diary_title FROM Diarys WHERE user_id=? ORDER BY id";
+					String sql = "SELECT * FROM Diarys WHERE user_id=? ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					//session
@@ -149,7 +149,7 @@ public class DiarysDAO {
 						Diarys record = new Diarys(
 							rs.getInt("id"),
 							rs.getTimestamp("diary_day"),
-							rs.getString("user_name"),
+							rs.getString("user_id"),
 							rs.getString("diary_title"),
 							rs.getString("diary")
 							);
@@ -277,7 +277,7 @@ public class DiarysDAO {
 					else {
 						pStmt.setString(2, null);
 					}
-					pStmt.setString(3, null);
+					pStmt.setInt(3, card.getId());
 					//更新ボタンを押した日記のidを格納
 
 

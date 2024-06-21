@@ -72,7 +72,7 @@
     <input type="date" name="rsv_day" >
   </label><br>
   <label>電話番号<br>
-    <input type="tel" name="tel" >
+    <input type="tel" name="phone_number" >
   </label><br>
   <label>備考<br>
     <textarea cols="60" rows="10" name="Reservation_remarks"></textarea>

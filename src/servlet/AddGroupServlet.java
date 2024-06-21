@@ -42,20 +42,20 @@ public class AddGroupServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		// 改造（ここから）
-		String id=request.getParameter("user_id");
-		String pw=request.getParameter("password");
-		String name=request.getParameter("name");
-		String ad=request.getParameter("address");
-		String phone=request.getParameter("phonenumber");
+		String user_id=request.getParameter("user_id");
+		String user_password=request.getParameter("user_password");
+		String user_name=request.getParameter("user_name");
+		String address=request.getParameter("address");
+		String phone_number=request.getParameter("phone_number");
 		String emails=request.getParameter("emails");
-		String remarks=request.getParameter("organization_remarks");
+		String remarks=request.getParameter("remarks");
 
 		// 改造（ここまで）
 
 		// 登録処理を行う
 		UsersDAO bDao = new UsersDAO();
 		// 改造（ここから）
-		if (bDao.insert1(id,pw,name,ad,phone,emails,remarks)) {	// 登録成功
+		if (bDao.insert1(user_id,user_password,user_name,address,phone_number,emails,remarks)) {	// 登録成功
 			// 改造（ここまで）
 			request.setAttribute("result",
 					new Result("登録成功！", "レコードを登録しました。", "/C3/AddGroupServlet"));

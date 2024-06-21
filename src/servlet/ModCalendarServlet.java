@@ -85,7 +85,7 @@ public class ModCalendarServlet extends HttpServlet {
 								new Result("登録失敗", "レコードを登録できませんでした。", "/C3/ModCalendarServlet"));
 					}
 				// 更新
-				}else if (request.getParameter("submit").equals("更新")) { 
+				}else if (request.getParameter("submit").equals("更新")) {
 					String tempId = request.getParameter("Id");
 					int id = Integer.parseInt(tempId);
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -112,7 +112,7 @@ public class ModCalendarServlet extends HttpServlet {
 						request.setAttribute("result",
 						new Result("削除失敗", "レコードを削除できませんでした。", "/C3/ModCalendarServlet"));
 					}
-				}	
+				}
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 				dispatcher.forward(request, response);

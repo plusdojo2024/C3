@@ -21,7 +21,7 @@
       <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
     </div></c:if>
     <c:if test="${not empty id}"><div class="home">
-      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
+      <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
     </div></c:if>
 
     <c:if test="${not empty id}">  <div class="logout">
@@ -102,15 +102,26 @@
     <input type="submit" id="regist" name="submit" value="登録">
   </div>
   </form>
+<<<<<<< HEAD
   
   <p>【イベントの更新・削除】</p>
+=======
+
+
+>>>>>>> 0c5d6ab21fca87c62dd008b34a06d5918687dc43
   <!-- 更新・削除フォーム -->
    <form action="/C3/ModCalendarServlet" method="post">
    <table>
       <tr>
+<<<<<<< HEAD
         <td>  
           <label>譲渡会名<br> 
             <select name="Id">
+=======
+        <td>
+          <label>譲渡会名<br>
+            <select>
+>>>>>>> 0c5d6ab21fca87c62dd008b34a06d5918687dc43
               <c:forEach var="e" items="${evList}" >
               <option value="${e.id}">${e.event_name}</option>
               </c:forEach>
