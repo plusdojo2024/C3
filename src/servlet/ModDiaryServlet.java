@@ -63,11 +63,10 @@ public class ModDiaryServlet extends HttpServlet {
 
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String tempdiaryId = request.getParameter("id");
-				int diaryId = Integer.parseInt(tempdiaryId);
+
 				String myId = (String)session.getAttribute("id");
-				String diaryTitle = request.getParameter("title");
-				String diaryDetail = request.getParameter("detail");
+				String diaryTitle = request.getParameter("diary_title");
+				String diaryDetail = request.getParameter("diary");
 
 				DiarysDAO dDao = new DiarysDAO();
 
@@ -89,7 +88,8 @@ public class ModDiaryServlet extends HttpServlet {
 					}
 				}
 				else if (request.getParameter("submit").equals("更新")) {
-					// ここを改造する
+					String tempdiaryId = request.getParameter("id");
+					int diaryId = Integer.parseInt(tempdiaryId);
 					if (dDao.update(new Diarys(diaryId, null, myId, diaryTitle, diaryDetail))) {	// 登録成功
 						request.setAttribute("result",
 						new Result("更新成功！", "レコードを更新しました。", "/C3/ModDiaryServlet"));
@@ -100,7 +100,10 @@ public class ModDiaryServlet extends HttpServlet {
 					}
 				}
 				else {
+					String tempdiaryId = request.getParameter("id");
+					int diaryId = Integer.parseInt(tempdiaryId);
 					if (dDao.delete(diaryId)) {	// 登録成功
+
 						request.setAttribute("result",
 						new Result("削除成功！", "レコードを削除しました。", "/C3ModDiaryServlet"));
 					}
