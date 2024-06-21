@@ -224,7 +224,7 @@ main h2 {
 .logout {
 	text-align:right;
 }
-.img {/*個人ホームの画像の配置*/
+.img p{/*個人ホームの画像の配置*/
    display: flex;
    justify-content: center;
    align-items: center;
@@ -246,12 +246,18 @@ main h2 {
   width: 15em;/*フォームの横の長さ*/
   text-align:center;/*文字を真ん中にする*/
   background-color: #FFFAF0; /* 背景色 */
-  border: 6px double #996633; /* 枠線 */
+  border: 8px double #996633; /* 枠線 */
   border-radius: 45px; /* 角の丸み（丸くするために大きめに設定） */
 }
 #groupfont {
 	color: #663300; /* 文字色 */
     text-decoration:none;
+}
+.mach result {
+  display: grid;
+  place-items: center; /* 水平方向と垂直方向に中央配置 */
+  margin-top:100px;
+  margin-bottom:100px;
 }
 .search {
   display: grid;

@@ -61,29 +61,35 @@
 
   <!-- １問目 -->
   <form action="/C3/MachServlet" method="post">
-  <p>1.「スポーツは観るより、やる方だ」</p>
-  <p>YES</p><input type="radio" name="answer1" value="yes">
-  <p>NO</p><input type="radio" name="answer1" value="no">
-
+  <p>Q1「スポーツは観るより、やる方だ」</p>
+  <span>
+  YES<input type="radio" name="answer1" value="yes">
+  NO<input type="radio" name="answer1" value="no">
+  </span>
   <!-- 2問目 -->
-  <p>2.「友達は多い方が良いと考えるほうだ」</p>
-  <p>YES</p><input type="radio" name="answer2" value="yes">
-  <p>NO</p><input type="radio" name="answer2" value="no">
-
+  <p>Q2「友達は多い方が良いと考えるほうだ」</p>
+  <span>
+  YES<input type="radio" name="answer2" value="yes">
+  NO<input type="radio" name="answer2" value="no">
+  </span>
   <!-- 3問目 -->
-  <p>3.「人を従えるより、従う方が好きだ」</p>
-  <p>YES</p><input type="radio" name="answer3" value="yes">
-  <p>NO</p><input type="radio" name="answer3" value="no">
-
+  <p>Q3「人を従えるより、従う方が好きだ」</p>
+  <span>
+  YES<input type="radio" name="answer3" value="yes">
+  NO<input type="radio" name="answer3" value="no">
+  </span>
   <!-- 4問目 -->
-  <p>4.「腹が立っても顔には出さない方だ」</p>
-  <p>YES</p><input type="radio" name="answer4" value="yes">
-  <p>NO</p><input type="radio" name="answer4" value="no">
-
+  <p>Q4「腹が立っても顔には出さない方だ」</p>
+  <span>
+  YES<input type="radio" name="answer4" value="yes">
+  NO<input type="radio" name="answer4" value="no">
+  </span>
   <!-- 5問目 -->
-  <p>5.「初対面の人とも上手く打ち解けられる方だ」</p>
-  <p>YES</p><input type="radio" name="answer5" value="yes">
-  <p>NO</p><input type="radio" name="answer5" value="no">
+  <p>Q5「初対面の人とも上手く打ち解けられる方だ」</p>
+  <span>
+  YES<input type="radio" name="answer5" value="yes">
+  NO<input type="radio" name="answer5" value="no"><br>
+  </span>
   <input type="submit" value="診断" name="mach">
 </form>
   </main>

@@ -64,8 +64,8 @@
   <h1>各団体詳細</h1>
 <c:forEach var="e" items="${organizationsList}" >
   <form class="groupform" action="/C3/GroupServlet" method="post" name="a">
-    <a id="groupfont" href="/C3/DetailGroupServlet" onclick="document.a.submit();">${e.user_id}<br>
-     ${e.address}<br>${e.phone_number}<br>${e.emails}<br>${e.remarks}<input type="hidden" value="${user_id}"></a>
+    <a id="groupfont" href="/C3/DetailGroupServlet" onclick="document.a.submit();">団体名:${e.user_id}<br>
+     場所：${e.address}<br>Tel:${e.phone_number}<br>E-mail:${e.emails}<br>備考：${e.remarks}<input type="hidden" value="${user_id}"></a>
   </form>
 </c:forEach>
 </main>

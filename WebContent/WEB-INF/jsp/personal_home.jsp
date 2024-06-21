@@ -38,7 +38,7 @@
   <main class="home p">
   <h1>ユーザーホーム</h1>
 
-  <div class="img">
+  <div class="img p">
       <a href="/C3/DiaryServlet"><img src="./img/images/diary.png" alt="" width="300" height="300"></a>
       <a href="/C3/VisitServlet"><img src="./img/images/visit.png" alt="" width="270" height="290"></a>
       <a href="/C3/MachServlet"><img src="./img/images/mach.png" alt="" width="300" height="300"></a>
