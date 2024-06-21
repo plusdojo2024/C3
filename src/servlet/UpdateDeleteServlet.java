@@ -57,7 +57,7 @@ public class UpdateDeleteServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				int organizationId = Integer.parseInt(request.getParameter("id"));
-				String user_id = request.getParameter("userId");
+				String user_id = request.getParameter("user_id");
 				String user_password = request.getParameter("user_password");
 				String user_name = request.getParameter("user_name");
 				String address = request.getParameter("address");

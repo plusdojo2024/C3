@@ -32,6 +32,7 @@
 
 <c:forEach var="e" items="${organizationsList}" >
   <form method="post" action="/C3/UpdateDeleteServlet">
+    <input type="hidden" name="id" value="${e.id}"><br>
     団体ユーザーID<input type="text" name="user_id" value="${e.user_id}"><br>
     パスワード<input type="text" name="user_password" value="${e.user_password}"><br>
     団体名<input type="text" name="user_name" value="${e.user_name}"><br>

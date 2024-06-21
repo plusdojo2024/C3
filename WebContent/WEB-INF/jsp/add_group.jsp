@@ -28,7 +28,7 @@
   <h1>団体登録</h1>
 </main>
 <form method="post" action="/C3/AddGroupServlet">
-  <!--  ID<input type="text" name="id" value="（自動採番）" readonly="readonly" style="background-color: lightgray"><br>-->
+  <!-- ID<input type="text" name="id" value="（自動採番）" readonly="readonly" style="background-color: lightgray"><br> -->
   新規団体ユーザーID<input type="text" name="user_id"><br>
   パスワード<input type="text" name="user_password"><br>
   団体名<input type="text" name="user_name"><br>
