@@ -26,13 +26,20 @@
   </div>
 </header>
 
-
+<h2>予約申請一覧</h2>
 <c:forEach var="e" items="${rsvList}" >
-    <form method="post" action="/C3/ReserveServlet">
- ${e.individual_id}<br>${e.rsv_day}<br>${send_id}<br>${reservation_remarks}<br>
+    <form class="groupform" method="post" action="/C3/ReserveServlet" >
+ ${e.user_name}<br>${e.rsv_day}<br>${e.animal_name}<br>${e.reservation_remarks}<br>
+ <input type="hidden" value="${e.id}" name="id">
       <input type="submit" name="accept" value="承認"><br>
     </form>
-    <hr>
+  </c:forEach>
+<h2>承認済み</h2>
+  <c:forEach var="r" items="${rsvsList}" >
+    <form class="groupform" method="post" action="/C3/ReserveServlet" >
+ ${r.user_name}<br>${r.rsv_day}<br>${r.animal_name}<br>${r.reservation_remarks}<br>
+ <input type="hidden" value="${e.id}" name="id">
+    </form>
   </c:forEach>
 
 

@@ -24,7 +24,7 @@ public class ReservationsDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-					String sql = "INSERT INTO Reservations VALUES (null, ?, ?, ?, ?, ?, ?)";
+					String sql = "INSERT INTO Reservations VALUES (null, ?, ?, ?, ?, ?, false)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
@@ -58,12 +58,7 @@ public class ReservationsDAO {
 					else {
 						pStmt.setString(5, "");
 					}
-					if (card.getAccept() != false ) {
-						pStmt.setBoolean(6, card.getAccept());
-					}
-					else {
-						pStmt.setString(6, "");
-					}
+
 
 
 					// SQL文を実行する
@@ -107,7 +102,8 @@ public class ReservationsDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3","sa", "");
 
 					// 検索する
-						String sql = "SELECT * FROM Reservations WHERE receive_id=?";
+						String sql = "SELECT reservations.id, individual_id, animal_name, rsv_day, send_id, user_name, receive_id, reservation_remarks, accept "
+								+ "FROM reservations JOIN USERS ON reservationS.send_id = USERS.id JOIN individuals ON reservationS.individual_id = individuals.id WHERE receive_id=? AND accept=false";
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 
 						// SQL文を完成させる
@@ -121,8 +117,10 @@ public class ReservationsDAO {
 							Reservations record = new Reservations(
 								rs.getInt("id"),
 								rs.getInt("individual_id"),
+								rs.getString("animal_name"),
 								rs.getTimestamp("rsv_day"),
 								rs.getString("send_id"),
+								rs.getString("user_name"),
 								rs.getString("receive_id"),
 								rs.getString("Reservation_remarks"),
 								rs.getBoolean("accept")
@@ -154,6 +152,70 @@ public class ReservationsDAO {
 					// 結果を返す
 					return cardList;
 				}
+
+			public List<Reservations> select2(String id) {
+				Connection conn = null;
+				List<Reservations> cardList = new ArrayList<Reservations>();
+
+				try {
+					// JDBCドライバを読み込む
+					Class.forName("org.h2.Driver");
+
+					// データベースに接続する
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3","sa", "");
+
+					// 検索する
+						String sql = "SELECT reservations.id, individual_id, animal_name, rsv_day, send_id, user_name, receive_id, reservation_remarks, accept "
+								+ "FROM reservations JOIN USERS ON reservationS.send_id = USERS.id JOIN individuals ON reservationS.individual_id = individuals.id WHERE receive_id=? AND accept=true";
+						PreparedStatement pStmt = conn.prepareStatement(sql);
+
+						// SQL文を完成させる
+						pStmt.setString(1, id);
+
+						// SQL文を実行し、結果表を取得する
+						ResultSet rs = pStmt.executeQuery();
+
+						// 結果表をコレクションにコピーする
+						while (rs.next()) {
+							Reservations record = new Reservations(
+								rs.getInt("id"),
+								rs.getInt("individual_id"),
+								rs.getString("animal_name"),
+								rs.getTimestamp("rsv_day"),
+								rs.getString("send_id"),
+								rs.getString("user_name"),
+								rs.getString("receive_id"),
+								rs.getString("Reservation_remarks"),
+								rs.getBoolean("accept")
+								);
+							cardList.add(record);
+						}
+				}
+
+				    catch (SQLException e) {
+						e.printStackTrace();
+						cardList = null;
+					}
+					catch (ClassNotFoundException e) {
+						e.printStackTrace();
+						cardList = null;
+					}
+					finally {
+						// データベースを切断
+						if (conn != null) {
+							try {
+								conn.close();
+							}
+							catch (SQLException e) {
+								e.printStackTrace();
+								cardList = null;
+							}
+						}
+					}
+					// 結果を返す
+					return cardList;
+				}
+
 			public List<Reservations> select1() {
 				Connection conn = null;
 				List<Reservations> cardList = new ArrayList<Reservations>();
@@ -166,7 +228,9 @@ public class ReservationsDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3","sa", "");
 
 					// 検索する
-						String sql = "SELECT * FROM Reservations ";
+						String sql = "SELECT reservations.id, rsv_day, send_id, user_name, receive_id, reservation_remarks, accept "
+								+ "FROM reservations JOIN USERS ON reservationS.send_id = USERS.id";
+
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 
 						// SQL文を完成させる
@@ -178,13 +242,15 @@ public class ReservationsDAO {
 						// 結果表をコレクションにコピーする
 						while (rs.next()) {
 							Reservations record = new Reservations(
-								rs.getInt("id"),
-								rs.getInt("individual_id"),
-								rs.getTimestamp("rsv_day"),
-								rs.getString("send_id"),
-								rs.getString("receive_id"),
-								rs.getString("Reservation_remarks"),
-								rs.getBoolean("accept")
+									rs.getInt("id"),
+									rs.getInt("individual_id"),
+									rs.getString("animal_name"),
+									rs.getTimestamp("rsv_day"),
+									rs.getString("send_id"),
+									rs.getString("user_name"),
+									rs.getString("receive_id"),
+									rs.getString("Reservation_remarks"),
+									rs.getBoolean("accept")
 								);
 							cardList.add(record);
 						}

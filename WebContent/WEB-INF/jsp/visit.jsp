@@ -60,9 +60,9 @@
 
 <form method="post" action="/C3/VisitServlet">
   <label>所属団体<br>
-    <select>
+    <select name="orgId">
       <c:forEach var="e" items="${organizationsList}" >
-      <option value="${e.user_id}">${e.user_name}</option></c:forEach>
+      <option value="${e.id}">${e.user_name}</option></c:forEach>
     </select>
   </label><br>
   <label>個体名<br>
@@ -75,7 +75,7 @@
     <input type="tel" name="phone_number" >
   </label><br>
   <label>備考<br>
-    <textarea cols="60" rows="10" name="Reservation_remarks"></textarea>
+    <textarea cols="60" rows="10" name="remarks"></textarea>
   </label><br>
   <input type="submit" name="submit" value="申請">
   <input type="reset" name="reset" value="リセット">

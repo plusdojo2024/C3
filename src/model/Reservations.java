@@ -5,8 +5,10 @@ import java.sql.Timestamp;
 public class Reservations implements Serializable{
   private int id;
   private int individual_id;
+  private String animal_name;
   private Timestamp rsv_day;
   private String send_id;
+  private String user_name;
   private String receive_id;
   private String reservation_remarks;
   private boolean accept;
@@ -15,12 +17,14 @@ public class Reservations implements Serializable{
 
   }
   //引数があるコンストラクタ
-  public Reservations(int id, int individual_id, Timestamp rsv_day, String send_id, String receive_id, String reservation_remarks, boolean accept){
+  public Reservations(int id, int individual_id, String animal_name, Timestamp rsv_day, String send_id,String user_name,  String receive_id, String reservation_remarks, boolean accept){
     super();
        this. id= id;
        this.individual_id = individual_id;
+       this.animal_name = animal_name;
        this.rsv_day = rsv_day;
        this.send_id = send_id;
+       this.user_name = user_name;
        this.receive_id = receive_id;
        this.reservation_remarks = reservation_remarks;
        this.accept = accept;
@@ -33,6 +37,12 @@ public void setId(int id) {
 }
 public int getIndividual_id() {
 	return individual_id;
+}
+public void setAnimal_name(String animal_name) {
+	this.animal_name = animal_name;
+}
+public String getAnimal_name() {
+	return animal_name;
 }
 public void setIndividual_id(int individual_id) {
 	this.individual_id = individual_id;
@@ -48,6 +58,12 @@ public String getSend_id() {
 }
 public void setSend_id(String send_id) {
 	this.send_id = send_id;
+}
+public String getUser_name() {
+	return user_name;
+}
+public void setUser_name(String user_name) {
+	this.user_name = user_name;
 }
 public String getReceive_id() {
 	return receive_id;

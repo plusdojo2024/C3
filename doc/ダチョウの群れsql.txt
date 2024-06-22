@@ -189,6 +189,8 @@ INSERT INTO DMS VALUES(null, '6', '1', CURRENT_TIMESTAMP, '今日俺休むわ', true);
 INSERT INTO DMS VALUES(null, '7', '8', CURRENT_TIMESTAMP, 'ういー', true);
 INSERT INTO DIARYS VALUES(null, CURRENT_TIMESTAMP, 1, '今日は初めて泣きました。最高の気分です。これからもっと仲良くなりたいです。',  '初の鳴き声');
 INSERT INTO DIARYS VALUES(null,to_char(current_timestamp, 'YYYY-MM-DD HH24:MI'), 1, 'あ',  'い');
+INSERT INTO reservationS VALUES(null,1,'2024-7-10','1' ,'2', 'テスト用データ', false);
+
 
 ---------------お試しInsert文------------------
 
@@ -275,6 +277,9 @@ FROM news JOIN USERS ON news.user_id = USERS.id
 
 SELECT reservations.id, rsv_day, send_id, user_name, receive_id, reservation_remarks, accept 
 FROM reservations JOIN USERS ON reservationS.send_id = USERS.id
+
+SELECT reservations.id, individual_id, animal_name, rsv_day, send_id, user_name, receive_id, reservation_remarks, accept 
+FROM reservations JOIN USERS ON reservationS.send_id = USERS.id JOIN individuals ON reservationS.individual_id = individuals.id WHERE receive_id=2
 
 ---------------reservationsテーブルとusersテーブルの正規化のためのSQL文------------------
 

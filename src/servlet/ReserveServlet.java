@@ -35,11 +35,17 @@ public class ReserveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String organizationId = (String)session.getAttribute("id");
+		int tempId = (Integer)session.getAttribute("number");
+		String organizationId = String.valueOf(tempId);
 		request.setCharacterEncoding("UTF-8");
+
 		ReservationsDAO rsvDao = new ReservationsDAO();
 		List<Reservations> rsvList = rsvDao.select(organizationId);
 		request.setAttribute("rsvList", rsvList);
+
+		List<Reservations> rsvsList = rsvDao.select2(organizationId);
+		request.setAttribute("rsvsList", rsvsList);
+
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
 		dispatcher.forward(request, response);
@@ -59,24 +65,25 @@ public class ReserveServlet extends HttpServlet {
 		ReservationsDAO rsvDao = new ReservationsDAO();
 		request.setCharacterEncoding("UTF-8");
 		//String accept = request.getParameter("accept");
-		String temprsvId = request.getParameter("rsvid");
-		int rsvId = Integer.parseInt(temprsvId);
 
 
 
-		if(request.getParameter("submit").equals("承認")) {
+
+		if(request.getParameter("accept").equals("承認")) {
+			String temprsvId = request.getParameter("id");
+			int rsvId = Integer.parseInt(temprsvId);
 			if (rsvDao.update( rsvId)) {
 				request.setAttribute("result",
-				new Result("登録成功", "レコードを1件登録しました。", "/C3/ReserveServlet"));
+				new Result("承認成功", "DMで連絡してあげてね。", "/C3/ReserveServlet"));
 			}
 			else {
 				request.setAttribute("result",
-				new Result("登録失敗", "レコードを登録できませんでした。", "/C3/ReserveServlet"));
+				new Result("承認失敗", "承認失敗です。", "/C3/ReserveServlet"));
 			}
 		}
 
 	// 結果ページにフォワードする
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 	dispatcher.forward(request, response);
 
 	}
