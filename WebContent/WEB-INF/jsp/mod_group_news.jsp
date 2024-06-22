@@ -26,19 +26,19 @@
   </div>
 </header>
 
-<form method="post" action="/C3/ModNewsServlet">
-  <input type="text" name="news_title" placeholder="題名"><br>
-  <textarea cols="60" rows="10" placeholder="内容"></textarea><br>
+<form method="post" action="/C3/ModGroupNewsServlet">
+  <input type="text" name="title" placeholder="題名"><br>
+  <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" id="register" name="submit" value="登録"><br>
 </form>
 
-<form method="post" action="/C3/ModNewsServlet">
-  <select>
+<form method="post" action="/C3/ModGroupNewsServlet">
+  <select name="id">
     <c:forEach var="e" items="${newsList}" >
-    <option value="${e.news_id}">${e.news_title}</option></c:forEach>
+    <option value="${e.id}">${e.news_title}</option></c:forEach>
   </select><br>
-  <input type="text" name="news_title" placeholder="題名"><br>
-  <textarea cols="60" rows="10" placeholder="内容"></textarea><br>
+  <input type="text" name="title" placeholder="題名"><br>
+  <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" name="submit" value="更新">
   <input type="submit" name="submit" value="削除">
 </form>

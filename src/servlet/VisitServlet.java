@@ -80,7 +80,8 @@ public class VisitServlet extends HttpServlet {
 		Timestamp rsv_day = new Timestamp(date.getTime());
 		System.out.println(rsv_day);
 
-		String myId = (String)session.getAttribute("id");
+		int tempId = (Integer)session.getAttribute("number");
+		String myId = String.valueOf(tempId);
 		String yourId = request.getParameter("orgId");
 		String remarks = request.getParameter("remarks");
 

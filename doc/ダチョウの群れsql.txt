@@ -106,7 +106,8 @@ CREATE TABLE news
 ---------------aniconsテーブルの作成------------------
 
 CREATE TABLE anicons
-(anicon_id		VARCHAR(100)	NOT NULL,
+(id			INTEGER		AUTO_INCREMENT	NOT NULL,
+anicon_id		VARCHAR(100)	NOT NULL,
  anicon_password	VARCHAR(32)	NOT NULL,
  PRIMARY KEY	(anicon_id)
 );
@@ -190,8 +191,11 @@ INSERT INTO DMS VALUES(null, '7', '8', CURRENT_TIMESTAMP, 'ういー', true);
 INSERT INTO DIARYS VALUES(null, CURRENT_TIMESTAMP, 1, '今日は初めて泣きました。最高の気分です。これからもっと仲良くなりたいです。',  '初の鳴き声');
 INSERT INTO DIARYS VALUES(null,to_char(current_timestamp, 'YYYY-MM-DD HH24:MI'), 1, 'あ',  'い');
 INSERT INTO reservationS VALUES(null,1,'2024-7-10','1' ,'2', 'テスト用データ', false);
-
-
+INSERT INTO news VALUEs(null,'動物感染症が流行しています。', CUrrent_date, '最近、動物感染症が流行しています。私たちはしっかりと対策を考えていきたいと思います。',
+2)
+INSERT INTO news VALUEs(null,'新しい保護施設が追加されました。', CUrrent_date, 'この度、新しく保護施設を追加しました。詳細は各団体ページでご確認ください。',1)
+INSERT INTO news VALUEs(null,'動物感染症が流行しています。', CUrrent_date, '最近、動物感染症が流行しています。私たちはしっかりと対策を考えていきたいと思います。',1)
+INSERT INTO anicons VALUEs(null, 'anicon',' anicon')
 ---------------お試しInsert文------------------
 
 
@@ -269,6 +273,13 @@ FROM DmS JOIN USERS ON DmS.receive_id = USERS.id
 
 SELECT news.id, news_title, news_day, news_detail, news.user_id, user_name 
 FROM news JOIN USERS ON news.user_id = USERS.id
+
+
+SELECT news.id, news_title, news_day, news_detail, news.user_id, user_name,is_organization 
+FROM news JOIN USERS ON news.user_id = USERS.id WHERE news.user_id=? ORDER BY id
+
+SELECT news.id, news_title, news_day, news_detail, news.user_id
+FROM news JOIN aniconS ON news.user_id = anicons.id WHERE news.user_id=1 ORDER BY id
 
 ---------------newsテーブルとusersテーブルの正規化のためのSQL文------------------
 

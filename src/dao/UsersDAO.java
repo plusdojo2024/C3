@@ -19,17 +19,17 @@ public class UsersDAO {
 					// データベースに接続する
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3", "sa", "");
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, false, null, null, null, null)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-						if (name != null ) {
-							pStmt.setString(1, name);
+						if (id != null ) {
+							pStmt.setString(1, id);
 						}
 						else {
 							pStmt.setString(1, "");
 						}
-						if (id != null ) {
-							pStmt.setString(2, id);
+						if (name != null ) {
+							pStmt.setString(2, name);
 						}
 						else {
 							pStmt.setString(2, "");

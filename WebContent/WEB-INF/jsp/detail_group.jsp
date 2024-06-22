@@ -56,9 +56,15 @@
 </header>
 <body>
 <main>
-<c:forEach var="n" items= "${newsList}">
-<div >${n.news_title}"><br>${n.news_day}<br>${n.news_detail}<br></div>
-</c:forEach>
+<div class="h1">
+  <h1>お知らせ</h1><br>
+  <c:forEach var="n" items= "${newsList}" begin="0" end="0">
+  <p>${n.news_title}</p>
+  <p style="font-size:1.0rem;">${n.news_detail}</p>
+  <p style="font-size:1.0rem;color:#D2B48C;">投稿日：${n.news_day}
+</c:forEach></div>
+
+<h1>動物一覧</h1>
 <c:forEach var="i" items= "${individualList}">
 <div class="groupform" >
 

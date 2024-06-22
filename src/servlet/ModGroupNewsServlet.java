@@ -36,12 +36,17 @@ public class ModGroupNewsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-
-		request.setCharacterEncoding("UTF-8");
-		NewsDAO nDao = new NewsDAO();
-		String myId = (String)session.getAttribute("id");
-		List<News> newsList = nDao.select(myId);
-		request.setAttribute("newsList", newsList);
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/C3/LoginServlet");
+			return;
+		}
+	NewsDAO nDao = new NewsDAO();
+	int tempMyId = (Integer)session.getAttribute("number");
+	String myId = String.valueOf(tempMyId);
+	System.out.println(myId);
+	List<News> newsList = nDao.select(myId);
+	System.out.println(newsList);
+	request.setAttribute("newsList", newsList);
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_group_news.jsp");
 		dispatcher.forward(request, response);
@@ -60,9 +65,8 @@ public class ModGroupNewsServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String tempnewsId = request.getParameter("id");
-		int newsId = Integer.parseInt(tempnewsId);
-		String myId = (String)session.getAttribute("id");
+
+		String myId = String.valueOf(session.getAttribute("number"));
 		String newsTitle = request.getParameter("title");
 		String newsDetail = request.getParameter("detail");
 
@@ -85,7 +89,9 @@ public class ModGroupNewsServlet extends HttpServlet {
 		}
 		else if (request.getParameter("submit").equals("更新")) {
 			// ここを改造する
-			if (nDao.update(new News(newsId, newsTitle, null, newsDetail, myId))) {	// 登録成功
+			String tempnewsId = request.getParameter("id");
+			int newsId = Integer.parseInt(tempnewsId);
+			if (nDao.update(new News(newsId, newsTitle, null, newsDetail, myId, null,true))) {	// 登録成功
 				request.setAttribute("result",
 				new Result("更新成功！", "レコードを更新しました。", "/C3/ModGroupNewsServlet"));
 			}
@@ -95,7 +101,8 @@ public class ModGroupNewsServlet extends HttpServlet {
 			}
 		}
 		else {
-
+			String tempnewsId = request.getParameter("id");
+			int newsId = Integer.parseInt(tempnewsId);
 			if (nDao.delete(newsId)) {	// 登録成功
 				request.setAttribute("result",
 				new Result("削除成功！", "レコードを削除しました。", "/C3/ModGroupNewsServlet"));

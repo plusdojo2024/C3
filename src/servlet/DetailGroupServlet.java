@@ -37,16 +37,18 @@ public class DetailGroupServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String organizationId = request.getParameter("id");
+				//String organizationId = request.getParameter("id");
 
 				//int organizationId = Integer.parseInt(tempId);
 
 				NewsDAO nDao = new NewsDAO();
-				List<News> newsList = nDao.select(organizationId);
+				String userId = request.getParameter("userId");
+			//	System.out.println(userId);
+				List<News> newsList = nDao.select(userId);
+				//System.out.println(newsList);
 				request.setAttribute("newsList", newsList);
 
 				IndividualsDAO iDao = new IndividualsDAO();
-				String userId = request.getParameter("userId");
 				List<Individuals> individualList = iDao.select1(userId);
 				request.setAttribute("individualList", individualList);
 

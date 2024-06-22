@@ -106,7 +106,7 @@ public class ModMachServlet extends HttpServlet {
 
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_mach.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/manager_result.jsp");
 				dispatcher.forward(request, response);
 					}
 }

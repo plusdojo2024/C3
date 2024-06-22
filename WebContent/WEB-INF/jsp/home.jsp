@@ -52,17 +52,26 @@
   <main>
   <div class="h1">
   <h1>お知らせ</h1><br>
-  <c:forEach var="e" items= "${newsList}">
-  <p>新しい保護施設が追加されました！${e.news_title}</p>
-  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/05/12${news_day}
+  <div>
+  <c:forEach var="e" items= "${newsList}" begin="0" end="0">
+  <p>${e.news_title}</p>
+  <p style="font-size:1.0rem;">${e.news_detail}</p>
+  <p style="font-size:1.0rem;color:#D2B48C;">投稿日：${e.news_day}
 </c:forEach>
-  <p>動物感染症が流行しています。</p>
+  <!-- <p>動物感染症が流行しています。</p>
   <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/04/25
-  <div class="1"><!-- ＋ボタンを押したら表示されるid -->
+  <div class="1"><!-- ＋ボタンを押したら表示されるid
   <p>新しい保護施設が追加されました。</p>
-  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/03/12
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/03/12-->
   </div>
-
+<div class="1">
+<c:forEach var="e" items= "${newsList}" begin="1">
+<div>
+  <p>${e.news_title}</p>
+  <p style="font-size:1.0rem;">${e.news_detail}</p>
+  <p style="font-size:1.5rem;color:#D2B48C;">投稿日：${e.news_day}
+  </div>
+</c:forEach></div>
   <div class="function">
     <img src="./img/images/function.png" alt="" width="60" height="60">
    </div>
@@ -70,7 +79,7 @@
   <div class="h2">
   <h2>日記</h2><br>
 
- <c:forEach var="e" items= "${diaryList}" begin="0" end="2">
+ <c:forEach var="e" items= "${diaryList}" begin="0" end="1">
 
   <div class="h2">
   <form class="" action="/C3/DiaryServlet" method="get" name="form">
@@ -80,7 +89,7 @@
  <!-- <p style="font-size:2rem;"> --> 題名：${e.diary_title}<br>
   <!-- <p style="font-size:1.5rem;color:#D2B48C;"> -->投稿者：${e.user_name}<br>
   <!-- <p style="font-size:1.5rem;color:#D2B48C;"> -->投稿日：${e.diary_day}<br>
-  </a><input type="submit">
+  </a><input type="submit" value="詳細">
  </form></div>
 
 
@@ -89,18 +98,19 @@
   <p style="font-size:1.5rem;color:#D2B48C;">投稿者：まめっち
   <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/06/15-->
   <div class="1"><!-- ＋ボタンを押したら表示されるid -->
+
+  <c:forEach var="e" items= "${diaryList}" begin="2" >
   <div class="h2">
-  <c:forEach var="e" items= "${diaryList}" begin="3" >
-  <form class="" action="/C3/DiaryServlet" method="post" name="a">
+  <form class="" action="/C3/DiaryServlet" method="get" name="a">
   <a id="groupfont" href="" onclick="document.a.submit();">
   題名：${e.diary_title}<br>
   投稿者：${e.user_name}<br>
   投稿日：${e.diary_day}<br></a>
 <input type="hidden" value="${e.id}"name="diaryId">
 <input type="submit" value="詳細">
-  </form>
+  </form></div>
 </c:forEach>
-</div>
+
   <!--  <p style="font-size:2rem;">題名：我が家の日課
   <p style="font-size:1.5rem;color:#D2B48C;">投稿者：くちぱっち
   <p style="font-size:1.5rem;color:#D2B48C;">投稿日：2024/05/14-->

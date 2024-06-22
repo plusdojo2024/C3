@@ -24,7 +24,8 @@ import model.News;
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM News WHERE user_id=? ORDER BY id";
+					String sql = "SELECT news.id, news_title, news_day, news_detail, news.user_id, user_name,is_organization "
+							+ "FROM news JOIN USERS ON news.user_id = USERS.id WHERE news.user_id=? ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					pStmt.setString(1, id);
@@ -57,7 +58,9 @@ import model.News;
 							rs.getString("news_title"),
 							rs.getTimestamp("news_day"),
 							rs.getString("news_detail"),
-							rs.getString("user_id")
+							rs.getString("user_id"),
+							rs.getString("user_name"),
+							rs.getBoolean("is_organization")
 							);
 						cardList.add(record);
 					}
@@ -100,7 +103,8 @@ import model.News;
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM News ORDER BY id";
+					String sql = "SELECT news.id, news_title, news_day, news_detail, news.user_id "
+							+ "FROM news JOIN aniconS ON news.user_id = anicons.id WHERE news.user_id=1 ORDER BY id";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					/*if (card.getNews_title() != null) {
@@ -128,11 +132,11 @@ import model.News;
 					// 結果表をコレクションにコピーする
 					while (rs.next()) {
 						News record = new News(
-							rs.getInt("id"),
-							rs.getString("news_title"),
-							rs.getTimestamp("news_day"),
-							rs.getString("news_detail"),
-							rs.getString("user_id")
+								rs.getInt("id"),
+								rs.getString("news_title"),
+								rs.getTimestamp("news_day"),
+								rs.getString("news_detail"),
+								rs.getString("user_id")
 							);
 						cardList.add(record);
 					}
@@ -180,28 +184,22 @@ import model.News;
 
 				// SQL文を完成させる
 					if (card.getNews_title() != null) {
-						pStmt.setString(1, "%" + card.getNews_title() + "%");
+						pStmt.setString(1, card.getNews_title());
 					}
 					else {
 						pStmt.setString(1, null);
 					}
-					if (card.getNews_day() != null) {
-						pStmt.setTimestamp(2, null);
+					if (card.getNews_detail() != null) {
+						pStmt.setString(2, card.getNews_detail());
 					}
 					else {
-						pStmt.setTimestamp(2, null);
+						pStmt.setString(2, null);
 					}
-					if (card.getNews_detail() != null) {
-						pStmt.setString(3, card.getNews_detail());
+					if (card.getUser_id() != null) {
+						pStmt.setString(3, card.getUser_id());
 					}
 					else {
 						pStmt.setString(3, null);
-					}
-					if (card.getUser_id() != null) {
-						pStmt.setString(4, card.getUser_id());
-					}
-					else {
-						pStmt.setString(4, null);
 					}
 					// SQL文を実行する
 					if (pStmt.executeUpdate() == 1) {
@@ -244,33 +242,21 @@ import model.News;
 						conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 						// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-						String sql = "INSERT INTO News VALUES (Null, ?, ?, ?, ?)";
+						String sql = "INSERT INTO News VALUES (Null, ?, current_timestamp, ?, 1)";
 						PreparedStatement pStmt = conn.prepareStatement(sql);
 
 						// SQL文を完成させる
 							if (card.getNews_title() != null) {
-								pStmt.setString(1, "%" + card.getNews_title() + "%");
+								pStmt.setString(1, card.getNews_title() );
 							}
 							else {
 								pStmt.setString(1, null);
 							}
-							if (card.getNews_day() != null) {
-								pStmt.setTimestamp(2, null);
-							}
-							else {
-								pStmt.setTimestamp(2, null);
-							}
 							if (card.getNews_detail() != null) {
-								pStmt.setString(3, card.getNews_detail());
+								pStmt.setString(2, card.getNews_detail());
 							}
 							else {
-								pStmt.setString(3, null);
-							}
-							if (card.getUser_id() != null) {
-								pStmt.setString(4, card.getUser_id());
-							}
-							else {
-								pStmt.setString(4, null);
+								pStmt.setString(2, null);
 							}
 
 
@@ -313,7 +299,7 @@ import model.News;
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 				//お気に入り登録時
@@ -377,12 +363,12 @@ import model.News;
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する
 				//お気に入り登録時
 
-					String sql = "UPDATE News SET news_title=?, news_day=?, news_detail=? WHERE id=?";
+					String sql = "UPDATE News SET news_title=?, news_detail=? WHERE id=? AND user_id=1";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
@@ -392,27 +378,18 @@ import model.News;
 					else {
 						pStmt.setString(1, null);
 					}
-					if (card.getNews_day() != null) {
-						pStmt.setTimestamp(2, card.getNews_day());
-					}
-					else {
-						pStmt.setTimestamp(2, null);
-					}
 					if (card.getNews_detail() != null) {
-						pStmt.setString(3, card.getNews_detail());
+						pStmt.setString(2, card.getNews_detail());
 					}
 					else {
-						pStmt.setString(3, null);
-					}
-					if (card.getUser_id() != null) {
-						pStmt.setString(4, card.getUser_id());
-					}
-					else {
-						pStmt.setInt(4, 0);
+						pStmt.setString(2, null);
 					}
 
-					//更新ボタンを押した動物のidを格納
-					pStmt.setInt(11, card.getId());
+					pStmt.setInt(3, card.getId());
+
+
+
+
 
 
 					// SQL文を実行する
@@ -501,10 +478,10 @@ import model.News;
 					Class.forName("org.h2.Driver");
 
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
-					String sql = "DELETE FROM News WHERE id=?";
+					String sql = "DELETE FROM News WHERE id=? AND user_id=1";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる

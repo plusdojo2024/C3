@@ -41,9 +41,12 @@ public class ModNewsServlet extends HttpServlet {
 					return;
 				}*/
 		NewsDAO nDao = new NewsDAO();
-		HttpSession session = request.getSession();
-		String myId = (String)session.getAttribute("id");
-		List<News> newsList = nDao.select(myId);
+		//HttpSession session = request.getSession();
+		/*int tempMyId = (Integer)session.getAttribute("number");
+		String myId = String.valueOf(tempMyId);
+		System.out.println(myId);*/
+		List<News> newsList = nDao.select1();
+		System.out.println(newsList);
 		request.setAttribute("newsList", newsList);
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_news.jsp");
@@ -54,17 +57,16 @@ public class ModNewsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/*// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/C3/LoginServlet");
 					return;
-				}
+				}*/
 
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String tempnewsId = request.getParameter("id");
-				int newsId = Integer.parseInt(tempnewsId);
+				HttpSession session = request.getSession();
 				String myId = (String)session.getAttribute("id");
 				String newsTitle = request.getParameter("title");
 				String newsDetail = request.getParameter("detail");
@@ -87,6 +89,8 @@ public class ModNewsServlet extends HttpServlet {
 				}
 				else if (request.getParameter("submit").equals("更新")) {
 					// ここを改造する
+					String tempnewsId = request.getParameter("id");
+					int newsId = Integer.parseInt(tempnewsId);
 					if (nDao.update1(new News(newsId, newsTitle, null, newsDetail, myId))) {	// 登録成功
 						request.setAttribute("result",
 						new Result("更新成功！", "レコードを更新しました。", "/C3/ModNewsServlet"));
@@ -97,7 +101,8 @@ public class ModNewsServlet extends HttpServlet {
 					}
 				}
 				else {
-
+					String tempnewsId = request.getParameter("id");
+					int newsId = Integer.parseInt(tempnewsId);
 					if (nDao.delete1(newsId)) {	// 登録成功
 						request.setAttribute("result",
 						new Result("削除成功！", "レコードを削除しました。", "/C3/ModNewsServlet"));
@@ -109,7 +114,7 @@ public class ModNewsServlet extends HttpServlet {
 				}
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/manager_result.jsp");
 				dispatcher.forward(request, response);
 	}
 
