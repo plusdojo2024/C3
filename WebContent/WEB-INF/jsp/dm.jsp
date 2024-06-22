@@ -51,7 +51,8 @@
     <form action="/C3/DmTalkServlet" method="get">
   <input type="search" name="user_name" list="ユーザー名">
   <datalist id="ユーザー名">
-    <c:forEach var="e" items="${userList}"><option value="${e.user_name}"></option>
+    <c:forEach var="e" items="${userList}">
+    <option value="${e.user_name}"></option>
     <input type="hidden" value="${e.id}" name="yourId">
     </c:forEach>
   </datalist>

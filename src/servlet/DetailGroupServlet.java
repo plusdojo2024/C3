@@ -43,7 +43,7 @@ public class DetailGroupServlet extends HttpServlet {
 
 				NewsDAO nDao = new NewsDAO();
 				String userId = request.getParameter("userId");
-			//	System.out.println(userId);
+				//System.out.println(userId);
 				List<News> newsList = nDao.select(userId);
 				//System.out.println(newsList);
 				request.setAttribute("newsList", newsList);

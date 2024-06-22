@@ -58,7 +58,7 @@
 <main>
 <div class="h1">
   <h1>お知らせ</h1><br>
-  <c:forEach var="n" items= "${newsList}" begin="0" end="0">
+  <c:forEach var="n" items= "${newsList}" >
   <p>${n.news_title}</p>
   <p style="font-size:1.0rem;">${n.news_detail}</p>
   <p style="font-size:1.0rem;color:#D2B48C;">投稿日：${n.news_day}

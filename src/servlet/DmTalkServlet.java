@@ -45,23 +45,25 @@ public class DmTalkServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String yourId = request.getParameter("yourId");
+				String yourId3 = request.getParameter("yourId3");
+				String yourName = request.getParameter("yourName");
 				request.setAttribute("yourId", yourId);
-				//System.out.println(yourId);
+				System.out.println(yourId3);
 				DmsDAO dmsDao = new DmsDAO();
 				UsersDAO uDao = new UsersDAO();
 
 				//セッションスコープからidを取得
 				String myId = String.valueOf(session.getAttribute("number"));
-				//System.out.println(myId);
+				System.out.println(yourName);
 				List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
 				//System.out.println(talkList);
-				session.setAttribute("talkList", talkList);
+				request.setAttribute("talkList", talkList);
 
-				List<Users> orgList = uDao.getName(yourId);
+				List<Users> orgList = uDao.getName(yourId3);
 				request.setAttribute("orgList", orgList);
-				/*for(Users loginlist: orgList) {
+				for(Users loginlist: orgList) {
 					System.out.println(loginlist.getUser_name());
-				}*/
+				}
 
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_talk.jsp");
