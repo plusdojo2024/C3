@@ -25,18 +25,16 @@ public class DmsDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
-						String sql = "SELECT * "
-								+ "	FROM (SELECT * "
-								+ "		FROM(SELECT who_id,MAX(dm_day) as recent_dm_day "
-								+ "		FROM(SELECT dm_day, "
-								+ "			CASE "
-								+ "			WHEN send_id = ? THEN receive_id "
-								+ "			WHEN receive_id = ? THEN send_id "
-								+ "			END AS who_id "
-								+ "			FROM DMS WHERE send_id=? OR receive_id=?) "
-								+ "		GROUP BY who_Id) "
-								+ "		ORDER BY recent_dm_day DESC) "
-								+ "	JOIN USERS ON who_id = USERS.id ";
+						String sql = "SELECT who_id,user_name,recent_dm_day "
+								+ "FROM (SELECT    who_id, user_name,recent_dm_day "
+								+ "FROM(SELECT MAX(dm_day) as recent_dm_day , CASE WHEN send_id = ? THEN receive_id "
+								+ "	    WHEN receive_id = ? THEN send_id "
+								+ "	    END AS who_id "
+								+ "	FROM DMS WHERE send_id=? OR receive_id=? "
+								+ "	GROUP BY who_id) "
+								+ "JOIN USERS ON who_id = USERS.id) "
+								+ "ORDER BY recent_dm_day DESC;"
+								+ "";
 
 						PreparedStatement  pStmt = conn.prepareStatement(sql);
 						//System.out.println(pStmt.toString());
@@ -53,13 +51,9 @@ public class DmsDAO {
 						// 結果表をコレクションにコピーする
 						while (rs.next()) {
 							DMs record = new DMs(
-								rs.getInt("id"),
 								rs.getString("who_id"),
 								rs.getString("user_name"),
-								rs.getTimestamp("recent_dm_day"),
-								rs.getString("remarks"),
-								rs.getBoolean("is_organization")
-
+								rs.getTimestamp("recent_dm_day")
 								);
 							cardList.add(record);
 						}
@@ -102,10 +96,13 @@ public class DmsDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 					// SQL文を準備する
-						String sql = "SELECT * FROM DMs\r\n"
-								+ "	WHERE (send_id=? AND receive_id=?)\r\n"
-								+ "	OR (receive_id=? AND send_id=?)	\r\n"
-								+ "		ORDER BY dm_day ASC;\r\n";
+						String sql = "select dmid, send_id, receive_id, user_name, dm_day, dm_detail, read from "
+								+ "(SELECT dms.id as dmid, send_id, receive_id,   dm_detail, dm_day, read FROM DMs "
+								+ "	WHERE (send_id=? AND receive_id=?) "
+								+ "	OR (receive_id=? AND send_id=?)	"
+								+ "		ORDER BY dm_day ASC)\r\n"
+								+ "JOIN USERS ON receive_id = USERS.id;"
+								+ "";
 
 						PreparedStatement  pStmt = conn.prepareStatement(sql);
 						// SQL文を完成させる
@@ -121,9 +118,10 @@ public class DmsDAO {
 						// 結果表をコレクションにコピーする
 						while (rs.next()) {
 							DMs record = new DMs(
-								rs.getInt("id"),
+								rs.getInt("dmid"),
 								rs.getString("send_id"),
 								rs.getString("receive_id"),
+								rs.getString("user_name"),
 								rs.getTimestamp("dm_day"),
 								rs.getString("dm_detail"),
 								rs.getBoolean("read")

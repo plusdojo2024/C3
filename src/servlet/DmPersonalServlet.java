@@ -44,7 +44,7 @@ public class DmPersonalServlet extends HttpServlet {
 		DmsDAO dmsDao = new DmsDAO();
 
 		//セッションスコープからidを取得
-		String myId = (String)session.getAttribute("id");
+		String myId = String.valueOf(session.getAttribute("number"));
 
 		//
 		List<DMs> talkUserList = dmsDao.select(myId);
@@ -70,11 +70,11 @@ public class DmPersonalServlet extends HttpServlet {
 			return;
 		}
 
-		request.setCharacterEncoding("UTF-8");
+		/*request.setCharacterEncoding("UTF-8");
 		DmsDAO dmsDao = new DmsDAO();
 
 		//セッションスコープからidを取得
-		String myId = (String)session.getAttribute("id");
+		String myId = (String)session.getAttribute("id");*/
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_personal.jsp");
 		dispatcher.forward(request, response);

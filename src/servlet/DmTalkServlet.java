@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DmsDAO;
+import dao.UsersDAO;
 import model.DMs;
+import model.Users;
 
 
 /**
@@ -43,13 +45,24 @@ public class DmTalkServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String yourId = request.getParameter("yourId");
-				//String dmDetail = request.getParameter("dmDetail");
+				request.setAttribute("yourId", yourId);
+				//System.out.println(yourId);
 				DmsDAO dmsDao = new DmsDAO();
+				UsersDAO uDao = new UsersDAO();
 
 				//セッションスコープからidを取得
-				String myId = session.getId();
+				String myId = String.valueOf(session.getAttribute("number"));
+				//System.out.println(myId);
 				List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
-				request.setAttribute("talkList", talkList);
+				//System.out.println(talkList);
+				session.setAttribute("talkList", talkList);
+
+				List<Users> orgList = uDao.getName(yourId);
+				request.setAttribute("orgList", orgList);
+				/*for(Users loginlist: orgList) {
+					System.out.println(loginlist.getUser_name());
+				}*/
+
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_talk.jsp");
 				dispatcher.forward(request, response);
@@ -73,7 +86,7 @@ public class DmTalkServlet extends HttpServlet {
 				DmsDAO dmsDao = new DmsDAO();
 
 				//セッションスコープからidを取得
-				String myId = (String)session.getAttribute("id");
+				String myId = String.valueOf(session.getAttribute("number"));
 
 				/*
 				List<DMs> talkUserList = dmsDao.select(myId);
@@ -85,16 +98,21 @@ public class DmTalkServlet extends HttpServlet {
 				*/
 				//
 
-
-				if(request.getParameter("DM1").equals("DM")) {
-					String yourId = request.getParameter("yourId");
-					request.setAttribute("yourId",yourId);
-				}else if (request.getParameter("DM1").equals("送信")) {
-					String yourId = request.getParameter("yourId2");
-					String dmDetail = request.getParameter("dmDetail");
-					dmsDao.insert(myId, yourId, dmDetail,true);
+				if(request.getParameter("DM1")== null) {
+					if (request.getParameter("select").equals(request.getParameter("yourId"))) {
+						String yourId = request.getParameter("yourId");
+						request.setAttribute("yourId",yourId);
 				}
-				//
+				}else {
+					if(request.getParameter("DM1").equals("DM")) {
+						String yourId = request.getParameter("yourId");
+						request.setAttribute("yourId",yourId);
+					}else if (request.getParameter("DM1").equals("送信")) {
+						String yourId = request.getParameter("yourId2");
+						String dmDetail = request.getParameter("dmDetail");
+						dmsDao.insert(myId, yourId, dmDetail,true);
+					}
+				}//
 
 
 

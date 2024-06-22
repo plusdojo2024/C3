@@ -44,7 +44,7 @@ public class DmServlet extends HttpServlet {
 				DmsDAO dmsDao = new DmsDAO();
 
 				//セッションスコープからidを取得
-				String myId = session.getId();
+				String myId = String.valueOf(session.getAttribute("number"));
 
 				//
 				List<DMs> talkUserList = dmsDao.select(myId);

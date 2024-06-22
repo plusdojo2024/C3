@@ -57,7 +57,8 @@
 </header>
 <body>
 <c:forEach var="m" items= "${machList}">
-<div class="mach result"><img src="${m.img}"><br>${m.animal_type}</div>
+<div class="mach result" style="padding:100px;"><img src="${m.img}" style="display: block; margin: auto;"><br>
+<div style="text-align:center; font-size:70px;">${m.animal_type}</div></div>
 </c:forEach>
 </body>
 <footer>

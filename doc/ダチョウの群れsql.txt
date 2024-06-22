@@ -145,7 +145,7 @@ CREATE TABLE mach_questions
  q2	VARCHAR(100)	NOT NULL,
  q3	VARCHAR(100)	NOT NULL,
  q4	VARCHAR(100)	NOT NULL,
- q5	VARCHAR(100)	NOT NULL,
+ q5	VARCHAR(100)	NOT NULL
 );
 ---------------mach_questionsテーブルの作成------------------
 
@@ -191,7 +191,7 @@ INSERT INTO DMS VALUES(null, '7', '8', CURRENT_TIMESTAMP, 'ういー', true);
 INSERT INTO DIARYS VALUES(null, CURRENT_TIMESTAMP, 1, '今日は初めて泣きました。最高の気分です。これからもっと仲良くなりたいです。',  '初の鳴き声');
 INSERT INTO DIARYS VALUES(null,to_char(current_timestamp, 'YYYY-MM-DD HH24:MI'), 1, 'あ',  'い');
 INSERT INTO reservationS VALUES(null,1,'2024-7-10','1' ,'2', 'テスト用データ', false);
-INSERT INTO news VALUEs(null,'動物感染症が流行しています。', CUrrent_date, '最近、動物感染症が流行しています。私たちはしっかりと対策を考えていきたいと思います。',
+INSERT INTO news VALUEs(null,'動物感染症が流行しています。', CUrrent_date, '最近、動物感染症が流行しています。私たちはしっかりと対策を考えていきたいと思います。',2)
 2)
 INSERT INTO news VALUEs(null,'新しい保護施設が追加されました。', CUrrent_date, 'この度、新しく保護施設を追加しました。詳細は各団体ページでご確認ください。',1)
 INSERT INTO news VALUEs(null,'動物感染症が流行しています。', CUrrent_date, '最近、動物感染症が流行しています。私たちはしっかりと対策を考えていきたいと思います。',1)
@@ -355,6 +355,12 @@ SELECT dm_detail FROM DMs
 	OR (receive_id=1 AND send_id=2)	
 		ORDER BY dm_day ASC;
 
+select dmid, send_id, receive_id, user_name, dm_day, dm_detail, dm_day, read from
+(SELECT dms.id as dmid, send_id, receive_id,   dm_detail, dm_day, read FROM DMs
+	WHERE (send_id=1 AND receive_id=2)
+	OR (receive_id=1 AND send_id=2)	
+		ORDER BY dm_day ASC)
+JOIN USERS ON receive_id = USERS.id;
 
 
 SELECT  send_id, receive_id, dm_day, dm_detail, read, who_id, user_name
