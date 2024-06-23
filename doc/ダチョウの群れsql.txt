@@ -392,4 +392,15 @@ SELECT RESERVATIONS.id, INDIVIDUAL_id, INDIVIDUALS.ANIMAL_NAME, RSV_DAY,  SEND_I
 FROM RESERVATIONS JOIN INDIVIDUALS ON reservations.individual_id = individuals.id JOIN users ON reservations.send_id = users.id;
 
 
+CREATE TABLE events
+(id		INTEGER AUTO_INCREMENT	,
+ event_name	VARCHAR(100)	NOT NULL,
+ year	        DateTime 	NOT NULL,
+month              DateTime        NOT NULL,
+day                  DateTime        NOT NULL,
+ event_place	VARCHAR(100)	NOT NULL,
+ event_remarks	VARCHAR(500)	,
+ user_name	VARCHAR(100)	NOT NULL,
+ PRIMARY KEY (id)
+);
 

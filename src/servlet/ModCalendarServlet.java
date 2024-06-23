@@ -61,7 +61,10 @@ public class ModCalendarServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String event_name = request.getParameter("event_name");
-				String tempEvent_day = request.getParameter("event_day");
+				//String tempEvent_day = request.getParameter("event_day");
+				String tempYear = request.getParameter("year");
+				String tempMonth = request.getParameter("month");
+				String tempDay = request.getParameter("day");
 				try {
 				String event_place = request.getParameter("event_place");
 				String event_remarks = request.getParameter("event_remarks");
@@ -73,9 +76,13 @@ public class ModCalendarServlet extends HttpServlet {
 				// 登録
 				if (request.getParameter("submit").equals("登録")) {
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					Date date = sdf.parse(tempEvent_day);
-					Timestamp eventDay = new Timestamp(date.getTime());
-					if (EvDao.insert(new Events(0, event_name, eventDay, event_place, event_remarks, user_name))) {	// 登録成功
+					Date y = sdf.parse(tempYear);
+					Timestamp year = new Timestamp(y.getTime());
+					Date m = sdf.parse(tempMonth);
+					Timestamp month = new Timestamp(m.getTime());
+					Date d = sdf.parse(tempDay);
+					Timestamp day = new Timestamp(d.getTime());
+					if (EvDao.insert(new Events(0, event_name, year, month, day, event_place, event_remarks, user_name))) {	// 登録成功
 					// 改造（ここまで）
 						request.setAttribute("result",
 								new Result("登録成功", "レコードを1件登録しました。", "/C3/ModCalendarServlet"));
@@ -89,15 +96,21 @@ public class ModCalendarServlet extends HttpServlet {
 					String tempId = request.getParameter("Id");
 					int id = Integer.parseInt(tempId);
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					Date date = sdf.parse(tempEvent_day);
-					Timestamp eventDay = new Timestamp(date.getTime());
-					if (EvDao.update(new Events(id, event_name, eventDay, event_place, event_remarks, user_name))) {	// 更新成功
-						request.setAttribute("result",
-						new Result("更新成功", "レコードを1件更新しました。", "/C3/ModCalendarServlet"));
+					//Date date = sdf.parse(tempEvent_day);
+					//Timestamp eventDay = new Timestamp(date.getTime());
+					Date y = sdf.parse(tempYear);
+					Timestamp year = new Timestamp(y.getTime());
+					Date m = sdf.parse(tempMonth);
+					Timestamp month = new Timestamp(m.getTime());
+					Date d = sdf.parse(tempDay);
+					Timestamp day = new Timestamp(d.getTime());
+					if (EvDao.update(new Events(id, event_name, year, month, day, event_place, event_remarks, user_name))) {	// 更新成功
+					request.setAttribute("result",
+					new Result("更新成功", "レコードを1件更新しました。", "/C3/ModCalendarServlet"));
 					}
 					else {												// 更新失敗
 						request.setAttribute("result",
-						new Result("更新失敗しちゃいました…", "レコードを更新できませんでした。", "/C3/ModCalendarServlet"));
+						new Result("更新失敗", "レコードを更新できませんでした。", "/C3/ModCalendarServlet"));
 					}
 				}
 				//削除

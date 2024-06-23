@@ -70,9 +70,10 @@
 		<c:forEach var="e" items="${evList}" >
 			  {
 			    id:'${e.id}',
-			    event_name: '${e.event_name}',
+			    event_name: '譲渡会名${e.event_name}',
 			    //date: new Date(2024, 5, 15),
-			    date:new Date(${e.year}, ${e.month}, ${e.day})
+			    date:new Date'日付(${e.year}, ${e.month}, ${e.day})',
+			    //date:new Date(${e.year}, ${e.month}, ${e.day})
 			    //event_day:'${e.event_day}',
 			    event_place:'場所：${e.event_place}',
 			    event_remarks:'備考：${e.event_remarks}',
