@@ -9,7 +9,7 @@ public class Individuals implements Serializable {
   private String type;			/*犬種・猫種*/
   private int age;			/*年齢*/
   private String gender;		/*性別*/
-  private String user_name;		/*ユーザー名*/
+  private String user_id;		/*ユーザー名*/
   private Date period;			/*保護日*/
   private String remarks;		/*備考*/
   private boolean is_castration;	/*去勢識別*/
@@ -23,7 +23,7 @@ public class Individuals implements Serializable {
 
   }
   //引数があるコンストラクタ
-  public Individuals(int id, int animal_id, String animal_name, String type, int age, String    gender, String user_name, Date period, String remarks, boolean is_castration, Date birthday, String img, String kind){
+  public Individuals(int id, int animal_id, String animal_name, String type, int age, String    gender, String user_id, Date period, String remarks, boolean is_castration, Date birthday, String img, String kind){
     super();
     this.id = id;
     this.animal_id = animal_id;
@@ -31,7 +31,7 @@ public class Individuals implements Serializable {
     this.type = type;
     this.age = age;
     this.gender = gender;
-    this.user_name = user_name;
+    this.user_id = user_id;
     this.period = period;
     this.remarks = remarks;
     this.is_castration = is_castration;
@@ -76,11 +76,11 @@ public String getGender() {
 public void setGender(String gender) {
 	this.gender = gender;
 }
-public String getUser_name() {
-	return user_name;
+public String getUser_id() {
+	return user_id;
 }
-public void setUser_name(String user_name) {
-	this.user_name = user_name;
+public void setUser_id(String user_id) {
+	this.user_id = user_id;
 }
 public Date getPeriod() {
 	return period;

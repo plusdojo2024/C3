@@ -17,7 +17,7 @@ public class UsersDAO {
 					// JDBCドライバを読み込む
 					Class.forName("org.h2.Driver");
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/doc/C3", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 					// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 					String sql = "INSERT INTO Users VALUES (NULL, ?, ?, ?, false, null, null, null, null)";
 					PreparedStatement pStmt = conn.prepareStatement(sql);

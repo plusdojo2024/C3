@@ -29,9 +29,11 @@
 <main>
 <h1>Q&amp;A編集</h1>
 <form method="post" action="/C3/ModQAServlet">
+<select name="id">
  <c:forEach var="e" items="${qaList}" >
-    <p>Q${e.question}</p><br>
-    <p>Q${e.answer}</p></c:forEach>
+    <p>${e.question}</p><br>
+    <p>${e.answer}</p></c:forEach>
+  </select><br>
   <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" id="register" name="submit" value="登録"><br>
 </form>
@@ -39,8 +41,8 @@
 <form method="post" action="/C3/ModQAServlet">
   <select name="id">
     <c:forEach var="e" items="${qaList}" >
-    <p>Q${e.question}</p><br>
-    <p>Q${e.answer}</p></c:forEach>
+    <p>${e.question}</p><br>
+    <p>${e.answer}</p></c:forEach>
   </select><br>
   <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" name="submit" value="更新">

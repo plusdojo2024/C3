@@ -34,7 +34,7 @@ public class ModQAServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-				HttpSession session = request.getSession();
+				/*HttpSession session = request.getSession();*/
 
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_qa.jsp");

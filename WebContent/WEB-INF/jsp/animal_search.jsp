@@ -66,6 +66,7 @@
         <td>
           <label>所属団体<br>
             <select name="orgId">
+              <option >未選択</option>
               <c:forEach var="e" items="${organizationsList}" >
               <option value="${e.id}" >${e.user_name}</option></c:forEach>
             </select>
