@@ -32,11 +32,11 @@
    <c:forEach var="o" items="${orgList}">${o.user_name}</c:forEach></div>
    <c:forEach var="t" items="${talkList}">
    <c:if test="${t.send_id == number}">
-   <div style="text-align:right; margin:15px; font-size:20px;">
+   <div class="dm_detail" id="dmRight"style="text-align:right; margin:15px; font-size:20px;">
    ${t.dm_detail}
    </div></c:if>
 <c:if test="${t.send_id != number}">
-<div style="display:block; margin-left:0; margin:15px; font-size:20px;">
+<div class="dm_detail"id="dmLeft" style="display:block; margin-left:0; margin:15px; font-size:20px;">
 ${t.dm_detail}
 </div></c:if>
    </c:forEach>

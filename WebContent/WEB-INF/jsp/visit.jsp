@@ -58,7 +58,7 @@
   <!-- ヘッダーここまで -->
 </header>
 
-<form method="post" action="/C3/VisitServlet">
+<form method="post" action="/C3/VisitServlet" name="visit">
   <label>所属団体<br>
     <select name="orgId">
       <c:forEach var="e" items="${organizationsList}" >
@@ -90,5 +90,17 @@
   <p class="copyright">&copy; dacho_group</p>
 </footer>
 <!-- フッターここまで -->
+
+  <script>
+  'use strict';
+  let form = document.getElementById("visit");
+form.onsubmit = function(){
+	if(!form.user_id.value || !form.orgId.value || !form.animal_name.value || !form.rsv_day.value || !form.phone_number.value){
+		window.alert("備考以外はすべて入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
 </body>
 </html>
