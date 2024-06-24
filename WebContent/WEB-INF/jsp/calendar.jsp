@@ -70,7 +70,7 @@
 			  {
 			    id			:'${e.id}',
 			    
-			    event_name	: '譲渡会名${e.event_name}',
+			    event_name	: '[譲渡会名]:${e.event_name}',
 			    
 			    //                クラス名(引数1 ,引数2,、引数3)
 			    //date		: new Date ( 2024, 5   , 15 ),
@@ -81,11 +81,11 @@
 			    
 			    //event_day	:'${e.event_day}',
 			    
-			    event_place	:'場所：${e.event_place}',
+			    event_place	:'[場所]${e.event_place}',
 			    
-			    event_remarks:'備考：${e.event_remarks}',
+			    event_remarks:'[備考]：${e.event_remarks}',
 			    
-			    user_name	:'団体名：${e.user_name}'
+			    user_name	:'[団体名]：${e.user_name}'
 			  },
 	    </c:forEach>
 		];
