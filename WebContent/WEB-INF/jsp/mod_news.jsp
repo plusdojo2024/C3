@@ -26,7 +26,7 @@
   </div>
 </header>
 
-<form method="post" action="/C3/ModNewsServlet">
+<form id="modNews" method="post" action="/C3/ModNewsServlet">
   <input type="text" name="title" placeholder="題名"><br>
   <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" id="register" name="submit" value="登録"><br>
@@ -51,4 +51,16 @@
   </footer>
   <!-- フッターここまで -->
 </body>
+<script>
+  'use strict';
+  let form = document.getElementById("modNews");
+form.onsubmit = function(){
+	if(!form.title.value || !form.detail.value){
+		window.alert("題名、内容を入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
 </html>
+
