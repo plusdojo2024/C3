@@ -61,6 +61,7 @@
 
   <form method="post" action="/C3/AnimalSerachServlet">
     <main class="search">
+    <h1>動物検索</h1>
     <table>
       <tr>
         <td>
@@ -74,7 +75,7 @@
         </td>
         <td>
           <label>名前<br>
-          <input type="text" name="name">
+          <input type="text" name="name"><br>
           </label>
         </td>
       </tr>
