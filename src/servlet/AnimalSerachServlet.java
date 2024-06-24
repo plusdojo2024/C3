@@ -83,7 +83,7 @@ public class AnimalSerachServlet extends HttpServlet {
 
 		// 検索処理を行う
 		IndividualsDAO iDao = new IndividualsDAO();
-		List<Individuals> individualList = iDao.select(new Individuals(0, 0, name, type, 0, gender, orgId, null, null, false, null, null,kind));
+		List<Individuals> individualList = iDao.select(new Individuals(0, 0, name, type, 0, gender, orgId, null, null, false, null, null,kind, null));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("individualList", individualList);

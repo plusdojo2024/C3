@@ -26,24 +26,21 @@
 </header>
 
  <c:forEach var="e" items="${individualList}" >
-
-    <form method="post" action="/C3/UpdateDeleteServlet">
-      ※IDは、変更できません。<br>
-      ID<input type="text" name="id" value="${e.id}" readonly="readonly"><br>
-
-      写真<input type="text" name="img" value="${e.img}"><br>
+<div class="groupform">
+    <form method="post" action="/C3/UpDateDeleteAnimalServlet">
+    <input type="hidden" value="${e.id}" name="id">
+      写真:<br>
       動物名<input type="text" name="animal_name" value="${e.animal_name}"><br>
-      犬か猫か<input type="radio" name="kind" value="${e.kind}"><br>
       種類<input type="text" name="type" value="${e.type}"><br>
       年齢<input type="text" name="age" value="${e.age}"><br>
-      誕生日<input type="date" name="" value="${e.birthday}"><br>
-      保護日<input type="date" name="period" value="${e.period}"><br>
-      去勢手術の有無<input type="radio" name="is_castration" value="${e.is_castration}"><br>
+      誕生日<input type="date" name="birthday" value="${e.birthday}"><br>
+      <c:if test="${e.is_castration==true}">去勢手術の有無：済<br></c:if>
+      <c:if test="${e.is_castration==false}">去勢手術の有無<input type="radio" name="is_castration" value="do"><br></c:if>
       備考<input type="text" name="remarks" value="${e.remarks}"><br>
       <input type="submit" name="submit" value="更新">
       <input type="submit" name="submit" value="削除"><br>
     </form>
-    <hr>
+    </div>
   </c:forEach>
 
 

@@ -31,14 +31,14 @@
       <tr>
         <td>
           <label>写真<br>
-          <input type="text" name="img">
+           <input type="image" name="img">
           </label>
         </td>
-        <td>
+        <!--  <td>
           <label>ID<br>
           <input type="text" name="ID" value="(自動採番)" readonly="readonly" style="background-color: lightgray">
           </label>
-        </td>
+        </td>-->
 
       </tr>
       <tr>
@@ -120,7 +120,7 @@
   'use strict';
   let form = document.getElementById("addAnimal");
 form.onsubmit = function(){
-	if(!form.animal_name.value || !form.animal.value || !form.type.value || !form.gender.value || !form.phone_number.value || !form.is_castration.value){
+	if(!form.animal_name.value ||  !form.type.value || !form.gender.value){
 		window.alert("必須入力項目が入力されていません。")
 		event.preventDefault;
 	    return false;

@@ -73,13 +73,14 @@ public class IndividualsDAO {
 							rs.getString("type"),
 							rs.getInt("age"),
 							rs.getString("gender"),
-							rs.getString("user_name"),
+							rs.getString("user_id"),
 							rs.getDate("period"),
 							rs.getString("remarks"),
 							rs.getBoolean("is_castration"),
 							rs.getDate("birthday"),
 							rs.getString("img"),
-							rs.getString("kind")
+							rs.getString("kind"),
+							rs.getString("user_name")
 							);
 						cardList.add(record);
 					}
@@ -142,15 +143,14 @@ public class IndividualsDAO {
 							rs.getString("type"),
 							rs.getInt("age"),
 							rs.getString("gender"),
-							rs.getString("user_name"),
+							rs.getString("user_id"),
 							rs.getDate("period"),
 							rs.getString("remarks"),
 							rs.getBoolean("is_castration"),
 							rs.getDate("birthday"),
 							rs.getString("img"),
-							rs.getString("kind")
-
-
+							rs.getString("kind"),
+							rs.getString("user_name")
 							);
 						cardList.add(record);
 					}
@@ -189,7 +189,7 @@ public class IndividualsDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 				String sql = "INSERT INTO Individuals VALUES (Null, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?)";
@@ -302,68 +302,49 @@ public class IndividualsDAO {
 				// SQL文を準備する
 				//お気に入り登録時
 
-					String sql = "UPDATE Individuals SET animal_id=?, animal_name=?, type=?, age=?, gender=?, "
-						+ "user_name=?, remarks=?, is_castration=?, birthday=?, img=? WHERE id=?";
+					String sql = "UPDATE Individuals SET  animal_name=?, type=?, age=?, "
+						+ " remarks=?, is_castration=?, birthday=? WHERE id=?";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
-					if (card.getAnimal_id() != 0) {
-						pStmt.setInt(1, card.getAnimal_id());
-					}
-					else {
-						pStmt.setInt(1, 0);
-					}
 					if (card.getAnimal_name() != null) {
-						pStmt.setString(2, card.getAnimal_name());
+						pStmt.setString(1, card.getAnimal_name());
 					}
 					else {
-						pStmt.setString(2, null);
+						pStmt.setString(1, null);
 					}
 					if (card.getType() != null) {
-						pStmt.setString(3, card.getType());
+						pStmt.setString(2, card.getType());
 					}
 					else {
 						pStmt.setString(3, null);
 					}
 					if (card.getAge() != 0) {
-						pStmt.setInt(4, card.getAge());
+						pStmt.setInt(3, card.getAge());
 					}
 					else {
-						pStmt.setInt(4, 0);
+						pStmt.setInt(3, 0);
 					}
-					if (card.getGender() != null) {
-						pStmt.setString(5, card.getGender());
-					}
-					else {
-						pStmt.setString(5, null);
-					}
-
 					if (card.getRemarks() != null) {
-						pStmt.setString(7, card.getRemarks());
+						pStmt.setString(4, card.getRemarks());
 					}
 					else {
-						pStmt.setString(7, null);
+						pStmt.setString(4, null);
 					}
 					if (card.getIs_castration() != false) {
-						pStmt.setBoolean(8, card.getIs_castration());
+						pStmt.setBoolean(5, card.getIs_castration());
 					}
 					else {
-					pStmt.setBoolean(8, false);
+					pStmt.setBoolean(5, false);
 					}
 					if (card.getBirthday() != null) {
-						pStmt.setDate(9, card.getBirthday());
+						pStmt.setDate(6, card.getBirthday());
 					}
 					else {
-						pStmt.setDate(9, null);
-					}
-					if (card.getImg() != null) {
-						pStmt.setString(10, card.getImg());
-					}
-					else {
-						pStmt.setString(10, null);
+						pStmt.setDate(6, null);
 					}
 					//更新ボタンを押した動物のidを格納
-					pStmt.setInt(11, card.getId());
+					pStmt.setInt(7, card.getId());
 
 
 					// SQL文を実行する

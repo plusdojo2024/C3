@@ -16,6 +16,7 @@ public class Individuals implements Serializable {
   private Date birthday;		/*誕生日*/
   private String img;
   private String kind;/*画像*/
+  private String user_name;
 
 
 //引数がないコンストラクタ
@@ -23,7 +24,7 @@ public class Individuals implements Serializable {
 
   }
   //引数があるコンストラクタ
-  public Individuals(int id, int animal_id, String animal_name, String type, int age, String    gender, String user_id, Date period, String remarks, boolean is_castration, Date birthday, String img, String kind){
+  public Individuals(int id, int animal_id, String animal_name, String type, int age, String    gender, String user_id, Date period, String remarks, boolean is_castration, Date birthday, String img, String kind, String user_name){
     super();
     this.id = id;
     this.animal_id = animal_id;
@@ -38,6 +39,7 @@ public class Individuals implements Serializable {
     this.birthday = birthday;
     this.img = img;
     this.kind = kind;
+    this.user_name = user_name;
   }
 
 public int getId() {
@@ -118,5 +120,10 @@ public void setKind(String kind) {
 public String getKind() {
 	return kind;
 }
-
+public String getUser_name() {
+	return user_name;
+}
+public void setUser_name(String user_name) {
+	this.user_name = user_name;
+}
 }
