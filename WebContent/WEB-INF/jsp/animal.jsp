@@ -27,7 +27,7 @@
 
  <c:forEach var="e" items="${individualList}" >
 
-    <form method="post" action="/C/UpdateDeleteServlet">
+    <form method="post" action="/C3/UpdateDeleteServlet">
       ※IDは、変更できません。<br>
       ID<input type="text" name="id" value="${e.id}" readonly="readonly"><br>
 

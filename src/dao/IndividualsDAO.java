@@ -337,7 +337,7 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(5, null);
 					}
-					}
+
 					if (card.getRemarks() != null) {
 						pStmt.setString(7, card.getRemarks());
 					}

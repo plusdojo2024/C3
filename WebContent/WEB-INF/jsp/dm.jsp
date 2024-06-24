@@ -48,15 +48,16 @@
     <input type="hidden" value="${e.id}" name="yourId">
     </c:forEach>
   </datalist>
-  <input type="submit" value="DM" name="DM1"></form>
+  <input type="submit" value="DM" name="DM2"></form>
 
-<form action="/C3/DmTalkServlet" method="get">
+
 <div style="text-align:center;">
   <c:forEach var="t" items="${talkUserList}">
+  <form action="/C3/DmTalkServlet" method="get" style="margin:15px;">
 <input type="submit" value="${t.user_name}" style="background:transparent;  border-color:#fffaf0;" name="select">
 <input type="hidden" value="${t.who_id}" name="yourId">
 <input type="hidden" value="${t.user_name}" name="yourName"><hr>
-    </c:forEach></div></form>
+ </form>   </c:forEach></div>
 
    <table class="dm">
       <tr>

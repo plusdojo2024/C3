@@ -27,7 +27,7 @@
 <main>
   <h1>団体登録</h1>
 </main>
-<form method="post" action="/C3/AddGroupServlet">
+<form method="post" action="/C3/AddGroupServlet" id="addGroup">
   <!-- ID<input type="text" name="id" value="（自動採番）" readonly="readonly" style="background-color: lightgray"><br> -->
   新規団体ユーザーID<br><input type="text" name="user_id"><br>
   パスワード<br><input type="text" name="user_password"><br>
@@ -48,6 +48,16 @@
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
-
+ <script>
+  'use strict';
+  let form = document.getElementById("addGroup");
+form.onsubmit = function(){
+	if(!form.user_id.value || !form.user_password.value || !form.user_name.value || !form.address.value || !form.phone_number.value || !form.emails.value){
+		window.alert("備考以外はすべて入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
 </body>
 </html>
