@@ -56,8 +56,8 @@
 <div style="text-align:center;">
   <c:forEach var="t" items="${talkUserList}">
   <form action="/C3/DmTalkServlet" method="get" style="margin:15px;">
-<input type="text" value="${t.who_id}" name="yourId">
-<input type="text" value="${t.user_name}" name="yourName">
+<input type="hidden" value="${t.who_id}" name="yourId">
+<input type="hidden" value="${t.user_name}" name="yourName">
 <input type="submit" value="${t.user_name}" style="background:transparent;  border-color:#fffaf0;" name="select"><hr>
    </form>
     </c:forEach></div>
