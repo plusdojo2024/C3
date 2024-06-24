@@ -86,15 +86,12 @@ form {
   margin-bottom:100px;	
 }
 td {
-  font-size : 50px;
+  font-size : 20px;
   padding-top:10px;
   padding-bottom:10px;
   padding-left:30px;
   padding-right:30px
 }
-/*
-table {
-	 border:1; 
-	 style:border-collapse collapse;
+.number_size {
+	font-size : 60%;
 }
-*/

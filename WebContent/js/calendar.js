@@ -20,7 +20,7 @@
 
     // カレンダー生成処理
     function generateCalendar(year, month) {
-    	let calendarHtml = '<table  border="1" style="border-collapse: collapse"><thead><tr>';
+    	let calendarHtml = '<table  border class="number_size"><thead><tr>';
     	for (let i = 0; i < 7; i++) {
     	  calendarHtml += `<th>${['日', '月', '火', '水', '木', '金', '土'][i]}</th>`;
     	}
@@ -31,10 +31,10 @@
     	  if (i === 1) {
     	    calendarHtml += '<tr>';
     	    for (let j = 0; j < dayOfWeek; j++) {
-    	      calendarHtml += '<td></td>';
+    	      calendarHtml += '<td valign="top"></td>';
     	    }
     	  }
-    	  calendarHtml += `<td class="" data-date=${i}>${i}</td>`;
+    	  calendarHtml += `<td data-date=${i}>${i}</td>`;
     	  if (dayOfWeek === 6) {
     	    calendarHtml += '</tr>';
     	    if (i < daysInMonth) {
@@ -42,7 +42,7 @@
     	    }
     	  } else if (i === daysInMonth) {
     	    for (let j = dayOfWeek + 1; j <= 6; j++) {
-    	      calendarHtml += '<td></td>';
+    	      calendarHtml += '<td valign="top"></td>';
     	    }
     	    calendarHtml += '</tr>';
     	  }
