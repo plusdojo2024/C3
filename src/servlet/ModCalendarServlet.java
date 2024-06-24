@@ -95,8 +95,8 @@ public class ModCalendarServlet extends HttpServlet {
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					//Date date = sdf.parse(tempEvent_day);
 					//Timestamp eventDay = new Timestamp(date.getTime());
-					Date edate = sdf.parse(tempEvent_day);
-					Timestamp event_day = new Timestamp(edate.getTime());
+					Date date = sdf.parse(tempEvent_day);
+					Timestamp event_day = new Timestamp(date.getTime());
 					if (EvDao.update(new Events(id, event_name, event_day, event_place, event_remarks, user_name))) {	// 更新成功
 					request.setAttribute("result",
 					new Result("更新成功", "レコードを1件更新しました。", "/C3/ModCalendarServlet"));

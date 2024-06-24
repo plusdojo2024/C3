@@ -61,11 +61,13 @@
 
   <form method="post" action="/C3/AnimalSerachServlet">
     <main class="search">
+    <h1>動物検索</h1>
     <table>
       <tr>
         <td>
           <label>所属団体<br>
             <select name="orgId">
+              <option >未選択</option>
               <c:forEach var="e" items="${organizationsList}" >
               <option value="${e.id}" >${e.user_name}</option></c:forEach>
             </select>
@@ -73,7 +75,7 @@
         </td>
         <td>
           <label>名前<br>
-          <input type="text" name="name">
+          <input type="text" name="name"><br>
           </label>
         </td>
       </tr>

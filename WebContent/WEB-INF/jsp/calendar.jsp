@@ -58,7 +58,6 @@
 
  　<main class="calendar">
   <h1>カレンダー</h1>
-  <body>
     <div class="button_center">
   	  <input type="button" id = "prevMonth" value="前の月" >
   	  <input type="button" id = "nextMonth" value="次の月" >
@@ -69,15 +68,24 @@
 		const events = [
 		<c:forEach var="e" items="${evList}" >
 			  {
-			    id:'${e.id}',
-			    event_name: '譲渡会名${e.event_name}',
-			    //date: new Date(2024, 5, 15),
-			    date:new Date'日付(${e.year}, ${e.month}, ${e.day})',
-			    //date:new Date(${e.year}, ${e.month}, ${e.day})
-			    //event_day:'${e.event_day}',
-			    event_place:'場所：${e.event_place}',
-			    event_remarks:'備考：${e.event_remarks}',
-			    user_name:'団体名：${e.user_name}'
+			    id			:'${e.id}',
+			    
+			    event_name	: '[譲渡会名]:${e.event_name}',
+			    
+			    //                クラス名(引数1 ,引数2,、引数3)
+			    //date		: new Date ( 2024, 5   , 15 ),
+			    
+			    date	    : new Date (${e.year}, ${e.month}, ${e.day}),
+			    
+			    //date		: new Date(${e.year}, ${e.month}, ${e.day})
+			    
+			    //event_day	:'${e.event_day}',
+			    
+			    event_place	:'[場所]${e.event_place}',
+			    
+			    event_remarks:'[備考]：${e.event_remarks}',
+			    
+			    user_name	:'[団体名]：${e.user_name}'
 			  },
 	    </c:forEach>
 		];
@@ -101,8 +109,8 @@
 
 	    </script>
     <script src="/C3/js/calendar.js"></script>
-  </body>
   </main>
+  </body>
   <!-- メインここまで -->
 
   <!-- フッター -->

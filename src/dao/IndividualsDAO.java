@@ -26,7 +26,7 @@ public class IndividualsDAO {
 				// SQL文を準備する
 					String sql = "SELECT INDIVIDUALS.id, INDIVIDUALS.animal_id,kind, animal_name, type, age, gender, INDIVIDUALS.user_id,user_name,USERS.is_organization, period, INDIVIDUALS.remarks, is_castration, birthday, img "
 							+ " FROM INDIVIDUALS JOIN USERS ON INDIVIDUALS.user_id = USERS.id JOIN ANIMALS ON INDIVIDUALS.animal_id = ANIMALS.id "
-							+ " WHERE kind LIKE ? AND animal_name Like ? AND  type LIKE ? AND gender LIKE ? ORDER BY id;";
+							+ " WHERE kind LIKE ? AND animal_name Like ? AND  type LIKE ? AND gender LIKE ? AND INDIVIDUALS.user_id = ? ORDER BY id;";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 
@@ -53,6 +53,12 @@ public class IndividualsDAO {
 					}
 					else {
 						pStmt.setString(4, "%");
+					}
+					if (card.getUser_id() != null) {
+						pStmt.setString(5, "%" + card.getUser_id() + "%");
+					}
+					else {
+						pStmt.setString(5, "%");
 					}
 
 					// SQL文を実行し、結果表を取得する
@@ -222,8 +228,8 @@ public class IndividualsDAO {
 						pStmt.setString(5, "");
 					}
 					//sessionスコープで団体id持ってきて名前入れる
-					if (card.getUser_name() != null) {
-						pStmt.setString(6, card.getUser_name());
+					if (card.getUser_id() != null) {
+						pStmt.setString(6, card.getUser_id());
 					}
 					else {
 						pStmt.setString(6, "");
@@ -331,11 +337,6 @@ public class IndividualsDAO {
 					else {
 						pStmt.setString(5, null);
 					}
-					if (card.getUser_name() != null) {
-						pStmt.setString(6, card.getUser_name());
-					}
-					else {
-						pStmt.setString(6, null);
 					}
 					if (card.getRemarks() != null) {
 						pStmt.setString(7, card.getRemarks());
