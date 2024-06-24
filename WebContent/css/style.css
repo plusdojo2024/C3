@@ -350,7 +350,7 @@ input[name=user_name]{
 
 }
 
-input[name=adress]{
+input[name=address]{
   width: 13em;
   height: 30px;
   text-align:center;
@@ -358,6 +358,7 @@ input[name=adress]{
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  width: 26em;
 
 }
 
