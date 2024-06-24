@@ -21,7 +21,7 @@
       <a href="ManagerServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
     <div class="logout">
-      <a href="HomeServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"> -->ユーザーホーム</a>
+      <a href="LogoutServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"> -->ユーザーホーム</a>
     </div>
   <!-- ヘッダーここまで -->
   </header>
