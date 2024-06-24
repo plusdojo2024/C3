@@ -19,6 +19,8 @@
   <header>
     <div class="home">
       <a href="DmPersonalServlet"><img src="./img/images/dmtalk.png" alt="Start Chat" width="250" height="247"></a>
+       <div class="logout">
+    <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
     </div>
   </header>
   <body>

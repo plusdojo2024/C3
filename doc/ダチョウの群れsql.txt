@@ -177,6 +177,9 @@ INSERT INTO USERS VALUES (null, 'orgF','保護団体F', 'orgF', true,'東京都','080-8
 INSERT INTO ANIMALS VALUES (1,'犬');
 INSERT INTO ANIMALS VALUES (2,'猫');
 INSERT INTO INDIVIDUALS VALUES (null, 1,'ポチ','ダックスフンド',3,'オス',2,'2024-06-14','テストデータです',true,'2021-10-25','poti.png');
+INSERT INTO INDIVIDUALS VALUES (null, 2,'ボボ','はちわれ',12,'メス',2,'2024-06-13','肥満ぎみ、避妊手術済み',true,'2012-05-05','');
+INSERT INTO INDIVIDUALS VALUES (null, 3,'ララ','きじとら',9,'メス',2,'2024-06-24','痩せ気味、避妊手術済み',true,'2015-02-14','');
+INSERT INTO INDIVIDUALS VALUES (null, 4,'メル','茶トラ',9,'オス',2,'2024-06-24','健康的な子です',true,'2015-02-14','');
 INSERT INTO RESERVATIONS VALUES (null, '1','2024-07-10', '1','2','テスト用データです',false);
 INSERT INTO DMS VALUES(null, '1', '2', CURRENT_TIMESTAMP, 'おはようございます', true);
 INSERT INTO DMS VALUES(null, '1', '2', CURRENT_TIMESTAMP, '元気？', true);

@@ -30,6 +30,7 @@
 <h1>Q&amp;A編集</h1>
 <form method="post" action="/C3/ModQAServlet">
 <select name="id">
+
  <c:forEach var="e" items="${qaList}" >
     <p>${e.question}</p><br>
     <p>${e.answer}</p></c:forEach>

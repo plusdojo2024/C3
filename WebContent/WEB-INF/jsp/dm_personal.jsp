@@ -45,6 +45,7 @@
   <h1>ユーザーDM</h1>
    <form action="/C3/DmTalkServlet" method="get">
    <select name="yourId">
+   <option>未選択</option>
     <c:forEach var="e" items="${organizationsList}" >
     <option value="${e.id}" >${e.user_name}</option>
     </c:forEach>
