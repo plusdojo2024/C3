@@ -44,25 +44,45 @@ public class DmTalkServlet extends HttpServlet {
 				}
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String yourId = request.getParameter("yourId");
-				String yourId3 = request.getParameter("yourId3");
+				//String yourId = request.getParameter("yourId");
 				String yourName = request.getParameter("yourName");
-				request.setAttribute("yourId", yourId);
-				System.out.println(yourId3);
+				System.out.println(yourName);
+				//request.setAttribute("yourId", yourId);
 				DmsDAO dmsDao = new DmsDAO();
 				UsersDAO uDao = new UsersDAO();
 
 				//セッションスコープからidを取得
 				String myId = String.valueOf(session.getAttribute("number"));
-				System.out.println(yourName);
-				List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
-				//System.out.println(talkList);
-				request.setAttribute("talkList", talkList);
 
-				List<Users> orgList = uDao.getName(yourId3);
-				request.setAttribute("orgList", orgList);
-				for(Users loginlist: orgList) {
-					System.out.println(loginlist.getUser_name());
+
+
+				if(request.getParameter("DM1")== null) {
+					if (request.getParameter("select").equals(request.getParameter("yourName"))) {
+						String yourId = request.getParameter("yourId");
+						request.setAttribute("yourId",yourId);
+						List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
+						//System.out.println(talkList);
+						request.setAttribute("talkList", talkList);
+						//System.out.println(yourId);
+						List<Users> orgList = uDao.getName(yourId);
+						request.setAttribute("orgList", orgList);
+						/*for(Users loginlist: orgList) {
+							System.out.println(loginlist.getUser_name());
+						}*/
+					}
+				}else if(request.getParameter("DM1").equals("DM")) {
+						String yourId = request.getParameter("yourId");
+						request.setAttribute("yourId",yourId);
+						List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
+						//System.out.println(talkList);
+						request.setAttribute("talkList", talkList);
+
+						List<Users> orgList = uDao.getName(yourId);
+						request.setAttribute("orgList", orgList);
+						/*for(Users loginlist: orgList) {
+							System.out.println(loginlist.getUser_name());
+							System.out.println(yourId);
+						}*/
 				}
 
 				// 登録ページにフォワードする

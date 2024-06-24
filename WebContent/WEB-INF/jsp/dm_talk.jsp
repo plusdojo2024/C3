@@ -41,7 +41,7 @@ ${t.dm_detail}
    </div>
 
 
-   <form action="/C3/DmTalkServlet" method="post">
+   <form action="/C3/DmTalkServlet" method="post" id="message">
     <div id="inputArea">
         <input type="text" id="message" name="dmDetail" placeholder="メッセージを入力...">
         <!-- <button onclick="sendMessage()">送信</button>-->
@@ -60,4 +60,15 @@ ${t.dm_detail}
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
+  <script>
+  'use strict';
+  let form = document.getElementById("message");
+form.onsubmit = function(){
+	if(!form.dmDetail.value){
+		window.alert("文字を入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
 </html>

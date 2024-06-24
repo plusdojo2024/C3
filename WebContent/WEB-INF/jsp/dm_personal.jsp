@@ -52,14 +52,15 @@
     <input type="submit" value="DM" name="DM1">
   </form>
 
-  <form action="/C3/DmTalkServlet" method="get">
+
 <div style="text-align:center;">
   <c:forEach var="t" items="${talkUserList}">
-<input type="text" value="<c:out value="${t.who_id}"/>" name="yourId3">
-<input type="text" value="<c:out value="${t.user_name}"/>" name="yourName">
+  <form action="/C3/DmTalkServlet" method="get" style="margin:15px;">
+<input type="text" value="${t.who_id}" name="yourId">
+<input type="text" value="${t.user_name}" name="yourName">
 <input type="submit" value="${t.user_name}" style="background:transparent;  border-color:#fffaf0;" name="select"><hr>
-    </c:forEach></div></form>
-
+   </form>
+    </c:forEach></div>
 </main>
 </body>
 
