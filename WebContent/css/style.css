@@ -272,7 +272,7 @@ main h2 {
 .search {
   display: grid;
   place-items: center; /* 水平方向と垂直方向に中央配置 */
-  margin-top:100px;
+  margin-top:20px;
   margin-bottom:100px;
 }
 .function {
