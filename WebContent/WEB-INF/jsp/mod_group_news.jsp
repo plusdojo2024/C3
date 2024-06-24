@@ -26,7 +26,7 @@
   </div>
 </header>
 
-<form id="modGroupNews"　method="post" action="/C3/ModGroupNewsServlet">
+<form id="modGroupNews" method="post" action="/C3/ModGroupNewsServlet">
   <input type="text" name="title" placeholder="題名"><br>
   <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" id="register" name="submit" value="登録"><br>
