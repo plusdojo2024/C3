@@ -22,7 +22,7 @@
       <a href="HomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
     </div></c:if>
     <c:if test="${not empty id}"><div class="home">
-      <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
+      <a href="GroupHomeServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
     </div></c:if>
 
     <c:if test="${not empty id}">  <div class="logout">
@@ -31,15 +31,7 @@
 
 
 
-    <nav class="nav">
-      <ul>
-        <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
-        <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
-        <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
-        <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
-        <li class="list5"><a href="/C3/DmServlet">DM</a></li>
-    </ul>
-  </nav>
+
 
   <!-- ヘッダーここまで -->
   </header>
