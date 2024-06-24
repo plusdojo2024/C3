@@ -19,10 +19,16 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// セッションスコープを破棄する
 		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("userName"));
+		if(session.getAttribute("userName")==null) {
+			session.invalidate();
+			// ログインページにリダイレクトする
+			response.sendRedirect("/C3/ManagerLoginServlet");
+		}else {
 		session.invalidate();
-
 		// ログインページにリダイレクトする
 		response.sendRedirect("/C3/LoginServlet");
+		}
 	}
 
 }

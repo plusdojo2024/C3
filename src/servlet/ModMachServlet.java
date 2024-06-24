@@ -35,8 +35,12 @@ public class ModMachServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/C3/ManagerLoginServlet");
+			return;
+		}
 		// 検索ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_mach.jsp");
 		dispatcher.forward(request, response);
@@ -49,11 +53,11 @@ public class ModMachServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-				HttpSession session = request.getSession();
-				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/C3/ManegerServlet");
-					return;
-				}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/C3/ManagerLoginServlet");
+			return;
+		}
 
 					// リクエストパラメータを取得する
 					request.setCharacterEncoding("UTF-8");
