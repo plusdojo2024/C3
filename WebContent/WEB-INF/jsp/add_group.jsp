@@ -20,7 +20,7 @@
       <a href="ManagerServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
     <div class="logout">
-      <a href="HomeServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40">-->ユーザーホーム</a>
+      <a href="LogoutServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40">-->ユーザーホーム</a>
     </div>
   <!-- ヘッダーここまで -->
   </header>
@@ -29,13 +29,13 @@
 </main>
 <form method="post" action="/C3/AddGroupServlet">
   <!-- ID<input type="text" name="id" value="（自動採番）" readonly="readonly" style="background-color: lightgray"><br> -->
-  新規団体ユーザーID<input type="text" name="user_id"><br>
-  パスワード<input type="text" name="user_password"><br>
-  団体名<input type="text" name="user_name"><br>
-  住所<input type="text" name="adress"><br>
-  電話番号<input type="text" name="phone_number"><br>
-  メールアドレス<input type="text" name="emails"><br>
-  備考<input type="text" name="remarks"><br>
+  新規団体ユーザーID<br><input type="text" name="user_id"><br>
+  パスワード<br><input type="text" name="user_password"><br>
+  団体名<br><input type="text" name="user_name"><br>
+  住所<br><input type="text" name="address"><br>
+  電話番号<br><input type="text" name="phone_number"><br>
+  メールアドレス<br><input type="text" name="emails"><br>
+  備考<br><input type="text" name="remarks"><br>
   <input type="submit" name="regist" value="登録">
   <input type="reset" name="reset" value="リセット">
 </form>

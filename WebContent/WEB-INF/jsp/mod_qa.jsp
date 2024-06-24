@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>日記(登録・更新・削除)</title>
+<title>Q&amp;A編集</title>
 <link rel="stylesheet" href="/C3/css/style.css">
 <style>
   body {
@@ -15,42 +15,47 @@
 </style>
 </head>
 <body id="top">
-
-
 <!-- ヘッダー -->
 <header>
+
   <div class="home">
-    <a href="PersonalServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
+    <a href="ManagerServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
   </div>
+
   <div class="logout">
-    <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
+    <a href="HomeServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40">-->ユーザーホーム</a>
   </div>
 </header>
-
-<form method="post" action="/C3/ModDiaryServlet">
-  <input type="text" name="diary_title" placeholder="題名"><br>
-  <textarea name="diary" cols="60" rows="10" placeholder="内容"></textarea><br>
+<main>
+<h1>Q&amp;A編集</h1>
+<form method="post" action="/C3/ModQAServlet">
+ <c:forEach var="e" items="${qaList}" >
+    <p>Q${e.question}</p><br>
+    <p>Q${e.answer}</p></c:forEach>
+  <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" id="register" name="submit" value="登録"><br>
 </form>
 
-<form method="post" action="/C3/ModDiaryServlet">
+<form method="post" action="/C3/ModQAServlet">
   <select name="id">
-    <c:forEach var="e" items="${diarysList}" >
-    <option value="${e.id}">${e.diary_title}</option></c:forEach>
+    <c:forEach var="e" items="${qaList}" >
+    <p>Q${e.question}</p><br>
+    <p>Q${e.answer}</p></c:forEach>
   </select><br>
-  <input type="text" name="diary_title" placeholder="題名"><br>
-  <textarea name="diary" cols="60" rows="10" placeholder="内容"></textarea><br>
+  <textarea cols="60" rows="10" placeholder="内容" name="detail"></textarea><br>
   <input type="submit" name="submit" value="更新">
   <input type="submit" name="submit" value="削除">
 </form>
-<!-- フッター -->
+</main>
+
+
+  <!-- フッター -->
   <footer>
     <div class="gotop">
       <a href="#top"><img src="./img/images/nikukyu.png" alt="トップページへ戻る" width="60" height="60"></a>
     </div>
     <p class="copyright">&copy; dacho_group</p>
   </footer>
-<!-- フッターここまで -->
-
+  <!-- フッターここまで -->
 </body>
 </html>

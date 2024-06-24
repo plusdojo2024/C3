@@ -21,7 +21,7 @@
       <a href="ManagerServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="247"></a>
     </div>
     <div class="logout">
-      <a href="HomeServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"> -->ユーザーホーム</a>
+      <a href="LogoutServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"> -->ユーザーホーム</a>
     </div>
   <!-- ヘッダーここまで -->
   </header>
@@ -36,7 +36,7 @@
       団体ユーザーID<br><input type="text" name="user_id" value="${e.user_id}"><br>
       パスワード<br><input type="text" name="user_password" value="${e.user_password}"><br>
       団体名<br><input type="text" name="user_name" value="${e.user_name}"><br>
-      住所<br><input type="text" name="adress" value="${e.address}"><br>
+      住所<br><input type="text" name="address" value="${e.address}"><br>
       電話番号<br><input type="text" name="phone_number" value="${e.phone_number}"><br>
       メールアドレス<br><input type="text" name="emails" value="${e.emails}"><br>
       備考<input type="text" name="remarks" value="${e.remarks}"><br>

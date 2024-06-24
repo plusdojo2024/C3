@@ -245,14 +245,14 @@ main h2 {
 .groupform {
   display: inline-block;
   width:600px;/*フォーム全体の幅を広げる*/
-  padding-bottom:30px;/*要素下の幅調整*/
+  padding-bottom:30px;
   padding-top:30px;/*要素上の幅調整*/
   font-size: 25px; /* フォントサイズ */
   color: #663300; /* 文字色 */
-  margin-bottom: 50px; /* 下のマージン */
+  margin-bottom:30px; /* 下のマージン */
   margin-top:30px;/*フォーム外のtopの調整*/
   margin-right:30px;
-  margin-left:30px;
+  margin-left:55px;
   width: 15em;/*フォームの横の長さ*/
   text-align:center;/*文字を真ん中にする*/
   background-color: #FFFAF0; /* 背景色 */
@@ -350,7 +350,7 @@ input[name=user_name]{
 
 }
 
-input[name=adress]{
+input[name=address]{
   width: 13em;
   height: 30px;
   text-align:center;
@@ -358,6 +358,7 @@ input[name=adress]{
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  width: 26em;
 
 }
 

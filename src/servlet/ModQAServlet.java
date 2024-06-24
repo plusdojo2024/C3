@@ -37,7 +37,7 @@ public class ModQAServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 
 				// 登録ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_qa.jsp");
 				dispatcher.forward(request, response);
 	}
 
@@ -48,7 +48,7 @@ public class ModQAServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/simpleBC/LoginServlet");
+					response.sendRedirect("/C3/LoginServlet");
 					return;
 				}
 
