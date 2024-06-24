@@ -216,8 +216,6 @@ public class EventsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する
-			//お気に入り登録時
-
 				String sql = "UPDATE Events SET event_name=?, event_day=?, event_place=?, event_remarks=?, user_name=? WHERE id=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -252,10 +250,8 @@ public class EventsDAO {
 				else {
 					pStmt.setString(5, null);
 				}				
-				pStmt.setInt(5, card.getId());
+				pStmt.setInt(6, card.getId());
 				//更新ボタンを押した譲渡会のidを格納
-
-
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {

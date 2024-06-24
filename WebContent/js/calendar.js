@@ -4,7 +4,7 @@
 
     const date = new Date();
     let currentYear = date.getFullYear();
-    let currentMonth = date.getMonth();
+    let currentMonth = date.getMonth() +1;
     
 	window.onload = function (){
 		//カレンダーを表示
