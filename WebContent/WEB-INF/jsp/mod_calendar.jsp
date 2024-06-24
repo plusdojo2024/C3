@@ -59,7 +59,7 @@
  　<main class="mod_calendar">
   <h1>【カレンダー編集】</h1>
   <!--登録フォーム-->
-  <p>イベントの登録</p>
+  <p>[イベントの登録]</p>
   <form action="/C3/ModCalendarServlet" method="post">
   <table>
       <tr>
@@ -71,7 +71,7 @@
       </tr>
       <tr>
         <td>
-          <label>日時<br>
+          <label>日付<br>
           <input type="text" name="event_day">
           </label>
         </td>
@@ -102,26 +102,15 @@
     <input type="submit" id="regist" name="submit" value="登録">
   </div>
   </form>
-<<<<<<< HEAD
-  
-  <p>【イベントの更新・削除】</p>
-=======
 
-
->>>>>>> 0c5d6ab21fca87c62dd008b34a06d5918687dc43
   <!-- 更新・削除フォーム -->
+  [イベントの更新・削除]
    <form action="/C3/ModCalendarServlet" method="post">
    <table>
       <tr>
-<<<<<<< HEAD
         <td>  
           <label>譲渡会名<br> 
             <select name="Id">
-=======
-        <td>
-          <label>譲渡会名<br>
-            <select>
->>>>>>> 0c5d6ab21fca87c62dd008b34a06d5918687dc43
               <c:forEach var="e" items="${evList}" >
               <option value="${e.id}">${e.event_name}</option>
               </c:forEach>
@@ -138,7 +127,7 @@
       </tr>
       <tr>
         <td>
-          <label>日時<br>
+          <label>日付<br>
           <input type="text" name="event_day">
           </label>
         </td>

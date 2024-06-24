@@ -24,7 +24,7 @@ public class EventsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する
-				String sql = "SELECT event_name, year, month, day, event_place, event_remarks, user_name FROM Events  ORDER BY id";
+				String sql = "SELECT event_name, event_day, event_place, event_remarks, user_name FROM Events  ORDER BY id";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 
@@ -36,9 +36,7 @@ public class EventsDAO {
 					Events record = new Events(
 						rs.getInt("id"),
 						rs.getString("event_name"),
-						rs.getTimestamp("year"),
-						rs.getTimestamp("month"),
-						rs.getTimestamp("day"),
+						rs.getTimestamp("event_day"),
 						rs.getString("event_place"),
 						rs.getString("event_remarks"),
 						rs.getString("user_name")
@@ -83,7 +81,7 @@ public class EventsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する
-				String sql = "SELECT id, event_name, year, month, day, event_place, event_remarks, user_name FROM Events  ORDER BY id";
+				String sql = "SELECT id, event_name, event_day, event_place, event_remarks, user_name FROM Events  ORDER BY id";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 
@@ -95,9 +93,7 @@ public class EventsDAO {
 					Events record = new Events(
 						rs.getInt("id"),
 						rs.getString("event_name"),
-						rs.getTimestamp("year"),
-						rs.getTimestamp("month"),
-						rs.getTimestamp("day"),
+						rs.getTimestamp("event_day"),
 						rs.getString("event_place"),
 						rs.getString("event_remarks"),
 						rs.getString("user_name")
@@ -142,7 +138,7 @@ public class EventsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/C3", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Events VALUES (Null, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Events VALUES (Null, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -153,41 +149,29 @@ public class EventsDAO {
 				else {
 					pStmt.setString(1, "");
 				}
-				if (card.getYear() != null) {
-					pStmt.setTimestamp(2, card.getYear());
+				if (card.getEvent_day() != null) {
+					pStmt.setTimestamp(2, card.getEvent_day());
 				}
 				else {
 					pStmt.setTimestamp(2, null);
 				}
-				if (card.getMonth() != null) {
-					pStmt.setTimestamp(3, card.getMonth());
-				}
-				else {
-					pStmt.setTimestamp(3, null);
-				}
-				if (card.getDay() != null) {
-					pStmt.setTimestamp(4, card.getDay());
-				}
-				else {
-					pStmt.setTimestamp(4, null);
-				}
 				if (card.getEvent_place() != null) {
-					pStmt.setString(5, card.getEvent_place());
+					pStmt.setString(3, card.getEvent_place());
+				}
+				else {
+					pStmt.setString(3, "");
+				}
+				if (card.getEvent_remarks() != null) {
+					pStmt.setString(4, card.getEvent_remarks());
+				}
+				else {
+					pStmt.setString(4, "");
+				}
+				if (card.getUser_name() != null) {
+					pStmt.setString(5, card.getUser_name());
 				}
 				else {
 					pStmt.setString(5, "");
-				}
-				if (card.getEvent_remarks() != null) {
-					pStmt.setString(6, card.getEvent_remarks());
-				}
-				else {
-					pStmt.setString(6, "");
-				}
-				if (card.getUser_name() != null) {
-					pStmt.setString(7, card.getUser_name());
-				}
-				else {
-					pStmt.setString(7, "");
 				}
 
 
@@ -234,7 +218,7 @@ public class EventsDAO {
 			// SQL文を準備する
 			//お気に入り登録時
 
-				String sql = "UPDATE Events SET event_name=?, year=?, month=?, day=?, event_place=?, event_remarks=?, user_name=? WHERE id=?";
+				String sql = "UPDATE Events SET event_name=?, event_day=?, event_place=?, event_remarks=?, user_name=? WHERE id=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -244,41 +228,29 @@ public class EventsDAO {
 				else {
 					pStmt.setString(1, null);
 				}
-				if (card.getYear() != null) {
-					pStmt.setTimestamp(2, card.getYear());
+				if (card.getEvent_day() != null) {
+					pStmt.setTimestamp(2, card.getEvent_day());
 				}
 				else {
 					pStmt.setTimestamp(2, null);
 				}
-				if (card.getMonth() != null) {
-					pStmt.setTimestamp(3, card.getMonth());
-				}
-				else {
-					pStmt.setTimestamp(3, null);
-				}
-				if (card.getDay() != null) {
-					pStmt.setTimestamp(4, card.getDay());
-				}
-				else {
-					pStmt.setTimestamp(4, null);
-				}
 				if (card.getEvent_place() != null) {
-					pStmt.setString(5, card.getEvent_place());
+					pStmt.setString(3, card.getEvent_place());
+				}
+				else {
+					pStmt.setString(3, null);
+				}
+				if (card.getEvent_remarks() != null) {
+					pStmt.setString(4, card.getEvent_remarks());
+				}
+				else {
+					pStmt.setString(4, null);
+				}
+				if (card.getUser_name() != null) {
+					pStmt.setString(5, card.getUser_name());
 				}
 				else {
 					pStmt.setString(5, null);
-				}
-				if (card.getEvent_remarks() != null) {
-					pStmt.setString(6, card.getEvent_remarks());
-				}
-				else {
-					pStmt.setString(6, null);
-				}
-				if (card.getUser_name() != null) {
-					pStmt.setString(7, card.getUser_name());
-				}
-				else {
-					pStmt.setString(7, null);
 				}				
 				pStmt.setInt(5, card.getId());
 				//更新ボタンを押した譲渡会のidを格納
