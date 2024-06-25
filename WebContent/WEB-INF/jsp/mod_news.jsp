@@ -22,7 +22,7 @@
   </div>
 
   <div class="logout">
-    <a href="LogoutServlet"><!-- <img src="./img/images/logout.png" alt="ログアウト" width="130" height="40">-->ユーザーホーム</a>
+    <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
   </div>
 </header>
 

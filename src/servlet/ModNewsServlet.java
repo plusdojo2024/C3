@@ -34,12 +34,12 @@ public class ModNewsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/C3/LoginServlet");
+					response.sendRedirect("/C3/ManagerLoginServlet");
 					return;
-				}*/
+				}
 		NewsDAO nDao = new NewsDAO();
 		//HttpSession session = request.getSession();
 		/*int tempMyId = (Integer)session.getAttribute("number");
@@ -57,16 +57,16 @@ public class ModNewsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/C3/LoginServlet");
+					response.sendRedirect("/C3/ManagerLoginServlet");
 					return;
-				}*/
+				}
 
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				HttpSession session = request.getSession();
+				 session = request.getSession();
 				String myId = (String)session.getAttribute("id");
 				String newsTitle = request.getParameter("title");
 				String newsDetail = request.getParameter("detail");
