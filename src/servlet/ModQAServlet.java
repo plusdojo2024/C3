@@ -34,7 +34,12 @@ public class ModQAServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-				/*HttpSession session = request.getSession();*/
+				/// もしもログインしていなかったらログインサーブレットにリダイレクトする
+				HttpSession session = request.getSession();
+				if (session.getAttribute("id") == null) {
+					response.sendRedirect("/C3/ManagerLoginServlet");
+					return;
+				}
 
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mod_qa.jsp");
@@ -46,11 +51,11 @@ public class ModQAServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-				HttpSession session = request.getSession();
-				if (session.getAttribute("id") == null) {
-					response.sendRedirect("/C3/LoginServlet");
-					return;
-				}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/C3/ManagerLoginServlet");
+			return;
+		}
 
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");

@@ -58,7 +58,7 @@
   <!-- ヘッダーここまで -->
 </header>
 
-<form method="post" action="/C3/VisitServlet">
+<form method="post" action="/C3/VisitServlet" name="visit">
   <label>所属団体<br>
     <select name="orgId">
       <c:forEach var="e" items="${organizationsList}" >
@@ -90,5 +90,34 @@
   <p class="copyright">&copy; dacho_group</p>
 </footer>
 <!-- フッターここまで -->
+
+  <script>
+  'use strict';
+  let form = document.getElementById("visit");
+form.onsubmit = function(){
+	if(!form.user_id.value || !form.orgId.value || !form.animal_name.value || !form.rsv_day.value || !form.phone_number.value){
+		window.alert("備考以外はすべて入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
+
+//2. 表示/非表示を一気に更新する（表示条件は、引数と一致する id のサブBOX）
+var dispSubBox = function(subId) {
+  [...document.querySelectorAll(".subbox2")].forEach(function(elm){
+    elm.style.display = elm.id===subId ? "inline": "none"
+  });
+}
+dispSubBox(); // 一致する id がないので全て 非表示になる。
+
+// 1. select.subbox の操作で値が変わると発火するイベント
+//document.getElementById("cate").addEventListener("cange", function(event){
+document.getElementById("cate").addEventListener("change", function(event){
+  var elm = event.target; // select#id になる。
+  //console.log( elm.id ); // "cate"
+  //console.log( elm.value ); // サブBOXに与えた id と同じ
+  dispSubBox( elm.value ); // 全更新：一致idだけ表示
+});
+</script>
 </body>
 </html>

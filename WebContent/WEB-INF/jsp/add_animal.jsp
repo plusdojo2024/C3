@@ -25,20 +25,20 @@
     <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="130" height="40"></a>
   </div>
 </header>
- <form method="post" action="/C3/AddAnimalServlet">
+ <form method="post" action="/C3/AddAnimalServlet" id="addAnimal">
 
     <table>
       <tr>
         <td>
           <label>写真<br>
-          <input type="text" name="img">
+           <input type="image" name="img">
           </label>
         </td>
-        <td>
+        <!--  <td>
           <label>ID<br>
           <input type="text" name="ID" value="(自動採番)" readonly="readonly" style="background-color: lightgray">
           </label>
-        </td>
+        </td>-->
 
       </tr>
       <tr>
@@ -80,11 +80,11 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <!-- <td>
           <label>保護日<br>
           <input type="date" name="period">
           </label>
-        </td>
+        </td>-->
         <td>
           <label>去勢手術の有無<br>
           <input type="radio" name="is_castration" value="do">有<br>
@@ -116,5 +116,16 @@
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
+  <script>
+  'use strict';
+  let form = document.getElementById("addAnimal");
+form.onsubmit = function(){
+	if(!form.animal_name.value ||  !form.type.value || !form.gender.value){
+		window.alert("必須入力項目が入力されていません。")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
 </body>
 </html>

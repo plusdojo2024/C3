@@ -36,7 +36,7 @@
 <!-- メイン -->
   <main class="user n">
   <h1>新規登録</h1>
-  <form method="post" action="/C3/UserServlet">
+  <form method="post" action="/C3/UserServlet" name="addUser">
     <table>
       <tr>
         <td>
@@ -74,5 +74,18 @@
     <p class="copyright">&copy; dacho_group</p>
   <!-- フッターここまで -->
   </footer>
+
+
+<script>
+  'use strict';
+  let form = document.getElementById("addUser");
+form.onsubmit = function(){
+	if(!form.user_id.value || !form.user_name.value || !form.user_id.value || !form.user_password.value){
+		window.alert("すべて入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
 </body>
 </html>

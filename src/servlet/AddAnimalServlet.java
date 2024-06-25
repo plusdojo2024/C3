@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,9 +14,9 @@ import dao.IndividualsDAO;
 import model.Individuals;
 import model.Result;
 /**
- * Servlet implementation class AddAnimaiServlet
+ * Servlet implementation class AddAnimalServlet
  */
-@WebServlet("/AddAnimaiServlet")
+@WebServlet("/AddAnimalServlet")
 public class AddAnimalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -58,24 +57,46 @@ public class AddAnimalServlet extends HttpServlet {
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
 				String animal_name = request.getParameter("animal_name");
-				String tempAnimalId = request.getParameter("kind");
-				int animal_id = Integer.parseInt(tempAnimalId);
+				String tempAnimalId = request.getParameter("animal");
+				int animal_id = 0;
+				String gender = null;
+				if(request.getParameter("animal") == null) {
+
+				}else {
+					if(tempAnimalId.equals("dog")) {
+						 animal_id = 1;
+					}else if(tempAnimalId.equals("cat")) {
+						 animal_id = 2;
+					}
+				}
+
+
 				String type = request.getParameter("type");
-				String gender = request.getParameter("gender");
+				if(request.getParameter("gender") == null) {
+					gender=null;
+				}else {
+					if(request.getParameter("gender").equals("male")) {
+						gender="オス";
+					}else if(request.getParameter("gender").equals("female")) {
+						gender="メス";
+						}
+				}
 				   int age = Integer.parseInt(request.getParameter("age"));
+
 				String tmpbirthday = request.getParameter("birthday");
-				  	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				  	String formattedDate = sdf.format(tmpbirthday);
-				  	java.sql.Date birthday = java.sql.Date.valueOf(formattedDate);
+				System.out.println(tmpbirthday);
+				  	//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				  	//String formattedDate = sdf.format(tmpbirthday);
+				  	java.sql.Date birthday = java.sql.Date.valueOf(tmpbirthday);
 /*					try {
 						birthday = sdf.parse(tmpbirthday);
 					} catch (ParseException e) {
 						// TODO 自動生成された catch ブロック
 						e.printStackTrace();
 					}*/
-				String tmpperiod = request.getParameter("period");
-				  String formattedDate1 = sdf.format(tmpperiod);
-			  	java.sql.Date period = java.sql.Date.valueOf(formattedDate1);
+				//String tmpperiod = request.getParameter("period");
+				 // String formattedDate1 = sdf.format(tmpperiod);
+			  	//java.sql.Date period = java.sql.Date.valueOf(formattedDate1);
 /*				try {
 					period = sdf1.parse(tmpperiod);
 				} catch (ParseException e) {
@@ -85,19 +106,19 @@ public class AddAnimalServlet extends HttpServlet {
 				boolean is_castration = Boolean.parseBoolean(request.getParameter("is_castration"));
 				String remarks = request.getParameter("remarks");
 				String img = request.getParameter("img");
-				String user_name = request.getParameter("user_name");
+				String user_id = String.valueOf(session.getAttribute("number"));
 
 
 
 				// 登録処理を行う
 				IndividualsDAO iDao = new IndividualsDAO();
-				if (iDao.insert(new Individuals(0,animal_id,animal_name, type, age,gender, user_name, period, remarks,  is_castration, birthday, img, null))) {	// 登録成功
+				if (iDao.insert(new Individuals(0,animal_id,animal_name, type, age,gender, user_id, null, remarks,  is_castration, birthday, img, null, null))) {	// 登録成功
 					request.setAttribute("result",
-					new Result("登録成功！", "レコードを登録しました。", "/C3/AddAnimaiServlet"));
+					new Result("登録成功！", "レコードを登録しました。", "/C3/AddAnimalServlet"));
 				}
 				else {												// 登録失敗
 					request.setAttribute("result",
-					new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/AddAnimaiServlet"));
+					new Result("登録失敗！", "レコードを登録できませんでした。", "/C3/AddAnimalServlet"));
 				}
 
 				// 結果ページにフォワードする

@@ -43,9 +43,9 @@
 <body>
 <main>
   <h1>ユーザーDM</h1>
-   <form action="/C3/DmTalkServlet" method="get">
-   <select name="yourId">
-   <option>未選択</option>
+   <form action="/C3/DmTalkServlet" method="get" id="yourId">
+   <select name="yourId" >
+   <option value="未選択">未選択</option>
     <c:forEach var="e" items="${organizationsList}" >
     <option value="${e.id}" >${e.user_name}</option>
     </c:forEach>
@@ -73,4 +73,18 @@
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
+  <script>
+  'use strict';
+  let form = document.getElementById("yourId");
+  form.onsubmit = function() {
+	    const selectedValue = document.querySelector('select').value;
+	    console.log(selectedValue);// プルダウンの値を取得
+	    if (selectedValue === '未選択') {
+	      alert('相手を選択してください！');
+	      event.preventDefault;
+		    return false;
+	    }
+	  }
+
+</script>
 </html>

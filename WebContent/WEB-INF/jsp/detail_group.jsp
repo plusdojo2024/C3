@@ -77,7 +77,8 @@
       性別：${i.gender}<br>
       保護日：${i.period}<br>
       備考：${i.remarks}<br>
-      去勢識別：${i.is_castration}<br>
+      去勢識別：<c:if test="${i.is_castration == true}">済<br></c:if>
+      			<c:if test="${i.is_castration == false}">未<br></c:if>
       誕生日：${i.birthday}<br>
       </div>
 </c:forEach>

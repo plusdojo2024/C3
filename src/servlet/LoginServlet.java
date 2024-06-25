@@ -49,15 +49,21 @@ public class LoginServlet extends HttpServlet {
 			for(Users loginlist: loginList) {
 				session.setAttribute("userName",loginlist.getUser_name());
 				session.setAttribute("number",loginlist.getId());
+
+				//System.out.println(loginlist.getIs_organization());
 			if(loginlist.getIs_organization()== true){
 //団体用のホームページ
-				System.out.println(loginList);
-				System.out.println(loginlist.getIs_organization());
+				//System.out.println(loginList);
+				//System.out.println(loginlist.getIs_organization());
+				session.setAttribute("isOrganization", true);
 				response.sendRedirect("/C3/GroupHomeServlet");
+				//System.out.println("?:"+session.getAttribute("isOrganization"));
 			}
 			else if(loginlist.getIs_organization()== false) {
 //個人用
-				System.out.println(loginlist.getId());
+				//System.out.println(loginlist.getId());
+				session.setAttribute("isOrganization", false);
+				//System.out.println("?:"+session.getAttribute("isOrganization"));
 				response.sendRedirect("/C3/PersonalServlet");
 			}
 			}

@@ -109,7 +109,7 @@ CREATE TABLE anicons
 (id			INTEGER		AUTO_INCREMENT	NOT NULL,
 anicon_id		VARCHAR(100)	NOT NULL,
  anicon_password	VARCHAR(32)	NOT NULL,
- PRIMARY KEY	(anicon_id)
+ PRIMARY KEY	(id)
 );
 ---------------aniconsテーブルの作成------------------
 
@@ -198,7 +198,7 @@ INSERT INTO news VALUEs(null,'動物感染症が流行しています。', CUrrent_date, '最近
 2)
 INSERT INTO news VALUEs(null,'新しい保護施設が追加されました。', CUrrent_date, 'この度、新しく保護施設を追加しました。詳細は各団体ページでご確認ください。',1)
 INSERT INTO news VALUEs(null,'動物感染症が流行しています。', CUrrent_date, '最近、動物感染症が流行しています。私たちはしっかりと対策を考えていきたいと思います。',1)
-INSERT INTO anicons VALUEs(null, 'anicon',' anicon')
+INSERT INTO anicons VALUEs(null, 'anicon', 'anicon')
 ---------------お試しInsert文------------------
 
 

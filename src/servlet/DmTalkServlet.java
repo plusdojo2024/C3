@@ -44,9 +44,8 @@ public class DmTalkServlet extends HttpServlet {
 				}
 				// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				//String yourId = request.getParameter("yourId");
-				String yourName = request.getParameter("yourName");
-				System.out.println(yourName);
+				String yourId = request.getParameter("yourId");
+				//System.out.println(yourId);
 				//request.setAttribute("yourId", yourId);
 				DmsDAO dmsDao = new DmsDAO();
 				UsersDAO uDao = new UsersDAO();
@@ -56,9 +55,9 @@ public class DmTalkServlet extends HttpServlet {
 
 
 
-				if(request.getParameter("DM1")== null) {
+				if(request.getParameter("DM1")== null && request.getParameter("DM2")== null) {
 					if (request.getParameter("select").equals(request.getParameter("yourName"))) {
-						String yourId = request.getParameter("yourId");
+						yourId = request.getParameter("yourId");
 						request.setAttribute("yourId",yourId);
 						List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
 						//System.out.println(talkList);
@@ -70,8 +69,9 @@ public class DmTalkServlet extends HttpServlet {
 							System.out.println(loginlist.getUser_name());
 						}*/
 					}
-				}else if(request.getParameter("DM1").equals("DM")) {
-						String yourId = request.getParameter("yourId");
+				}else if(request.getParameter("DM2")== null && request.getParameter("DM1").equals("DM")){
+					if(request.getParameter("DM1").equals("DM")) {
+						 yourId = request.getParameter("yourId");
 						request.setAttribute("yourId",yourId);
 						List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
 						//System.out.println(talkList);
@@ -80,10 +80,29 @@ public class DmTalkServlet extends HttpServlet {
 						List<Users> orgList = uDao.getName(yourId);
 						request.setAttribute("orgList", orgList);
 						/*for(Users loginlist: orgList) {
-							System.out.println(loginlist.getUser_name());
+							System.out.printrequest.getParameter("DM1").equals("DM")ln(loginlist.getUser_name());
 							System.out.println(yourId);
 						}*/
-				}
+					}
+				}else if(request.getParameter("DM1")==null && request.getParameter("DM2").equals("DM")) {
+						String yourName = request.getParameter("user_name");
+						//System.out.println(yourName);
+						List<Users> orgList = uDao.getId(yourName);
+						//request.setAttribute("orgList", orgList);
+						for(Users loginlist: orgList) {
+							//System.out.println("ID："+loginlist.getId());
+							yourId = String.valueOf(loginlist.getId());
+							request.setAttribute("yourId",yourId);
+							List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
+							//System.out.println("id:"+yourId);
+							request.setAttribute("talkList", talkList);
+
+							 orgList = uDao.getName(yourId);
+							request.setAttribute("orgList", orgList);
+						}
+
+					}
+
 
 				// 登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dm_talk.jsp");
@@ -106,6 +125,8 @@ public class DmTalkServlet extends HttpServlet {
 
 
 				DmsDAO dmsDao = new DmsDAO();
+				UsersDAO uDao = new UsersDAO();
+
 
 				//セッションスコープからidを取得
 				String myId = String.valueOf(session.getAttribute("number"));
@@ -133,6 +154,17 @@ public class DmTalkServlet extends HttpServlet {
 						String yourId = request.getParameter("yourId2");
 						String dmDetail = request.getParameter("dmDetail");
 						dmsDao.insert(myId, yourId, dmDetail,true);
+
+						request.setAttribute("yourId",yourId);
+						List<DMs> talkList = dmsDao.selectTalk(myId,yourId);
+						//System.out.println(talkList);
+						request.setAttribute("talkList", talkList);
+						List<Users> orgList = uDao.getName(yourId);
+						request.setAttribute("orgList", orgList);
+						for(Users loginlist: orgList) {
+						System.out.println(loginlist.getUser_name());
+						System.out.println(yourId);
+					}
 					}
 				}//
 

@@ -27,13 +27,13 @@
   </div>
 </header>
 
-<form method="post" action="/C3/ModDiaryServlet">
+<form id="modDiary" method="post" action="/C3/ModDiaryServlet">
   <input type="text" name="diary_title" placeholder="題名"><br>
   <textarea name="diary" cols="60" rows="10" placeholder="内容"></textarea><br>
   <input type="submit" id="register" name="submit" value="登録"><br>
 </form>
 
-<form method="post" action="/C3/ModDiaryServlet">
+<form id="moddiary" method="post" action="/C3/ModDiaryServlet">
   <select name="id">
     <c:forEach var="e" items="${diarysList}" >
     <option value="${e.id}">${e.diary_title}</option></c:forEach>
@@ -43,6 +43,21 @@
   <input type="submit" name="submit" value="更新">
   <input type="submit" name="submit" value="削除">
 </form>
+
+
+
+<script>
+  'use strict';
+  let form = document.getElementById("modDiary");
+form.onsubmit = function(){
+	if(!form.diary_title.value || !form.diary.value ){
+		window.alert("題名、内容を入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
+
 <!-- フッター -->
   <footer>
     <div class="gotop">

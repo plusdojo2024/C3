@@ -17,6 +17,9 @@
   <div class="home">
     <a href="ManagerServlet"><img src="./img/images/logo.png" alt="アニコン" width="250" height="245"></a>
   </div>
+  <div class="logout">
+    <a href="LogoutServlet"><img src="./img/images/logout.png" alt="ログアウト" width="150" height="55"></a>
+  </div>
 </header>
 
 <main class="group_manager_home">
