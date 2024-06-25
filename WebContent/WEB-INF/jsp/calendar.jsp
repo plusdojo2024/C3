@@ -106,6 +106,19 @@
 	
 		//例：evListの中身が10個
 		//const events = [ {event}, {event}, {event}, {event}, {event}, {event}, {event}, {event}, {event}, {event}, ];
+		
+		
+		// カレンダーnullを許さない
+
+  		'use strict';
+		let form = document.getElementById("addGroup");
+		form.onsubmit = function(){
+		if(!form.event_name.value || !form.event_day.value || !form.event_place.value || !form.user_name.value){
+		window.alert("備考以外はすべて入力してください。")
+		event.preventDefault;
+	    return false;
+	}
+}
 
 	    </script>
     <script src="/C3/js/calendar.js"></script>
