@@ -42,17 +42,6 @@
       </tr>
   </table>
 
-    <nav class="nav">
-      <ul>
-        <li class="list1"><a href="/C3/GroupServlet">各団体</a></li>
-        <li class="list2"><a href="/C3/AnimalSerachServlet">動物検索</a></li>
-        <li class="list3"><a href="/C3/CalendarServlet">カレンダー</a></li>
-        <li class="list4"><a href="/C3/QAServlet">Q&amp;A</a></li>
-    <c:if test="${not empty id}">
-        <li class="list5"><a href="/C3/DmPersonalServlet">DM</a></li>
-    </c:if>
-      </ul>
-    </nav>
   <!-- ヘッダーここまで -->
   </header>
 
@@ -108,8 +97,8 @@
    <form action="/C3/ModCalendarServlet" method="post">
    <table>
       <tr>
-        <td>  
-          <label>譲渡会名<br> 
+        <td>
+          <label>譲渡会名<br>
             <select name="Id">
               <c:forEach var="e" items="${evList}" >
               <option value="${e.id}">${e.event_name}</option>
