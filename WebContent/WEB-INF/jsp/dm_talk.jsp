@@ -35,7 +35,7 @@
   </header>
   <body>
   <main>
-  <h1>Chat</h1>
+  <h1>DM</h1>
    <div id="chat">
 
    <div style="text-align:center; background-color:#996633; font-size:40px; padding:10px; margin-bottom:15px;">
