@@ -1,23 +1,13 @@
-/**
- * 
- */
-
-    const date = new Date();
+const date = new Date();
     let currentYear = date.getFullYear();
     let currentMonth = date.getMonth() +1;
-    
 	window.onload = function (){
 		//カレンダーを表示
 		generateCalendar(currentYear, currentMonth);
 		//generateEvent();
 	}
-
-
     const calendarEl = document.getElementById('calendar');
-
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-
     // カレンダー生成処理
     function generateCalendar(year, month) {
     	let calendarHtml = '<table  border class="number_size"><thead><tr>';
@@ -25,7 +15,6 @@
     	  calendarHtml += `<th>${['日', '月', '火', '水', '木', '金', '土'][i]}</th>`;
     	}
     	calendarHtml += '</tr></thead><tbody><tr>';
-
     	for (let i = 1; i <= daysInMonth; i++) {
     	  const dayOfWeek = new Date(currentYear, currentMonth, i).getDay();
     	  if (i === 1) {
@@ -62,48 +51,29 @@
     		}
  		});
     }
-    
-    
-    
-
     const prevMonthBtn = document.getElementById('prevMonth');
     const nextMonthBtn = document.getElementById('nextMonth');
     let currentDisplayedMonth = currentMonth;
- 
     //ボタンをクリックしたら前の月に移動する処理
     prevMonthBtn.addEventListener('click', () => {
-    
       currentDisplayedMonth--;
       currentMonth--;
-    
       if (currentDisplayedMonth < 0) {
         currentDisplayedMonth = 11;
         currentMonth = 11;
         currentYear--;
       }
-    
       generateCalendar(currentYear, currentDisplayedMonth);
-    
     });
-
-
-
-
     // ボタンをクリックしたら次の月に移動する処理
     nextMonthBtn.addEventListener('click', () => {
     currentYear, currentDisplayedMonth
       currentDisplayedMonth++;
       currentMonth++;
-      
       if (currentDisplayedMonth > 11) {
         currentDisplayedMonth = 0;
         currentMonth = 0;
         currentYear++;
       }
-      
       generateCalendar(currentYear, currentDisplayedMonth);
     });
-	
-    
-  
-    
