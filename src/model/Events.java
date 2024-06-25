@@ -6,10 +6,7 @@ import java.sql.Timestamp;
 public class Events implements Serializable{
   private int id;				  	/*ID*/
   private String event_name;		/*名前*/
-  private Timestamp event_day;
-  //private Timestamp year;			/*年数*/
-  //private Timestamp month;			/*月*/
-  //private Timestamp day;			/*日*/
+  private Timestamp event_day;		/*日付*/
   private String event_place;		/*場所*/
   private String event_remarks;		/*備考*/
   private String user_name;			/*ユーザー名*/
@@ -26,9 +23,6 @@ public class Events implements Serializable{
        this.id = id;
        this.event_name = event_name;
        this.event_day = event_day;
-       /*this.year = year;
-       this.month = month;
-       this.day = day;*/
        this.event_place =event_place;
        this.event_remarks =event_remarks;
        this.user_name =user_name;
@@ -54,8 +48,6 @@ public Timestamp getEvent_day() {
 public void setEvent_day(Timestamp event_day) {
 	this.event_day = event_day;
 }
-
-
 //EL式 ${e.year} → java変換　getをつける、先頭を大文字にする。 → e.getYear()
 //java式　インスタンス名.getYear();
 

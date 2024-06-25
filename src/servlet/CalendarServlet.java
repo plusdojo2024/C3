@@ -1,5 +1,4 @@
 package servlet;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import model.Reservations;
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,17 +27,13 @@ public class CalendarServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	HttpSession session = request.getSession();
-
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-
 				EventsDAO evDao = new EventsDAO();
 				ReservationsDAO rsvDao = new ReservationsDAO();
 				List<Reservations> rsvList = rsvDao.select1();
@@ -50,7 +44,6 @@ public class CalendarServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 		dispatcher.forward(request, response);
 		}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -61,9 +54,5 @@ public class CalendarServlet extends HttpServlet {
 			response.sendRedirect("/C3/CalendarServlet");
 			return;
 		}
-
-
-
-
 	}
 }

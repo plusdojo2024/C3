@@ -303,7 +303,7 @@ box-sizing: border-box;
   max-width: 80%;
   color: #555;
   font-size: 16px;
-  background: #FFF;
+  background: #e0edff;
   border: solid 3px #555;
   box-sizing: border-box;
   border-radius: 15px;
@@ -316,7 +316,7 @@ box-sizing: border-box;
   left: -24px;
   margin-top: -12px;
   border: 12px solid transparent;
-  border-right: 12px solid #FFF;
+  border-right: 12px solid #e0edff;
   z-index: 2;
 }
 
@@ -337,7 +337,7 @@ box-sizing: border-box;
   margin: 1.5em 15px 1.5em 0;
   padding: 7px 10px;
   min-width: 120px;
-  max-width: 80%;
+  max-width: -80%;
   color: #555;
   font-size: 16px;
   background: #FFF;
