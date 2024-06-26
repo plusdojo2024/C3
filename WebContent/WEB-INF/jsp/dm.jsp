@@ -40,7 +40,7 @@
   <h1>団体DM</h1>
 
 
-    <form action="/C3/DmTalkServlet" method="get">
+    <form action="/C3/DmTalkServlet" method="get" id="talk">
   <input type="search" name="user_name" list="ユーザー名">
   <datalist id="ユーザー名">
     <c:forEach var="e" items="${userList}">
@@ -77,4 +77,15 @@
     <p class="copyright">&copy; dacho_group</p>
   </footer>
   <!-- フッターここまで -->
+  <script>
+  'use strict';
+  let form = document.getElementById("talk");
+form.onsubmit = function(){
+	if(!form.user_name.value){
+		window.alert("相手を選択してください！")
+		event.preventDefault;
+	    return false;
+	}
+}
+</script>
 </html>
