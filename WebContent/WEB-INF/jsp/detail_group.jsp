@@ -72,7 +72,8 @@
       写真：<br>
       所属団体：${i.user_name}<br>
       名前：${i.animal_name}<br>
-      種類：${i.kind}<br>
+      ${i.kind}<br>
+      種類：${i.type}<br>
       年齢：${i.age}<br>
       性別：${i.gender}<br>
       保護日：${i.period}<br>

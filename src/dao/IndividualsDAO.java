@@ -55,7 +55,7 @@ public class IndividualsDAO {
 						pStmt.setString(4, "%");
 					}
 					if (card.getUser_id() != null) {
-						pStmt.setString(5, "%" + card.getUser_id() + "%");
+						pStmt.setString(5, card.getUser_id());
 					}
 					else {
 						pStmt.setString(5, "%");
