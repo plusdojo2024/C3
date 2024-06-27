@@ -65,7 +65,7 @@
       <option value="${e.id}">${e.user_name}</option></c:forEach>
     </select>
   </label><br>
-  <label>個体名<br>
+  <label>動物名<br>
     <input type="text" name="animal_name" >
   </label><br>
   <label>日時<br>
